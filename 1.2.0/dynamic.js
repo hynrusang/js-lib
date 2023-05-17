@@ -64,18 +64,20 @@ const Dom = class {
  * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
  */
 const FragAnimation = class {
-    static card = async (_view, _fragment, _millisecond, _action) => {
-        await new Promise(code => setTimeout(code, _millisecond));
+    static card = async (_view, _fragment, _second, _action) => {
+        _view._node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 1000,})
+        await new Promise(code => setTimeout(code, _second * 0.8));
+        _view.reset(_fragment);
+        _view._node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 1000,})
+        _action();
+    }
+    static fade = async (_view, _fragment, _second, _action) => {
+        await new Promise(code => setTimeout(code, _second));
         _view.reset(_fragment);
         _action();
     }
-    static fade = async (_view, _fragment, _millisecond, _action) => {
-        await new Promise(code => setTimeout(code, _millisecond));
-        _view.reset(_fragment);
-        _action();
-    }
-    static swip = async (_view, _fragment, _millisecond, _action) => {
-        await new Promise(code => setTimeout(code, _millisecond));
+    static swip = async (_view, _fragment, _second, _action) => {
+        await new Promise(code => setTimeout(code, _second));
         _view.reset(_fragment);
         _action();
     }
@@ -94,11 +96,11 @@ const Fragment = class {
         return this;
     }
     /**
-     * @type {(animation: FragAnimation, millisecond: Number) => Fragment}
+     * @type {(animation: FragAnimation, second: Number) => Fragment}
      */
-    registAnimation = (animation, millisecond) => {
+    registAnimation = (animation, second) => {
         this.#swipAnimation = animation;
-        this.#animationExcuteTime = millisecond;
+        this.#animationExcuteTime = second;
         return this;
     }
     /**
