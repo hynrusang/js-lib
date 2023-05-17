@@ -335,10 +335,9 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-const state = new LiveData("first");
-state.observer = function () {
+const state = new LiveData("first").registObserver(function () {
     alert(`${this.get()} Fragment is stating now...`);
-}
+});
 const mainFragment = new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
     $("input", {type: "button", value: "go to second fragment", onclick: () => {
