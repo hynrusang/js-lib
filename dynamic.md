@@ -419,3 +419,5 @@ mainFragment.launch();
 > 1.2.0  
 > create class SwipAnimation;  
 > create method Fragment.registAnimation(animation, millisecond);  
+>  
+> @remove Dom.copy(count);  
