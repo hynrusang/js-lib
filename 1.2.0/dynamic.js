@@ -66,10 +66,10 @@ const Dom = class {
 const FragAnimation = class {
     static card = async (_view, _fragment, _second, _action) => {
         if (_view._node.innerHTML != "") {
-            _view._node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
-            await new Promise(code => setTimeout(code, _second * 400));
+            _view._node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
+            await new Promise(code => setTimeout(code, _second * 450));
             _view.reset(_fragment);
-            _view._node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
+            _view._node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
         } else _view.reset(_fragment);
         _action();
     }
@@ -84,10 +84,10 @@ const FragAnimation = class {
     }
     static swip = async (_view, _fragment, _second, _action) => {
         if (_view._node.innerHTML != "") {
-            _view._node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 500,})
+            _view._node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
             await new Promise(code => setTimeout(code, _second * 400));
             _view.reset(_fragment);
-            _view._node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 600,})
+            _view._node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
         } else _view.reset(_fragment);
         _action();
     }
