@@ -417,7 +417,7 @@ mainFragment.launch();
 > @remove Array.property:last(): any;  
 ---
 > 1.2.0  
-> create class SwipAnimation;  
+> create class FragAnimation;  
 > create method Fragment.registAnimation(animation, millisecond);  
 >  
 > @update Fragment.launch();  
