@@ -329,7 +329,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
 > **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
 > 예시: (9-1의 예시를 조금 수정합니다.)  
-> ([livedata.js](https://github.com/hynrusang/program/js-lib/main/1.0.0/livedata.js)를 추가로 이용합니다.)  
+> ([livedata.js](https://github.com/hynrusang/js-lib/main/1.0.0/livedata.js)를 추가로 이용합니다.)  
 ```js
 /* index.html */
 <fragment rid="fragmentView"></fragment>
