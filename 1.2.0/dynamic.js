@@ -71,7 +71,7 @@ const FragAnimation = class {
             _view.reset(_fragment);
             _view._node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
         } else _view.reset(_fragment);
-        _action();
+        if (_action != null) _action();
     }
     static fade = async (_view, _fragment, _second, _action) => {
         if (_view._node.innerHTML != "") {
@@ -80,7 +80,7 @@ const FragAnimation = class {
             _view.reset(_fragment);
             _view._node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
         } else _view.reset(_fragment);
-        _action();
+        if (_action != null) _action();
     }
     static swip = async (_view, _fragment, _second, _action) => {
         if (_view._node.innerHTML != "") {
@@ -89,7 +89,7 @@ const FragAnimation = class {
             _view.reset(_fragment);
             _view._node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
         } else _view.reset(_fragment);
-        _action();
+        if (_action != null) _action();
     }
 }
 const Fragment = class {
