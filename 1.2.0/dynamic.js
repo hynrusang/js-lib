@@ -60,6 +60,9 @@ const Dom = class {
         this.set(additional);
     }
 }
+/**
+ * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
+ */
 const SwipAnimation = class {
     static cardAnimation = async (_view, _fragment, _millisecond, _action) => {
 
