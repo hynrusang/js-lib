@@ -1,6 +1,6 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) Jade (Js Downloader)
-- [before](https://github.com/hynrusang/program/blob/main/README.md)
-- [Source Code](https://github.com/hynrusang/program/blob/main/jade.js)
+- [before](https://github.com/hynrusang/js-lib/blob/main/README.md)
+- [Source Code](https://github.com/hynrusang/js-lib/blob/main/jade.js)
 ---
 
 ## Info
