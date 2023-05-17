@@ -159,6 +159,7 @@ false
 // result
 [3,5,6,7,8,2]
 ```
+---
 ## 업데이트 내역
 > 1.0.0  
 > get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
