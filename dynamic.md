@@ -387,14 +387,14 @@ mainFragment.launch();
 > create snipe(selector): DomExpert | DomExpert[];  
 > create loading(jhpath): void;  
 >   
-> create string.property.isEmpty(): boolean;  
-> create array.property.isEmpty(): boolean;  
+> create String.property.isEmpty(): boolean;  
+> create Array.property.isEmpty(): boolean;  
 > create String.prototype.in(data): boolean;  
-> create array.prototype.in(data): boolean;  
-> create string.property.count(data): number;  
-> create array.property.count(data): number;  
-> create string.property.last(): char;  
-> create array.property:last(): any;  
+> create Array.prototype.in(data): boolean;  
+> create String.property.count(data): number;  
+> create Array.property.count(data): number;  
+> create String.property.last(): char;  
+> create Array.property:last(): any;  
 > 
 > @deprecated loading;
 ---
@@ -402,7 +402,16 @@ mainFragment.launch();
 > combine class DomDefault, DomExpert to Dom;  
 > create class Fragment;  
 >   
-> @remove loading(jhpath): void;  
 > @deprecated Dom.copy(count);  
-> @update is(target, classname): boolean and @transfer ;
-> @transfer
+> @update is(target, classname): boolean and @transfer [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @remove loading(jhpath): void;  
+> @remove String.property.count(data): number;  
+> @remove Array.property.count(data): number;  
+> @remove String.property.last(): char;  
+> @remove Array.property:last(): any;  
+> @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer String.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer Array.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer String.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer Array.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
