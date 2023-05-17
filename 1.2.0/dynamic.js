@@ -63,14 +63,14 @@ const Dom = class {
 /**
  * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
  */
-const Animation = class {
-    static cardAnimation = async (_view, _fragment, _millisecond, _action) => {
+const FragAnimation = class {
+    static card = async (_view, _fragment, _millisecond, _action) => {
 
     }
-    static fadeAnimation = async (_view, _fragment, _millisecond, _action) => {
+    static fade = async (_view, _fragment, _millisecond, _action) => {
 
     }
-    static swipAnimation = async (_view, _fragment, _millisecond, _action) => {
+    static swip = async (_view, _fragment, _millisecond, _action) => {
 
     }
 }
@@ -88,7 +88,7 @@ const Fragment = class {
         return this;
     }
     /**
-     * @type {(animation: SwipAnimation, millisecond: Number) => Fragment}
+     * @type {(animation: FragAnimation, millisecond: Number) => Fragment}
      */
     registAnimation = (animation, millisecond) => {
         this.#swipAnimation = animation;
