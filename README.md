@@ -7,7 +7,7 @@
 > 여기, 당신이 원하는 기능들이 있습니다.
 ---
 
-아래의 js 파일들은 모두 이 **jade.js**를 통해 이용하실 수 있습니다.:
+아래의 js 파일들은 모두 이 **jade.js** 버전관리 툴을 통해 손쉽게 자동으로 이용하실 수 있습니다.:
 - [jade.js](https://github.com/hynrusang/js-lib/blob/main/jade.md)
 
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
