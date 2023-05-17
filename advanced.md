@@ -87,7 +87,7 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ---
 ## 업데이트 내역
 > 1.0.0  
-> get is(target, classname): boolean from [dynamic.js]([https://](https://github.com/hynrusang/js-lib/blob/main/dynamic.md));  
+> get is(target, classname): boolean from  [소스코드](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > get wait(millisecond): Promise<void>;  
 > create getIndex(parent, child): number;  
 > create scan(selector): document.querySelector | document.querySelectorAll;  
