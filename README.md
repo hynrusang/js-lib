@@ -11,5 +11,5 @@
 - [jade.js](https://github.com/hynrusang/program/blob/main/jade.md)
 
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
-1. **js** 만으로 쉽게 HTML 요소를 다루고 싶다면? [jh.js](https://github.com/hynrusang/program/blob/main/jh.md)
-2. 값이 변할 때마다 실행하길 원하는 기능이 있다면? [livedata.js](https://github.com/hynrusang/program/blob/main/livedata.md)
+1. **js** 만으로 쉽게 HTML 요소를 다루고 싶다면? [jh.js](https://github.com/hynrusang/js-lib/blob/main/jh.md)
+2. 값이 변할 때마다 실행하길 원하는 기능이 있다면? [livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)
