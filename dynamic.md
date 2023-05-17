@@ -371,7 +371,21 @@ const secondFragment = new Fragment("target", $("h1", {text: "hi, world!", style
 mainFragment.launch();
 ```
 ---
-> 그 외, **isEmpty, count, in, last** 등의 **prototype**에 관한 내용은 소스코드 란을 참고하세요.
+### 6. FragAnimation : Class  
+> **FragAnimation**은 **Fragment**의 **registerAnimation 메서드**의 **first** 매개변수로 간접 참조되는 클래스입니다.  
+> **FragAnimation** 클래스에는 다음과 같은 메서드들이 있습니다:  
+> 1. card
+> **card animation**을 수행하는 메서드입니다.  
+> **타깃 \<fragment\>**이 비어 있지 않은 경우, 회전 및 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
+> 다시 회전 및 투명도 애니메이션을 수행합니다. **타깃 \<fragment\>**이 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+> 2. fade
+> **fade animation**을 수행하는 메서드입니다.  
+> **타깃 \<fragment\>**이 비어 있지 않은 경우, 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
+> 다시 투명도 애니메이션을 수행합니다. **타깃 \<fragment\>**이 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+> 3. swip
+> **swip animation**을 수행하는 메서드입니다.  
+> **타깃 \<fragment\>**이 **비어 있지 않은 경우**, 왼쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
+> 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **타깃 \<fragment\>**이 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
 ---
 ## 업데이트 내역
 > 1.0.0  
