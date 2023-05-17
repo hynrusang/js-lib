@@ -17,6 +17,7 @@ Example:
 <script src="https://hynrusang.github.io/js-lib/jade.js">
     dynamic, release;
     livedata, 1.0.0;
+    advanced, release;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></jade>
@@ -28,6 +29,7 @@ Example:
 Result:
 <script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/livedata.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.0.0/advanced.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
@@ -37,6 +39,7 @@ Result:
 */
 const __$$IMPLEMENTHREF = "https://hynrusang.github.io/js-lib/";
 const __$$VERSIONINFO = {
+    advanced: ["1.0.0", "1.0.0"],
     dynamic: ["1.1.0", "1.1.0"],
     livedata: ["1.0.0", "1.0.0"]
 };

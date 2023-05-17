@@ -57,7 +57,7 @@ const Dom = class {
         if (additional) {
             const keys = Object.keys(additional);
             const values = Object.values(additional);
-            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this._node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this._node.innerText = values[i] : (keys[i].in("on")) ? this._node[keys[i]] = values[i] : this._node.setAttribute(keys[i], values[i]);
+            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this._node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this._node.innerText = values[i] : (keys[i].indexOf("on") != -1) ? this._node[keys[i]] = values[i] : this._node.setAttribute(keys[i], values[i]);
         }
         return this;
     };
@@ -100,21 +100,6 @@ const Fragment = class {
  * @type {(node: string | HTMLElement, additional?: Object) => Dom}
  */
 const $ = (node, additional) => new Dom(node, additional);
-/**
- * @type {(target: any, Class: any) => boolean}
- */
-const is = (target, Class) => (typeof target == "object") ? (target instanceof Class) : (typeof target == Class.toString().split(" ")[1].split("(")[0].toLocaleLowerCase());
-/**
- * @type {(millisecond: number) => Promise<>}
- */
-const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
-/**
- * @type {{
- * (parent: any[], child: any) => number
- * (parent: HTMLElement, child: HTMLElement) => number
- * }}
- */
-const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
 /** 
  * @type {{
  * (selector: `!${string}a`) => NodeListOf<HTMLAnchorElement>;
@@ -268,7 +253,7 @@ const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeNam
  * (selector: HTMLElement) => HTMLElement
  * }}
  */
-const scan = selector => is(selector, String) ? (selector[0] == "!") ? document.querySelectorAll(selector.split("!")[1]) : document.querySelector(selector) : selector;
+const scan = selector => (typeof selector == "string") ? (selector[0] == "!") ? document.querySelectorAll(selector.split("!")[1]) : document.querySelector(selector) : selector;
 /**
  * @type {{
 * (selector: `!${string}`) => Dom[]
@@ -277,19 +262,7 @@ const scan = selector => is(selector, String) ? (selector[0] == "!") ? document.
 * }}
 */
 const snipe = selector => {
-   const temp = (is(selector, String) && (selector[0] == "!")) ? [] : $(scan(selector));
-   if (is(temp, Object)) for (let i = 0; i < scan(selector).length; i++) temp.push($(scan(selector)[i]));
+   const temp = ((typeof selector == "string") && (selector[0] == "!")) ? [] : $(scan(selector));
+   if (typeof temp == "object") for (let i = 0; i < scan(selector).length; i++) temp.push($(scan(selector)[i]));
    return temp;
 }
-String.prototype.isEmpty = function () { return (this.length == 0); }
-Array.prototype.isEmpty = function () { return (this.length == 0); }
-String.prototype.count = function (data) { return (this.split(data).length - 1); }
-Array.prototype.count = function (data) {
-    let count = 0;
-    for (let i = 0; i < this.length; i++) if (this[i] == data) count++;
-    return count;
-}
-String.prototype.in = function (data) { return (this.indexOf(data) != -1); }
-Array.prototype.in = function (data) { return (this.indexOf(data) != -1); }
-String.prototype.last = function () { return this.slice(-1); }
-Array.prototype.last = function () { return this[this.length - 1]; }
