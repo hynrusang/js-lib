@@ -1,6 +1,6 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) Jh (Js + Html)
-- [이전으로](https://github.com/hynrusang/program/blob/main/README.md)
-- [소스코드](https://github.com/hynrusang/program/blob/main/1.1.0/jh.js)
+- [이전으로](https://github.com/hynrusang/program/js-lib/main/README.md)
+- [소스코드](https://github.com/hynrusang/program/js-lib/main/1.1.0/jh.js)
 ---
 
 ## 정보
