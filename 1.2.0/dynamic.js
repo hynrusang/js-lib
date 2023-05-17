@@ -87,7 +87,7 @@ const FragAnimation = class {
             _view._node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 400));
             _view.reset(_fragment);
-            _view._node.animate([{marginLeft: '-100%'}, {marginLeft: '0%'}], {duration: _second * 500,})
+            _view._node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 600,})
         } else _view.reset(_fragment);
         _action();
     }
