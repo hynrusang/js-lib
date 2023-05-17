@@ -83,8 +83,12 @@ const FragAnimation = class {
         _action();
     }
     static swip = async (_view, _fragment, _second, _action) => {
-        await new Promise(code => setTimeout(code, _second));
-        _view.reset(_fragment);
+        if (_view._node.innerHTML != "") {
+            _view._node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 500,})
+            await new Promise(code => setTimeout(code, _second * 400));
+            _view.reset(_fragment);
+            _view._node.animate([{marginLeft: '-100%'}, {marginLeft: '0%'}], {duration: _second * 500,})
+        } else _view.reset(_fragment);
         _action();
     }
 }

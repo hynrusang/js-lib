@@ -19,14 +19,16 @@
             height: 100vh;
             overflow-x: hidden;
             overflow-y: scroll;
-            border: 4px solid black;
             display: flex;
             flex-direction: column;
+        }
+        body::-webkit-scrollbar {
+            display: none;
         }
         nav {
             width: 100%;
             height: 40px;
-            border-bottom: 4px solid black;
+            border: 3px solid black;
             font-size: 1.5em;
             padding-top: 3px;
             padding-left: 12px;
@@ -35,11 +37,12 @@
         fragment {
             display: block;
             height: calc(100% - 80px);
+            border: 3px solid black;
         }
         footer {
             width: 100%;
             height: 40px;
-            border-top: 4px solid black;
+            border: 3px solid black;
             font-size: 1.5em;
             padding-top: 3px;
             padding-left: 12px;
@@ -90,7 +93,7 @@
         new Fragment("fragmentView", makeTestDom("B", "second")).registAnimation(FragAnimation.fade, 1).registAction(() => {
             state.set("second");
         }),
-        new Fragment("fragmentView", makeTestDom("C", "third")).registAnimation(FragAnimation.swip, 1).registAction(() => {
+        new Fragment("fragmentView", $("h1", {text: "test"})).registAnimation(FragAnimation.swip, 1).registAction(() => {
             state.set("third");
         }),
         new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
