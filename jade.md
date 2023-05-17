@@ -21,6 +21,7 @@
 <script src="https://hynrusang.github.io/js-lib/jade.js">
     dynamic, release;
     livedata, 1.0.0;
+    advanced, developer;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></jade>
@@ -34,6 +35,7 @@
 ```js
 <script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/livedata.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.0.0/advanced.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
