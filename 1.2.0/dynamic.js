@@ -87,7 +87,7 @@ const Fragment = class {
     /**
      * @type {(animation: SwipAnimation, millisecond: Number) => Fragment}
      */
-    registSwipAnimation = (animation, millisecond) => {
+    registAnimation = (animation, millisecond) => {
         this.#swipAnimation = animation;
         this.#animationExcuteTime = millisecond;
         return this;
