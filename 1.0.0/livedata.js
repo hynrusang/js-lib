@@ -5,11 +5,15 @@
  */
 const LiveData = class {
     #data;
-    observer;
+    #observer;
     set = data => {
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
         this.#data = data;
-        if (isChanged && typeof this.observer == "function") this.observer();
+        if (isChanged && typeof this.#observer == "function") this.#observer();
+    }
+    registObserver = observer => {
+        this.#observer = observer;
+        return this;
     }
     get = () => {
         return this.#data;
