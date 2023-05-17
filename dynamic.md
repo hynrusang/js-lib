@@ -291,7 +291,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 </body>
 ```
 ---
-### 5. Fragment: class;
+### 5. Fragment: class
 > **Fragment**는 **<fragment></fragment> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 <fragment> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
