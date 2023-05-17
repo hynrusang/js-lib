@@ -436,6 +436,60 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/cardAnimation.gif" style="width: 50%; height: auto;" align="center" />  
    
 ---
+#### 6-2. FragAnimation.fade
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8);
+```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/fadeAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+   
+---
+#### 6-2. FragAnimation.swip
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8);
+```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+   
+---
 ## 업데이트 내역
 > 1.0.0  
 > create class DomDefault;  
