@@ -83,32 +83,15 @@ getIndex(document.querySelector("#parent_element"), document.querySelector("#my-
 getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
-> 그 외, **isEmpty, count, in** 등의 **prototype**에 관한 내용은 소스코드 란을 참고하세요.
+> 그 외, **isEmpty, in** 등의 **prototype**에 관한 내용은 소스코드 란을 참고하세요.
 ---
 ## 업데이트 내역
 > 1.0.0  
-> get is(target, classname): boolean from  [소스코드](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get wait(millisecond): Promise<void>;  
-> create getIndex(parent, child): number;  
-> create scan(selector): document.querySelector | document.querySelectorAll;  
-> create snipe(selector): DomExpert | DomExpert[];  
-> create loading(jhpath): void;  
+> get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 >   
-> create string.property.isEmpty(): boolean;  
-> create array.property.isEmpty(): boolean;  
-> create String.prototype.in(data): boolean;  
-> create array.prototype.in(data): boolean;  
-> create string.property.count(data): number;  
-> create array.property.count(data): number;  
-> create string.property.last(): char;  
-> create array.property:last(): any;  
-> 
-> @deprecated loading;
----
-> 1.1.0  
-> combine class DomDefault, DomExpert to Dom;  
-> create class Fragment;  
->   
-> @remove loading;  
-> @deprecated Dom.copy(count);  
-> @update is;
+> get string.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> get array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> get String.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> get array.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
