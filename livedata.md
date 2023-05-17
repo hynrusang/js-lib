@@ -14,7 +14,7 @@
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**  
-> 2. registObserver(observer)
+> 2. registObserver(observer)  
 > **observer**를 **등록**하는 메서드입니다.  
 > observer는 **데이터 변경** 시 **호출**될 함수입니다.  
 > **chain method**를 지원합니다.  
