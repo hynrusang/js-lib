@@ -7,16 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="parent_element">
-        <div></div>
-        <div></div>
-        <div id="my-element"></div>
-        <div></div>
-    </div>
     <fragment rid="fragmentView"></fragment>
     <script src="1.0.0/livedata.js"></script>
-    <script src="1.1.0/jh.js"></script>
+    <script src="1.1.0/dynamic.js"></script>
     <script>
+        const state = new LiveData("first");
+        state.observer = function () {
+            alert(`${this.get()} Fragment is stating now...`);
+        }
+        const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+            $("legend", {text: "first fragment", style: "color: red;"}),
+            $("input", {type: "button", value: "go to second fragment", onclick: () => {
+                secondFragment.launch();
+            }})
+        )).registAction(() => {
+            state.set("first");
+        }).launch();
+        // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
+        const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
+        $("p", {text: "just test case..."}),
+        $("input", {type: "button", value: "go to first fragment", onclick: () => {
+            mainFragment.launch();
+        }})).registAction(() => {
+            state.set("second");
+        })
     </script>
 </body>
 </html>
