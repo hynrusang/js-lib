@@ -32,7 +32,7 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면,  
 ```js
-db.observer = function () { console.log(this.get()); }
+db.registObserver(function () { console.log(this.get()); });
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
@@ -53,8 +53,7 @@ db.set(7);
 > observer는 **데이터 변경** 시 **호출**될 함수입니다.  
 예시:
 ```js
-const db = new LiveData("data");  
-db.registObserver(function () { console.log(this.get()); });  
+const db = new LiveData("data").registObserver(function () { console.log(this.get()); });  
 db.set("data renew");  
 
 // console
@@ -66,8 +65,7 @@ data renew
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
 예시:
 ```js
-const db = new LiveData({name: "hynrusang", isVerify: false});  
-db.registObserver(function () { console.log(this.get()); });  
+const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
 db.set({name: "hynrusang", isVerify: true});  
 
 // console
