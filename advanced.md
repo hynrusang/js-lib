@@ -99,6 +99,66 @@ true
 false
 ```
 ---
+#### 4.2 Array.prototype.in
+> 이 메서드는 **배열** 내에서 **특정 데이터**를 검색하여 **해당 데이터가 존재**하는지 여부를 반환합니다.  
+> 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
+예시:  
+```js
+[3,5,6,7].in(7)
+["hello", 7, 8, "9"].in(8)
+["hello", 7, 8, "9"].in(9)
+
+// result
+true
+true
+false
+```
+---
+#### 4-3. String.prototype.isEmpty
+> 이 메서드는 **문자열**이 **비어 있는지** 여부를 확인하여 비어 있으면 **true**를 반환하고,  
+> **그렇지 않으면 false**를 반환합니다.
+예시:
+```js
+"".isEmpty()
+"d".isEmpty()
+" ".isEmpty()
+
+// result
+true
+false
+false
+```
+---
+#### 4-4. Array.prototype.isEmpty
+> 이 메서드는 **배열**이 **비어 있는지** 여부를 확인하여 비어 있으면 **true**를 반환하고,  
+> **그렇지 않으면 false**를 반환합니다.  
+예시:
+```js
+[].isEmpty()
+[3].isEmpty()
+[null, undefined].isEmpty()
+
+// result
+true
+false
+false
+```
+---
+#### 4-5. Array.prototype.push
+> **(이 메서드는 기존의 Array.prototype.push의 반환값을 재정의한 prototype입니다.)**  
+> 이 메서드는 **주어진 데이터**를 배열의 끝에 추가하고, **수정된 배열**을 반환합니다.  
+예시:
+```js
+// before
+[3,5,6,7,8].push(2)
+// return
+6
+
+// renew
+[3,5,6,7,8].push(2)
+// result
+[3,5,6,7,8,2]
+```
 ## 업데이트 내역
 > 1.0.0  
 > get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
