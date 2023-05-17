@@ -1,5 +1,5 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) Dynamic Fragment (DF)
-- [이전으로](https://github.com/hynrusang/program/js-lib/main/README.md)
+- [이전으로](https://github.com/hynrusang/js-lib/tree/main)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/dynamic.js)
 ---
 
