@@ -65,13 +65,19 @@ const Dom = class {
  */
 const FragAnimation = class {
     static card = async (_view, _fragment, _millisecond, _action) => {
-
+        await new Promise(code => setTimeout(code, _millisecond));
+        _view.reset(_fragment);
+        _action();
     }
     static fade = async (_view, _fragment, _millisecond, _action) => {
-
+        await new Promise(code => setTimeout(code, _millisecond));
+        _view.reset(_fragment);
+        _action();
     }
     static swip = async (_view, _fragment, _millisecond, _action) => {
-
+        await new Promise(code => setTimeout(code, _millisecond));
+        _view.reset(_fragment);
+        _action();
     }
 }
 const Fragment = class {
