@@ -403,7 +403,7 @@ mainFragment.launch();
 > create class Fragment;  
 >   
 > @deprecated Dom.copy(count);  
-> @update is(target, classname): boolean and @transfer [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer String.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
@@ -420,4 +420,5 @@ mainFragment.launch();
 > create class SwipAnimation;  
 > create method Fragment.registAnimation(animation, millisecond);  
 >  
+> @update Fragment.launch();  
 > @remove Dom.copy(count);  
