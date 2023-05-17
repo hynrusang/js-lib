@@ -70,16 +70,14 @@
     <script src="1.0.0/livedata.js"></script>
     <script src="1.1.0/dynamic.js"></script>
     <script>
-        const state = new LiveData("first");
-        const footerWidget = scan("!footer input");
-        const customStyle = "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;";
         const makeTestDom = (alphabet, fragmentIdentity) => $("fieldset").add(
             $("legend", {text: `${fragmentIdentity} fragment`, style: "color: red;"}),
-            $("input", {type: "button", value: alphabet, style: customStyle, onclick: () => {
+            $("input", {type: "button", value: alphabet, style: "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;", onclick: () => {
                 alert(`you clicked ${alphabet}!`);
             }})
         )
 
+        const state = new LiveData("first");
         state.observer = function () {
             alert(`${this.get()} Fragment is stating now...`);
             scan("nav").innerHTML = `Current-Fragment://${this.get()}`
@@ -98,7 +96,7 @@
             state.set("fourth");
         })]
 
-        footerWidget.forEach((element, index) => {
+        scan("!footer input").forEach((element, index) => {
             element.onclick = () => {
                 scan(".activate").classList.remove("activate");
                 element.classList.add("activate");
