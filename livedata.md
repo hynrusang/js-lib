@@ -13,11 +13,15 @@
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
-> **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**
-> 2. set(data)  
+> **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**  
+> 2. registObserver(observer)  
+> **observer**를 **등록**하는 메서드입니다.  
+> observer는 **데이터 변경** 시 **호출**될 함수입니다.  
+> **chain method**를 지원합니다.  
+> 3. set(data)  
 > **data**를 **설정**하는 메서드입니다.  
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
-> 3. get()  
+> 4. get()  
 > **현재 data**를 반환하는 메서드입니다.  
 ---
 #### 1-1. constructor(data)
@@ -28,7 +32,7 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면,  
 ```js
-db.observer = function () { console.log(this.get()); }
+db.registObserver(function () { console.log(this.get()); });
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
@@ -44,27 +48,38 @@ db.set(7);
 // console
 ```
 ---
-#### 1-2. set(data)
-> **data**를 **설정**하는 메서드입니다.  
-> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
+#### 1-2. registObserver(observer)
+> **observer**를 **등록**하는 메서드입니다.  
+> observer는 **데이터 변경** 시 **호출**될 함수입니다.  
 예시:
 ```js
-const db = new LiveData("data");  
-db.observer = function () { console.log(this.get()); }  
+const db = new LiveData("data").registObserver(function () { console.log(this.get()); });  
 db.set("data renew");  
 
 // console
 data renew
 ```
 ---
-#### 1-3. get()
+#### 1-3. set(data)
+> **data**를 **설정**하는 메서드입니다.  
+> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
+예시:
+```js
+const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
+db.set({name: "hynrusang", isVerify: true});  
+
+// console
+{name: 'hynrusang', isVerify: true}
+```
+---
+#### 1-4. get()
 > **현재 data**를 반환하는 메서드입니다.  
 예시:
 ```js
 console.log(db.get())
 
 // console
-data renew
+{name: 'hynrusang', isVerify: true}
 ```
 ---
 ## 업데이트 내역
