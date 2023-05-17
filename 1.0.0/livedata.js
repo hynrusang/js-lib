@@ -6,15 +6,25 @@
 const LiveData = class {
     #data;
     #observer;
+    /**
+     * @type {(data: Any) => LiveData}
+     */
     set = data => {
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
         this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
+        return this;
     }
+    /**
+     * @type {(observer: Function) => LiveData}
+     */
     registObserver = observer => {
         this.#observer = observer;
         return this;
     }
+    /**
+     * @type {() => Any}
+     */
     get = () => {
         return this.#data;
     }
