@@ -402,6 +402,7 @@ mainFragment.launch();
 > combine class DomDefault, DomExpert to Dom;  
 > create class Fragment;  
 >   
-> @remove loading;  
+> @remove loading(jhpath): void;  
 > @deprecated Dom.copy(count);  
-> @update is;
+> @update is(target, classname): boolean and @transfer ;
+> @transfer
