@@ -83,7 +83,21 @@ getIndex(document.querySelector("#parent_element"), document.querySelector("#my-
 getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
-> 그 외, **isEmpty, in** 등의 **prototype**에 관한 내용은 소스코드 란을 참고하세요.
+### 4. prototype
+#### 4.1 String.prototype.in
+> 이 메서드는 **문자열** 내에서 **특정 데이터**를 검색하여 **해당 데이터가 존재**하는지 여부를 반환합니다.  
+> 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
+예시:  
+```js
+"aaaaAaaaaa".in("A")
+"aaaaAaaaaa".in("a")
+"aaaaAaaaaa".in("b")
+
+// result
+true
+true
+false
+```
 ---
 ## 업데이트 내역
 > 1.0.0  
