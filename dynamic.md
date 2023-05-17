@@ -357,7 +357,29 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 })
 ```
 ---
-#### 5-3. launch()
+#### 5-3. registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+예시:  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 1.5);
+```
+#### 5-4. launch()
 > **launch**는 **현재 Fragment**를 **해당 Fragment**로 대체하는 함수입니다.  
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 > 예시:  
@@ -386,6 +408,31 @@ mainFragment.launch();
 > **swip animation**을 수행하는 메서드입니다.  
 > **프레그먼트**가 **비어 있지 않은 경우**, 왼쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
 > 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+- 각각의 Animation들의 모습은 다음과 같습니다.
+#### 6-1. FragAnimation.card
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8);
+```
 ---
 ## 업데이트 내역
 > 1.0.0  
