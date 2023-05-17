@@ -13,7 +13,7 @@
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
-> **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴)만 지원합니다.)**
+> **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**
 > 2. set(data)  
 > **data**를 **설정**하는 메서드입니다.  
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
