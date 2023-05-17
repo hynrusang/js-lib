@@ -433,6 +433,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
     }})
 )).registAnimation(FragAnimation.swip, 0.8);
 ```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/mainimg.png" style="width: 50%; height: auto;" />  
 ---
 ## 업데이트 내역
 > 1.0.0  
