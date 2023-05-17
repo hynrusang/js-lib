@@ -84,13 +84,13 @@
             scan("nav").innerHTML = `Current-Fragment://${this.get()}`
         });
 
-        const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAction(() => {
+        const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAnimation(FragAnimation.card, 500).registAction(() => {
             state.set("first");
         }).launch(),
-        new Fragment("fragmentView", makeTestDom("B", "second")).registAction(() => {
+        new Fragment("fragmentView", makeTestDom("B", "second")).registAnimation(FragAnimation.fade, 500).registAction(() => {
             state.set("second");
         }),
-        new Fragment("fragmentView", makeTestDom("C", "third")).registAction(() => {
+        new Fragment("fragmentView", makeTestDom("C", "third")).registAnimation(FragAnimation.swip, 500).registAction(() => {
             state.set("third");
         }),
         new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
