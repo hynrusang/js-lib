@@ -8,7 +8,7 @@
 - It can be more helpful than the default HTML script tag.
 
 ## How it works
-1. Inside the `<script src="https://hynrusang.github.io/program/jade.js">` tag, scripts to include are separated by semicolons.
+1. Inside the `<script src="https://hynrusang.github.io/js-lib/jade.js">` tag, scripts to include are separated by semicolons.
 2. The first argument specifies the script name to include, and the second argument specifies the version.
 2. The version can either specify a particular version (e.g. "1.0.0"), use "release" to automatically use the latest version, or use "developer" for a version specifically for developers.
 
@@ -18,8 +18,8 @@
 
 ### Example
 ```js
-<script src="https://hynrusang.github.io/program/jade.js">
-    jh, release;
+<script src="https://hynrusang.github.io/js-lib/jade.js">
+    dynamic, release;
     livedata, 1.0.0;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
@@ -32,8 +32,8 @@
 
 ### Result
 ```js
-<script src="https://hynrusang.github.io/program/js/1.0.0/jh.js"></script>
-<script src="https://hynrusang.github.io/program/js/1.0.0/livedata.js"></script>
+<script src="https://hynrusang.github.io/js-lib/js/1.0.0/dynamic.js"></script>
+<script src="https://hynrusang.github.io/js-lib/js/1.0.0/livedata.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
