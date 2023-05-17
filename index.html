@@ -7,30 +7,104 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: fantasy;
+        }
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            border: 4px solid black;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            width: 100%;
+            height: 40px;
+            border-bottom: 4px solid black;
+            font-size: 1.5em;
+            padding-top: 3px;
+            padding-left: 12px;
+            font-family: fantasy;
+        }
+        fragment {
+            display: block;
+            height: calc(100% - 80px);
+        }
+        footer {
+            width: 100%;
+            height: 40px;
+            border-top: 4px solid black;
+            font-size: 1.5em;
+            padding-top: 3px;
+            padding-left: 12px;
+            font-family: fantasy;
+        }
+        input {
+            width: 23%;
+            height: 90%;
+            border: 3px solid black;
+            border-radius: 50px;
+            transition: 0.2s all;
+            cursor: pointer;
+        }
+        input:hover {
+            background:rgba(0, 0, 0, 0.6);
+        }
+        .activate {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <nav>Current-Fragment://first</nav>
     <fragment rid="fragmentView"></fragment>
+    <footer>
+        <input type="button" class="activate">
+        <input type="button">
+        <input type="button">
+        <input type="button">
+    </footer>
     <script src="1.0.0/livedata.js"></script>
     <script src="1.1.0/dynamic.js"></script>
     <script>
         const state = new LiveData("first");
+        const footerWidget = scan("!footer input");
+        const customStyle = "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;";
+        const makeTestDom = (alphabet, fragmentIdentity) => $("fieldset").add(
+            $("legend", {text: `${fragmentIdentity} fragment`, style: "color: red;"}),
+            $("input", {type: "button", value: alphabet, style: customStyle, onclick: () => {
+                alert(`you clicked ${alphabet}!`);
+            }})
+        )
+
         state.observer = function () {
             alert(`${this.get()} Fragment is stating now...`);
+            scan("nav").innerHTML = `Current-Fragment://${this.get()}`
         }
-        const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-            $("legend", {text: "first fragment", style: "color: red;"}),
-            $("input", {type: "button", value: "go to second fragment", onclick: () => {
-                secondFragment.launch();
-            }})
-        )).registAction(() => {
+
+        const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAction(() => {
             state.set("first");
-        }).launch();
-        // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
-        const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
-        $("p", {text: "just test case..."}),
-        $("input", {type: "button", value: "go to first fragment", onclick: () => {
-            mainFragment.launch();
-        }})).registAction(() => {
+        }).launch(),
+        new Fragment("fragmentView", makeTestDom("B", "second")).registAction(() => {
             state.set("second");
-        })
+        }),
+        new Fragment("fragmentView", makeTestDom("C", "third")).registAction(() => {
+            state.set("third");
+        }),
+        new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
+            state.set("fourth");
+        })]
+
+        footerWidget.forEach((element, index) => {
+            element.onclick = () => {
+                scan(".activate").classList.remove("activate");
+                element.classList.add("activate");
+                fragmentBox[index].launch();
+            }
+        });
     </script>
 </body>
 </html>
