@@ -8,7 +8,7 @@
 ---
 
 아래의 js 모듈들은 모두 이 **jade.js**를 통해 이용하실 수 있습니다.:
-- [jade.js](https://github.com/hynrusang/program/blob/main/jade.md)
+- [jade.js](https://github.com/hynrusang/js-lib/blob/main/jade.md)
 
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
 1. **js** 만으로 쉽게 HTML 요소를 다루고 싶다면? [jh.js](https://github.com/hynrusang/js-lib/blob/main/jh.md)
