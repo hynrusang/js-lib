@@ -22,3 +22,7 @@ String.prototype.in = function (data) { return (this.indexOf(data) != -1); }
 Array.prototype.in = function (data) { return (this.indexOf(data) != -1); }
 String.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.isEmpty = function () { return (this.length == 0); }
+Array.prototype.push = function (data) {
+    this[this.length] = data;
+    return this;
+}
