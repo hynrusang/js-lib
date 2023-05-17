@@ -329,20 +329,23 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
 > **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
 > 예시: (9-1의 예시를 조금 수정합니다.)  
+> ([livedata.js](https://github.com/hynrusang/program/js-lib/main/1.0.0/livedata.js)를 추가로 이용합니다.)  
 ```js
 /* index.html */
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-let executeAtOnce = false;
+const state = new LiveData("first");
+state.observer = function () {
+    alert(`${this.get()} Fragment is stating now...`);
+}
 const mainFragment = new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
     $("input", {type: "button", value: "go to second fragment", onclick: () => {
         secondFragment.launch();
     }})
 )).registAction(() => {
-    if (executeAtOnce) alert("second Fragment로 전환합니다...");
-    else executeAtOnce = true;
+    state.set("first");
 }).launch();
 // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
 
@@ -351,7 +354,7 @@ $("p", {text: "just test case..."}),
 $("input", {type: "button", value: "go to first fragment", onclick: () => {
     mainFragment.launch();
 }})).registAction(() => {
-    alert("first Fragment로 전환합니다...");
+    state.set("second");
 })
 ```
 ---
@@ -476,3 +479,4 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 >   
 > @remove loading;  
 > @deprecated Dom.copy(count);  
+> @update is;
