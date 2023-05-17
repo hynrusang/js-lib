@@ -417,7 +417,7 @@ mainFragment.launch();
 > @remove Array.property:last(): any;  
 ---
 > 1.2.0  
-> create class FragAnimation;  
+> create static class FragAnimation;  
 > create method Fragment.registAnimation(animation, millisecond);  
 >  
 > @update Fragment.launch();  
