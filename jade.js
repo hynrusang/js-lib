@@ -15,7 +15,7 @@ Note:
 
 Example:
 <script src="https://hynrusang.github.io/js-lib/jade.js">
-    jh, release;
+    dynamic, release;
     livedata, 1.0.0;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
@@ -26,7 +26,7 @@ Example:
 <jade src="/resource/js/1.0.0/util.js"></jade>
 
 Result:
-<script src="https://hynrusang.github.io/js-lib/1.0.0/jh.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/livedata.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -37,7 +37,7 @@ Result:
 */
 const __$$IMPLEMENTHREF = "https://hynrusang.github.io/js-lib/";
 const __$$VERSIONINFO = {
-    jh: ["1.1.0", "1.1.0"],
+    dynamic: ["1.1.0", "1.1.0"],
     livedata: ["1.0.0", "1.0.0"]
 };
 for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js"]`).innerHTML
