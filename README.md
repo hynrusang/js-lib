@@ -1,4 +1,5 @@
 <img src="https://github.com/hynrusang/js-lib/blob/main/mainimg.png" style="width: 100%; height: auto;" />
+---
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) JavaScript (js) Library  
 > 혹시 **Js**만으로 손 쉽게 **HTML 요소**를 생성하고 조작하고 싶으신가요?  
 > 또는 **Fragment 단위**로 **페이지 전환 없이** 동적으로 슬라이드를 구현하고 싶으신가요?  
