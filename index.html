@@ -77,11 +77,10 @@
             }})
         )
 
-        const state = new LiveData("first");
-        state.observer = function () {
+        const state = new LiveData("first").registObserver(function () {
             alert(`${this.get()} Fragment is stating now...`);
             scan("nav").innerHTML = `Current-Fragment://${this.get()}`
-        }
+        });
 
         const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAction(() => {
             state.set("first");
@@ -94,7 +93,7 @@
         }),
         new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
             state.set("fourth");
-        })]
+        })];
 
         scan("!footer input").forEach((element, index) => {
             element.onclick = () => {
