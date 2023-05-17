@@ -304,7 +304,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 ---
 #### 5-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
-> **(다소 복잡한 Dom 구문이 포함되어 있습니다. 1번 문단을 참고해주세요.)**  
+> **(다소 복잡한 Dom 구문이 포함되어 있습니다. [1번](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-dom-class) 문단을 참고해주세요.)**  
 ```js
 /* index.html */
 <fragment rid="fragmentView"></fragment>
@@ -328,7 +328,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 #### 5-2. registAction(action)
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
 > **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
-> 예시: (9-1의 예시를 조금 수정합니다.)  
+> 예시: ([5-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#5-1-constructorview-fragment)의 예시를 조금 수정합니다.)  
 > ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
 ```js
 /* index.html */
@@ -415,3 +415,9 @@ mainFragment.launch();
 > @remove Array.property.count(data): number;  
 > @remove String.property.last(): char;  
 > @remove Array.property:last(): any;  
+---
+> 1.2.0  
+> create class SwipAnimation;  
+> create method Fragment.registAnimation(animation, millisecond);  
+>  
+> @remove Dom.copy(count);  
