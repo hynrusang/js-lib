@@ -357,7 +357,29 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 })
 ```
 ---
-#### 5-3. launch()
+#### 5-3. registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+예시:  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 1.5);
+```
+#### 5-4. launch()
 > **launch**는 **현재 Fragment**를 **해당 Fragment**로 대체하는 함수입니다.  
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 > 예시:  
