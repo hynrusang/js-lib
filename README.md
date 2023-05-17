@@ -11,5 +11,6 @@
 - [jade.js](https://github.com/hynrusang/js-lib/blob/main/jade.md)
 
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
-1. **js** 만으로 쉽게 HTML 요소를 다루고 싶다면? [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)
-2. 값이 변할 때마다 실행하길 원하는 기능이 있다면? [livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)
+1. **js** 만으로 쉽게 **HTML 요소**를 다루고 싶다면? [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)
+2. **값이 변할 때**마다 **감지**하길 원하는 기능이 있다면? [livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)
+3. js에서 **typeof**를 더 확장해서 **객체 정보**
