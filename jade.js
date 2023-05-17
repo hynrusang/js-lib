@@ -17,7 +17,7 @@ Example:
 <script src="https://hynrusang.github.io/js-lib/jade.js">
     dynamic, release;
     livedata, 1.0.0;
-    advanced, release;
+    advanced, developer;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></jade>
