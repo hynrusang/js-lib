@@ -3,12 +3,6 @@
 절대로 무단으로 가져가지 마시기 바랍니다.
 작성자: 환류상
  */
-class SecurityError extends Error {
-    constructor(massage) {
-        super(massage);
-        this.name = "Security Error";
-    }
-}
 const Dom = class {
     /**
      * @type {HTMLElement}
@@ -115,13 +109,12 @@ const is = (target, Class) => (typeof target == "object") ? (target instanceof C
  */
 const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
 /**
- * Suggested by chatGPT.
  * @type {{
  * (parent: any[], child: any) => number
  * (parent: HTMLElement, child: HTMLElement) => number
  * }}
  */
-const getIndex = (parent, child) => (parent.nodeName != null) ? Array.prototype.indexOf.call(parent.children, child) : Array.prototype.indexOf.call(parent, child);
+const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
 /** 
  * @type {{
  * (selector: `!${string}a`) => NodeListOf<HTMLAnchorElement>;
