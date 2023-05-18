@@ -351,7 +351,8 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 })
 ```
 ---
-#### 5-3. registAnimation(animation, second)  
+#### 5-3. @developer registAnimation(animation, second)  
+> **registAnimation(animation, second)은 dynamic 1.2.0부터 사용 가능합니다.**  
 > **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
 예시:  
