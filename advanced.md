@@ -60,7 +60,6 @@ true
   
 - **parent**: **Array\<T\>** 또는 **HTMLElement**입니다.  
 - **child**: **T** 또는 **HTMLElement**입니다.  
-> parent가 **array**인지, **HTMLElement**인지는 중요하지 않습니다.  
   
 getIndex 함수는 다음과 같은 동작을 수행합니다:  
   
