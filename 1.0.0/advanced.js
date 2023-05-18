@@ -22,3 +22,8 @@ String.prototype.in = function (data) { return (this.indexOf(data) != -1); }
 Array.prototype.in = function (data) { return (this.indexOf(data) != -1); }
 String.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.isEmpty = function () { return (this.length == 0); }
+Array.prototype.remove = function (data) { 
+    const index = this.indexOf(data);
+    if (index > -1) this.splice(index, 1);
+    return this;
+}
