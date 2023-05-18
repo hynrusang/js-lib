@@ -286,7 +286,10 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > **view**는 **<fragment></fragment>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
 > 2. registAction(action)  
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
-> 3. launch()  
+> 3. registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+> 4. launch()  
 > **Fragment**를 **전환**하는 메서드입니다. 등록된 **action**을 실행하고, 해당 **view**에 있는 **<fragment></fragment> 태그**를 **fragment**로 **전환**합니다.  
 ---
 #### 5-1. constructor(view, ...fragment)
