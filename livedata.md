@@ -1,6 +1,6 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) LiveData (in js)
 - [이전으로](https://github.com/hynrusang/js-lib)
-- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.0.0/livedata.js)
+- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/livedata.js)
 ---
 - **이 문서는 developer 버전인 livedata 1.1.0을 다룹니다.**  
 - **현재 release 버전은 livedata 1.0.0입니다.**  
