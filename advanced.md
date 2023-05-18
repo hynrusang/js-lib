@@ -9,7 +9,7 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-### 1. is(target, Class) : boolean
+### 1. **@1.0.0** is(target, Class) : boolean
 > is 함수는 **target**이 **특정 Class**의 **인스턴스**인지 또는 **특정 Type**와 **동일**한 타입인지 **확인**하는 함수입니다.  
 > is 함수는 다음과 같은 매개변수를 받습니다.  
   
@@ -32,7 +32,7 @@ is("some string", String) // true
 is("some string", Number) // false
 ```
 ---
-### 2. async wait(millisecond) : Promise<void>
+### 2. **@1.0.0** async wait(millisecond) : Promise\<void\>
 > **wait** 함수는 **millisecond**만큼 **대기**하는 **Promise 객체**를 생성하는 함수입니다.  
 > wait 함수는 다음과 같은 **매개변수**를 받습니다.
   
@@ -55,7 +55,7 @@ waitTest();
 true
 ```
 ---
-### 3. getIndex(parent, child) : number
+### 3. **@1.0.0** getIndex(parent, child) : number
 > **getIndex** 함수는 **parent** 내에서 **child**의 **인덱스**를 가져오는 함수입니다.  
 > getIndex 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -84,8 +84,8 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4.1 String.prototype.in
-> 이 메서드는 **문자열** 내에서 **특정 데이터**를 검색하여 **해당 데이터가 존재**하는지 여부를 반환합니다.  
+#### 4.1 **@1.0.0** String.prototype.in
+> 이 메서드는 **String** 내에서 **특정 data**를 검색하여 **해당 데이터가 exist**하는지 여부를 반환합니다.  
 > 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
 예시:  
 ```js
@@ -99,8 +99,8 @@ true
 false
 ```
 ---
-#### 4.2 Array.prototype.in
-> 이 메서드는 **배열** 내에서 **특정 데이터**를 검색하여 **해당 데이터가 존재**하는지 여부를 반환합니다.  
+#### 4-2. **@1.0.0** Array.prototype.in
+> 이 메서드는 **Array** 내에서 **특정 data**를 검색하여 **해당 데이터가 exist**하는지 여부를 반환합니다.  
 > 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
 예시:  
 ```js
@@ -114,8 +114,8 @@ true
 false
 ```
 ---
-#### 4-3. String.prototype.isEmpty
-> 이 메서드는 **문자열**이 **비어 있는지** 여부를 확인하여 비어 있으면 **true**를 반환하고,  
+#### 4-3. **@1.0.0** String.prototype.isEmpty
+> 이 메서드는 **String**이 **empty**인지의 여부를 반환합니다.  
 > **그렇지 않으면 false**를 반환합니다.
 예시:
 ```js
@@ -129,9 +129,8 @@ false
 false
 ```
 ---
-#### 4-4. Array.prototype.isEmpty
-> 이 메서드는 **배열**이 **비어 있는지** 여부를 확인하여 비어 있으면 **true**를 반환하고,  
-> **그렇지 않으면 false**를 반환합니다.  
+#### 4-4. **@1.0.0** Array.prototype.isEmpty
+> 이 메서드는 **Array**가 **empty**인지의 여부를 반환합니다.  
 예시:
 ```js
 [].isEmpty()
@@ -144,13 +143,31 @@ false
 false
 ```
 ---
+#### 4-5. **@1.0.0** Array.prototype.remove  
+> 이 메서드는 **Array**에서 **특정 data**을 **remove**하는 메서드입니다.  
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+  
+1. 제거할 값의 인덱스를 찾습니다.  
+2. 만약 값이 배열 안에 존재하는 경우, 해당 인덱스를 사용하여 splice 메서드를 호출하여 값을 제거합니다.  
+3.  변경된 배열을 반환합니다.  
+예시:
+```js
+const test = [3,5,6,7,9,11];
+test.remove(3);
+test.remove(6);
+
+// return
+[5,7,9,11]
+```
 ## 업데이트 내역
 > 1.0.0  
-> get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> create Array.prototype.remove(data): Array
+>
+> @get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 >   
-> get string.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get String.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> get array.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get String.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get Array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get String.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get Array.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  

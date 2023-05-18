@@ -129,5 +129,5 @@ Array.unlivedata(data)
 > 1.0.0  
 > create class LiveData;  
 >
-> create JSON.unlivedata(json);  
-> create Array.unlivedata(array);  
+> create JSON.unlivedata(json) : Object;  
+> create Array.unlivedata(array) : Array;  
