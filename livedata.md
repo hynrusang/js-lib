@@ -91,6 +91,17 @@ console.log(db.get())
 - 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 저장합니다.  
 - 그렇지 **않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
 5. 처리가 완료된 **data**를 반환합니다.  
+예시:  
+```js
+const resource = {
+    name: new LiveData("hynrusang"),
+    id: new LiveData(32).registObserver(() => { console.log("data changed") })
+}
+JSON.unlivedata(resource)
+
+// return 
+{name: 'hynrusang', id: 32}
+```
 ---
 ## 업데이트 내역
 > 1.0.0  
