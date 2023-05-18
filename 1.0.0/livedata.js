@@ -32,3 +32,8 @@ const LiveData = class {
         this.#data = data;
     }
 }
+JSON.unlivedata = json => {
+    let data = {}
+    for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].get() : json[key];
+    return data
+}
