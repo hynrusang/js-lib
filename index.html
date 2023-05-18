@@ -107,16 +107,11 @@
                 fragmentBox[index].launch();
             }
         });
-        
-        const myObserver = function () { console.log(this.get()) }
-        const live = {
-            name: new LiveData("hyng").registObserver(myObserver),
-            id: new LiveData(3).registObserver(myObserver)
-        }
-        const notlive = {
-            name: "hyn",
-            id: 3
-        }
+
+        const data = new LiveData(32).registObserver(function () {
+            console.log(this.get())
+        });
+        data.set(data.get() + 1);
     </script>
 </body>
 </html>
