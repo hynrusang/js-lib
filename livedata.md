@@ -15,15 +15,19 @@
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**  
+>  
 > 2. **@1.0.0** setObserver(observer)  
 > **observer**를 **setting**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 > **chain method**를 지원합니다.  
+>  
 > 3. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
+>  
 > 4. **@1.0.0** **@deprecated** set(data)  
 > **data**를 **설정**하는 메서드입니다.  
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
+>  
 > 5. **@1.0.0** **@deprecated** get()  
 > **현재 data**를 반환하는 메서드입니다.  
 ---
@@ -68,15 +72,21 @@ data renew
 > **value**의 **setter** 메서드는 다음과 같은 작업을 수행합니다:  
   
 1. 주어진 **data**와 현재 **data**를 비교하여 **change** 여부를 확인합니다.  
+  
 2. 만약, **data**가 변경되었고, **옵저버(observer)** 가 **function**인 경우 **observer**를 호출합니다.  
+  
 3. 내부 **data(this.#data)** 를 주어진 **data**로 업데이트합니다.  
   
 > **value**의 **getter** 메서드는 다음과 같은 작업을 수행합니다:  
   
 1. 내부 **data(this.#data)** 의 유형에 따라 적절한 반환 값을 생성합니다.  
+  
 - 만약 **data**가 **Array**인 경우, **Array copy**을 반환합니다.  
+  
 - 만약 **data**가 **객체 리터럴({ })** 인 경우, **{} copy**를 반환합니다.  
+  
 - 그 외의 경우에는 **data** 자체를 반환합니다.  
+  
 예시:  
 ```js
 const db = new LiveData(5).setObserver(function () {
@@ -121,12 +131,19 @@ console.log(db.get())
 #### 1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 json의 data는 달라지지 않습니다.)**  
+  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
+  
 1. 빈 **json 객체**인 **data**를 생성합니다.  
+  
 2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
+  
 - 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 저장합니다.  
+  
 - **그렇지 않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
+  
 3. 처리가 완료된 **data**를 반환합니다.  
+  
 예시:  
 ```js
 const resource = {
@@ -142,12 +159,19 @@ JSON.unlivedata(resource)
 #### 2. **@1.0.0** Array.unlivedata(array)
 > **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 array의 data는 달라지지 않습니다.)**  
+  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
+  
 1. 빈 **Array**인 **data**를 생성합니다.  
+  
 2. 주어진 **Array**을 **순회**하면서 각 **값**을 수행합니다.  
-- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 추가합니다.    
+  
+- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 추가합니다.  
+  
 - **그렇지 않은 경우**, 해당 **값**을 **그대로** data에 추가합니다.  
+  
 3. 처리가 완료된 **data**를 반환합니다.  
+  
 예시:
 ```js
 const data = [new LiveData(3), new LiveData("some string").registObserver(() => {
