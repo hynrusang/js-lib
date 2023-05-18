@@ -135,9 +135,6 @@ Array.unlivedata(data)
 >
 > create JSON.unlivedata(json) : Object;  
 > create Array.unlivedata(array) : Array;  
->
-> @deprecated LiveData.set();  
-> @deprecated LiveData.get();  
 ---
 > 1.1.0  
 > create setter LiveData.value;  
@@ -145,3 +142,5 @@ Array.unlivedata(data)
 >
 > @remove LiveData.set();  
 > @remove LiveData.get();  
+> @deprecated LiveData.set();  
+> @deprecated LiveData.get();  
