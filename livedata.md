@@ -64,8 +64,8 @@ db.value = 7;
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 예시:
 ```js
-const db = new LiveData("data").setObserver(function () { console.log(this.get()); });  
-db.set("data renew");  
+const db = new LiveData("data").setObserver(function () { console.log(this.value); });  
+db.value = "data renew";  
 
 // console
 data renew
