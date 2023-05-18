@@ -32,15 +32,15 @@ is("some string", Number) // false
 ```
 ---
 ### 2. async wait(millisecond) : Promise<void>
-> **wait** 함수는 **시간(밀리초)**만큼 **대기**하는 **Promise 객체**를 생성하는 함수입니다.  
+> **wait** 함수는 **millisecond**만큼 **대기**하는 **Promise 객체**를 생성하는 함수입니다.  
 > wait 함수는 다음과 같은 **매개변수**를 받습니다.
   
 - **millisecond**: 대기할 **시간**을 나타내는 **밀리초 단위**의 **정수**입니다.  
   
 wait 함수는 다음과 같은 동작을 수행합니다:  
   
-1. **setTimeout** 함수를 사용하여 **주어진 시간(millisecond)** 이후에 **Promise의 코드 (null)**를 실행합니다.  
-2. **Promise 객체 (Promise\<void\>)**를 반환합니다.  
+1. **setTimeout** 함수를 사용하여 **millisecond** 이후에 **null**를 실행합니다.  
+2. **빈 Promise 객체**를 반환합니다.  
 예시:  
 ```js
 const waitTest = async () => {
