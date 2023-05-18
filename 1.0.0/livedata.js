@@ -17,7 +17,6 @@ const LiveData = class {
         return this;
     }
     /**
-     * @deprecated This method is not supported starting with livedata 1.1.0. use new LiveData().observer = function in 1.1.0 instead.
      * @type {(observer: Function) => LiveData}
      */
     registObserver = observer => {
