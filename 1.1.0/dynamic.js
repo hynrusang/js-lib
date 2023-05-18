@@ -35,7 +35,7 @@ const Dom = class {
     }
     /**
      * @type {(count: number) => Dom[]}
-     * @deprecated This method is not supported starting with jh 1.2.0.
+     * @deprecated This method is not supported starting with dynamic 1.2.0.
      */
     copy = count => {
         const tempbox = [];
@@ -265,4 +265,18 @@ const snipe = selector => {
    const temp = ((typeof selector == "string") && (selector[0] == "!")) ? [] : $(scan(selector));
    if (typeof temp == "object") for (let i = 0; i < scan(selector).length; i++) temp.push($(scan(selector)[i]));
    return temp;
+}
+/**
+ * @type {(jhpath: string) => void}
+ * @throws {SecurityError}
+ * @deprecated This function is not supported starting with dynamic 1.2.0. Use Fragment.launch() instead.
+ */
+const loading  = jhpath => {
+    const REQUEST = new XMLHttpRequest();
+    if (jhpath.in("http")) throw new SecurityError("loading 함수로 다른 웹사이트의 htm.js를 로딩할 수 없습니다.");
+    else {
+        REQUEST.open('GET', `${jhpath}.htm.js`);
+        REQUEST.send();
+        REQUEST.onreadystatechange = (e => { (e.target.readyState == 4) ? eval(REQUEST.response) : null});
+    }
 }

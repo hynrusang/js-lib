@@ -270,7 +270,6 @@ const snipe = selector => {
 /**
  * @type {(jhpath: string) => void}
  * @throws {SecurityError}
- * @deprecated This function is not supported starting with jh 1.1.0. Use Fragment.launch() in 1.1.0 instead.
  */
 const loading  = jhpath => {
     const REQUEST = new XMLHttpRequest();
