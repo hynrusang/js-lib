@@ -109,7 +109,7 @@
         });
 
         const data = new LiveData(32).setObserver(function () {
-            console.log(this.get())
+            console.log(this.value)
         });
         data.value = data.value + 1;
     </script>
