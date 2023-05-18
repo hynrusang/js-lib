@@ -3,6 +3,15 @@
 절대로 무단으로 가져가지 마시기 바랍니다.
 작성자: 환류상
  */
+/**
+ * @deprecated This class is not supported starting with dynamic 1.2.0. Use Fragment.launch() instead.
+ */
+class SecurityError extends Error {
+    constructor(massage) {
+        super(massage);
+        this.name = "Security Error";
+    }
+}
 const Dom = class {
     /**
      * @type {HTMLElement}
