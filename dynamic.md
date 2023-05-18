@@ -298,7 +298,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 ---
 #### 5-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
-> **(다소 복잡한 Dom 구문이 포함되어 있습니다. [1번](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-dom-class) 문단을 참고해주세요.)**  
+> **(다소 복잡한 Dom 구문이 포함되어 있습니다. [1번](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-100-dom-class  ) 문단을 참고해주세요.)**  
 ```js
 /* index.html */
 <fragment rid="fragmentView"></fragment>
