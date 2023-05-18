@@ -2,7 +2,8 @@
 - [이전으로](https://github.com/hynrusang/js-lib/tree/main)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.0.0/advanced.js)
 ---
-
+- **이 문서는 developer 버전인 advanced 1.0.0을 다룹니다.**  
+- **현재 release 버전은 advanced 1.0.0입니다.**  
 ## 정보
 - 이건 js의 기능들을 더 확장하고, 더 편리한 기능, 프로토타입을 추가해주는 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
