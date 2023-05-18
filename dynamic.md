@@ -9,23 +9,24 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-### 1. Dom: Class @dynamic 1.0.0
+### since @dynamic 1.0.0~  
+#### 1. Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional) Dom 클래스의 생성자입니다.  
 > **node**는 **문자열 또는 HTMLElement**입니다. **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
-> 2. children(num) @dynamic 1.0.0  
+> 2. children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.  
-> 3. add(...dom) @dynamic 1.0.0  
+> 3. add(...dom)  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
-> 4. reset(...dom) @dynamic 1.0.0  
+> 4. reset(...dom)  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
-> 5. remove(num) @dynamic 1.0.0  
+> 5. remove(num)  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
-> 6. set(additional) @dynamic 1.0.0  
+> 6. set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 ---
-#### 1-1. constructor(node, additional)
+##### 1-1. constructor(node, additional)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
 > **(여기서는 간단하게 h1 요소를 만듭니다.)**
 ```js
@@ -66,7 +67,7 @@ new Dom("fieldset").add(
 )
 ```
 ---
-#### 1-2. children(num)
+##### 1-2. children(num)
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
 예시:
@@ -82,7 +83,7 @@ new Dom("fieldset").add(
 <input type="button" value="click here">
 ```
 ---
-#### 1-3. add(...dom)
+##### 1-3. add(...dom)
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.   
 예시:
 ```js
@@ -105,7 +106,7 @@ new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-4. reset(...dom) 
+##### 1-4. reset(...dom) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 예시:
 ```js
@@ -130,7 +131,7 @@ dom.reset(
 </form>
 ```
 ---
-#### 1-5. remove(num)
+##### 1-5. remove(num)
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
 예시:
 ```js
@@ -147,7 +148,7 @@ new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-6. set(additional)
+##### 1-6. set(additional)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 예시:
 ```js
@@ -158,7 +159,7 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
-### 2. $(node, additional) : Dom
+#### 2. $(node, additional) : Dom
 > **$** 함수는 **Dom 객체**를 **생성** 또는 **타게팅**하여 반환하는 함수입니다.  
 > $ 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -279,6 +280,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 </body>
 ```
 ---
+###
 ### 5. Fragment: class
 > **Fragment**는 **<fragment></fragment> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 <fragment> 태그랑 같이 사용해야 합니다.**  
