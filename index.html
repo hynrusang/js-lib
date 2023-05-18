@@ -82,7 +82,7 @@
             }})
         )
 
-        const state = new LiveData("first").registObserver(function () {
+        const state = new LiveData("first").setObserver(function () {
             console.log(`${this.get()} Fragment is stating now...`);
             scan("nav").innerHTML = `Current-Fragment://${this.get()}`
         });
@@ -108,10 +108,10 @@
             }
         });
 
-        const data = new LiveData(32).registObserver(function () {
+        const data = new LiveData(32).setObserver(function () {
             console.log(this.get())
         });
-        data.set(data.get() + 1);
+        data.value = data.value + 1;
     </script>
 </body>
 </html>
