@@ -85,13 +85,13 @@ console.log(db.get())
 ---
 ### 2. prototype
 #### 1. **@1.0.0** JSON.unlivedata(json)   
-> **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 prototype입니다.  
+> **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
 1. 빈 **json 객체**인 **data**를 생성합니다.  
 2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
 - 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 저장합니다.  
-- 그렇지 **않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
-5. 처리가 완료된 **data**를 반환합니다.  
+- **그렇지 않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
+3. 처리가 완료된 **data**를 반환합니다.  
 예시:  
 ```js
 const resource = {
@@ -105,19 +105,27 @@ JSON.unlivedata(resource)
 ```
 ---
 #### 2. **@1.0.0** Array.unlivedata(array)
-> **Array.unlivedata**는 **배열**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.
+> **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.
+> 이 매서드는 다음과 같은 작업을 수행합니다:  
+1. 빈 **Array**인 **data**를 생성합니다.  
+2. 주어진 **Array**을 **순회**하면서 각 **값**을 수행합니다.  
+- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 추가합니다.    
+- **그렇지 않은 경우**, 해당 **값**을 **그대로** data에 추가합니다.  
+3. 처리가 완료된 **data**를 반환합니다.  
+예시:
+```js
+const data = [new LiveData(3), new LiveData("some string").registObserver(() => {
+    console.log("changed!");
+})]
+Array.unlivedata(data)
 
-함수 내부에서는 다음과 같은 작업을 수행합니다:
-
-빈 배열인 data를 생성합니다.
-주어진 배열을 순회하면서 각 값에 대한 처리를 수행합니다.
-만약 해당 값이 LiveData 인스턴스인 경우, LiveData의 현재 데이터를 가져와서 data에 추가합니다.
-그렇지 않은 경우, 해당 값을 그대로 data에 추가합니다.
-처리가 완료된 data를 반환합니다.
-위의 주석은 Array.unlivedata 함수를 설명하기 위한 것으로, 주석 내용을 간결하고 명확하게 수정하였습니다.
-
-
-
+// return
+[3, 'some string']
+```
+---
 ## 업데이트 내역
 > 1.0.0  
 > create class LiveData;  
+>
+> create JSON.unlivedata(json);  
+> create Array.Array.unlivedata(array);  
