@@ -9,20 +9,20 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-### 1. Dom: Class
+### 1. Dom: Class @dynamic 1.0.0
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional) Dom 클래스의 생성자입니다.  
 > **node**는 **문자열 또는 HTMLElement**입니다. **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
-> 2. children(num)  
+> 2. children(num) @dynamic 1.0.0  
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.  
-> 3. add(...dom)  
+> 3. add(...dom) @dynamic 1.0.0  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
-> 4. reset(...dom)  
+> 4. reset(...dom) @dynamic 1.0.0  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
-> 5. remove(num)  
+> 5. remove(num) @dynamic 1.0.0  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
->. set(additional)  
+> 6. set(additional) @dynamic 1.0.0  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 ---
 #### 1-1. constructor(node, additional)
