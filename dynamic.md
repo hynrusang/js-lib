@@ -292,7 +292,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > 4. launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 \<fragment\>\</fragment\>**의 innerHTML을 **fragment**로 **전환**합니다.  
+> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 ---
 #### 5-1. constructor(view, ...fragment)
@@ -375,7 +375,7 @@ const secondFragment = new Fragment("fragmentView", $("fieldset").add(
 #### 5-4. launch()
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 \<fragment\>\</fragment\>**의 innerHTML을 **fragment**로 **전환**합니다.   
+> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 > 예시:  
 ```js
