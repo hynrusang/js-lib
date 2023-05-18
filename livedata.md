@@ -83,6 +83,15 @@ console.log(db.get())
 {name: 'hynrusang', isVerify: true}
 ```
 ---
+### 2. **@1.0.0** JSON.unlivedata(json)   
+> **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
+> 이 매서드는 다음과 같은 작업을 수행합니다:  
+1. 빈 **json 객체**인 **data**를 생성합니다.  
+2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
+- 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 저장합니다.  
+- 그렇지 **않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
+5. 처리가 완료된 **data**를 반환합니다.  
+---
 ## 업데이트 내역
 > 1.0.0  
 > create class LiveData;  
