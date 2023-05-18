@@ -138,3 +138,10 @@ Array.unlivedata(data)
 >
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
+---
+> 1.1.0  
+> create setter LiveData.value;  
+> create getter LiveData.value;  
+>
+> @remove LiveData.set();  
+> @remove LiveData.get();  
