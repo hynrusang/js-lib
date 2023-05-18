@@ -84,7 +84,7 @@ console.log(db.get())
 ```
 ---
 ### 2. prototype
-#### 1. **@1.0.0** JSON.prototype.unlivedata(json)   
+#### 1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
 1. 빈 **json 객체**인 **data**를 생성합니다.  
