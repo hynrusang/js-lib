@@ -9,20 +9,20 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-### 1. Dom: Class  
+### 1. @1.0.0 Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional) Dom 클래스의 생성자입니다.  
 > **node**는 **문자열 또는 HTMLElement**입니다. **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
-> 2. children(num)  
+> 2. @1.0.0 children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.  
-> 3. add(...dom)  
+> 3. @1.0.0 add(...dom)  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
-> 4. reset(...dom)  
+> 4. @1.0.0 reset(...dom)  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
-> 5. remove(num)  
+> 5. @1.0.0 remove(num)  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
-> 6. set(additional)  
+> 6. @1.0.0 set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 ---
 #### 1-1. constructor(node, additional)
@@ -66,7 +66,7 @@ new Dom("fieldset").add(
 )
 ```
 ---
-#### 1-2. children(num)
+#### 1-2. @1.0.0 children(num)
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
 예시:
@@ -82,7 +82,7 @@ new Dom("fieldset").add(
 <input type="button" value="click here">
 ```
 ---
-#### 1-3. add(...dom)
+#### 1-3. @1.0.0 add(...dom)
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.   
 예시:
 ```js
@@ -105,7 +105,7 @@ new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-4. reset(...dom) 
+#### 1-4. @1.0.0 reset(...dom) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 예시:
 ```js
@@ -130,7 +130,7 @@ dom.reset(
 </form>
 ```
 ---
-#### 1-5. remove(num)
+#### 1-5. @1.0.0 remove(num)
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
 예시:
 ```js
@@ -147,7 +147,7 @@ new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-6. set(additional)
+#### 1-6. @1.0.0 set(additional)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 예시:
 ```js
@@ -158,7 +158,7 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
-### 2. $(node, additional) : Dom
+### 2. @1.0.0 $(node, additional) : Dom
 > **$** 함수는 **Dom 객체**를 **생성** 또는 **타게팅**하여 반환하는 함수입니다.  
 > $ 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -182,7 +182,7 @@ $("fieldset").add(
 )
 ```
 ---
-### 3. scan(selector) : document.querySelector : document.querySelectorAll
+### 3. @1.0.0 scan(selector) : document.querySelector : document.querySelectorAll
 > **scan** 함수는 **selector**를 기반으로 **HTMLElement**를 **검색**하는 함수입니다.  
 > scan 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -210,7 +210,7 @@ scan(scan("fragment"));
 <fragment rid="mainFragment"></fragment>
 ```
 ---
-### 4. snipe(selector) : Dom
+### 4. @1.0.0 snipe(selector) : Dom
 > **snipe** 함수는 **selector**를 기반으로 **HTMLElement**를 **검색**하여 **Dom 객체**로 반환하는 함수입니다.  
 > snipe 함수는 다음과 같은 **매개변수**를 받습니다.
   
@@ -279,18 +279,18 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 </body>
 ```
 ---
-### 5. Fragment: class
+### 5. @1.1.0 Fragment: class
 > **Fragment**는 **<fragment></fragment> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 <fragment> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(view, ...fragment)  
 > **view**는 **<fragment></fragment>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
-> 2. registAction(action)  
+> 2. @1.1.0 registAction(action)  
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
-> 3. registAnimation(animation, second)  
+> 3. @1.2.0 registAnimation(animation, second)  
 > **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
-> 4. launch()  
+> 4. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
 > **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
