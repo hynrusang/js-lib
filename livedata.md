@@ -20,15 +20,19 @@
 > **observer**를 **setting**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 > **chain method**를 지원합니다.  
+>
+> 3. **@1.0.0** **@deprecated** dispatchObserver()  
+> **observer**를 **강제 호출**하는 메서드입니다.  
+> 가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)  
 >  
-> 3. **@1.1.0** **setter and getter** value  
+> 4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
 >  
-> 4. **@1.0.0** **@deprecated** set(data)  
+> 5. **@1.0.0** **@deprecated** set(data)  
 > **data**를 **설정**하는 메서드입니다.  
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
 >  
-> 5. **@1.0.0** **@deprecated** get()  
+> 6. **@1.0.0** **@deprecated** get()  
 > **현재 data**를 반환하는 메서드입니다.  
 ---
 #### 1-1. constructor(data)
@@ -67,7 +71,21 @@ db.set("data renew");
 data renew
 ```
 ---
-#### 1-3. **@1.1.0** **setter and getter** value  
+#### 1-3. **@1.0.0** **@deprecated** dispatchObserver()  
+> **observer**를 **강제 호출**하는 메서드입니다.  
+> 가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)  
+예시:  
+```js
+const data = new LiveData(32).setObserver(function () {
+    console.log(this.value)
+});
+data.dispatchObserver();
+
+// console
+32
+```
+---
+#### 1-4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter**와 **getter** 메서드로 이루어져 있습니다.  
 > **value**의 **setter** 메서드는 다음과 같은 작업을 수행합니다:  
   
@@ -101,7 +119,7 @@ data was changed!
 data was changed!
 ```
 ---
-#### 1-4. **@1.0.0** **@deprecated** set(data)
+#### 1-5. **@1.0.0** **@deprecated** set(data)
 > **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
 > **setter new LiveData().value를 대신 이용하십시오.**  
 > **data**를 **설정**하는 메서드입니다.  
@@ -115,7 +133,7 @@ db.set({name: "hynrusang", isVerify: true});
 {name: 'hynrusang', isVerify: true}
 ```
 ---
-#### 1-5. **@1.0.0** **@deprecated** get()  
+#### 1-6. **@1.0.0** **@deprecated** get()  
 > **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
 > **getter new LiveData().value를 대신 이용하십시오.**  
 > **현재 data**를 반환하는 메서드입니다.  
