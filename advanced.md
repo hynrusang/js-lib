@@ -143,22 +143,6 @@ false
 false
 ```
 ---
-#### 4-5. Array.prototype.push
-> **(이 메서드는 기존의 Array.prototype.push의 반환값을 재정의한 prototype입니다.)**  
-> 이 메서드는 **주어진 데이터**를 배열의 끝에 추가하고, **수정된 배열**을 반환합니다.  
-예시:
-```js
-// before
-[3,5,6,7,8].push(2)
-// return
-6
-
-// renew
-[3,5,6,7,8].push(2)
-// result
-[3,5,6,7,8,2]
-```
----
 ## 업데이트 내역
 > 1.0.0  
 > get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
