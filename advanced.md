@@ -178,6 +178,7 @@ test.remove(6);
 ```
 ## 업데이트 내역
 > 1.0.0  
+> create Array.prototype.add(data): Array  
 > create Array.prototype.remove(data): Array
 >
 > @get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
