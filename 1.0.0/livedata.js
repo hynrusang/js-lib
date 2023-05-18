@@ -7,7 +7,6 @@ const LiveData = class {
     #data;
     #observer;
     /**
-     * @deprecated This method is not supported starting with livedata 1.1.0. use new LiveData().value = data in 1.1.0 instead.
      * @type {(data: Any) => LiveData}
      */
     set = data => {
@@ -17,7 +16,6 @@ const LiveData = class {
         return this;
     }
     /**
-     * @deprecated This method is not supported starting with livedata 1.1.0. use new LiveData().value in 1.1.0 instead.
      * @type {() => Any}
      */
     get = () => [...[this.#data]][0];
