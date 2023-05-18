@@ -507,13 +507,12 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 > create Array.property.count(data): number;  
 > create String.property.last(): char;  
 > create Array.property:last(): any;  
-> 
-> @deprecated loading;
 ---
 > 1.1.0  
 > combine class DomDefault, DomExpert to Dom;  
 > create class Fragment;  
 >   
+> @deprecated loading;  
 > @deprecated Dom.copy(count);  
 > @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
@@ -533,4 +532,5 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 > create method Fragment.registAnimation(animation, millisecond);  
 >  
 > @update Fragment.launch();  
+> @remove loading;  
 > @remove Dom.copy(count);  
