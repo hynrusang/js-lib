@@ -280,11 +280,11 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 ```
 ---
 ### 5. **@1.1.0** Fragment: class
-> **Fragment**는 **<fragment></fragment> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
-> **html 내의 별도의 <fragment> 태그랑 같이 사용해야 합니다.**  
+> **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
+> **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(view, ...fragment)  
-> **view**는 **<fragment></fragment>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
+> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
 > 2. **@1.1.0** registAction(action)  
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
 > 3. **@1.2.0** registAnimation(animation, second)  
@@ -294,7 +294,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
 > **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
+> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **\<fragment\> element**입니다.  
 ---
 #### 5-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
