@@ -117,6 +117,7 @@ console.log(db.value); // value getter
 // console
 data was changed!
 data was changed!
+6
 ```
 ---
 #### 1-5. **@1.0.0** **@deprecated** set(data)
