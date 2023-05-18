@@ -6,6 +6,25 @@
 const LiveData = class {
     #data;
     #observer;
+    set value(data) {
+        const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
+        this.#data = data;
+        if (isChanged && typeof this.#observer == "function") this.#observer();
+    }
+    get value() {
+        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
+    }
+    /**
+     * @type {(observer: Function) => LiveData}
+     */
+    setObserver = observer => {
+        this.#observer = observer;
+        return this;
+    }
+    constructor(data) {
+        this.#data = data;
+    }
+
     /**
      * @deprecated This method is not supported starting with livedata 1.2.0. use new LiveData().value setter instead.
      * @type {(data: Any) => LiveData}
@@ -21,24 +40,6 @@ const LiveData = class {
      * @type {() => Any}
      */
     get = () => [...[this.#data]][0];
-    set value(data) {
-        const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
-        this.#data = data;
-        if (isChanged && typeof this.#observer == "function") this.#observer();
-    }
-    get value() {
-        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
-    }
-    /**
-     * @type {(observer: Function) => LiveData}
-     */
-    registObserver = observer => {
-        this.#observer = observer;
-        return this;
-    }
-    constructor(data) {
-        this.#data = data;
-    }
 }
 JSON.unlivedata = json => {
     let data = {};

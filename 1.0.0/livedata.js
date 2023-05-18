@@ -22,7 +22,7 @@ const LiveData = class {
     /**
      * @type {(observer: Function) => LiveData}
      */
-    registObserver = observer => {
+    setObserver = observer => {
         this.#observer = observer;
         return this;
     }
