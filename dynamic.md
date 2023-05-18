@@ -14,16 +14,22 @@
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional) Dom 클래스의 생성자입니다.  
 > **node**는 **문자열 또는 HTMLElement**입니다. **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
+>  
 > 2. **@1.0.0** children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.  
+>  
 > 3. **@1.0.0** add(...dom)  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
+>  
 > 4. **@1.0.0** reset(...dom)  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
+>  
 > 5. **@1.0.0** remove(num)  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
+>  
 > 6. **@1.0.0** set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
+>  
 ---
 #### 1-1. constructor(node, additional)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
@@ -191,12 +197,15 @@ $("fieldset").add(
 scan 함수는 다음과 같은 동작을 수행합니다:  
   
 1. 만약 **selector**가 문자열인 경우:
+  
 - **selector**가 **! 문자**로 시작하는 경우,  
 해당 **selector**를 사용하여 **document.querySelectorAll**을 호출하고,  
 일치하는 **모든 요소의 NodeList**를 **반환**합니다.  
+  
 - **selector**가 **! 문자**로 시작하지 않는 경우,  
 해당 **selector**를 사용하여 **document.querySelector**를 호출하고,  
 일치하는 **첫 번째 요소**를 **반환**합니다
+  
 2. 만약 **selector**가 **문자열이 아닌 경우**, **selector 자체**를 반환합니다.  
 > 예시:  
 ```js
@@ -218,13 +227,16 @@ scan(scan("fragment"));
   
 scan 함수는 다음과 같은 동작을 수행합니다:  
   
-1. 만약 **selector**가 문자열인 경우:
+1. 만약 **selector**가 문자열인 경우:  
+  
 - **selector**가 **! 문자**로 시작하는 경우,  
 해당 **selector**를 사용하여 **scan**을 호출하고,  
 각 요소들을 **Dom 객체**로 **변환**하여, **Array\<Dom\>** 형식으로 반환합니다.  
+    
 - **selector**가 **! 문자**로 시작하지 않는 경우,  
 해당 **selector**를 사용하여 **scan**을 호출하고,  
-해당 요소를 **Dom 객체**로 **변환**하여, **Dom** 형식으로 반환합니다.   
+해당 요소를 **Dom 객체**로 **변환**하여, **Dom** 형식으로 반환합니다.  
+  
 2. 만약 **selector**가 **문자열이 아닌 경우**, **selector 자체**를 **Dom 객체**로 **변환**하여 반환합니다.  
 예시:  
 ```js
@@ -285,11 +297,14 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(view, ...fragment)  
 > **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
+>  
 > 2. **@1.1.0** registAction(action)  
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
+>  
 > 3. **@1.2.0** registAnimation(animation, second)  
 > **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+>  
 > 4. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
@@ -396,10 +411,12 @@ mainFragment.launch();
 > **card animation**을 수행하는 메서드입니다.  
 > **프레그먼트**가 비어 있지 않은 경우, 회전 및 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
 > 다시 회전 및 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+>  
 > 2. **@1.2.0** fade  
 > **fade animation**을 수행하는 메서드입니다.  
 > **프레그먼트**가 비어 있지 않은 경우, 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
 > 다시 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+>  
 > 3. **@1.2.0** swip  
 > **swip animation**을 수행하는 메서드입니다.  
 > **프레그먼트**가 **비어 있지 않은 경우**, 오른쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
