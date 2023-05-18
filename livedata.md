@@ -39,14 +39,14 @@ db.registObserver(function () { console.log(this.get()); });
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
-db.set(7);
+db.value = 7;
 
 // console
 7
 ```
 > 값이 이전과 **다르지 않다면**, observer가 **실행되지 않습니다.**  
 ```js
-db.set(7);
+db.value = 7;
 
 // console
 ```
@@ -63,7 +63,7 @@ db.set("data renew");
 data renew
 ```
 ---
-#### 1-3. **@1.0.0** **@deprecated** set(data)
+#### 1-4. **@1.0.0** **@deprecated** set(data)
 > **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
 > **setter new LiveData().value를 대신 이용하십시오.**  
 > **data**를 **설정**하는 메서드입니다.  
@@ -77,7 +77,7 @@ db.set({name: "hynrusang", isVerify: true});
 {name: 'hynrusang', isVerify: true}
 ```
 ---
-#### 1-4. **@1.0.0** **@deprecated** get()  
+#### 1-5. **@1.0.0** **@deprecated** get()  
 > **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
 > **getter new LiveData().value를 대신 이용하십시오.**  
 > **현재 data**를 반환하는 메서드입니다.  
