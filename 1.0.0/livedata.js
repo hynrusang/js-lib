@@ -26,6 +26,10 @@ const LiveData = class {
         this.#observer = observer;
         return this;
     }
+    /**
+     * @type {() => void}
+     */
+    dispatchObserver = () => this.#observer();
     constructor(data) {
         this.#data = data;
     }
