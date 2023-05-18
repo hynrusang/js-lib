@@ -126,7 +126,7 @@ data was changed!
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
 예시:
 ```js
-const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
+const db = new LiveData({name: "hynrusang", isVerify: false}).setObserver(function () { console.log(this.get()); });  
 db.set({name: "hynrusang", isVerify: true});  
 
 // console
