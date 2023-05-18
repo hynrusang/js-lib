@@ -15,5 +15,5 @@
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
 1. **js** 만으로 쉽게 **HTML 요소**를 다루고, 화려한 **Animation**과 함께 **Fragment** 단위로 조작하고 싶다면? [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)
 2. **값이 변할 때**마다 **감지**하길 원하는 기능이 있다면? [livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)
-3. js에서 **typeof**를 더 확장해서 **특정 Class의 인스턴스**인지도 확인하거나, **배열**의 **indexof**를 **HTMLElement**간에서도 사용하고 싶다면? [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md)
+3. js에서 **typeof**를 더 확장해서 **특정 Class의 인스턴스**인지도 확인하거나, **Array**나 **Json**에서 특정 원소를 **remove**하거나, **Array**의 **indexof**를 **HTMLElement**간에서도 사용하고 싶다면? [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md)
 4. **LinearLayout**, **NavigationView** 등의 더 많은 태그를 **html**에서도 사용하고 싶다면? [tagx.js](https://github.com/hynrusang/js-lib/blob/main/tagx.md)
