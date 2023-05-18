@@ -19,11 +19,9 @@
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
 > 4. reset(...dom)  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
-> 5. **@deprecated** copy(count)  
-> **count** 개수만큼 현재 **Dom**을 **복사**한 **Dom 배열**을 반환합니다. (jh 1.2.0부터 지원하지 않음)  
-> 6. remove(num)  
+> 5. remove(num)  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
-> 7. set(additional)  
+>. set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 ---
 #### 1-1. constructor(node, additional)
@@ -131,18 +129,7 @@ dom.reset(
 </form>
 ```
 ---
-#### 1-5. **@deprecated** copy(count)
-> **이 메서드는 jh 1.2.0 이후로 지원이 중단됩니다.**  
-> **count** 개수만큼 현재 **Dom**을 **복사**한 **Dom 배열**을 반환합니다.  
-예시:
-```js
-new Dom("p", {text: "hello!"}).copy(5)
-
-// 리턴되는 객체
-[<p>hello!</p>, <p>hello!</p>, <p>hello!</p>, <p>hello!</p>, <p>hello!</p>]
-```
----
-#### 1-6. remove(num)
+#### 1-5. remove(num)
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
 예시:
 ```js
@@ -159,7 +146,7 @@ new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-7. set(additional)
+#### 1-6. set(additional)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 예시:
 ```js
