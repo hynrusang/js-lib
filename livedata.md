@@ -15,9 +15,9 @@
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**  
-> 2. **@1.0.0** registObserver(observer)  
-> **observer**를 **등록**하는 메서드입니다.  
-> observer는 **데이터 변경** 시 **호출**될 함수입니다.  
+> 2. **@1.0.0** setObserver(observer)  
+> **observer**를 **setting**하는 메서드입니다.  
+> observer는 **data changed**될 시 호출될 **function**입니다.  
 > **chain method**를 지원합니다.  
 > 3. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
@@ -51,12 +51,12 @@ db.value = 7;
 // console
 ```
 ---
-#### 1-2. **@1.0.0** registObserver(observer)
-> **observer**를 **등록**하는 메서드입니다.  
-> observer는 **데이터 변경** 시 **호출**될 함수입니다.  
+#### 1-2. **@1.0.0** setObserver(observer)
+> **observer**를 **setting**하는 메서드입니다.  
+> observer는 **data changed**될 시 호출될 **function**입니다.  
 예시:
 ```js
-const db = new LiveData("data").registObserver(function () { console.log(this.get()); });  
+const db = new LiveData("data").setObserver(function () { console.log(this.get()); });  
 db.set("data renew");  
 
 // console
@@ -79,6 +79,16 @@ data renew
 - 그 외의 경우에는 **data** 자체를 반환합니다.  
 예시:  
 ```js
+const db = new LiveData(5).setObserver(function () {
+    console.log("data was changed!");
+})
+db.value = 8; // value setter
+db.value = 6; // value setter
+console.log(db.value); // value getter
+
+// console
+data was changed!
+data was changed!
 ```
 ---
 #### 1-4. **@1.0.0** **@deprecated** set(data)
