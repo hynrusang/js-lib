@@ -84,7 +84,7 @@
 
         const state = new LiveData("first").setObserver(function () {
             console.log(`${this.get()} Fragment is stating now...`);
-            scan("nav").innerHTML = `Current-Fragment://${this.get()}`
+            scan("nav").innerHTML = `Current-Fragment://${this.value}`
         });
 
         const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAnimation(FragAnimation.card, 1).registAction(() => {
