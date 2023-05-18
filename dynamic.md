@@ -290,7 +290,10 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
 > 4. launch()  
-> **Fragment**를 **전환**하는 메서드입니다. 등록된 **action**을 실행하고, 해당 **view**에 있는 **<fragment></fragment> 태그**를 **fragment**로 **전환**합니다.  
+> **Fragment**를 **전환**하는 메서드입니다.  
+> 등록된 **action**과 **animation**을 실행하고,  
+> **타겟 \<fragment\>\</fragment\>**의 innerHTML을 **fragment**로 **전환**합니다.  
+> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 ---
 #### 5-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
@@ -370,7 +373,9 @@ const secondFragment = new Fragment("fragmentView", $("fieldset").add(
 )).registAnimation(FragAnimation.swip, 1.5);
 ```
 #### 5-4. launch()
-> **launch**는 **현재 Fragment**를 **해당 Fragment**로 대체하는 함수입니다.  
+> **Fragment**를 **전환**하는 메서드입니다.  
+> 등록된 **action**과 **animation**을 실행하고,  
+> **타겟 \<fragment\>\</fragment\>**의 innerHTML을 **fragment**로 **전환**합니다.   
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
 > 예시:  
 ```js
