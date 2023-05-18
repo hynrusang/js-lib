@@ -11,7 +11,6 @@ const LiveData = class {
      */
     set = data => {
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
-        console.log(`${isChanged}, ${data}, ${this.#data}`);
         this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
         return this;
@@ -26,9 +25,7 @@ const LiveData = class {
     /**
      * @type {() => Any}
      */
-    get = () => {
-        return [...this.#data];
-    }
+    get = () => (typeof this.#data == "object") ? [...this.#data] : this.#data;
     constructor(data) {
         this.#data = data;
     }
