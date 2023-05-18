@@ -2,7 +2,7 @@
 - [이전으로](https://github.com/hynrusang/js-lib/tree/main)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/dynamic.js)
 ---
-
+- 이 문서는 현재 개발중인 dynamic 1.2.0을 다룹니다.  
 ## 정보
 - 이건 동적으로 html 요소를 생성하거나, snipe 하거나, 별도의 Fragment(1.1.0 ~)를 생성 및 조작할 수 있게 해주는 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
