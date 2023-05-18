@@ -13,7 +13,8 @@
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional) Dom 클래스의 생성자입니다.  
-> **node**는 **문자열 또는 HTMLElement**입니다. **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
+> **node**는 **문자열 또는 HTMLElement**입니다.  
+> **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
 >  
 > 2. **@1.0.0** children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.  
