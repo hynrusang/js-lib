@@ -86,6 +86,7 @@ console.log(db.get())
 ### 2. prototype
 #### 1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
+> **(실제 json의 data는 달라지지 않습니다.)**  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
 1. 빈 **json 객체**인 **data**를 생성합니다.  
 2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
@@ -105,7 +106,8 @@ JSON.unlivedata(resource)
 ```
 ---
 #### 2. **@1.0.0** Array.unlivedata(array)
-> **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.
+> **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
+> **(실제 array의 data는 달라지지 않습니다.)**  
 > 이 매서드는 다음과 같은 작업을 수행합니다:  
 1. 빈 **Array**인 **data**를 생성합니다.  
 2. 주어진 **Array**을 **순회**하면서 각 **값**을 수행합니다.  
