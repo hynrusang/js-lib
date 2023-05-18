@@ -35,7 +35,7 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면,  
 ```js
-db.registObserver(function () { console.log(this.get()); });
+db.setObserver(function () { console.log(this.get()); });
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
