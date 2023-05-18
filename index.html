@@ -111,7 +111,7 @@
         const data = new LiveData(32).setObserver(function () {
             console.log(this.value)
         });
-        data.value = data.value + 1;
+        data.dispatchObserver();
     </script>
 </body>
 </html>

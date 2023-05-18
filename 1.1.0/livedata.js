@@ -22,6 +22,7 @@ const LiveData = class {
         return this;
     }
     /**
+     * @deprecated This can cause unintended behavior.
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
