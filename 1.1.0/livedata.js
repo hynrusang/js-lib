@@ -43,11 +43,11 @@ const LiveData = class {
 }
 JSON.unlivedata = json => {
     let data = {};
-    for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].get() : json[key];
+    for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].value : json[key];
     return data;
 }
 Array.unlivedata = array => {
     let data = []
-    for (let value of array) data.push((value instanceof LiveData) ? value.get() : value);
+    for (let inner of array) data.push((inner instanceof LiveData) ? inner.value : inner);
     return data;
 }
