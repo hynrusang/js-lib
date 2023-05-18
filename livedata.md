@@ -138,7 +138,7 @@ console.log(db.get())
   
 2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
   
-- 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 저장합니다.  
+- 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **value getter** 을 호출하여 data에 저장합니다.  
   
 - **그렇지 않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
   
@@ -166,7 +166,7 @@ JSON.unlivedata(resource)
   
 2. 주어진 **Array**을 **순회**하면서 각 **값**을 수행합니다.  
   
-- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **get()** 을 호출하여 data에 추가합니다.  
+- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **value getter** 을 호출하여 data에 추가합니다.  
   
 - **그렇지 않은 경우**, 해당 **값**을 **그대로** data에 추가합니다.  
   
@@ -194,5 +194,7 @@ Array.unlivedata(data)
 > create setter LiveData.value;  
 > create getter LiveData.value;  
 >  
+> @update JSON.unlivedata(json) : Object;  
+> @update Array.unlivedata(array) : Array;  
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
