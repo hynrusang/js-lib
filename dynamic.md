@@ -217,7 +217,7 @@ scan(scan("fragment"));
   
 - **selector**: 검색할 요소의 **선택자**입니다.  
   
-scan 함수는 다음과 같은 동작을 수행합니다:  
+snipe 함수는 다음과 같은 동작을 수행합니다:  
   
 1. 만약 **selector**가 문자열인 경우:  
   
@@ -252,7 +252,7 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
     alert("hello, world.")
 }})
 
-// return되는 객체
+// result
 <body>
     ...
     <h1 style="color: red">test string</h1>
