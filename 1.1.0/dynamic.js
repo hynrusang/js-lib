@@ -21,7 +21,7 @@ const Dom = class {
      * @type {(num: number) => HTMLElement}
      */
     children = num => {
-        const obj = this._node.children[num];
+        const obj = new Dom(this._node.children[num]);
         return obj ? obj : null;
     }
     /**
