@@ -7,19 +7,25 @@ const Dom = class {
     /**
      * @type {HTMLElement}
      */
-    _node;
+    #node;
+    /**
+     * @type {() => HTMLElement}
+     */
+    get node() {
+        return this.#node;
+    }
     /**
      * @type {(num: number) => HTMLElement}
      */
-    children = num => this._node.children[num] ? new Dom(this._node.children[num]) : null;
+    children = num => this.#node.children[num] ? new Dom(this.#node.children[num]) : null;
     /**
      * @type {(...dom: Dom | Dom[]) => Dom}
      */
     add = (...dom) => {
         for (let pdom of dom) {
             if (Array.isArray(pdom)) {
-                for (let cdom of pdom) this._node.appendChild(cdom._node);
-            } else this._node.appendChild(pdom._node);
+                for (let cdom of pdom) this.#node.appendChild(cdom.node);
+            } else this.#node.appendChild(pdom.node);
         }
         return this;
     }
@@ -27,14 +33,14 @@ const Dom = class {
      * @type {(num: number) => Dom}
      */
     remove = num => {
-        this._node.removeChild(this.children(num));
+        this.#node.removeChild(this.children(num));
         return this;
     }
     /**
      * @type {(...dom?: Dom | Dom[]) => Dom}
      */
     reset = (...dom) => {
-        this._node.innerHTML = "";
+        this.#node.innerHTML = "";
         this.add(...dom);
         return this;
     }
@@ -45,7 +51,7 @@ const Dom = class {
         if (additional) {
             const keys = Object.keys(additional);
             const values = Object.values(additional);
-            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this._node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this._node.innerText = values[i] : (keys[i].indexOf("on") != -1) ? this._node[keys[i]] = values[i] : this._node.setAttribute(keys[i], values[i]);
+            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this.#node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this.#node.innerText = values[i] : (keys[i].indexOf("on") != -1) ? this.#node[keys[i]] = values[i] : this.#node.setAttribute(keys[i], values[i]);
         }
         return this;
     };
@@ -53,7 +59,7 @@ const Dom = class {
      * @type {(node: string | HTMLElement, additional: object) => Dom}
      */
     constructor(node, additional) {
-        this._node = (typeof node === "string") ? document.createElement(node) : node;
+        this.#node = (typeof node === "string") ? document.createElement(node) : node;
         this.set(additional);
     }
 }
@@ -62,29 +68,29 @@ const Dom = class {
  */
 const FragAnimation = class {
     static card = async (_view, _fragment, _second, _action) => {
-        if (_view._node.innerHTML != "") {
-            _view._node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 450));
             _view.reset(_fragment);
-            _view._node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
+            _view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
         } else _view.reset(_fragment);
         if (typeof _action == "function") _action();
     }
     static fade = async (_view, _fragment, _second, _action) => {
-        if (_view._node.innerHTML != "") {
-            _view._node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 400));
             _view.reset(_fragment);
-            _view._node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
+            _view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
         } else _view.reset(_fragment);
         if (typeof _action == "function") _action();
     }
     static swip = async (_view, _fragment, _second, _action) => {
-        if (_view._node.innerHTML != "") {
-            _view._node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
             await new Promise(code => setTimeout(code, _second * 400));
             _view.reset(_fragment);
-            _view._node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
+            _view.node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
         } else _view.reset(_fragment);
         if (typeof _action == "function") _action();
     }

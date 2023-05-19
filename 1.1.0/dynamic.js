@@ -22,7 +22,7 @@ const Dom = class {
      * @type {() => HTMLElement}
      */
     get node() {
-        this._node;
+        return this._node;
     }
     /**
      * @type {(num: number) => HTMLElement}
