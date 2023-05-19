@@ -4,9 +4,6 @@
 작성자: 환류상
  */
 const Dom = class {
-    /**
-     * @type {HTMLElement}
-     */
     #node;
     /**
      * @type {() => HTMLElement}
