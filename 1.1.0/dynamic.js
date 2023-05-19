@@ -14,9 +14,16 @@ class SecurityError extends Error {
 }
 const Dom = class {
     /**
+     * @deprecated this property was change to private. use node getter instead.
      * @type {HTMLElement}
      */
     _node;
+    /**
+     * @type {() => HTMLElement}
+     */
+    get node() {
+        this._node;
+    }
     /**
      * @type {(num: number) => HTMLElement}
      */
