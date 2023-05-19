@@ -45,6 +45,7 @@ const __$$VERSIONINFO = {
 };
 for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js"]`).innerHTML
     .replaceAll("\n", "")
+    .replaceAll("\t", "")
     .split(" ").join("")
     .split(";")) {
     if (data != "") {
