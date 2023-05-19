@@ -16,7 +16,7 @@
 > **node**는 **문자열 또는 HTMLElement**입니다.  
 > **additional**은 **추가적인 옵션**을 담은 **객체 리터럴**입니다.  
 >  
-> 2. **@1.1.0** getter node 
+> 2. **@1.1.0** getter node  
 > **this**에 등록되어 있는 **node**를 반환합니다.  
 >  
 > 2. **@1.0.0** children(num)  
