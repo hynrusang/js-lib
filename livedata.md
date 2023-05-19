@@ -16,8 +16,8 @@
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, 5.6 같은 Number나 "test" 등의 String, [2, 3]같은 Array 또는 {data: true} 등의 객체 리터럴만 지원합니다.)**  
 >  
-> 2. **@1.0.0** setObserver(observer)  
-> **observer**를 **setting**하는 메서드입니다.  
+> 2. **@1.0.0** registObserver(observer)  
+> **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 > **chain method**를 지원합니다.  
 >
@@ -43,7 +43,7 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면,  
 ```js
-db.setObserver(function () { console.log(this.get()); });
+db.registObserver(function () { console.log(this.value); });
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
@@ -59,12 +59,12 @@ db.value = 7;
 // console
 ```
 ---
-#### 1-2. **@1.0.0** setObserver(observer)
-> **observer**를 **setting**하는 메서드입니다.  
+#### 1-2. **@1.0.0** registObserver(observer)
+> **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 예시:
 ```js
-const db = new LiveData("data").setObserver(function () { console.log(this.value); });  
+const db = new LiveData("data").registObserver(function () { console.log(this.value); });  
 db.value = "data renew";  
 
 // console
@@ -76,7 +76,7 @@ data renew
 > **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**  
 예시:  
 ```js
-const data = new LiveData(32).setObserver(function () {
+const data = new LiveData(32).registObserver(function () {
     console.log(this.value)
 });
 data.dispatchObserver();
@@ -107,7 +107,7 @@ data.dispatchObserver();
   
 예시:  
 ```js
-const db = new LiveData(5).setObserver(function () {
+const db = new LiveData(5).registObserver(function () {
     console.log("data was changed!");
 })
 db.value = 8; // value setter
@@ -127,7 +127,7 @@ data was changed!
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
 예시:
 ```js
-const db = new LiveData({name: "hynrusang", isVerify: false}).setObserver(function () { console.log(this.get()); });  
+const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
 db.set({name: "hynrusang", isVerify: true});  
 
 // console
