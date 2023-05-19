@@ -71,47 +71,10 @@
         <input type="button">
         <input type="button">
     </footer>
-    <script src="1.1.0/livedata.js"></script>
-    <script src="1.2.0/dynamic.js"></script>
-    <script src="1.0.0/advanced.js"></script>
-    <script>
-        const makeTestDom = (alphabet, fragmentIdentity) => $("fieldset").add(
-            $("legend", {text: `${fragmentIdentity} fragment`, style: "color: red;"}),
-            $("input", {type: "button", value: alphabet, style: "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;", onclick: () => {
-                alert(`you clicked ${alphabet}!`);
-            }})
-        )
-
-        const state = new LiveData("first").setObserver(function () {
-            console.log(`${this.get()} Fragment is stating now...`);
-            scan("nav").innerHTML = `Current-Fragment://${this.value}`
-        });
-
-        const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAnimation(FragAnimation.card, 1).registAction(() => {
-            state.value = "first";
-        }).launch(),
-        new Fragment("fragmentView", makeTestDom("B", "second")).registAnimation(FragAnimation.fade, 1).registAction(() => {
-            state.value = "second";
-        }),
-        new Fragment("fragmentView", makeTestDom("C", "third")).registAnimation(FragAnimation.swip, 1).registAction(() => {
-            state.value = "third";
-        }),
-        new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
-            state.value = "fourth";
-        })];
-
-        scan("!footer input").forEach((element, index) => {
-            element.onclick = () => {
-                scan(".activate").classList.remove("activate");
-                element.classList.add("activate");
-                fragmentBox[index].launch();
-            }
-        });
-
-        const data = new LiveData(32).setObserver(function () {
-            console.log(this.value)
-        });
-        data.dispatchObserver();
+    <script src="https://hynrusang.github.io/js-lib/jade.js">
+        livedata, developer;
+        dynamic, developer;
     </script>
+    <jade src="test.js"></jade>
 </body>
 </html>
