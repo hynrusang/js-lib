@@ -19,19 +19,19 @@
 > 2. **@1.1.0** getter node  
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.
 >  
-> 2. **@1.0.0** children(num)  
+> 3. **@1.0.0** children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
 >  
-> 3. **@1.0.0** add(...dom)  
+> 4. **@1.0.0** add(...dom)  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
 >  
-> 4. **@1.0.0** reset(...dom)  
+> 5. **@1.0.0** reset(...dom)  
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 >  
-> 5. **@1.0.0** remove(num)  
+> 6. **@1.0.0** remove(num)  
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
 >  
-> 6. **@1.0.0** set(additional)  
+> 7. **@1.0.0** set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 >  
 ---
@@ -76,7 +76,17 @@ new Dom("fieldset").add(
 )
 ```
 ---
-#### 1-2. **@1.0.0** children(num)
+#### 1-2. **@1.1.0** getter node  
+> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.  
+예시:
+```js
+const dom = new Dom("div");
+dom.node; // <div></div>;
+dom.node = document.createElement("h1"); // it's not working.
+dom.node; // <div></div>
+```
+---
+#### 1-3. **@1.0.0** children(num)
 > **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
 예시:
@@ -92,7 +102,7 @@ new Dom("fieldset").add(
 Dom {_node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
-#### 1-3. **@1.0.0** add(...dom)
+#### 1-4. **@1.0.0** add(...dom)
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.   
 예시:
 ```js
@@ -115,7 +125,7 @@ new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-4. **@1.0.0** reset(...dom) 
+#### 1-5. **@1.0.0** reset(...dom) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 예시:
 ```js
@@ -140,7 +150,7 @@ dom.reset(
 </form>
 ```
 ---
-#### 1-5. **@1.0.0** remove(num)
+#### 1-6. **@1.0.0** remove(num)
 > **num**에 해당하는 **자식 요소**를 **제거**합니다.   
 예시:
 ```js
@@ -157,7 +167,7 @@ new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-6. **@1.0.0** set(additional)
+#### 1-7. **@1.0.0** set(additional)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 예시:
 ```js
@@ -532,9 +542,11 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 > 1.1.0  
 > combine class DomDefault, DomExpert to Dom;  
 > create class Fragment;  
+> create getter Dom.node;  
 >   
 > @deprecated loading;  
 > @deprecated Dom.copy(count);  
+> @deprecated Dom._node;  
 > @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
@@ -552,6 +564,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 > create static class FragAnimation;  
 > create method Fragment.registAnimation(animation, millisecond);  
 >  
+> @update Dom._node to private;  
 > @update Fragment.launch();  
 > @remove loading;  
 > @remove Dom.copy(count);  
