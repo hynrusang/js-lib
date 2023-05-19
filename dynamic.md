@@ -99,7 +99,7 @@ new Dom("fieldset").add(
 ).children(1)
 
 // return 
-Dom {_node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
+Dom {#node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
 #### 1-4. **@1.0.0** add(...dom)
