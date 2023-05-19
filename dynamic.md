@@ -74,7 +74,7 @@ new Dom("fieldset").add(
 ```
 ---
 #### 1-2. **@1.0.0** children(num)
-> **num**에 해당하는 **자식 HTMLElement요소**를 반환합니다.    
+> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
 예시:
 ```js
@@ -85,8 +85,8 @@ new Dom("fieldset").add(
     }})
 ).children(1)
 
-// return되는 객체
-<input type="button" value="click here">
+// return 
+Dom {_node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
 #### 1-3. **@1.0.0** add(...dom)
