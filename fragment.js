@@ -5,7 +5,7 @@
     }})
 )
 
-const state = new LiveData("first").setObserver(function () {
+const state = new LiveData("first").registObserver(function () {
     console.log(`${this.get()} Fragment is stating now...`);
     scan("nav").innerHTML = `Current-Fragment://${this.value}`
 });
