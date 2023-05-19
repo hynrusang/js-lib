@@ -337,7 +337,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 
 /* fragment.js */
 const state = new LiveData("first").registObserver(function () {
-    alert(`${this.get()} Fragment is stating now...`);
+    alert(`${this.value} Fragment is stating now...`);
 });
 const mainFragment = new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
@@ -345,7 +345,7 @@ const mainFragment = new Fragment("fragmentView", $("fieldset").add(
         secondFragment.launch();
     }})
 )).registAction(() => {
-    state.set("first");
+    state.value = "first";
 }).launch();
 // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
 
@@ -354,7 +354,7 @@ $("p", {text: "just test case..."}),
 $("input", {type: "button", value: "go to first fragment", onclick: () => {
     mainFragment.launch();
 }})).registAction(() => {
-    state.set("second");
+    state.value = "second";
 })
 ```
 ---
