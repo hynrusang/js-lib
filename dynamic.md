@@ -99,7 +99,7 @@ new Dom("fieldset").add(
 ).children(1)
 
 // return 
-Dom {#node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
+Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
 #### 1-4. **@1.0.0** add(...dom)
@@ -115,14 +115,6 @@ new Dom("form", {onsubmit: e => {
         new Dom("input", {type: "submit", value: "submit"})
     )
 )
-
-// return되는 객체
-<form>
-    <fieldset>
-        <legend>this is legend</legend>
-        <input type="submit" value="submit">
-    </fieldset>
-</form>
 ```
 ---
 #### 1-5. **@1.0.0** reset(...dom) 
@@ -142,12 +134,6 @@ dom.reset(
     new Dom("input", {type: "text", placeholder: "was replaced"}),
     new Dom("input", {type: "submit", value: "submit"})
 )
-
-// return되는 객체
-<form>
-    <input type="text" placeholder="was replaced">
-    <input type="submit" value="submit">
-</form>
 ```
 ---
 #### 1-6. **@1.0.0** remove(num)
@@ -160,11 +146,6 @@ new Dom("fieldset").add(
         alert("clicked");
     }})
 ).remove(1)
-
-// return되는 객체
-<fieldset>
-    <legend>this is legend</legend>
-</fieldset>
 ```
 ---
 #### 1-7. **@1.0.0** set(additional)
@@ -173,9 +154,6 @@ new Dom("fieldset").add(
 ```js
 let color = "green";
 new Dom("span").set({text: "hello!", style: `color: ${color}`});
-
-// return되는 객체
-<span style="color: green">hello!</span>
 ```
 ---
 ### 2. **@1.0.0** $(node, additional) : Dom
