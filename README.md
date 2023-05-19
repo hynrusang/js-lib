@@ -19,5 +19,5 @@
   
 3. js에서 **typeof**를 더 확장해서 **특정 Class의 인스턴스**인지도 확인하거나, **Array**에서 특정 원소를 **remove**하거나, **Array**의 **indexof**를 **HTMLElement**간에서도 사용하고 싶다면? [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md)  
   
-4. **LinearLayout**, **NavigationView** 등의 더 많은 태그를 **html**에서도 사용하고 싶다면? [tagx.js](https://github.com/hynrusang/js-lib/blob/main/tagx.md) - [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)에 통합되어 개발될 가능성이 높습니다.  
+5. 더 많은 기능성 태그를 **html**에서 사용하고 싶다면? [tagx.js](https://github.com/hynrusang/js-lib/blob/main/tagx.md) - [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)에 통합되어 개발될 가능성이 높습니다.  
   
