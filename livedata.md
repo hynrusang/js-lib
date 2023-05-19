@@ -64,8 +64,8 @@ db.value = 7;
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 예시:
 ```js
-const db = new LiveData("data").setObserver(function () { console.log(this.get()); });  
-db.set("data renew");  
+const db = new LiveData("data").setObserver(function () { console.log(this.value); });  
+db.value = "data renew";  
 
 // console
 data renew
@@ -117,6 +117,7 @@ console.log(db.value); // value getter
 // console
 data was changed!
 data was changed!
+6
 ```
 ---
 #### 1-5. **@1.0.0** **@deprecated** set(data)
@@ -126,7 +127,7 @@ data was changed!
 > **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
 예시:
 ```js
-const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
+const db = new LiveData({name: "hynrusang", isVerify: false}).setObserver(function () { console.log(this.get()); });  
 db.set({name: "hynrusang", isVerify: true});  
 
 // console
