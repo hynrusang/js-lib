@@ -10,7 +10,7 @@
 
 ## 요소
 ### 1. @1.0.0 LiveData: Class
-> **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **클래스**입니다..  
+> **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
@@ -113,6 +113,18 @@ data was changed!
 6
 ```
 ---
+### 2. **@1.2.0** R : Class  
+> **R** 클래스는 **static class**로, **android studio**처럼 여러 **resource**를 관리하는 데 사용되는 **class**입니다.  
+> **
+> LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
+> 1. **@1.2.0** id:  
+> **id**는 **static Object**이며, 실제 **resource**를 관리하는 데 사용됩니다.  
+---
+#### 2-1. **@1.2.0** id  
+> **R** 객체에 **Object**를 **set** 또는 **get** 하는 방법은 다음과 같습니다.  
+예시:  
+```js
+```
 ---
 ### 3. prototype
 #### 1. **@1.0.0** JSON.unlivedata(json)   
