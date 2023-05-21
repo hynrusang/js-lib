@@ -44,11 +44,10 @@ wait 함수는 다음과 같은 동작을 수행합니다:
 2. **빈 Promise 객체**를 반환합니다.  
 예시:  
 ```js
-const waitTest = async () => {
+(async () => {
     await wait(1000);
     console.log(true);
-}
-waitTest();
+})()
 
 // result
 ...
