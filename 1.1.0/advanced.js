@@ -19,9 +19,8 @@ const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
  * }}
  */
 const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
-NodeList.prototype.indexof = function (searchElement, fromIndex) {
-    return Array.from(this).indexOf(searchElement, fromIndex)
-}
+HTMLElement.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this.children).indexOf(searchElement, fromIndex) } 
+NodeList.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this).indexOf(searchElement, fromIndex); }
 String.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.add = function (data) { 
