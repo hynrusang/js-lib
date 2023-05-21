@@ -115,7 +115,7 @@ data was changed!
 ---
 ### 2. **@1.2.0** R : Class  
 > **R** 클래스는 **static class**로, **android studio**처럼 여러 **resource**를 관리하는 데 사용되는 **class**입니다.  
-> **
+> **[dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)** 의 **Dom** 요소의 **재 사용성**을 위해 고안되었습니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
 > 1. **@1.2.0** id:  
 > **id**는 **static Object**이며, 실제 **resource**를 관리하는 데 사용됩니다.  
