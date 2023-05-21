@@ -77,6 +77,7 @@ new Dom("fieldset").add(
 ```
 > 만약, 일일이 **Dom** 객체를 만드는데 **new**라는 키워드를 쓰기 싫으시다면, 다음과 같은 방법도 있습니다.  
 > ([4](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#4-100-node-additional--dom)번 문단에 있는 $ 함수를 이용한 방법입니다.)  
+> 최종적으로 추천드리는 형태입니다.  
 ```js
 $("fieldset").add(
     $("legend", {text: "this is legend"}),
