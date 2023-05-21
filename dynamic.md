@@ -66,11 +66,22 @@ new Dom("h1", {id: "test", dataIsNull: (data != null) ? "not null" : "null", tex
     alert(e.target.innerText)
 }})
 ```
-> 또한, 이 요소 안에 또 다른 html 요소를 넣고싶다면, 다음과 같이 할 수 있습니다.
+> 또한, 하나의 **Dom** 요소 안에 **또 다른 Dom** 요소를 넣고싶다면, 다음과 같이 할 수 있습니다.
 ```js
 new Dom("fieldset").add(
     new Dom("legend", {text: "this is legend"}),
     new Dom("input", {type: "button", value: "click here", onclick: () => {
+        alert("clicked");
+    }})
+)
+```
+> 만약, 일일이 **Dom** 객체를 만드는데 **new**라는 키워드를 쓰기 싫으시다면, 다음과 같은 방법도 있습니다.  
+> ([4](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#4-100-node-additional--dom)번 문단에 있는 **$ function**를 이용한 방법입니다.)  
+> 최종적으로 추천드리는 형태입니다.  
+```js
+$("fieldset").add(
+    $("legend", {text: "this is legend"}),
+    $("input", {type: "button", value: "click here", onclick: () => {
         alert("clicked");
     }})
 )
@@ -156,7 +167,219 @@ let color = "green";
 new Dom("span").set({text: "hello!", style: `color: ${color}`});
 ```
 ---
-### 2. **@1.0.0** $(node, additional) : Dom
+### 2. **@1.1.0** Fragment: class
+> **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
+> **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
+> Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
+> 1. constructor(view, ...fragment)  
+> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
+>  
+> 2. **@1.1.0** registAction(action)  
+> **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
+>  
+> 3. **@1.2.0** registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+>  
+> 4. **@1.1.0** launch()  
+> **Fragment**를 **전환**하는 메서드입니다.  
+> 등록된 **action**과 **animation**을 실행하고,  
+> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
+> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **\<fragment\> element**입니다.  
+---
+#### 2-1. constructor(view, ...fragment)
+> 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
+> **(다소 복잡한 Dom 구문이 포함되어 있습니다. [1번](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-100-dom-class  ) 문단을 참고해주세요.)**  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).launch();
+// Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
+
+const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
+$("p", {text: "just test case..."}),
+$("input", {type: "button", value: "go to first fragment", onclick: () => {
+    mainFragment.launch();
+}}))
+```
+---
+#### 2-2. **@1.1.0** registAction(action)
+> 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
+> **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
+> 예시: ([5-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#5-1-constructorview-fragment)의 예시를 조금 수정합니다.)  
+> ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const state = new LiveData("first").registObserver(function () {
+    alert(`${this.value} Fragment is stating now...`);
+});
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAction(() => {
+    state.value = "first";
+}).launch();
+// Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
+
+const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
+$("p", {text: "just test case..."}),
+$("input", {type: "button", value: "go to first fragment", onclick: () => {
+    mainFragment.launch();
+}})).registAction(() => {
+    state.value = "second";
+})
+```
+---
+#### 2-3. **@1.2.0** registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+예시:  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 1.5);
+```
+#### 2-4. **@1.1.0** launch()
+> **Fragment**를 **전환**하는 메서드입니다.  
+> 등록된 **action**과 **animation**을 실행하고,  
+> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
+> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
+> 예시:  
+```js
+// index.html
+<fragment rid="target"></fragment>
+
+// fragment.js
+const mainFragment = new Fragment("target", $("h1", {text: "hello, world", style: "color: red"}))
+const secondFragment = new Fragment("target", $("h1", {text: "hi, world!", style: "color: blue"}))
+mainFragment.launch();
+```
+---
+### 3. **@1.2.0** FragAnimation : Class  
+> **FragAnimation**은 **Fragment**의 **registerAnimation 메서드**의 **first** 매개변수로 간접 참조되는 클래스입니다.  
+> **FragAnimation** 클래스에는 다음과 같은 메서드들이 있습니다:  
+> 1. **@1.2.0** card  
+> **card animation**을 수행하는 메서드입니다.  
+> **프레그먼트**가 비어 있지 않은 경우, 회전 및 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
+> 다시 회전 및 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+>  
+> 2. **@1.2.0** fade  
+> **fade animation**을 수행하는 메서드입니다.  
+> **프레그먼트**가 비어 있지 않은 경우, 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
+> 다시 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+>  
+> 3. **@1.2.0** swip  
+> **swip animation**을 수행하는 메서드입니다.  
+> **프레그먼트**가 **비어 있지 않은 경우**, 오른쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
+> 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+- 각각의 Animation들의 모습은 다음과 같습니다.
+#### 3-1. **@1.2.0** FragAnimation.card
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8);
+```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/cardAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+   
+---
+#### 3-2. **@1.2.0** FragAnimation.fade
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8);
+```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/fadeAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+   
+---
+#### 3-3. **@1.2.0** FragAnimation.swip
+```js
+const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "first fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        secondFragment.launch();
+    }})
+)).registAnimation(FragAnimation.swip, 0.8).launch();
+
+// other fragment
+
+const secondFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to third fragment", onclick: () => {
+        thirdFragment.launch();
+    }})
+)).registAnimation(FragAnimation.card, 0.8);
+const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
+    $("legend", {text: "second fragment", style: "color: red;"}),
+    $("input", {type: "button", value: "go to main fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)).registAnimation(FragAnimation.fade, 0.8);
+```
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+  
+---
+### 4. **@1.0.0** $(node, additional) : Dom
 > **$** 함수는 **Dom 객체**를 **생성** 또는 **타게팅**하여 반환하는 함수입니다.  
 > $ 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -180,7 +403,7 @@ $("fieldset").add(
 )
 ```
 ---
-### 3. **@1.0.0** scan(selector) : document.querySelector : document.querySelectorAll
+### 5. **@1.0.0** scan(selector) : document.querySelector : document.querySelectorAll
 > **scan** 함수는 **selector**를 기반으로 **HTMLElement**를 **검색**하는 함수입니다.  
 > scan 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -211,7 +434,7 @@ scan(scan("fragment"));
 <fragment rid="mainFragment"></fragment>
 ```
 ---
-### 4. **@1.0.0** snipe(selector) : Dom
+### 6. **@1.0.0** snipe(selector) : Dom
 > **snipe** 함수는 **selector**를 기반으로 **HTMLElement**를 **검색**하여 **Dom 객체**로 반환하는 함수입니다.  
 > snipe 함수는 다음과 같은 **매개변수**를 받습니다.
   
@@ -282,218 +505,6 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
     </div>
 </body>
 ```
----
-### 5. **@1.1.0** Fragment: class
-> **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
-> **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
-> Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(view, ...fragment)  
-> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
->  
-> 2. **@1.1.0** registAction(action)  
-> **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
->  
-> 3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
->  
-> 4. **@1.1.0** launch()  
-> **Fragment**를 **전환**하는 메서드입니다.  
-> 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **\<fragment\> element**입니다.  
----
-#### 5-1. constructor(view, ...fragment)
-> 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
-> **(다소 복잡한 Dom 구문이 포함되어 있습니다. [1번](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-100-dom-class  ) 문단을 참고해주세요.)**  
-```js
-/* index.html */
-<fragment rid="fragmentView"></fragment>
-
-/* fragment.js */
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).launch();
-// Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
-
-const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
-$("p", {text: "just test case..."}),
-$("input", {type: "button", value: "go to first fragment", onclick: () => {
-    mainFragment.launch();
-}}))
-```
----
-#### 5-2. **@1.1.0** registAction(action)
-> 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
-> **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
-> 예시: ([5-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#5-1-constructorview-fragment)의 예시를 조금 수정합니다.)  
-> ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
-```js
-/* index.html */
-<fragment rid="fragmentView"></fragment>
-
-/* fragment.js */
-const state = new LiveData("first").registObserver(function () {
-    alert(`${this.value} Fragment is stating now...`);
-});
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAction(() => {
-    state.value = "first";
-}).launch();
-// Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
-
-const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
-$("p", {text: "just test case..."}),
-$("input", {type: "button", value: "go to first fragment", onclick: () => {
-    mainFragment.launch();
-}})).registAction(() => {
-    state.value = "second";
-})
-```
----
-#### 5-3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
-예시:  
-```js
-/* index.html */
-<fragment rid="fragmentView"></fragment>
-
-/* fragment.js */
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.card, 1.5).launch();
-const secondFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to frist fragment", onclick: () => {
-        mainFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 1.5);
-```
-#### 5-4. **@1.1.0** launch()
-> **Fragment**를 **전환**하는 메서드입니다.  
-> 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
-> 예시:  
-```js
-// index.html
-<fragment rid="target"></fragment>
-
-// fragment.js
-const mainFragment = new Fragment("target", $("h1", {text: "hello, world", style: "color: red"}))
-const secondFragment = new Fragment("target", $("h1", {text: "hi, world!", style: "color: blue"}))
-mainFragment.launch();
-```
----
-### 6. **@1.2.0** FragAnimation : Class  
-> **FragAnimation**은 **Fragment**의 **registerAnimation 메서드**의 **first** 매개변수로 간접 참조되는 클래스입니다.  
-> **FragAnimation** 클래스에는 다음과 같은 메서드들이 있습니다:  
-> 1. **@1.2.0** card  
-> **card animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 비어 있지 않은 경우, 회전 및 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
-> 다시 회전 및 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
->  
-> 2. **@1.2.0** fade  
-> **fade animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 비어 있지 않은 경우, 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
-> 다시 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
->  
-> 3. **@1.2.0** swip  
-> **swip animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 **비어 있지 않은 경우**, 오른쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
-> 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
-- 각각의 Animation들의 모습은 다음과 같습니다.
-#### 6-1. **@1.2.0** FragAnimation.card
-```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.card, 0.8).launch();
-
-// other fragment
-
-const secondFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to third fragment", onclick: () => {
-        thirdFragment.launch();
-    }})
-)).registAnimation(FragAnimation.fade, 0.8);
-const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to main fragment", onclick: () => {
-        mainFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 0.8);
-```
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/cardAnimation.gif" style="width: 50%; height: auto;" align="center" />  
-   
----
-#### 6-2. **@1.2.0** FragAnimation.fade
-```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.fade, 0.8).launch();
-
-// other fragment
-
-const secondFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to third fragment", onclick: () => {
-        thirdFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 0.8);
-const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to main fragment", onclick: () => {
-        mainFragment.launch();
-    }})
-)).registAnimation(FragAnimation.card, 0.8);
-```
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/fadeAnimation.gif" style="width: 50%; height: auto;" align="center" />  
-   
----
-#### 6-3. **@1.2.0** FragAnimation.swip
-```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 0.8).launch();
-
-// other fragment
-
-const secondFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to third fragment", onclick: () => {
-        thirdFragment.launch();
-    }})
-)).registAnimation(FragAnimation.card, 0.8);
-const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to main fragment", onclick: () => {
-        mainFragment.launch();
-    }})
-)).registAnimation(FragAnimation.fade, 0.8);
-```
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
-  
 ---
 ## 업데이트 내역
 > 1.0.0  
