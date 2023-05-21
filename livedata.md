@@ -113,7 +113,8 @@ data was changed!
 6
 ```
 ---
-### 2. prototype
+---
+### 3. prototype
 #### 1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 json의 data는 달라지지 않습니다.)**  
@@ -186,5 +187,7 @@ Array.unlivedata(data)
 > @deprecated LiveData.get();  
 ---
 > 1.2.0  
+> create static class R;  
+>  
 > @remove LiveData.set();  
 > @remove LiveData.get();  
