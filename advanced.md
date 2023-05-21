@@ -146,7 +146,7 @@ console.log(test);
 > **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
 > **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
 > 이들은 모두 **Array**의 **indexOf** 메서드를 확장하여 사용됩니다.  
-예시:
+예시: ([dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)를 추가로 이용합니다.)  
 ```js
 // index.html
 <main>
@@ -156,7 +156,12 @@ console.log(test);
 </main>
 
 // script
-document.querySelector("main").indexOf(document.querySelector("#page-1"));
+scan("main").indexOf(scan("#page-1"));
+scan("!article").indexOf(scan("#page-2"));
+
+// return 
+0
+1
 ```
 ---
 ## 업데이트 내역
@@ -170,3 +175,9 @@ document.querySelector("main").indexOf(document.querySelector("#page-1"));
 >   
 > @get String.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @get Array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+---
+> 1.1.0  
+> create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
+> create NodeLisr.prototype.indexOf(searchElement, fromIndex): Number  
+>  
+> @deprecated getIndex(parent, child): number
