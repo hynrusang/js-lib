@@ -2,7 +2,7 @@
 - [이전으로](https://github.com/hynrusang/js-lib/tree/main)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.0.0/advanced.js)
 ---
-- **이 문서는 developer 버전인 advanced 1.0.0을 다룹니다.**  
+- **이 문서는 developer 버전인 advanced 1.1.0을 다룹니다.**  
 - **현재 release 버전은 advanced 1.0.0입니다.**  
 ## 정보
 - 이건 js의 기능들을 더 확장하고, 더 편리한 기능, 프로토타입을 추가해주는 js 파일 입니다.  
@@ -84,37 +84,7 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4-1. **@1.0.0** String.prototype.in
-> 이 메서드는 **String** 내에서 **특정 data**를 검색하여 **해당 데이터가 exist**하는지 여부를 반환합니다.  
-> 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
-예시:  
-```js
-"aaaaAaaaaa".in("A")
-"aaaaAaaaaa".in("a")
-"aaaaAaaaaa".in("b")
-
-// result
-true
-true
-false
-```
----
-#### 4-2. **@1.0.0** Array.prototype.in
-> 이 메서드는 **Array** 내에서 **특정 data**를 검색하여 **해당 데이터가 exist**하는지 여부를 반환합니다.  
-> 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
-예시:  
-```js
-[3,5,6,7].in(7)
-["hello", 7, 8, "9"].in(8)
-["hello", 7, 8, "9"].in(9)
-
-// result
-true
-true
-false
-```
----
-#### 4-3. **@1.0.0** String.prototype.isEmpty
+#### 4-1. **@1.0.0** String.prototype.isEmpty
 > 이 메서드는 **String**이 **empty**인지의 여부를 반환합니다.  
 > **그렇지 않으면 false**를 반환합니다.
 예시:
@@ -129,7 +99,7 @@ false
 false
 ```
 ---
-#### 4-4. **@1.0.0** Array.prototype.isEmpty
+#### 4-2. **@1.0.0** Array.prototype.isEmpty
 > 이 메서드는 **Array**가 **empty**인지의 여부를 반환합니다.  
 예시:
 ```js
@@ -143,7 +113,7 @@ false
 false
 ```
 ---
-#### 4-5. **@1.0.0** Array.prototype.add
+#### 4-3. **@1.0.0** Array.prototype.add
 > 이 메서드는 **Array**에서 **특정 data**을 **push**하는 메서드입니다.  
 > 기존의 **push**랑 다르게, 이 메서드의 반환 타입은 **Array**입니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
@@ -160,7 +130,7 @@ test.add(9);
 [3, 5, 6, 7, 9]
 ```
 ---
-#### 4-5. **@1.0.0** Array.prototype.remove  
+#### 4-4. **@1.0.0** Array.prototype.remove  
 > 이 메서드는 **Array**에서 **특정 data**을 **remove**하는 메서드입니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
   
@@ -187,5 +157,3 @@ test.remove(6);
 >   
 > @get String.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @get Array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get String.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get Array.prototype.in(data): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
