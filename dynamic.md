@@ -493,7 +493,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 )).registAnimation(FragAnimation.fade, 0.8);
 ```
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
----
+---  
 ### 7. **@1.2.0** R : Class  
 > **R** 클래스는 **static class**로, **android studio**처럼 여러 **resource**를 관리하는 데 사용되는 **class**입니다.  
 > **Fragment** 간 **Dom** 요소 **재 사용성**을 위해 고안되었습니다.  
