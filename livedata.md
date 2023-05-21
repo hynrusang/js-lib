@@ -1,9 +1,9 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) LiveData (in js)
 - [이전으로](https://github.com/hynrusang/js-lib)
-- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/livedata.js)
+- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/livedata.js)
 ---
-- **이 문서는 developer 버전인 livedata 1.1.0을 다룹니다.**  
-- **현재 release 버전은 livedata 1.0.0입니다.**  
+- **이 문서는 developer 버전인 livedata 1.2.0을 다룹니다.**  
+- **현재 release 버전은 livedata 1.1.0입니다.**  
 ## 정보
 - 이건 **kotlin**에 있는 **LiveData**를 구현한 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
@@ -27,13 +27,6 @@
 >  
 > 4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
->  
-> 5. **@1.0.0** **@deprecated** set(data)  
-> **data**를 **설정**하는 메서드입니다.  
-> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
->  
-> 6. **@1.0.0** **@deprecated** get()  
-> **현재 data**를 반환하는 메서드입니다.  
 ---
 #### 1-1. constructor(data)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
@@ -120,32 +113,6 @@ data was changed!
 6
 ```
 ---
-#### 1-5. **@1.0.0** **@deprecated** set(data)
-> **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
-> **setter new LiveData().value를 대신 이용하십시오.**  
-> **data**를 **설정**하는 메서드입니다.  
-> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
-예시:
-```js
-const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
-db.set({name: "hynrusang", isVerify: true});  
-
-// console
-{name: 'hynrusang', isVerify: true}
-```
----
-#### 1-6. **@1.0.0** **@deprecated** get()  
-> **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
-> **getter new LiveData().value를 대신 이용하십시오.**  
-> **현재 data**를 반환하는 메서드입니다.  
-예시:
-```js
-console.log(db.get())
-
-// console
-{name: 'hynrusang', isVerify: true}
-```
----
 ### 2. prototype
 #### 1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
@@ -217,3 +184,7 @@ Array.unlivedata(data)
 > @update Array.unlivedata(array) : Array;  
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
+---
+> 1.2.0  
+> @remove LiveData.set();  
+> @remove LiveData.get();  
