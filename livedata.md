@@ -27,13 +27,6 @@
 >  
 > 4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
->  
-> 5. **@1.0.0** **@deprecated** set(data)  
-> **data**를 **설정**하는 메서드입니다.  
-> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
->  
-> 6. **@1.0.0** **@deprecated** get()  
-> **현재 data**를 반환하는 메서드입니다.  
 ---
 #### 1-1. constructor(data)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
@@ -118,32 +111,6 @@ console.log(db.value); // value getter
 data was changed!
 data was changed!
 6
-```
----
-#### 1-5. **@1.0.0** **@deprecated** set(data)
-> **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
-> **setter new LiveData().value를 대신 이용하십시오.**  
-> **data**를 **설정**하는 메서드입니다.  
-> **새로운 data**가 **이전 data**와 다르고, **observer**가 **함수**일 경우 **observer**를 호출합니다.  
-예시:
-```js
-const db = new LiveData({name: "hynrusang", isVerify: false}).registObserver(function () { console.log(this.get()); });  
-db.set({name: "hynrusang", isVerify: true});  
-
-// console
-{name: 'hynrusang', isVerify: true}
-```
----
-#### 1-6. **@1.0.0** **@deprecated** get()  
-> **이 메서드는 livedata 1.2.0 이후로 지원이 중단됩니다.**  
-> **getter new LiveData().value를 대신 이용하십시오.**  
-> **현재 data**를 반환하는 메서드입니다.  
-예시:
-```js
-console.log(db.get())
-
-// console
-{name: 'hynrusang', isVerify: true}
 ```
 ---
 ### 2. prototype
