@@ -86,7 +86,7 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ---
 ### 4. prototype
 #### 4-1. **@1.0.0** (String || Array).prototype.isEmpty
-> 이 메서드는 **(String || Array)**이 **empty**인지의 여부를 반환합니다.  
+> 이 메서드는 **(String || Array)** 이 **empty**인지의 여부를 반환합니다.  
 > **그렇지 않으면 false**를 반환합니다.
 예시:
 ```js
