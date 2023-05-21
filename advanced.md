@@ -145,7 +145,7 @@ console.log(test);
 > 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
 > **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
 > **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
-> 이들은 모두 **Array**의 **indexOf** 메서드를 확장하여 사용됩니다.  
+> 이 메서드들은 **Array.from** 메서드를 사용하여 **Array**로 변환한 후 **indexOf** 메서드를 호출합니다.  
 예시: ([dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)를 추가로 이용합니다.)  
 ```js
 // index.html
