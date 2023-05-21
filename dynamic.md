@@ -493,6 +493,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 )).registAnimation(FragAnimation.fade, 0.8);
 ```
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+  
 ---  
 ### 7. **@1.2.0** R : Class  
 > **R** 클래스는 **static class**로, **android studio**처럼 여러 **resource**를 관리하는 데 사용되는 **class**입니다.  
@@ -501,7 +502,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
 > 1. **@1.2.0** id:  
 > **id**는 **static Object**이며, 실제 **resource**를 관리하는 데 사용됩니다.  
 ---
-#### 2-1. **@1.2.0** id  
+#### 7-1. **@1.2.0** id  
 > **R** 객체에 **Object**를 **set** 또는 **get** 하는 방법은 다음과 같습니다.  
 예시:  
 ```js
