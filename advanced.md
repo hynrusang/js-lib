@@ -84,7 +84,7 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4.1 **@1.0.0** String.prototype.in
+#### 4-1. **@1.0.0** String.prototype.in
 > 이 메서드는 **String** 내에서 **특정 data**를 검색하여 **해당 데이터가 exist**하는지 여부를 반환합니다.  
 > 데이터가 **존재**하면 **true**를 반환하고, **그렇지 않으면** **false**를 반환합니다.  
 예시:  
@@ -143,7 +143,7 @@ false
 false
 ```
 ---
-#### 4-4. **@1.0.0** Array.prototype.add
+#### 4-5. **@1.0.0** Array.prototype.add
 > 이 메서드는 **Array**에서 **특정 data**을 **push**하는 메서드입니다.  
 > 기존의 **push**랑 다르게, 이 메서드의 반환 타입은 **Array**입니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
