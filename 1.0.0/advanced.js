@@ -18,8 +18,6 @@ const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
 * }}
 */
 const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
-String.prototype.in = function (data) { return (this.indexOf(data) != -1); }
-Array.prototype.in = function (data) { return (this.indexOf(data) != -1); }
 String.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.isEmpty = function () { return (this.length == 0); }
 Array.prototype.add = function (data) { 
