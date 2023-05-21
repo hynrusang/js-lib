@@ -546,6 +546,8 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > @remove loading(jhpath): void;  
 > @remove String.property.count(data): number;  
 > @remove Array.property.count(data): number;  
+> @remove String.prototype.in(data): boolean;  
+> @remove Array.prototype.in(data): boolean;  
 > @remove String.property.last(): char;  
 > @remove Array.property:last(): any;  
 ---
