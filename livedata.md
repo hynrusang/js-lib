@@ -127,7 +127,7 @@ data was changed!
 ```
 ---
 ### 3. prototype
-#### 1. **@1.0.0** JSON.unlivedata(json)   
+#### 3-1. **@1.0.0** JSON.unlivedata(json)   
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 json의 data는 달라지지 않습니다.)**  
   
@@ -155,7 +155,7 @@ JSON.unlivedata(resource)
 {name: 'hynrusang', id: 32}
 ```
 ---
-#### 2. **@1.0.0** Array.unlivedata(array)
+#### 3-2. **@1.0.0** Array.unlivedata(array)
 > **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 array의 data는 달라지지 않습니다.)**  
   
