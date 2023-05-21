@@ -66,7 +66,7 @@ new Dom("h1", {id: "test", dataIsNull: (data != null) ? "not null" : "null", tex
     alert(e.target.innerText)
 }})
 ```
-> 또한, 이 요소 안에 또 다른 html 요소를 넣고싶다면, 다음과 같이 할 수 있습니다.
+> 또한, 하나의 **Dom** 요소 안에 **또 다른 Dom** 요소를 넣고싶다면, 다음과 같이 할 수 있습니다.
 ```js
 new Dom("fieldset").add(
     new Dom("legend", {text: "this is legend"}),
