@@ -178,6 +178,6 @@ scan("!article").indexOf(scan("#page-2"));
 ---
 > 1.1.0  
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
-> create NodeLisr.prototype.indexOf(searchElement, fromIndex): Number  
+> create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
 >  
 > @deprecated getIndex(parent, child): number
