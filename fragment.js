@@ -1,12 +1,13 @@
-﻿const makeTestDom = (alphabet, fragmentIdentity) => $("fieldset").add(
-    $("legend", {text: `${fragmentIdentity} fragment`, style: "color: red;"}),
-    $("input", {type: "button", value: alphabet, style: "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;", onclick: () => {
-        alert(`you clicked ${alphabet}!`);
-    }})
+﻿const makeTestDom = (value, text) => $("fieldset").add(
+    $("legend", {text: `${text} fragment`, style: "color: red;" }),
+    $("input", {
+        type: "button", value: value, style: "height: 200px; width: 200px; margin-left: calc(50% - 100px); font-size: 150px;", onclick: () => {
+            alert(`you clicked ${value}!`);
+        }
+    })
 )
-
 const state = new LiveData("first").registObserver(function () {
-    console.log(`${this.get()} Fragment is stating now...`);
+    console.log(`${this.value} Fragment is stating now...`);
     scan("nav").innerHTML = `Current-Fragment://${this.value}`
 });
 
