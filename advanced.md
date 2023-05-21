@@ -79,7 +79,7 @@ getIndex 함수는 다음과 같은 동작을 수행합니다:
     <div></div>
 </div>
 
-// main.js
+// script
 getIndex(document.querySelector("#parent_element"), document.querySelector("#my-element")); // 2
 getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
@@ -135,18 +135,28 @@ test.add(9);
 예시:
 ```js
 const test = [3,5,6,7,9,11];
-test.remove(3);
-test.remove(6);
+test.remove(3).remove(6);
+console.log(test);
 
-// return
+// console
 [5,7,9,11]
 ```
-#### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf
+#### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf  
+> 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
 > **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
 > **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
 > 이들은 모두 **Array**의 **indexOf** 메서드를 확장하여 사용됩니다.  
 예시:
 ```js
+// index.html
+<main>
+  <article id="page-1"></article>
+  <article id="page-2"></article>
+  <article id="page-3"></article>
+</main>
+
+// script
+document.querySelector("main").indexOf(document.querySelector("#page-1"));
 ```
 ---
 ## 업데이트 내역
