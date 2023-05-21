@@ -39,7 +39,7 @@ Result:
 */
 const __$$IMPLEMENTHREF = "https://hynrusang.github.io/js-lib/";
 const __$$VERSIONINFO = {
-    advanced: ["1.0.0", "1.0.0"],
+    advanced: ["1.0.0", "1.1.0"],
     dynamic: ["1.1.0", "1.2.0"],
     livedata: ["1.1.0", "1.2.0"]
 };
