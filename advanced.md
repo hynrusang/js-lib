@@ -55,7 +55,8 @@ true
 ```
 ---
 ### 3. **@1.0.0** **@deprecated**  getIndex(parent, child) : number  
-> **이 function은 advanced 1.2.0부터 사용 중단됩니다. NodeList.prototype.indexOf나 HTMLElement.prototype.indexOf를 대신 이용하십시오.** 
+> **이 function은 advanced 1.2.0부터 사용 중단됩니다.**
+> **NodeList.prototype.indexOf나 HTMLElement.prototype.indexOf를 대신 이용하십시오.** 
 > **getIndex** 함수는 **parent** 내에서 **child**의 **인덱스**를 가져오는 함수입니다.  
 > getIndex 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -84,25 +85,15 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4-1. **@1.0.0** String.prototype.isEmpty
-> 이 메서드는 **String**이 **empty**인지의 여부를 반환합니다.  
+#### 4-1. **@1.0.0** (String || Array).prototype.isEmpty
+> 이 메서드는 **(String || Array)**이 **empty**인지의 여부를 반환합니다.  
 > **그렇지 않으면 false**를 반환합니다.
 예시:
 ```js
-"".isEmpty()
-"d".isEmpty()
-" ".isEmpty()
+"".isEmpty();
+"d".isEmpty();
+" ".isEmpty();
 
-// result
-true
-false
-false
-```
----
-#### 4-2. **@1.0.0** Array.prototype.isEmpty
-> 이 메서드는 **Array**가 **empty**인지의 여부를 반환합니다.  
-예시:
-```js
 [].isEmpty()
 [3].isEmpty()
 [null, undefined].isEmpty()
@@ -111,9 +102,13 @@ false
 true
 false
 false
+
+true
+false
+false
 ```
 ---
-#### 4-3. **@1.0.0** Array.prototype.add
+#### 4-2. **@1.0.0** Array.prototype.add
 > 이 메서드는 **Array**에서 **특정 data**을 **push**하는 메서드입니다.  
 > 기존의 **push**랑 다르게, 이 메서드의 반환 타입은 **Array**입니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
@@ -130,7 +125,7 @@ test.add(9);
 [3, 5, 6, 7, 9]
 ```
 ---
-#### 4-4. **@1.0.0** Array.prototype.remove  
+#### 4-3. **@1.0.0** Array.prototype.remove  
 > 이 메서드는 **Array**에서 **특정 data**을 **remove**하는 메서드입니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
   
@@ -146,6 +141,14 @@ test.remove(6);
 // return
 [5,7,9,11]
 ```
+#### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf
+> **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
+> **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
+> 이들은 모두 **Array**의 **indexOf** 메서드를 확장하여 사용됩니다.  
+예시:
+```js
+```
+---
 ## 업데이트 내역
 > 1.0.0  
 > create Array.prototype.add(data): Array  
