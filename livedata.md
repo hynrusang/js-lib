@@ -184,3 +184,7 @@ Array.unlivedata(data)
 > @update Array.unlivedata(array) : Array;  
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
+---
+> 1.2.0  
+> @remove LiveData.set();  
+> @remove LiveData.get();  
