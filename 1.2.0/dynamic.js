@@ -60,38 +60,6 @@ const Dom = class {
         this.set(additional);
     }
 }
-/**
- * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
- */
-const FragAnimation = class {
-    static card = async (_view, _fragment, _second, _action) => {
-        if (_view.node.innerHTML != "") {
-            _view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
-            await new Promise(code => setTimeout(code, _second * 450));
-            _view.reset(_fragment);
-            _view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
-        } else _view.reset(_fragment);
-        if (typeof _action == "function") _action();
-    }
-    static fade = async (_view, _fragment, _second, _action) => {
-        if (_view.node.innerHTML != "") {
-            _view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
-            await new Promise(code => setTimeout(code, _second * 400));
-            _view.reset(_fragment);
-            _view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
-        } else _view.reset(_fragment);
-        if (typeof _action == "function") _action();
-    }
-    static swip = async (_view, _fragment, _second, _action) => {
-        if (_view.node.innerHTML != "") {
-            _view.node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
-            await new Promise(code => setTimeout(code, _second * 400));
-            _view.reset(_fragment);
-            _view.node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
-        } else _view.reset(_fragment);
-        if (typeof _action == "function") _action();
-    }
-}
 const Fragment = class {
     #view;
     #fragment;
@@ -130,6 +98,38 @@ const Fragment = class {
     constructor(view, ...fragment) {
         this.#view = snipe(`fragment[rid=${view}]`);
         this.#fragment = fragment;
+    }
+}
+/**
+ * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
+ */
+const FragAnimation = class {
+    static card = async (_view, _fragment, _second, _action) => {
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
+            await new Promise(code => setTimeout(code, _second * 450));
+            _view.reset(_fragment);
+            _view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
+        } else _view.reset(_fragment);
+        if (typeof _action == "function") _action();
+    }
+    static fade = async (_view, _fragment, _second, _action) => {
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
+            await new Promise(code => setTimeout(code, _second * 400));
+            _view.reset(_fragment);
+            _view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
+        } else _view.reset(_fragment);
+        if (typeof _action == "function") _action();
+    }
+    static swip = async (_view, _fragment, _second, _action) => {
+        if (_view.node.innerHTML != "") {
+            _view.node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
+            await new Promise(code => setTimeout(code, _second * 400));
+            _view.reset(_fragment);
+            _view.node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
+        } else _view.reset(_fragment);
+        if (typeof _action == "function") _action();
     }
 }
 /**
