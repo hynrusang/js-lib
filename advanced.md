@@ -1,6 +1,6 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) Advancedment (more js function, prototype)
 - [이전으로](https://github.com/hynrusang/js-lib/tree/main)
-- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.0.0/advanced.js)
+- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/advanced.js)
 ---
 - **이 문서는 developer 버전인 advanced 1.1.0을 다룹니다.**  
 - **현재 release 버전은 advanced 1.0.0입니다.**  
