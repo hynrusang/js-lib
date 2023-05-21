@@ -75,6 +75,16 @@ new Dom("fieldset").add(
     }})
 )
 ```
+> 만약, 일일이 **Dom** 객체를 만드는데 **new**라는 키워드를 쓰기 싫으시다면, 다음과 같은 방법도 있습니다.  
+> ([3]()번 문단에 있는 $ 함수를 이용한 방법입니다.)  
+```js
+$("fieldset").add(
+    $("legend", {text: "this is legend"}),
+    $("input", {type: "button", value: "click here", onclick: () => {
+        alert("clicked");
+    }})
+)
+```
 ---
 #### 1-2. **@1.1.0** getter node  
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.  
