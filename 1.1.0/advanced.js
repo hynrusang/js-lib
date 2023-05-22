@@ -24,9 +24,13 @@ NodeList.prototype.indexOf = function (searchElement, fromIndex) { return Array.
 String.prototype.isEmpty = function (...ignore) { 
     let __$$TEMPSTRING = this;
     for (let __$$IGNORE of ignore) __$$TEMPSTRING = __$$TEMPSTRING.replaceAll(__$$IGNORE, "");
-    return !__$$TEMPSTRING;
+    return __$$TEMPSTRING.length === 0;
 }
-Array.prototype.isEmpty = function () { return (this.length == 0); }
+Array.prototype.isEmpty = function (...ignore) { 
+    let __$$TEMPARRAY = [];
+    for (let i = 0; i < this.length; i++) if (!ignore.includes(this[i])) __$$TEMPARRAY.push(this[i]);
+    return __$$TEMPARRAY.length === 0; 
+}
 Array.prototype.add = function (data) { 
     this.push(data);
     return this;
