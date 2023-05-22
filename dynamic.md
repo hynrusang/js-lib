@@ -210,8 +210,8 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
 >  
 > 4. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
 >  
 > 5. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
@@ -297,8 +297,8 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 ```
 ---
 #### 2-4. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
   
 예시:  
 ```js
