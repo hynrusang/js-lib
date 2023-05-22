@@ -152,11 +152,11 @@ console.log(test);
 // console
 [5,7,9,11]
 ```
-#### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf  
+#### 4-4. **@1.1.0** (HTMLElement|| NodeList).prototype.indexOf  
 > 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
 
-1. **(HTMLELEMENT.children || NodeList)** 를 **Array**로 변환합니다 **(실제 값이 변하진 않습니다.)**.  
+1. **(HTMLElement.children || NodeList)** 를 **Array**로 변환합니다 **(실제 값이 변하진 않습니다.)**.  
 2. **indexOf** 메서드를 호출하여, 해당 **child**가 위치한 **index**를 반환합니다.  
   
 예시: ([dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)를 추가로 이용합니다.)  
