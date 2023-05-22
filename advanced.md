@@ -99,20 +99,24 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
   
 예시:
 ```js
-"".isEmpty();
-"d".isEmpty();
-"     ".isEmpty(" ");
+"".isEmpty(); // @1.0.0
+"d".isEmpty(); // @1.0.0
+"   ".isEmpty(); @1.0.0
+"     ".isEmpty(" "); @1.1.0
 
-[].isEmpty()
-[3].isEmpty()
-[null, undefined, null, ""].isEmpty(null, undefined, "");
+[].isEmpty() // @1.0.0
+[3].isEmpty() // @1.0.0
+[null, undefined].isEmpty() // @1.0.0
+[null, undefined, null, ""].isEmpty(null, undefined, ""); // @1.1.0
 
 // result
 true
 false
+false
 true
 
 true
+false
 false
 true
 ```
