@@ -22,6 +22,7 @@ is 함수는 다음과 같은 동작을 수행합니다:
 - target이 **Class**의 **인스턴스**인지 확인합니다. (**instanceof** 연산자를 사용하여 확인)  
 2. target이 **원시 타입** 경우:  
 - target의 **타입**이 **Class**와 **일치**하는지 확인합니다. (**typeof** 연산자를 사용하여 확인)  
+  
 예시:  
 ```js
 is($("div"), Dom); // true
@@ -42,6 +43,7 @@ wait 함수는 다음과 같은 동작을 수행합니다:
   
 1. **setTimeout** 함수를 사용하여 **millisecond** 이후에 **null**를 실행합니다.  
 2. **빈 Promise 객체**를 반환합니다.  
+  
 예시:  
 ```js
 (async () => {
@@ -69,6 +71,7 @@ getIndex 함수는 다음과 같은 동작을 수행합니다:
 - **parent**의 **children 배열**에서 **child**의 **인덱스**를 찾습니다. (Array.prototype.indexOf를 사용하여 검색)  
 2. **parent**가 **Array**인 경우:
 - **parent 배열**에서 **child**의 **인덱스**를 찾습니다. (Array.prototype.indexOf를 사용하여 검색)  
+  
 예시:  
 ```js
 // test.html
@@ -120,6 +123,7 @@ true
   
 1. 주어진 데이터를 배열에 추가하기 위해 push 메서드를 호출합니다.  
 2. 변경된 배열을 반환합니다.  
+  
 예시:  
 ```js
 const test = [3,5,6];
@@ -137,6 +141,7 @@ test.add(9);
 1. 제거할 값의 인덱스를 찾습니다.  
 2. 만약 값이 배열 안에 존재하는 경우, 해당 인덱스를 사용하여 splice 메서드를 호출하여 값을 제거합니다.  
 3. 변경된 배열을 반환합니다.  
+  
 예시:
 ```js
 const test = [3,5,6,7,9,11];
