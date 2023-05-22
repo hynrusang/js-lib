@@ -78,6 +78,12 @@ const Fragment = class {
     get view() {
         return this.#view;
     }
+    /*
+     * @type {() => Dom[]}
+     */
+    get fragment() {
+        return this.#fragment;
+    }
     /**
      * @type {(action: Function) => Fragment}
      */
@@ -97,7 +103,7 @@ const Fragment = class {
      * @type {() => Fragment}
      */
     launch = () => {
-        if (this.#swipAnimation != null) this.#swipAnimation(this, this.#fragment, this.#animationExcuteTime);
+        if (this.#swipAnimation != null) this.#swipAnimation(this, this.#animationExcuteTime);
         else {
             this.#view.reset(this.#fragment)
             if (typeof this.#action == "function") this.#action();
@@ -116,31 +122,31 @@ const Fragment = class {
  * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
  */
 const FragAnimation = class {
-    static card = async (_context, _fragment, _second) => {
+    static card = async (_context, _second) => {
         if (_context.view.node.innerHTML != "") {
             _context.view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 450));
-            _context.view.reset(_fragment);
+            _context.view.reset(_context.fragment);
             _context.view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
-        } else _context.view.reset(_fragment);
+        } else _context.view.reset(_context.fragment);
         if (typeof _context.action == "function") _context.action();
     }
-    static fade = async (_context, _fragment, _second) => {
+    static fade = async (_context, _second) => {
         if (_context.view.node.innerHTML != "") {
             _context.view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 400));
-            _context.view.reset(_fragment);
+            _context.view.reset(_context.fragment);
             _context.view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
-        } else _context.view.reset(_fragment);
+        } else _context.view.reset(_context.fragment);
         if (typeof _context.action == "function") _context.action();
     }
-    static swip = async (_context, _fragment, _second) => {
+    static swip = async (_context, _second) => {
         if (_context.view.node.innerHTML != "") {
             _context.view.node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
             await new Promise(code => setTimeout(code, _second * 400));
-            _context.view.reset(_fragment);
+            _context.view.reset(_context.fragment);
             _context.view.node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
-        } else _context.view.reset(_fragment);
+        } else _context.view.reset(_context.fragment);
         if (typeof _context.action == "function") _context.action();
     }
 }
