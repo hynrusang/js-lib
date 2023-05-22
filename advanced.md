@@ -148,9 +148,11 @@ console.log(test);
 ```
 #### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf  
 > 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
-> **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
-> **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
-> 이 메서드들은 **Array.from** 메서드를 사용하여 **Array**로 변환한 후 **indexOf** 메서드를 호출합니다.  
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+
+1. **(HTMLELEMENT.children || NodeList)** 를 **Array**로 변환합니다 **(실제 값이 변하진 않습니다.)**.  
+2. **indexOf** 메서드를 호출하여, 해당 **child**가 위치한 **index**를 반환합니다.  
+  
 예시: ([dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)를 추가로 이용합니다.)  
 ```js
 // index.html
