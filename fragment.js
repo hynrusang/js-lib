@@ -12,15 +12,19 @@ const state = new LiveData("first").registObserver(function () {
 });
 
 const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAnimation(FragAnimation.card, 1).registAction(() => {
+    console.log(this);
     state.value = "first";
 }).launch(),
 new Fragment("fragmentView", makeTestDom("B", "second")).registAnimation(FragAnimation.fade, 1).registAction(() => {
+    console.log(this)
     state.value = "second";
 }),
 new Fragment("fragmentView", makeTestDom("C", "third")).registAnimation(FragAnimation.swip, 1).registAction(() => {
+    console.log(this);
     state.value = "third";
 }),
 new Fragment("fragmentView", makeTestDom("D", "fourth")).registAction(() => {
+    console.log(this);
     state.value = "fourth";
 })];
 
