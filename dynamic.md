@@ -89,6 +89,7 @@ $("fieldset").add(
 ---
 #### 1-2. **@1.1.0** getter node  
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.  
+  
 예시:
 ```js
 const dom = new Dom("div");
@@ -100,6 +101,7 @@ dom.node; // <div></div>
 #### 1-3. **@1.0.0** children(num)
 > **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
+  
 예시:
 ```js
 new Dom("fieldset").add(
@@ -114,7 +116,8 @@ Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
 #### 1-4. **@1.0.0** add(...dom)
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.   
+> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
+  
 예시:
 ```js
 const form = new Dom("form", {onsubmit: e => {
@@ -138,6 +141,7 @@ const form = new Dom("form", {onsubmit: e => {
 ---
 #### 1-5. **@1.0.0** reset(...dom) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
+  
 예시:
 ```js
 const dom = new Dom("form", {onsubmit: e => {
@@ -163,6 +167,7 @@ dom.reset(
 ---
 #### 1-6. **@1.0.0** remove(num)
 > **num**번째 **자식 요소**를 **제거**합니다.   
+  
 예시:
 ```js
 new Dom("fieldset").add(
@@ -178,6 +183,7 @@ Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ---
 #### 1-7. **@1.0.0** set(additional)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
+  
 예시:
 ```js
 let color = "green";
@@ -233,7 +239,8 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 #### 2-2. **@1.1.0** registAction(action)
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
 > **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
-> 예시: ([5-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#5-1-constructorview-fragment)의 예시를 조금 수정합니다.)  
+  
+예시: ([5-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#5-1-constructorview-fragment)의 예시를 조금 수정합니다.)  
 > ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
 ```js
 /* index.html */
@@ -265,6 +272,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 #### 2-3. **@1.2.0** registAnimation(animation, second)  
 > **Fragment Animation**과 **실행 시간**을 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간**을 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+  
 예시:  
 ```js
 /* index.html */
@@ -289,7 +297,8 @@ const secondFragment = new Fragment("fragmentView", $("fieldset").add(
 > 등록된 **action**과 **animation**을 실행하고,  
 > **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
 > 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
-> 예시:  
+  
+예시:  
 ```js
 // index.html
 <fragment rid="target"></fragment>
@@ -405,6 +414,7 @@ const thirdFragment = new Fragment("fragmentView", $("fieldset").add(
   
 - **node**: **문자열** 또는 **HTMLElement**로, **Dom 객체**를 **생성** 또는 **타게팅**할 때 사용할 노드입니다.  
 - **additional** (선택적): **추가적인 옵션**을 담은 객체로, **Dom 객체** 생성 시 사용됩니다.  
+  
 예시:  
 ```js
 new Dom("fieldset").add(
@@ -442,7 +452,8 @@ scan 함수는 다음과 같은 동작을 수행합니다:
 일치하는 **첫 번째 요소**를 **반환**합니다
   
 2. 만약 **selector**가 **문자열이 아닌 경우**, **selector 자체**를 반환합니다.  
-> 예시:  
+  
+예시:  
 ```js
 scan("main");
 scan("!article");
@@ -473,6 +484,7 @@ snipe 함수는 다음과 같은 동작을 수행합니다:
 해당 요소를 **Dom 객체**로 **변환**하여, **Dom** 형식으로 반환합니다.  
   
 2. 만약 **selector**가 **문자열이 아닌 경우**, **selector 자체**를 **Dom 객체**로 **변환**하여 반환합니다.  
+  
 예시:  
 ```js
 snipe("body").add(
