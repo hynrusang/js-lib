@@ -117,7 +117,7 @@ Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.   
 예시:
 ```js
-new Dom("form", {onsubmit: e => {
+const form = new Dom("form", {onsubmit: e => {
     e.preventDefault();
     console.log(e.target);
 }}).add(
@@ -126,6 +126,14 @@ new Dom("form", {onsubmit: e => {
         new Dom("input", {type: "submit", value: "submit"})
     )
 )
+
+// form.node
+<form>
+    <fieldset>
+        <legend>this is legend</legend>
+        <input type="submit" value="submit">
+    </fieldset>
+</form>
 ```
 ---
 #### 1-5. **@1.0.0** reset(...dom) 
@@ -145,6 +153,12 @@ dom.reset(
     new Dom("input", {type: "text", placeholder: "was replaced"}),
     new Dom("input", {type: "submit", value: "submit"})
 )
+
+// dom.node
+<form>
+    <input type="text" placeholder="was replaced">
+    <input type="submit" value="submit">
+</form>
 ```
 ---
 #### 1-6. **@1.0.0** remove(num)
@@ -165,6 +179,9 @@ new Dom("fieldset").add(
 ```js
 let color = "green";
 new Dom("span").set({text: "hello!", style: `color: ${color}`});
+
+// dom.node
+<span style="color: green">hello!</span>
 ```
 ---
 ### 2. **@1.1.0** Fragment: class
