@@ -171,6 +171,9 @@ new Dom("fieldset").add(
         alert("clicked");
     }})
 ).remove(1)
+
+// return
+Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
 #### 1-7. **@1.0.0** set(additional)
