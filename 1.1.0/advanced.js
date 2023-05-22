@@ -19,7 +19,7 @@ const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
  * }}
  */
 const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
-HTMLElement.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this.children).indexOf(searchElement, fromIndex) } 
+HTMLElement.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this.children).indexOf(searchElement, fromIndex); } 
 NodeList.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this).indexOf(searchElement, fromIndex); }
 String.prototype.isEmpty = function (...ignore) { 
     let __$$TEMPSTRING = this;
