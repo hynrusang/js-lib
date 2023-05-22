@@ -17,7 +17,8 @@
 > **additional**은 **추가적인 option**을 담은 **객체 리터럴**입니다.  
 >  
 > 2. **@1.1.0** getter node  
-> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.
+> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
+> **#node**는 **HTMLElement**입니다.
 >  
 > 3. **@1.0.0** children(num)  
 > **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
@@ -88,7 +89,8 @@ $("fieldset").add(
 ```
 ---
 #### 1-2. **@1.1.0** getter node  
-> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. **#node**는 **HTMLElement**입니다.  
+> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다. 
+>  **#node**는 **HTMLElement**입니다.  
   
 예시:
 ```js
