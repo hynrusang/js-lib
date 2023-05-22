@@ -22,6 +22,7 @@ is 함수는 다음과 같은 동작을 수행합니다:
 - target이 **Class**의 **인스턴스**인지 확인합니다. (**instanceof** 연산자를 사용하여 확인)  
 2. target이 **원시 타입** 경우:  
 - target의 **타입**이 **Class**와 **일치**하는지 확인합니다. (**typeof** 연산자를 사용하여 확인)  
+  
 예시:  
 ```js
 is($("div"), Dom); // true
@@ -42,6 +43,7 @@ wait 함수는 다음과 같은 동작을 수행합니다:
   
 1. **setTimeout** 함수를 사용하여 **millisecond** 이후에 **null**를 실행합니다.  
 2. **빈 Promise 객체**를 반환합니다.  
+  
 예시:  
 ```js
 (async () => {
@@ -69,6 +71,7 @@ getIndex 함수는 다음과 같은 동작을 수행합니다:
 - **parent**의 **children 배열**에서 **child**의 **인덱스**를 찾습니다. (Array.prototype.indexOf를 사용하여 검색)  
 2. **parent**가 **Array**인 경우:
 - **parent 배열**에서 **child**의 **인덱스**를 찾습니다. (Array.prototype.indexOf를 사용하여 검색)  
+  
 예시:  
 ```js
 // test.html
@@ -85,27 +88,33 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4-1. **@1.0.0** (String || Array).prototype.isEmpty
+#### 4-1. **@1.1.0** (String || Array).prototype.isEmpty
+> **(이 메서드는 advanced 1.1.0에서 업데이트 되었습니다.)**  
 > 이 메서드는 **(String || Array)** 이 **empty**인지의 여부를 반환합니다.  
-> **그렇지 않으면 false**를 반환합니다.
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+  
+1. 현재 값을 **copy**한 **temp dataset**을 만듭니다.  
+2. **@1.1.0** 업데이트: (**ignore** 가변 매개변수를 받아 **temp dataset**에서 **해당 (String || element)** 을 **모두** 지웁니다.)  
+2. **temp dataset**의 **length**가 0인지 반환합니다.  
+  
 예시:
 ```js
 "".isEmpty();
 "d".isEmpty();
-" ".isEmpty();
+"     ".isEmpty(" ");
 
 [].isEmpty()
 [3].isEmpty()
-[null, undefined].isEmpty()
+[null, undefined, null, ""].isEmpty(null, undefined, "");
 
 // result
 true
 false
-false
+true
 
 true
 false
-false
+true
 ```
 ---
 #### 4-2. **@1.0.0** Array.prototype.add
@@ -115,6 +124,7 @@ false
   
 1. 주어진 데이터를 배열에 추가하기 위해 push 메서드를 호출합니다.  
 2. 변경된 배열을 반환합니다.  
+  
 예시:  
 ```js
 const test = [3,5,6];
@@ -131,7 +141,8 @@ test.add(9);
   
 1. 제거할 값의 인덱스를 찾습니다.  
 2. 만약 값이 배열 안에 존재하는 경우, 해당 인덱스를 사용하여 splice 메서드를 호출하여 값을 제거합니다.  
-3.  변경된 배열을 반환합니다.  
+3. 변경된 배열을 반환합니다.  
+  
 예시:
 ```js
 const test = [3,5,6,7,9,11];
@@ -143,9 +154,11 @@ console.log(test);
 ```
 #### 4-4. **@1.1.0** (HTMLELEMENT || NodeList).prototype.indexOf  
 > 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
-> **HTMLElement.prototype.indexOf** 메서드와 **NodeList.prototype.indexOf** 메서드는 각각  
-> **HTMLElement**의 **children**과 **NodeList**로부터 **특정 element**의 **index**를 찾는 역할을 합니다.  
-> 이 메서드들은 **Array.from** 메서드를 사용하여 **Array**로 변환한 후 **indexOf** 메서드를 호출합니다.  
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+
+1. **(HTMLELEMENT.children || NodeList)** 를 **Array**로 변환합니다 **(실제 값이 변하진 않습니다.)**.  
+2. **indexOf** 메서드를 호출하여, 해당 **child**가 위치한 **index**를 반환합니다.  
+  
 예시: ([dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)를 추가로 이용합니다.)  
 ```js
 // index.html
@@ -180,4 +193,6 @@ scan("!article").indexOf(scan("#page-2"));
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
 > create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
 >  
+> @update String.property.isEmpty(): boolean;  
+> @update Array.property.isEmpty(): boolean;  
 > @deprecated getIndex(parent, child): number
