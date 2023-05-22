@@ -239,6 +239,22 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
     mainFragment.launch();
 }}))
 ```
+---  
+#### 2-2. **@1.2.0** **getter** (action || view || fragment)  
+> **getter** (action || view || fragment)는 각각 (**this.#action** || **this.#view** || **this.#fragment**)를 반환합니다.  
+> (별도의 **setter**는 존재하지 않습니다.)  
+  
+예시:
+```js
+const testFragment = new Fragment("fragmentView", $("div")).registAction(() => {
+    console.log("Fragment start...");
+}
+testFragment.action;
+testFragment.view;
+testFragment.fragment;
+
+// return
+```
 ---
 #### 2-3. **@1.1.0** registAction(action)
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
