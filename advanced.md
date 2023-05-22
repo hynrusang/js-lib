@@ -185,4 +185,6 @@ scan("!article").indexOf(scan("#page-2"));
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
 > create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
 >  
+> @update String.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @update Array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @deprecated getIndex(parent, child): number
