@@ -118,7 +118,7 @@ data was changed!
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 json의 data는 달라지지 않습니다.)**  
   
-> 이 매서드는 다음과 같은 작업을 수행합니다:  
+이 매서드는 다음과 같은 작업을 수행합니다:  
   
 1. 빈 **json 객체**인 **data**를 생성합니다.  
   
@@ -146,7 +146,7 @@ JSON.unlivedata(resource)
 > **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 array의 data는 달라지지 않습니다.)**  
   
-> 이 매서드는 다음과 같은 작업을 수행합니다:  
+이 매서드는 다음과 같은 작업을 수행합니다:  
   
 1. 빈 **Array**인 **data**를 생성합니다.  
   
