@@ -101,8 +101,8 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```js
 "".isEmpty(); // @1.0.0
 "d".isEmpty(); // @1.0.0
-"   ".isEmpty(); @1.0.0
-"     ".isEmpty(" "); @1.1.0
+"   ".isEmpty(); // @1.0.0
+"     ".isEmpty(" "); // @1.1.0
 
 [].isEmpty() // @1.0.0
 [3].isEmpty() // @1.0.0
