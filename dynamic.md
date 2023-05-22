@@ -246,14 +246,19 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
   
 예시:
 ```js
-const testFragment = new Fragment("fragmentView", $("div")).registAction(() => {
+const testFragment = new Fragment("fragmentView", $("div"), $("div")).registAction(() => {
     console.log("Fragment start...");
-}
+});
 testFragment.action;
 testFragment.view;
 testFragment.fragment;
 
 // return
+() => {
+    console.log("Fragment start...");
+}
+Dom {#node: fragment, children: ƒ, add: ƒ, remove: ƒ, reset: ƒ, …}
+[Dom, Dom]
 ```
 ---
 #### 2-3. **@1.1.0** registAction(action)
