@@ -28,7 +28,7 @@ String.prototype.isEmpty = function (...ignore) {
 }
 Array.prototype.isEmpty = function (...ignore) { 
     let __$$TEMPARRAY = [];
-    for (let i = 0; i < this.length; i++) if (!ignore.includes(this[i])) __$$TEMPARRAY.push(this[i]);
+    for (let __$$DATA of this) if (!ignore.includes(__$$DATA)) __$$TEMPARRAY.push(__$$DATA);
     return __$$TEMPARRAY.length === 0; 
 }
 Array.prototype.add = function (data) { 
