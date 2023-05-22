@@ -354,7 +354,7 @@ mainFragment.launch();
 - 각각의 Animation들의 모습은 다음과 같습니다.
 #### 3-1. **@1.2.0** FragAnimation.card
 ```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
     $("input", {type: "button", value: "go to second fragment"})
 )).registAnimation(FragAnimation.card, 0.8).launch();
@@ -364,7 +364,7 @@ const mainFragment = new Fragment("fragmentView", $("fieldset").add(
 ---
 #### 3-2. **@1.2.0** FragAnimation.fade
 ```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
     $("input", {type: "button", value: "go to second fragment"})
 )).registAnimation(FragAnimation.fade, 0.8).launch();
@@ -374,7 +374,7 @@ const mainFragment = new Fragment("fragmentView", $("fieldset").add(
 ---
 #### 3-3. **@1.2.0** FragAnimation.swip
 ```js
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
+new Fragment("fragmentView", $("fieldset").add(
     $("legend", {text: "first fragment", style: "color: red;"}),
     $("input", {type: "button", value: "go to second fragment", onclick: () => {
         secondFragment.launch();
