@@ -1,4 +1,4 @@
-# ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) LiveData (in js)
+# ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) LiveData Manager (LM)
 - [이전으로](https://github.com/hynrusang/js-lib)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/livedata.js)
 ---
