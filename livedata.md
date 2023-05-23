@@ -1,9 +1,9 @@
 # ![JavaScript icon](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/33px-Unofficial_JavaScript_logo_2.svg.png) LiveData (in js)
 - [이전으로](https://github.com/hynrusang/js-lib)
-- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/livedata.js)
+- [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.1.0/livedata.js)
 ---
-- **이 문서는 developer 버전인 livedata 1.2.0을 다룹니다.**  
-- **현재 release 버전은 livedata 1.1.0입니다.**  
+- **이 문서는 developer 버전인 livedata 1.1.0을 다룹니다.**  
+- **현재 release 버전은 livedata 1.0.0입니다.**  
 ## 정보
 - 이건 **kotlin**에 있는 **LiveData**를 구현한 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
@@ -34,7 +34,11 @@
 ```js
 const db = new LiveData(3);
 ```
-> 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면,  
+> 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 하면 다.  
+```js
+const db = new LiveData(3, Number);
+```
+> 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
 db.registObserver(function () { console.log(this.value); });
 ```
@@ -184,7 +188,3 @@ Array.unlivedata(data)
 > @update Array.unlivedata(array) : Array;  
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
----
-> 1.2.0  
-> @remove LiveData.set();  
-> @remove LiveData.get();  
