@@ -235,6 +235,7 @@ Array.unlivedata(data)
 > create Array.unlivedata(array) : Array;  
 ---
 > 1.1.0  
+> create class LiveDataManager;  
 > create setter LiveData.value;  
 > create getter LiveData.value;  
 >  
