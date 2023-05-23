@@ -35,7 +35,7 @@
 > **changed** 여부를 판단하고, **changed** 된 경우, **observer**를 호출합니다. 이후에는 **this: LiveData**를 반환합니다.  
 >  
 > 6. **@1.0.0** **@deprecated** get();  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
 > **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
 ---
 #### 1-1. constructor(data)
@@ -147,7 +147,7 @@ db.set([2, 3, 5, 6])
 ```
 ---
 #### 1-6. **@1.0.0** **@deprecated** set(data);  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
 > **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
   
 예시:
