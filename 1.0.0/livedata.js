@@ -19,7 +19,7 @@ const LiveData = class {
     /**
      * @type {() => Any}
      */
-    get = () => [...[this.#data]][0];
+    get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     /**
      * @type {(observer: Function) => LiveData}
      */
