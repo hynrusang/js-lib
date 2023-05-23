@@ -58,7 +58,7 @@ true
 ---
 ### 3. **@1.0.0** **@deprecated**  getIndex(parent, child) : number  
 > **이 function은 advanced 1.2.0부터 사용 중단됩니다.**  
-> **NodeList.prototype.indexOf나 HTMLElement.prototype.indexOf를 대신 이용하십시오.**  
+> **(HTMLElement || NodeList).prototype.indexOf를 대신 이용하십시오.**  
 > **getIndex** 함수는 **parent** 내에서 **child**의 **인덱스**를 가져오는 함수입니다.  
 > getIndex 함수는 다음과 같은 **매개변수**를 받습니다.  
   
@@ -120,42 +120,7 @@ false
 true
 ```
 ---
-#### 4-2. **@1.0.0** Array.prototype.add
-> 이 메서드는 **Array**에서 **특정 data**을 **push**하는 메서드입니다.  
-> 기존의 **push**랑 다르게, 이 메서드의 반환 타입은 **Array**입니다.  
-> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
-  
-1. 주어진 데이터를 배열에 추가하기 위해 push 메서드를 호출합니다.  
-2. 변경된 배열을 반환합니다.  
-  
-예시:  
-```js
-const test = [3,5,6];
-test.add(7);
-test.add(9);
-
-// return
-[3, 5, 6, 7, 9]
-```
----
-#### 4-3. **@1.0.0** Array.prototype.remove  
-> 이 메서드는 **Array**에서 **특정 data**을 **remove**하는 메서드입니다.  
-> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
-  
-1. 제거할 값의 인덱스를 찾습니다.  
-2. 만약 값이 배열 안에 존재하는 경우, 해당 인덱스를 사용하여 splice 메서드를 호출하여 값을 제거합니다.  
-3. 변경된 배열을 반환합니다.  
-  
-예시:
-```js
-const test = [3,5,6,7,9,11];
-test.remove(3).remove(6);
-console.log(test);
-
-// console
-[5,7,9,11]
-```
-#### 4-4. **@1.1.0** (HTMLElement|| NodeList).prototype.indexOf  
+#### 4-2. **@1.1.0** (HTMLElement|| NodeList).prototype.indexOf  
 > 이 메서드는 [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)와의 호완성을 목적으로 확장되었습니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
 
@@ -180,6 +145,42 @@ scan("!article").indexOf(scan("#page-2"));
 1
 ```
 ---
+#### 4-3. **@1.0.0** Array.prototype.add
+> 이 메서드는 **Array**에서 **특정 data**을 **push**하는 메서드입니다.  
+> 기존의 **push**랑 다르게, 이 메서드의 반환 타입은 **Array**입니다.  
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+  
+1. 주어진 데이터를 배열에 추가하기 위해 push 메서드를 호출합니다.  
+2. 변경된 배열을 반환합니다.  
+  
+예시:  
+```js
+const test = [3,5,6];
+test.add(7);
+test.add(9);
+
+// return
+[3, 5, 6, 7, 9]
+```
+---
+#### 4-4. **@1.0.0** Array.prototype.remove  
+> 이 메서드는 **Array**에서 **특정 data**을 **remove**하는 메서드입니다.  
+> 함수 내부에서는 다음과 같은 작업을 수행합니다:  
+  
+1. 제거할 값의 인덱스를 찾습니다.  
+2. 만약 값이 배열 안에 존재하는 경우, 해당 인덱스를 사용하여 splice 메서드를 호출하여 값을 제거합니다.  
+3. 변경된 배열을 반환합니다.  
+  
+예시:
+```js
+const test = [3,5,6,7,9,11];
+test.remove(3).remove(6);
+console.log(test);
+
+// console
+[5,7,9,11]
+```
+---
 ## 업데이트 내역
 > 1.0.0  
 > create Array.prototype.add(data): Array  
@@ -189,13 +190,9 @@ scan("!article").indexOf(scan("#page-2"));
 > @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 >   
-> @get String.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get Array.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get (String || Array).property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 ---
 > 1.1.0  
-> create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
-> create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
+> create (HTMLElement || NodeList).prototype.indexOf(searchElement, fromIndex): Number  
 >  
-> @update String.property.isEmpty(): boolean;  
-> @update Array.property.isEmpty(): boolean;  
 > @deprecated getIndex(parent, child): number

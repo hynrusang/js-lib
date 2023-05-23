@@ -413,6 +413,8 @@ $("fieldset").add(
 ---
 ### 5. **@1.0.0** scan(selector) : document.querySelector : document.querySelectorAll
 > **scan** 함수는 **selector**를 기반으로 **HTMLElement**를 **검색**하는 함수입니다.  
+> 또한, 이 함수가 반환하는 **HTMLElement**나 **NodeList**는  
+> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md)의 **(HTMLElement || NodeList).prototype.indexOf** 와 연계될 수 있습니다.  
 > scan 함수는 다음과 같은 **매개변수**를 받습니다.  
   
 - **selector**: 검색할 요소의 **선택자**입니다.  
@@ -563,10 +565,11 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 ---
 > 1.2.0  
 > create static class FragAnimation;  
-> create method Fragment.registAnimation(animation, millisecond);  
+> create method Fragment.registAnimation(animation, millisecond): Fragment;  
 > create getter Fragment.(action || view || fragment)  
 >  
 > @update Dom._node to private;  
-> @update Fragment.launch();  
+> @update Dom.set(additional): Dom
+> @update Fragment.launch(): Fragment;  
 > @remove loading;  
-> @remove Dom.copy(count);  
+> @remove Dom.copy(count): Dom[];  
