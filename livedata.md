@@ -47,6 +47,8 @@ const db = new LiveData(3);
 > 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
 const db = new LiveData(3, Number);
+
+db.value = "str"; // throw TypeError;
 ```
 > 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
@@ -116,17 +118,17 @@ data.dispatchObserver();
   
 예시:  
 ```js
-const db = new LiveData(5, Number).registObserver(function () {
+const db = new LiveData([3, 5, 6], Array).registObserver(function () {
     console.log("data was changed!");
 })
-db.value = 8; // value setter
-db.value = 6; // value setter
+db.value = [2, 4, 8]; // value setter
+db.value = [6, 7, 3]; // value setter
 console.log(db.value); // value getter
 
 // console
 data was changed!
 data was changed!
-6
+[6, 7, 3]
 ```
 ---
 #### 1-5. **@1.0.0** **@deprecated** set(data);  
@@ -137,22 +139,21 @@ data was changed!
   
 예시:
 ```js
-const db = new LiveData([3, 5, 6], Array).registObserver(function () {
+const db = new LiveData({name: "tester"}, Object).registObserver(function () {
     console.log(this.get());
 })
-db.set([2, 3, 5, 6])
+db.set({name: "tester"})
 
 // console
-[2, 3, 5, 6]
+{name: "tester"}
 ```
 ---
 #### 1-6. **@1.0.0** **@deprecated** get();  
 > **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
 > **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
   
-예시:
+예시: ([]에서 이어서 작성합니다.)
 ```js
-const db = new LiveData({name: "hynrusang"}, Object)
 console.log(db.get())
 
 // console
