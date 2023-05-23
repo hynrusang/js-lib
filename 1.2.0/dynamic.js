@@ -52,7 +52,7 @@ const Dom = class {
                 else if (key.indexOf("on") != -1) this.#node[key] = value
                 else this.#node.setAttribute(key, value);
             }
-        } else if (typeof additional !== 'undefined') throw new Error('Additional parameter must be an {key: value} object');
+        } else throw new Error('Additional parameter must be an {key: value} object');
         return this;
     };
     /**
@@ -60,7 +60,7 @@ const Dom = class {
      */
     constructor(node, additional) {
         this.#node = (typeof node === "string") ? document.createElement(node) : node;
-        this.set(additional);
+        if (typeof additional !== 'undefined') this.set(additional);
     }
 }
 const Fragment = class {
