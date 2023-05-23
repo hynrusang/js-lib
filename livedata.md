@@ -142,7 +142,7 @@ data was changed!
 const db = new LiveData({name: "tester"}, Object).registObserver(function () {
     console.log(this.get());
 })
-db.set({name: "tester"})
+db.set({name: "hynrusang"})
 
 // console
 {name: "tester"}
