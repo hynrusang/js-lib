@@ -27,6 +27,16 @@
 >  
 > 4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
+>  
+> 5. **@1.0.0** **@deprecated** set(data);  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **set** 메서드는 **LiveData**의 **data**를 설정하는 역할을 합니다.  
+> 매개변수로 전달된 **data**를 **this.#data**와 **JSON.stringify**를 통해 비교하여,  
+> **changed** 여부를 판단하고, **changed** 된 경우, **observer**를 호출합니다. 이후에는 **this: LiveData**를 반환합니다.  
+>  
+> 6. **@1.0.0** **@deprecated** get();  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
 ---
 #### 1-1. constructor(data)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
@@ -59,9 +69,10 @@ db.value = 7;
 #### 1-2. **@1.0.0** registObserver(observer)
 > **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
+  
 예시:
 ```js
-const db = new LiveData("data").registObserver(function () { console.log(this.value); });  
+const db = new LiveData("data", String).registObserver(function () { console.log(this.value); });  
 db.value = "data renew";  
 
 // console
@@ -71,9 +82,10 @@ data renew
 #### 1-3. **@1.0.0** **@deprecated** dispatchObserver()  
 > **observer**를 **강제 호출**하는 메서드입니다.  
 > **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**  
+  
 예시:  
 ```js
-const data = new LiveData(32).registObserver(function () {
+const data = new LiveData(32, Number).registObserver(function () {
     console.log(this.value)
 });
 data.dispatchObserver();
@@ -104,7 +116,7 @@ data.dispatchObserver();
   
 예시:  
 ```js
-const db = new LiveData(5).registObserver(function () {
+const db = new LiveData(5, Number).registObserver(function () {
     console.log("data was changed!");
 })
 db.value = 8; // value setter
@@ -115,6 +127,36 @@ console.log(db.value); // value getter
 data was changed!
 data was changed!
 6
+```
+---
+#### 1-5. **@1.0.0** **@deprecated** set(data);  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **set** 메서드는 **LiveData**의 **data**를 설정하는 역할을 합니다.  
+> 매개변수로 전달된 **data**를 **this.#data**와 **JSON.stringify**를 통해 비교하여,  
+> **changed** 여부를 판단하고, **changed** 된 경우, **observer**를 호출합니다. 이후에는 **this: LiveData**를 반환합니다.  
+  
+예시:
+```js
+const db = new LiveData([3, 5, 6], Array).registObserver(function () {
+    console.log(this.get());
+})
+db.set([2, 3, 5, 6])
+
+// console
+[2, 3, 5, 6]
+```
+---
+#### 1-6. **@1.0.0** **@deprecated** set(data);  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
+> **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
+  
+예시:
+```js
+const db = new LiveData({name: "hynrusang"}, Object)
+console.log(db.get())
+
+// console
+{name: 'hynrusang'}
 ```
 ---
 ### 3. prototype
