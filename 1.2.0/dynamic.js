@@ -42,7 +42,7 @@ const Dom = class {
         return this;
     }
     /**
-     * @type {(additional: object) => Dom}
+     * @type {(additional: Object) => Dom}
      */
     set = additional => {
         if (typeof additional === 'object') {
@@ -56,7 +56,7 @@ const Dom = class {
         return this;
     };
     /**
-     * @type {(node: string | HTMLElement, additional: object) => Dom}
+     * @type {(node: string | HTMLElement, additional: Object?) => Dom}
      */
     constructor(node, additional) {
         this.#node = (typeof node === "string") ? document.createElement(node) : node;
