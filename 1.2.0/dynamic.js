@@ -52,7 +52,7 @@ const Dom = class {
                 else if (key.indexOf("on") != -1) this.#node[key] = value
                 else this.#node.setAttribute(key, value);
             }
-        } else throw new Error('Additional parameter must be an {key: value} object');
+        } else if (typeof additional !== 'undefined') throw new Error('Additional parameter must be an {key: value} object');
         return this;
     };
     /**
