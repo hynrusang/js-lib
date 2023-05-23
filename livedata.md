@@ -170,7 +170,8 @@ console.log(db.get())
 ```
 ---
 ### 3. prototype
-#### 3-1. **@1.0.0** JSON.unlivedata(json)   
+#### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
+> **(이 메서드는 livedata 1.2.0부터 지원 중단 됩니다. LiveDataManager.toObject을 대신 이용하십시오.)**  
 > **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 json의 data는 달라지지 않습니다.)**  
   
@@ -198,7 +199,8 @@ JSON.unlivedata(resource)
 {name: 'hynrusang', id: 32}
 ```
 ---
-#### 3-2. **@1.0.0** Array.unlivedata(array)
+#### 3-2. **@1.0.0** **@deprecated** Array.unlivedata(array)  
+> **(이 메서드는 livedata 1.2.0부터 지원 중단 됩니다. LiveDataManager.toArray을 대신 이용하십시오.)**  
 > **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
 > **(실제 array의 data는 달라지지 않습니다.)**  
   
@@ -233,10 +235,11 @@ Array.unlivedata(data)
 > create Array.unlivedata(array) : Array;  
 ---
 > 1.1.0  
+> create class LiveDataManager;  
 > create setter LiveData.value;  
 > create getter LiveData.value;  
 >  
-> @update JSON.unlivedata(json) : Object;  
-> @update Array.unlivedata(array) : Array;  
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
+> @deprecated JSON.unlivedata(json) : Object;  
+> @deprecated Array.unlivedata(array) : Array;  
