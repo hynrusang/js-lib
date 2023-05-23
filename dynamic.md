@@ -565,10 +565,11 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 ---
 > 1.2.0  
 > create static class FragAnimation;  
-> create method Fragment.registAnimation(animation, millisecond);  
+> create method Fragment.registAnimation(animation, millisecond): Fragment;  
 > create getter Fragment.(action || view || fragment)  
 >  
 > @update Dom._node to private;  
-> @update Fragment.launch();  
+> @update Dom.set(additional): Dom
+> @update Fragment.launch(): Fragment;  
 > @remove loading;  
-> @remove Dom.copy(count);  
+> @remove Dom.copy(count): Dom[];  
