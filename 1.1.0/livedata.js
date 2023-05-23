@@ -6,7 +6,10 @@
 const LiveData = class {
     #data;
     #observer;
+    #allowed;
     set value(data) {
+        if (typeof this.#allowed === "object" && !(data instanceof this.#allowed)) throw new TypeError(`Invalid type of data. Data must be of type ${this.#allowed}.`);
+        else if (typeof this.#allowed !== 'undefined' && typeof data !== this.name.toLocaleLowerCase()) throw new TypeError(`Invalid type of data. Data must be of type ${this.#allowed}.`)
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
         this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
@@ -26,8 +29,9 @@ const LiveData = class {
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
-    constructor(data) {
+    constructor(data, allowed) {
         this.#data = data;
+        this.#allowed = allowed;
     }
 
     /**
@@ -44,7 +48,7 @@ const LiveData = class {
      * @deprecated This method is not supported starting with livedata 1.2.0. use new LiveData().value getter instead.
      * @type {() => Any}
      */
-    get = () => [...[this.#data]][0];
+    get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
 }
 JSON.unlivedata = json => {
     let data = {};

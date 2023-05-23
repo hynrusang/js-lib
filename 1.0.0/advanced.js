@@ -7,7 +7,7 @@
  * @description this function will return (if target is Object, target instanceof Class. else, target === Class.type)
  * @type {(target: any, Class: any) => boolean}
  */
-const is = (target, Class) => (typeof target == "object") ? (target instanceof Class) : (typeof target === Class.toString().split(" ")[1].split("(")[0].toLocaleLowerCase());
+const is = (target, Class) => (typeof target === "object") ? (target instanceof Class) : (typeof target === Class.name.toLocaleLowerCase());
 /**
  * @type {(millisecond: number) => Promise<>}
  */
