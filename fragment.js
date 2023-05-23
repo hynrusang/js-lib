@@ -7,7 +7,6 @@
     })
 )
 const state = new LiveData("first", String).registObserver(function () {
-    console.log(`${this.value} Fragment is stating now...`);
     scan("nav").innerHTML = `Current-Fragment://${this.value}`
 });
 
