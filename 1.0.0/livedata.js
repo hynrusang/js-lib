@@ -6,14 +6,16 @@
 const LiveData = class {
     #data;
     #observer;
+    #allowed;
     /**
      * @type {(data: Any) => LiveData}
      */
     set = data => {
+        if (typeof this.#allowed === "object" && !(data instanceof this.#allowed)) throw new TypeError(`Invalid type of data. Data must be of type ${this.#allowed}.`);
+        else if (typeof this.#allowed !== 'undefined' && typeof data !== this.name.toLocaleLowerCase()) throw new TypeError(`Invalid type of data. Data must be of type ${this.#allowed}.`)
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
         this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
-        return this;
     }
     /**
      * @type {() => Any}
@@ -31,8 +33,9 @@ const LiveData = class {
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
-    constructor(data) {
+    constructor(data, allowed) {
         this.#data = data;
+        this.#allowed = allowed;
     }
 }
 JSON.unlivedata = json => {
