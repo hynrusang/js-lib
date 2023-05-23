@@ -549,8 +549,8 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @transfer String.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @transfer Array.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer String.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer Array.property.isEmpty(): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer String.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer Array.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @remove loading(jhpath): void;  
