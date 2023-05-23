@@ -88,13 +88,12 @@ getIndex([3, 5, 6, 7, 9], 7); // 3
 ```
 ---
 ### 4. prototype
-#### 4-1. **@1.1.0** (String || Array).prototype.isEmpty
-> **(이 메서드는 advanced 1.1.0에서 업데이트 되었습니다.)**  
+#### 4-1. **@1.0.0** (String || Array).prototype.isEmpty
 > 이 메서드는 **(String || Array)** 이 **empty**인지의 여부를 반환합니다.  
 > 함수 내부에서는 다음과 같은 작업을 수행합니다:  
   
 1. 현재 값을 **copy**한 **temp dataset**을 만듭니다.  
-2. **@1.1.0** 업데이트: (**ignore** 가변 매개변수를 받아 **temp dataset**에서 **해당 (String || element)** 을 **모두** 지웁니다.)  
+2. **ignore** 가변 매개변수를 받아 **temp dataset**에서 **해당 (String || element)** 을 **모두** 지웁니다.  
 2. **temp dataset**의 **length**가 0인지 반환합니다.  
   
 예시:
@@ -190,8 +189,8 @@ scan("!article").indexOf(scan("#page-2"));
 > @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 >   
-> @get String.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get Array.property.isEmpty(): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get String.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get Array.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 ---
 > 1.1.0  
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
