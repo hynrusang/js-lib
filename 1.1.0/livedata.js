@@ -49,6 +49,9 @@ const LiveData = class {
      */
     get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
 }
+const LiveDataManager = class {
+    
+}
 JSON.unlivedata = json => {
     let data = {};
     for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].value : json[key];
