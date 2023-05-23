@@ -54,7 +54,7 @@ const LiveDataManager = class {
     toObject;
 }
 /**
- * @deprecated This method is not supported starting with livedata 1.2.0.
+ * @deprecated This method is not supported starting with livedata 1.2.0. use LiveDataManager.toObject instead.
  * @type {(json: Object) => Object}
  */
 JSON.unlivedata = json => {
@@ -63,7 +63,7 @@ JSON.unlivedata = json => {
     return data;
 }
 /**
- * @deprecated This method is not supported starting with livedata 1.2.0.
+ * @deprecated This method is not supported starting with livedata 1.2.0. use LiveDataManager.toArray instead.
  * @type {(json: Object) => Object}
  */
 Array.unlivedata = array => {
