@@ -169,6 +169,9 @@ console.log(db.get())
 {name: 'hynrusang'}
 ```
 ---
+### 2. @1.1.0 LiveDataManager: Class  
+> **@unusable**  
+---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
 > **(이 메서드는 livedata 1.2.0부터 지원 중단 됩니다. LiveDataManager.toObject을 대신 이용하십시오.)**  
