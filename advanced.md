@@ -196,6 +196,4 @@ scan("!article").indexOf(scan("#page-2"));
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
 > create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
 >  
-> @update String.property.isEmpty(): boolean;  
-> @update Array.property.isEmpty(): boolean;  
 > @deprecated getIndex(parent, child): number
