@@ -46,9 +46,12 @@ const Dom = class {
      */
     set = additional => {
         if (additional) {
-            const keys = Object.keys(additional);
-            const values = Object.values(additional);
-            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this.#node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this.#node.innerText = values[i] : (keys[i].indexOf("on") != -1) ? this.#node[keys[i]] = values[i] : this.#node.setAttribute(keys[i], values[i]);
+            for (const [key, value] of Object.entries(additional)) {
+                if (["innerHTML", "html"].includes(key) this.#node.innerHTML = value
+                else if (["innerText", "text"].includes(key) this.#node.innerText = value
+                else if (key.indexOf("on") != -1) this.#node[key] = value
+                else this.#node.setAttribute(keys[i], values[i]);
+            }
         }
         return this;
     };
