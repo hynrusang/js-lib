@@ -50,13 +50,22 @@ const LiveData = class {
     get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
 }
 const LiveDataManager = class {
-    
+    toArray;
+    toObject;
 }
+/**
+ * @deprecated This method is not supported starting with livedata 1.2.0.
+ * @type {(json: Object) => Object}
+ */
 JSON.unlivedata = json => {
     let data = {};
     for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].value : json[key];
     return data;
 }
+/**
+ * @deprecated This method is not supported starting with livedata 1.2.0.
+ * @type {(json: Object) => Object}
+ */
 Array.unlivedata = array => {
     let data = []
     for (let inner of array) data.push((inner instanceof LiveData) ? inner.value : inner);
