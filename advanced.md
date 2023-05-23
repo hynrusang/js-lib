@@ -190,11 +190,9 @@ console.log(test);
 > @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 > @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 >   
-> @get String.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get Array.property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get (String || Array).property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 ---
 > 1.1.0  
-> create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number  
-> create NodeList.prototype.indexOf(searchElement, fromIndex): Number  
+> create (HTMLElement || NodeList).prototype.indexOf(searchElement, fromIndex): Number  
 >  
 > @deprecated getIndex(parent, child): number
