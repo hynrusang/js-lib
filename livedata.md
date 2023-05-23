@@ -152,7 +152,7 @@ db.set({name: "tester"})
 > **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
 > **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
   
-예시: ([]에서 이어서 작성합니다.)
+예시: ([1-5](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-5-100-deprecated-setdata)에서 이어서 작성합니다.)
 ```js
 console.log(db.get())
 
