@@ -45,14 +45,14 @@ const Dom = class {
      * @type {(additional: object) => Dom}
      */
     set = additional => {
-        if (additional) {
+        if (typeof additional === 'object') {
             for (const [key, value] of Object.entries(additional)) {
                 if (["innerHTML", "html"].includes(key)) this.#node.innerHTML = value
                 else if (["innerText", "text"].includes(key)) this.#node.innerText = value
                 else if (key.indexOf("on") != -1) this.#node[key] = value
                 else this.#node.setAttribute(key, value);
             }
-        }
+        } else throw new Error('Additional parameter must be an {key: value} object');
         return this;
     };
     /**
