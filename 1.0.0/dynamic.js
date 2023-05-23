@@ -60,7 +60,7 @@ class DomExpert extends DomDefault {
         return this;
     }
     /**
-     * @type {(additional: Object) => DomExpert}
+     * @type {(additional: Object?) => DomExpert}
      */
     set = additional => {
         if (additional) {
@@ -71,7 +71,7 @@ class DomExpert extends DomDefault {
         return this;
     };
     /**
-     * @type {(node: string | HTMLElement, ...attribute: string) => DomExpert}
+     * @type {(node: string | HTMLElement, additional: Object?) => DomExpert}
      */
     constructor(node, additional) {
         super(node);
