@@ -44,7 +44,7 @@
 ```js
 const db = new LiveData(3);
 ```
-> 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 하면 다.  
+> 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
 const db = new LiveData(3, Number);
 ```
