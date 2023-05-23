@@ -146,7 +146,7 @@ db.set([2, 3, 5, 6])
 [2, 3, 5, 6]
 ```
 ---
-#### 1-6. **@1.0.0** **@deprecated** set(data);  
+#### 1-6. **@1.0.0** **@deprecated** get();  
 > **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
 > **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
   
