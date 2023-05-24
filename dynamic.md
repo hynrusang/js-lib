@@ -354,9 +354,6 @@ mainFragment.launch();
 > **swip animation**을 수행하는 메서드입니다.  
 > **프레그먼트**가 **비어 있지 않은 경우**, 오른쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
 > 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
->  
-> 4. **@1.2.0** book  
-> @unusable  
 - 각각의 Animation들의 모습은 다음과 같습니다.  
 ---  
 #### 3-1. **@1.2.0** card
@@ -390,9 +387,6 @@ new Fragment("fragmentView", $("fieldset").add(
 ```  
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
   
----
-#### 3-4. **@1.2.0** book  
-> @unusable  
 ---
 ### 4. **@1.0.0** $(node, additional) : Dom
 > **$** 함수는 **Dom 객체**를 **생성** 또는 **타게팅**하여 반환하는 함수입니다.  
