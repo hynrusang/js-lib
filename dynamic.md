@@ -388,7 +388,7 @@ new Fragment("fragmentView", $("fieldset").add(
     }})
 )).registAnimation(FragAnimation.swip, 0.8).launch();
 ```  
-<img src="https://github.com/hynrusang/jslib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
   
 ---
 #### 3-4. **@1.2.0** book  
