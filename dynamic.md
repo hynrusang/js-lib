@@ -201,7 +201,7 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(view, ...fragment)  
-> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **문자열**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
+> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **String**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
 >  
 > 2. **@1.2.0** **getter** (action || view || fragment)  
 > **getter** (action || view || fragment)는 각각 (**this.#action** || **this.#view** || **this.#fragment**)를 반환합니다.  
