@@ -156,8 +156,7 @@ scan("!article").indexOf(scan("#page-2"));
 예시:  
 ```js
 const test = [3,5,6];
-test.add(7);
-test.add(9);
+test.add(7).add(9);
 
 // return
 [3, 5, 6, 7, 9]
