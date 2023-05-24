@@ -275,7 +275,7 @@ Dom {#node: fragment, children: ƒ, add: ƒ, remove: ƒ, reset: ƒ, …}
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-const state = new LiveData("first").registObserver(function () {
+const state = new LiveData("first", String).registObserver(function () {
     alert(`${this.value} Fragment is stating now...`);
 });
 const mainFragment = new Fragment("fragmentView", $("fieldset").add(
