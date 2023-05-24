@@ -51,11 +51,6 @@ const LiveData = class {
 }
 const LiveDataManager = class {
     #resource;
-    set id(livedataObject) {
-        if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
-        if (!(Object.values(livedataObject)[0] instanceof LiveData)) throw new TypeError(`invalid type of data's value. Data's value must be of instance LiveData`);
-        this.#resource[Object.keys(livedataObject)[0]] = Object.values(livedataObject)[0]
-    }
     get id() {
         return this.#resource;
     }
