@@ -532,14 +532,10 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > create snipe(selector): DomExpert | DomExpert[];  
 > create loading(jhpath): void;  
 >   
-> create String.property.isEmpty(): boolean;  
-> create Array.property.isEmpty(): boolean;  
-> create String.prototype.in(data): boolean;  
-> create Array.prototype.in(data): boolean;  
-> create String.property.count(data): number;  
-> create Array.property.count(data): number;  
-> create String.property.last(): char;  
-> create Array.property:last(): any;  
+> create (String || Array).property.isEmpty(): boolean;  
+> create (String || Array).prototype.in(data): boolean;  
+> create (String || Array).property.count(data): number;  
+> create (String || Array).property.last(): char;  
 ---
 > 1.1.0  
 > combine class DomDefault, DomExpert to Dom;  
@@ -552,17 +548,12 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @update and @transfer String.property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @update and @transfer Array.property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @transfer String.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @transfer Array.prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer (String || Array).property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @transfer (String || Array).prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @remove loading(jhpath): void;  
-> @remove String.property.count(data): number;  
-> @remove Array.property.count(data): number;  
-> @remove String.prototype.in(data): boolean;  
-> @remove Array.prototype.in(data): boolean;  
-> @remove String.property.last(): char;  
-> @remove Array.property:last(): any;  
+> @remove (String || Array).property.count(data): number;  
+> @remove (String || Array).prototype.in(data): boolean;  
+> @remove (String || Array).property.last(): char;   
 ---
 > 1.2.0  
 > create static class FragAnimation;  
