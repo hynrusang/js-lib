@@ -15,8 +15,8 @@ Note:
 
 Example:
 <script src="https://hynrusang.github.io/js-lib/jade.js">
-    dynamic, developer;
-    livedata, release;
+    dynamic, release;
+    livedata, developer;
     advanced, 1.0.0;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
@@ -27,7 +27,7 @@ Example:
 <jade src="/resource/js/1.0.0/util.js"></jade>
 
 Result:
-<script src="https://hynrusang.github.io/js-lib/1.2.0/dynamic.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.1.0/livedata.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/advanced.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
