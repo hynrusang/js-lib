@@ -181,12 +181,17 @@ console.log(db.get())
 > **editable** 매개변수는 **external**에서 **LiveDataManager**의 **livedataObject**에 대한 **access** 및 **edit**을 허용할지 여부를 결정합니다.  
 > **default**는 **true**입니다.  
 >  
-> 2. getter id
+> 2. getter id  
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
 >  
-> 3. value(id)
-> **
+> 3. value(id)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 리턴합니다.  
+>  
+> 4. value(id, value)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 **value**로 설정합니다.  
+>  
+> 
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
