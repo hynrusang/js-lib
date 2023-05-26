@@ -31,7 +31,11 @@ scan("!footer input").forEach((element, index) => {
     }
 });
 const test = {
-    key: new LiveData(3, Number),
-    key2: new LiveData("data", String)
+    3: new LiveData(3, Number).registObserver(function () {
+        console.log(this.value);
+    }),
+    key2: new LiveData("data", String).registObserver(function () {
+        console.log(this.value);
+    })
 }
 const db = new LiveDataManager(test);
