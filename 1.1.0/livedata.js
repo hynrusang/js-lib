@@ -52,9 +52,9 @@ const LiveData = class {
 const LiveDataManager = class {
     #editable;
     #resource;
-    value = (id, value) => {
-        if (typeof value !== "undefined") {
-            this.#resource[id].value = value;
+    value = (id, data) => {
+        if (typeof data !== "undefined") {
+            this.#resource[id].value = data;
         } else return this.#resource[id].value
     }
     get id() {
