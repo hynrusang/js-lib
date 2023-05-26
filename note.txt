@@ -1,2 +1,2 @@
 advanced 1.2.0
--> ajax to js <-> jsp
+-> ajax to js <-> jsp (not inner but external)
