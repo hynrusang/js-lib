@@ -227,6 +227,15 @@ hynrusang
 ```
 > 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
 > **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
+```js
+console.log(db.id.name); // getter
+db.id.newData = new LiveData("hello, world!").registObserver(gollum); // setter
+console.log(db.id);
+
+// console
+LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
+{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+```
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
