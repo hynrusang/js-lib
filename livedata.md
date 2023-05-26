@@ -202,9 +202,7 @@ console.log(db.get())
 #### 2-1. constructor(livedataObject, editable = true)  
 > 우선, 간단하게 **3**개의 **LiveData** 객체를 관리하는 **LiveDataManager**를 만들어 보겠습니다.  
 ```js
-const gollum = function () {
-    console.log(`gollum! (${this.value})`);
-}
+const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
     id: new LiveData(32, Number).registObserver(gollum),
     name: new LiveData("hynrusang", String).registObserver(gollum),
@@ -235,6 +233,36 @@ console.log(db.id);
 // console
 LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
 {id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+```
+---
+#### 2-2. getter id  
+> **LiveDataManager**의 **#resource**를 반환합니다.  
+> 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
+  
+예시:
+```js
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(gollum),
+    name: new LiveData("hynrusang", String).registObserver(gollum),
+    data: new LiveData([], Array).registObserver(gollum)
+})
+
+console.log(db.id.data);
+db.id.newData = new LiveData("hello, world!").registObserver(gollum);
+console.log(db.id);
+
+// console
+LiveData {#data: Array(0), #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
+{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+```
+---
+#### 2-3. value(id)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
+  
+예시:
+```js
+
 ```
 ---
 ### 3. prototype
