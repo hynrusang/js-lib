@@ -239,7 +239,7 @@ LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, 
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
   
-예시:
+예시: [2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.  
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
