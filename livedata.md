@@ -207,7 +207,7 @@ const db = new LiveDataManager({
     id: new LiveData(32, Number).registObserver(gollum),
     name: new LiveData("hynrusang", String).registObserver(gollum),
     data: new LiveData([], Array).registObserver(gollum)
-})
+});
 ```
 > 이제 이 **LiveDataManager**의 **id** 필드의 값을 **edit**해보도록 하겠습니다.  
 ```js
@@ -226,6 +226,13 @@ hynrusang
 > 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
 > **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
 ```js
+// case editable == true
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(gollum),
+    name: new LiveData("hynrusang", String).registObserver(gollum),
+    data: new LiveData([], Array).registObserver(gollum)
+});
 db.id.name; // getter
 db.id.newData = new LiveData("hello, world!").registObserver(gollum); // setter
 db.id;
@@ -233,6 +240,20 @@ db.id;
 // console
 LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
 {id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+
+// case editable == false
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(gollum),
+    name: new LiveData("hynrusang", String).registObserver(gollum),
+    data: new LiveData([], Array).registObserver(gollum)
+}, false);
+db.id.name; // SyntaxError
+db.id.newData = new LiveData("hello, world!").registObserver(gollum); // SyntaxError
+db.id; // SyntaxError
+
+// console
+Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified externally.
 ```
 ---
 #### 2-2. **@1.1.0** getter id  
