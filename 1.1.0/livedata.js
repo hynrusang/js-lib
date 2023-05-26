@@ -68,11 +68,11 @@ const LiveDataManager = class {
     constructor(livedataObject, editable = true) {
         if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError("invalid type of data. Data must be of type Object.");
         this.#editable = editable;
-        this.#resource = {};
-        for (let [key, value] of Object.entries(livedataObject)) {
+        this.#resource = Object.entries(livedataObject).reduce((obj, [key, value]) => { 
             if (!(value instanceof LiveData)) throw new TypeError(`invalid type of ${key}'s value. ${key}'s value must be of instance LiveData`)
-            else this.#resource[key] = value;
-        }
+            else obj[key] = value;
+            return obj;
+        }, {});
     }
 }
 /**
