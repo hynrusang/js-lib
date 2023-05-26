@@ -131,7 +131,7 @@ const db = new LiveData([3, 5, 6], Array).registObserver(function () {
 })
 db.value = [2, 4, 8]; // value setter
 db.value = [6, 7, 3]; // value setter
-console.log(db.value); // value getter
+db.value; // value getter
 
 // console
 data was changed!
@@ -164,7 +164,7 @@ db.set({name: "hynrusang"})
   
 예시: ([1-5](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-5-100-deprecated-setdata)에서 이어서 작성합니다.)
 ```js
-console.log(db.get())
+db.get()
 
 // console
 {name: 'hynrusang'}
@@ -218,7 +218,7 @@ gollum! (56)
 ```
 > 만약, **LiveDataManager**의 필드 값을 **edit** 하는 것이 아닌, 단순히 **get** 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
-console.log(db.value("name"));
+db.value("name");
 
 // console
 hynrusang
@@ -226,9 +226,9 @@ hynrusang
 > 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
 > **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
 ```js
-console.log(db.id.name); // getter
+db.id.name; // getter
 db.id.newData = new LiveData("hello, world!").registObserver(gollum); // setter
-console.log(db.id);
+db.id;
 
 // console
 LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
@@ -239,18 +239,11 @@ LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, 
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
   
-예시: [2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.  
+예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
 ```js
-const gollum = function () { console.log(`gollum! (${this.value})`); }
-const db = new LiveDataManager({
-    id: new LiveData(32, Number).registObserver(gollum),
-    name: new LiveData("hynrusang", String).registObserver(gollum),
-    data: new LiveData([], Array).registObserver(gollum)
-})
-
-console.log(db.id.data);
+db.id.data;
 db.id.newData = new LiveData("hello, world!").registObserver(gollum);
-console.log(db.id);
+db.id;
 
 // console
 LiveData {#data: Array(0), #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
@@ -260,9 +253,31 @@ LiveData {#data: Array(0), #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dis
 #### 2-3. value(id)  
 > **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
   
-예시:
+예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
 ```js
+db.value("name");
 
+// console
+hynrusang
+```
+---
+#### 2-4. value(id, data)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
+  
+예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+```js
+db.value("id", 56);
+
+// console
+gollum! (56)
+```
+---
+#### 2-5. toArray()  
+> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
+  
+예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+```js
+db.toArray();
 ```
 ---
 ### 3. prototype
