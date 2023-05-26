@@ -50,12 +50,23 @@ const LiveData = class {
     get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
 }
 const LiveDataManager = class {
+    #editable;
     #resource;
     get id() {
+        if (!this.#editable) throw new SyntaxError(`This LiveDataManager cannot be accessed or modified externally.`)
         return this.#resource;
     }
     toArray;
     toObject;
+    constructor(livedataObject, editable = true) {
+        if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError("invalid type of data. Data must be of type Object.");
+        this.#editable = editable;
+        this.#resource = {};
+        for (let [key, value] of Object.entries(livedataObject)) {
+            if (!(value instanceof LiveData)) throw new TypeError(`invalid type of ${key}'s value. ${key}'s value must be of instance LiveData`)
+            else this.#resource[key] = value;
+        }
+    }
 }
 /**
  * @deprecated This method is not supported starting with livedata 1.2.0. use LiveDataManager.toObject instead.
