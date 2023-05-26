@@ -186,12 +186,16 @@ console.log(db.get())
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
 >  
 > 3. value(id)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 리턴합니다.  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
 >  
-> 4. value(id, value)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 **value**로 설정합니다.  
+> 4. value(id, data)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
 >  
-> 
+> 5. toArray()  
+> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
+>  
+> 6. toObject()  
+> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
