@@ -30,11 +30,3 @@ scan("!footer input").forEach((element, index) => {
         fragmentBox[index].launch();
     }
 });
-const gollum = function () {
-    console.log(`gollum! (${this.value})`);
-}
-const db = new LiveDataManager({
-    id: new LiveData(32, Number).registObserver(gollum),
-    name: new LiveData("hynrusang", String).registObserver(gollum),
-    data: new LiveData([], Array).registObserver(gollum)
-})
