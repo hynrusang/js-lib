@@ -114,7 +114,7 @@ new Dom("fieldset").add(
     }})
 ).children(1)
 
-// return 
+// console
 Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
@@ -180,7 +180,7 @@ new Dom("fieldset").add(
     }})
 ).remove(1)
 
-// return
+// console
 Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
@@ -256,7 +256,7 @@ testFragment.action;
 testFragment.view;
 testFragment.fragment;
 
-// return
+// console
 () => {
     console.log("Fragment start...");
 }
