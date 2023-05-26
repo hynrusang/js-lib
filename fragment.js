@@ -30,12 +30,11 @@ scan("!footer input").forEach((element, index) => {
         fragmentBox[index].launch();
     }
 });
-const test = {
-    3: new LiveData(3, Number).registObserver(function () {
-        console.log(this.value);
-    }),
-    key2: new LiveData("data", String).registObserver(function () {
-        console.log(this.value);
-    })
+const gollum = function () {
+    console.log(`gollum! (${this.value})`);
 }
-const db = new LiveDataManager(test);
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(gollum),
+    name: new LiveData("hynrusang", String).registObserver(gollum),
+    data: new LiveData([], Array).registObserver(gollum)
+})
