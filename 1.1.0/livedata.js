@@ -60,16 +60,11 @@ const LiveDataManager = class {
         if (!this.#editable) throw new SyntaxError(`This LiveDataManager cannot be accessed or modified externally.`)
         return this.#resource;
     }
-    toArray = () => {
-        const __$$RETURNOBJECT = [];
-        for (let value of Object.values(this.#resource)) __$$RETURNOBJECT.push(value.value);
-        return __$$RETURNOBJECT;
-    };
-    toObject = () => {
-        const __$$RETURNOBJECT = {};
-        for (let [key, value] of Object.entries(this.#resource)) __$$RETURNOBJECT[key] = value.value;
-        return __$$RETURNOBJECT;
-    };
+    toArray = () => Object.values(this.#resource).map(inner => inner.value);
+    toObject = () => Object.entries(this.#resource).reduce((obj, [key, value]) => {
+        obj[key] = value.value;
+        return obj;
+      }, {});
     constructor(livedataObject, editable = true) {
         if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError("invalid type of data. Data must be of type Object.");
         this.#editable = editable;
