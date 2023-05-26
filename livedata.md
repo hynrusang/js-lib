@@ -10,7 +10,7 @@
 
 ## 요소
 ### 1. @1.0.0 LiveData: Class
-> **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **class**입니다.  
+> **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
@@ -170,7 +170,7 @@ console.log(db.get())
 ```
 ---
 ### 2. @1.1.0 LiveDataManager: Class  
-> **@unusable**  
+> **LiveDataManager**는 여러 개의 **LiveData** 객체들을 동시에 관리하는데 사용되는 **Class**입니다.  
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
