@@ -53,7 +53,7 @@ const LiveDataManager = class {
     #editable;
     #resource;
     value = (id, value) => {
-        if (value) {
+        if (typeof value !== "undefined") {
             this.#resource[id].value = value;
         } else return this.#resource[id].value
     }
