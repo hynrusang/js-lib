@@ -278,6 +278,20 @@ gollum! (56)
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
 ```js
 db.toArray();
+
+// console
+[32, 'hynrusang', Array(0)]
+```
+---
+#### 2-6. toObject()  
+> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
+  
+예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+```js
+db.toObject();
+
+// console
+{id: 32, name: 'hynrusang', data: Array(0)}
 ```
 ---
 ### 3. prototype
