@@ -34,3 +34,4 @@ const test = {
     key: new LiveData(3, Number),
     key2: new LiveData("data", String)
 }
+const db = new LiveDataManager(test);
