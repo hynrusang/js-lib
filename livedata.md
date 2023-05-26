@@ -177,7 +177,9 @@ console.log(db.get())
 >  
 > 1. constructor(livedataObject, editable = true)  
 > **livedataObject**를 기반으로 **LiveDataManager** 인스턴스를 초기화합니다.  
-> 이때, **livedataObject**는 반드시 **Object literal**이여야 하며, 그렇지 않을 시 **TypeError**가 발생합니다.  
+> 이때, **livedataObject**는 반드시 **Object literal**이여야 하며,  
+> **livedataObject**의 **value**들도 **LiveData** 인스턴스여야 합니다.  
+> 그렇지 않을 시 **TypeError**가 발생합니다.  
 > **editable** 매개변수는 **external**에서 **LiveDataManager**의 **livedataObject**에 대한 **access** 및 **edit**을 허용할지 여부를 결정합니다.  
 > **default**는 **true**입니다.  
 >  
@@ -196,6 +198,35 @@ console.log(db.get())
 >  
 > 6. toObject()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
+---
+#### 2-1. constructor(livedataObject, editable = true)  
+> 우선, 간단하게 **3**개의 **LiveData** 객체를 관리하는 **LiveDataManager**를 만들어 보겠습니다.  
+```js
+const gollum = function () {
+    console.log(`gollum! (${this.value})`);
+}
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(gollum),
+    name: new LiveData("hynrusang", String).registObserver(gollum),
+    data: new LiveData([], Array).registObserver(gollum)
+})
+```
+> 이제 이 **LiveDataManager**의 **id** 필드의 값을 **edit**해보도록 하겠습니다.  
+```js
+db.value("id", 56);
+
+// console
+gollum! (56)
+```
+> 만약, **LiveDataManager**의 필드 값을 **edit** 하는 것이 아닌, 단순히 **get** 하고 싶다면, 다음과 같이 하면 됩니다.  
+```js
+console.log(db.value("name"));
+
+// console
+hynrusang
+```
+> 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
+> **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
