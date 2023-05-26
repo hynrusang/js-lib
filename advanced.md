@@ -25,12 +25,20 @@ is 함수는 다음과 같은 동작을 수행합니다:
   
 예시:  
 ```js
-is($("div"), Dom); // true
-is($("div"), Object) // true
-is(4, Object) // false
-is(4, Number) // true
-is("some string", String) // true
-is("some string", Number) // false
+is($("div"), Dom);
+is($("div"), Object);
+is(4, Object);
+is(4, Number);
+is("some string", String);
+is("some string", Number);
+
+// console
+true
+true
+false
+true
+true
+false
 ```
 ---
 ### 2. **@1.0.0** async wait(millisecond) : Promise\<void\>
@@ -83,8 +91,12 @@ getIndex 함수는 다음과 같은 동작을 수행합니다:
 </div>
 
 // script
-getIndex(document.querySelector("#parent_element"), document.querySelector("#my-element")); // 2
-getIndex([3, 5, 6, 7, 9], 7); // 3
+getIndex(document.querySelector("#parent_element"), document.querySelector("#my-element"));
+getIndex([3, 5, 6, 7, 9], 7);
+
+// console
+2
+3
 ```
 ---
 ### 4. prototype
@@ -174,7 +186,7 @@ test.add(7).add(9);
 ```js
 const test = [3,5,6,7,9,11];
 test.remove(3).remove(6);
-console.log(test);
+test;
 
 // console
 [5,7,9,11]
