@@ -183,20 +183,20 @@ db.get()
 > **editable** 매개변수는 **external**에서 **LiveDataManager**의 **livedataObject**에 대한 **access** 및 **edit**을 허용할지 여부를 결정합니다.  
 > **default**는 **true**입니다.  
 >  
-> 2. getter id  
+> 2. **@1.1.0** getter id  
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
 >  
-> 3. value(id)  
+> 3. **@1.1.0** value(id)  
 > **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
 >  
-> 4. value(id, data)  
+> 4. **@1.1.0** value(id, data)  
 > **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
 >  
-> 5. toArray()  
+> 5. **@1.1.0** toArray()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
 >  
-> 6. toObject()  
+> 6. **@1.1.0** toObject()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
 ---
 #### 2-1. constructor(livedataObject, editable = true)  
@@ -235,7 +235,7 @@ LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, 
 {id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
 ```
 ---
-#### 2-2. getter id  
+#### 2-2. **@1.1.0** getter id  
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
   
@@ -250,7 +250,7 @@ LiveData {#data: Array(0), #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dis
 {id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
 ```
 ---
-#### 2-3. value(id)  
+#### 2-3. **@1.1.0** value(id)  
 > **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
@@ -261,7 +261,7 @@ db.value("name");
 hynrusang
 ```
 ---
-#### 2-4. value(id, data)  
+#### 2-4. **@1.1.0** value(id, data)  
 > **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
@@ -272,7 +272,7 @@ db.value("id", 56);
 gollum! (56)
 ```
 ---
-#### 2-5. toArray()  
+#### 2-5. **@1.1.0** toArray()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
@@ -283,7 +283,7 @@ db.toArray();
 [32, 'hynrusang', Array(0)]
 ```
 ---
-#### 2-6. toObject()  
+#### 2-6. **@1.1.0** toObject()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
