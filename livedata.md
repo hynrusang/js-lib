@@ -11,7 +11,8 @@
 ## 요소
 ### 1. @1.0.0 LiveData: Class
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
-> LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.   
+> LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
+>  
 > 1. constructor(data): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, "test", [2, 3], {data: true} 등의 Primitive Type만 지원합니다.)**  
@@ -171,6 +172,26 @@ console.log(db.get())
 ---
 ### 2. @1.1.0 LiveDataManager: Class  
 > **LiveDataManager**는 여러 개의 **LiveData** 객체들을 동시에 관리하는데 사용되는 **Class**입니다.  
+> 주어진 **livedataObject**를 기반으로 **init**되며, 각 **LiveData** 인스턴스는 **id**와 매핑됩니다.  
+> **LiveDataManager** 클래스 안에는, 다음과 같은 요소들이 있습니다.  
+>  
+> 1. constructor(livedataObject, editable = true)  
+> **livedataObject**를 기반으로 **LiveDataManager** 인스턴스를 초기화합니다.  
+> 이때, **livedataObject**는 반드시 **Object literal**이여야 하며, 그렇지 않을 시 **TypeError**가 발생합니다.  
+> **editable** 매개변수는 **external**에서 **LiveDataManager**의 **livedataObject**에 대한 **access** 및 **edit**을 허용할지 여부를 결정합니다.  
+> **default**는 **true**입니다.  
+>  
+> 2. getter id  
+> **LiveDataManager**의 **#resource**를 반환합니다.  
+> 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
+>  
+> 3. value(id)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 리턴합니다.  
+>  
+> 4. value(id, value)  
+> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 값을 **value**로 설정합니다.  
+>  
+> 
 ---
 ### 3. prototype
 #### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
