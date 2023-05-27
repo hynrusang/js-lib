@@ -30,3 +30,10 @@ scan("!footer input").forEach((element, index) => {
         fragmentBox[index].launch();
     }
 });
+const FUNC = function () {
+    console.log(this.value)
+};
+const db = new LiveDataManager({
+    id: new LiveData(32, Number).registObserver(FUNC),
+    name: new LiveData("anonymous", String).registObserver(FUNC)
+})
