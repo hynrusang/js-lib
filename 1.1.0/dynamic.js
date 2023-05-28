@@ -67,7 +67,14 @@ const Dom = class {
      * @type {(additional: object?) => Dom}
      */
     set = additional => {
-        if (additional) for (const [key, value] of Object.entries(additional)) (key == "html" || key == "innerHTML") ? this._node.innerHTML = value : (key == "text" || key == "innerText") ? this._node.innerText = value : (key.indexOf("on") != -1) ? this._node[key] = value : this._node.setAttribute(key, value);
+        if (typeof additional === 'object') {
+            for (const [key, value] of Object.entries(additional)) {
+                if (["innerHTML", "html"].includes(key)) this._node.innerHTML = value
+                else if (["innerText", "text"].includes(key)) this._node.innerText = value
+                else if (key.indexOf("on") != -1 || key == "async") this._node[key] = value
+                else this._node.setAttribute(key, value);
+            }
+        } else throw new Error('Additional parameter must be an {key: value} object');
         return this;
     };
     /**
