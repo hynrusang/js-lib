@@ -63,11 +63,7 @@ class DomExpert extends DomDefault {
      * @type {(additional: Object?) => DomExpert}
      */
     set = additional => {
-        if (additional) {
-            const keys = Object.keys(additional);
-            const values = Object.values(additional);
-            for (let i = 0; i < keys.length; i++) (keys[i] == "html" || keys[i] == "innerHTML") ? this._node.innerHTML = values[i] : (keys[i] == "text" || keys[i] == "innerText") ? this._node.innerText = values[i] : (keys[i].in("on")) ? this._node[keys[i]] = values[i] : this._node.setAttribute(keys[i], values[i]);
-        }
+        if (additional) for (const [key, value] of Object.entries(additional)) (key == "html" || key == "innerHTML") ? this._node.innerHTML = value : (key == "text" || key == "innerText") ? this._node.innerText = value : (key.indexOf("on") != -1) ? this._node[key] = value : this._node.setAttribute(key, value);
         return this;
     };
     /**
