@@ -7,7 +7,8 @@
     })
 )
 const state = new LiveData("first", String).registObserver(function () {
-    scan("nav").innerHTML = `Current-Fragment://${this.value}`
+    console.log(`${this.value} fragment was starting now...`);
+    scan("nav").innerHTML = `Current-Fragment://${this.value}`;
 });
 
 const fragmentBox = [new Fragment("fragmentView", makeTestDom("A", "first")).registAnimation(FragAnimation.card, 1).registAction(function () {
