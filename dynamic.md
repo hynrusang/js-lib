@@ -562,7 +562,6 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > create getter Fragment.(action || view || fragment)  
 >  
 > @update Dom._node to private;  
-> @update Dom.set(additional): Dom  
 > @update Fragment.launch(): Fragment;  
 > @remove loading;  
 > @remove Dom.copy(count): Dom[];  
