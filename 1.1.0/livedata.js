@@ -20,7 +20,7 @@ const LiveData = class {
      * @type {() => Any}
      */
     get = () => this.value;
-    set value(data) 
+    set value(data) {
         if (this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
         const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
         this.#data = data;
