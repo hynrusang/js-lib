@@ -12,9 +12,8 @@ const LiveData = class {
      */
     set = data => {
         if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`Invalid type of data. Data must be of type ${this.#allowed.name}.`);
-        const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
+        if ((JSON.stringify(data) != JSON.stringify(this.#data)) && typeof this.#observer == "function") this.#observer();
         this.#data = data;
-        if (isChanged && typeof this.#observer == "function") this.#observer();
     }
     /**
      * @type {() => Any}
