@@ -1,3 +1,3 @@
-﻿const mainFrame = new FragmentBox("fragmentView", {
-    index: new Fragment()
+﻿const mainFrame = new Fragment("fragmentView", {
+    index: $()
 })
