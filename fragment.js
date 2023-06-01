@@ -1,2 +1,2 @@
-﻿const firstFragment = new Fragment();
+﻿const firstFragment = new Fragment("fragmentView");
 const secondFragment = new Fragment();
