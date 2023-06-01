@@ -1,6 +1,5 @@
 ﻿/*
 이 소스코드는 js로 html을 빠르고 간편하게 만들기 위해 작성되었습니다.
-절대로 무단으로 가져가지 마시기 바랍니다.
 작성자: 환류상
  */
 class SecurityError extends Error {
