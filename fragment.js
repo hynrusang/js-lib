@@ -1,2 +1,3 @@
-﻿const firstFragment = new Fragment("fragmentView");
-const secondFragment = new Fragment();
+﻿const mainFrame = new FragmentBox("fragmentView", {
+    
+})
