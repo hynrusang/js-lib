@@ -63,7 +63,7 @@ const Dom = class {
     }
 }
 /**
- * @deprecated This class is not supported starting with dynamic 1.3.0. Use Scean instead.
+ * @deprecated This class is not supported starting with dynamic 1.3.0. Use Scene instead.
  */
 const Fragment = class {
     #view;

@@ -4,3 +4,4 @@
         $("p", { })
     ).launch()
 })
+new Fragment();
