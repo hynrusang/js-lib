@@ -1,3 +1,3 @@
-﻿const mainFrame = new Fragment("fragmentView", {
-    index: $()
+﻿const mainFrame = new Scene("fragmentView", {
+    index: new Fragment()
 })
