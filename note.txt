@@ -17,5 +17,5 @@ myButton extends input {
 // type (input)
 	href = ...()
 }
-: can override before action (value, type...)
+: can override parent action (value, type...)
 : can create custom action (myaction, ...)
