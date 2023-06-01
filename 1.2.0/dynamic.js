@@ -62,6 +62,9 @@ const Dom = class {
         if (typeof additional !== 'undefined') this.set(additional);
     }
 }
+/**
+@description this class's action will change is dynamic 1.3.0. use Scean class instead.
+*/
 const Fragment = class {
     #view;
     #fragment;
