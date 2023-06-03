@@ -40,6 +40,9 @@ const LiveData = class {
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
+    /**
+     * @type {(data: Any, allowed: Type) => LiveData}
+     */
     constructor(data, allowed) {
         this.#data = data;
         this.#allowed = allowed;
@@ -58,8 +61,11 @@ const LiveDataManager = class {
         obj[key] = value.value;
         return obj;
       }, {});
+    /**
+     * @type {(livedataObject: Object, editable?: boolean) => LiveDataManager}
+     */
     constructor(livedataObject, editable = true) {
-        if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError("invalid type of data. Data must be of type Object.");
+        if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError(`invalid type of livedataObject. livedataObject must be of type Object. (livedataObject: ${Array.isArray(livedataObject) ? "array" : typeof livedataObject})`);
         this.#editable = editable;
         this.#resource = Object.entries(livedataObject).reduce((obj, [key, value]) => { 
             if (!(value instanceof LiveData)) throw new TypeError(`invalid type of ${key}'s value. ${key}'s value must be of instance LiveData`)

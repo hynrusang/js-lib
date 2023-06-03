@@ -31,6 +31,9 @@ const LiveData = class {
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
+    /**
+     * @type {(data: Any, allowed: Type) => LiveData}
+     */
     constructor(data, allowed) {
         this.#data = data;
         this.#allowed = allowed;
