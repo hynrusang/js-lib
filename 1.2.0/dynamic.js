@@ -124,7 +124,7 @@ const Fragment = class {
     }
 }
 /**
- * @description this class is used as an indirect reference in the first parameter of Fragment's registerAnimation method.
+ * @description This class is renamed from dynamic 1.3.0 to AnimationBox.
  */
 const FragAnimation = class {
     static card = async (_fragment, _second) => {
