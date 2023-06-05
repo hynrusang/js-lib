@@ -62,6 +62,9 @@ const Dom = class {
         if (typeof additional !== 'undefined') this.set(additional);
     }
 }
+/**
+ * @deprecated This class is not supported starting with dynamic 1.3.0. Use Scene and Model class instead.
+ */
 const Fragment = class {
     #view;
     #fragment;
