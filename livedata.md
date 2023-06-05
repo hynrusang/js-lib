@@ -26,7 +26,7 @@
 > **observer**를 **강제 호출**하는 메서드입니다.  
 > **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**  
 >  
-> 4. **@1.1.0** **setter and getter** value  
+> 4. **@1.1.0** **(setter || getter)** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
 >  
 > 5. **@1.0.0** **@deprecated** set(data);  
