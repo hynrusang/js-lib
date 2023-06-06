@@ -73,12 +73,11 @@ const Binder = class {
                     else this.#bindlist[name] = [element];
                     element.value = this.#bindlist[name][0].value
                     element.addEventListener('input', () => this.reBind(element, element.attributes.var.value));
-                } else if (element.attributes.sync) {
-                    const expression = element.attributes.sync.value;
-                    for (let name of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(value => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(value))) {
+                } else if (element.attributes.use) {
+                    for (let name of element.attributes.use.value.split(" ")) {
                         if (this.#synclist[name]) this.#synclist[name].push(element);
                         else this.#synclist[name] = [element];
-                        this.reSync(element, element.attributes.sync.value)
+                        this.reSync(element, element.attributes.exp.value)
                     }
                 }
             }
@@ -89,11 +88,11 @@ const Binder = class {
      */
     static reBind = (obj, name) => {
         for (let element of this.#bindlist[name]) element.value = obj.value;
-        if (this.#synclist[name]) for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.sync.value)
+        if (this.#synclist[name]) for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.exp.value)
     }
     static reSync = (obj, expression) => {
         let returnString = expression
-        for (let subString of expression.match(/{([^}]+)}/g).filter(value => this.#bindlist[value.slice(1, -1)]).map(value => value.slice(1, -1))) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
+        for (let subString of obj.attributes.use.value.split(" ")) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
             return result;
@@ -102,7 +101,7 @@ const Binder = class {
         else obj.innerText = returnString;
     }
 }
-Binder.regist([...scan("![var]"), ...scan("![sync]")]);
+Binder.regist([...scan("![var]"), ...scan("![use]")]);
 new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {

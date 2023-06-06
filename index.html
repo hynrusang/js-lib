@@ -4,16 +4,14 @@
     <title>Custom Event Example</title>
 </head>
 <body>
-    <input type="text" value="3" var="a">
-    <input type="text" value="7" var="b">
-    <input type="text" value="2" var="c">
-    <input type="text" sync="{a} + {b} = {a + b}">
-    <input type="text" sync="{b} + {c} = {b + c}">
+    <input type="number" var=a>
+    <input type="number" var=b>
+    <input type="text" use="a b" exp="{a + b}">
+
     <script src="1.2.0/dynamic.js"></script>
     <script src="1.2.0/livedata.js"></script>
     <script>
-        console.log("{a} + {b} = {a + b}".match(/{([^}]+)}/g))
-        snipe("body").add($("p", {type: "text", sync: "{a} + {b} = {a + b}"}))
+        snipe("body").add($("p", {use: "a b", exp: "{a + b}"}))
     </script>
 </body>
 </html>
