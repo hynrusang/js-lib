@@ -5,7 +5,7 @@
 - **이 문서는 developer 버전인 livedata 1.2.0을 다룹니다.**  
 - **현재 release 버전은 livedata 1.1.0입니다.**  
 ## 정보
-- 이건 **kotlin**에 있는 **LiveData**를 **[js (javascript)](https://developer.mozilla.org/ko/docs/Web/JavaScript)** 만들고, **LiveDataManager(1.1.0~)** 로 여러 **LiveData**들을 손쉽게 관리하며, **Binding(1.2.0~)** 으로 동적 요소 바인딩을 쉽게 구현할 수 있게 해주는 js 파일 입니다.  
+- 이건 **kotlin**에 있는 **LiveData**를 **[js (javascript)](https://developer.mozilla.org/ko/docs/Web/JavaScript)** 로 재 구현하고, **LiveDataManager(1.1.0~)** 로 여러 **LiveData**들을 손쉽게 관리하며, **Binding(1.2.0~)** 으로 동적 요소 바인딩을 쉽게 구현할 수 있게 해주는 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
