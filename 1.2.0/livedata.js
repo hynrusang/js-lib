@@ -67,9 +67,9 @@ const LiveDataManager = class {
 const _Binder = class {
     static #bindlist = {};
     static #synclist = {};
-    static set = elements => {
+    static set = () => {
         this.#synclist = {};
-        for (let element of elements) {
+        for (let element of [...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]) {
             if (element.nodeName != "#text") {
                 if (element.attributes.var) {
                     this.#bindlist[element.attributes.var.value] = element;
@@ -102,12 +102,9 @@ const _Binder = class {
         else obj.innerText = returnString.split("->")[1];
     }
 }
-new MutationObserver(mutationsList => {
-    for (const mutation of mutationsList) {
-        if (mutation.type === "childList") {
-            const addedElements = mutation.addedNodes;
-            if (addedElements.length > 0) _Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
-        }
-    }
-}).observe(document.body, { childList: true, subtree: true });
-_Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
+document.body.addEventListener('DOMNodeInserted', function(event) {
+    if (event.target instanceof HTMLElement) _Binder.set();
+});
+document.body.addEventListener('DOMNodeRemoved', function(event) {
+    _Binder.set();
+});
