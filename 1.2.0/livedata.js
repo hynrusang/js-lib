@@ -96,7 +96,6 @@ const _Binder = class {
         for (let subString of subStrings) {
             const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
             returnString = returnString.replaceAll(`__#${subString}__`, (isNaN(parsing) || parsing == "") ? `"${parsing}"` : parsing);
-            console.log(returnString)
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
