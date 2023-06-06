@@ -374,7 +374,7 @@ new Fragment("fragmentView",
     $("fieldset").add(
         $("legend", {text: "first fragment", style: "color: red;"}),
         $("input", {type: "button", value: "go to second fragment"})
-   )
+    )
 ).registAnimation(FragAnimation.fade, 0.8).launch();
 ```
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/fadeAnimation.gif" style="width: 50%; height: auto;" align="center" />  
