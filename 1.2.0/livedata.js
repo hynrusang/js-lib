@@ -61,7 +61,10 @@ const LiveDataManager = class {
         }, {});
     }
 }
-const Binder = class {
+/**
+ * @description This class is used indirectly to implement the var and exp attribute of HtmlElement.
+ */
+const _Binder = class {
     static #bindlist = {};
     static #synclist = {};
     static regist = elements => {
@@ -102,13 +105,13 @@ const Binder = class {
         else obj.innerText = returnString.split("->")[1];
     }
 }
-Binder.regist([...scan("![var]"), ...scan("![exp]")]);
+_Binder.regist([...scan("![var]"), ...scan("![exp]")]);
 new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {
             const addedElements = mutation.addedNodes;
             if (addedElements.length > 0) {
-                Binder.regist(addedElements);
+                _Binder.regist(addedElements);
             }
         }
     }

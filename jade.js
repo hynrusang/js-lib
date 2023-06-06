@@ -28,7 +28,7 @@ Example:
 
 Result:
 <script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
-<script src="https://hynrusang.github.io/js-lib/1.1.0/livedata.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.2.0/livedata.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/advanced.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -41,7 +41,7 @@ const __$$IMPLEMENTHREF = "https://hynrusang.github.io/js-lib/";
 const __$$VERSIONINFO = {
     advanced: ["1.0.0", "1.1.0"],
     dynamic: ["1.1.0", "1.2.0"],
-    livedata: ["1.0.0", "1.1.0"]
+    livedata: ["1.1.0", "1.2.0"]
 };
 for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js"]`).innerHTML
     .replaceAll("\n", "")
