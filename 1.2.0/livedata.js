@@ -108,3 +108,4 @@ document.body.addEventListener('DOMNodeInserted', function(event) {
 document.body.addEventListener('DOMNodeRemoved', function(event) {
     _Binder.set();
 });
+_Binder.set();
