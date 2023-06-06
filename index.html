@@ -4,29 +4,39 @@
     <title>Custom Event Example</title>
 </head>
 <body>
-    <input type="text" bind="$a">
-    <input type="text" bind="$b">
-    <input type="text" bind="$a + $b">
+    <input type="text" bind="a">
+    <input type="text" bind="b">
+    <input type="text">
     <script src="1.1.0/livedata.js"></script>
     <script src="1.2.0/dynamic.js"></script>
     <script>
-        const a = [1, 2];
+        const bind = {};
 
         const test = scan("input")
         const myInput = document.querySelectorAll('input');
 
-        myInput.forEach(obj => obj.addEventListener('input', function() {
+        myInput.forEach(obj => {
             if (obj.attributes.bind) {
-                const customEvent = new CustomEvent('valueChanged', { detail: obj.value });
-                scan("!input[bind]").forEach(obj => {
-                    console.log(obj.attributes.bind.value)
-                })
-                document.dispatchEvent(customEvent);
+                bind[obj.attributes.bind.value.replaceAll("$")] = obj.value;
             }
-        }));
+            obj.addEventListener('input', () => {
+                if (obj.attributes.bind) {
+                    const customEvent = new CustomEvent('binding:update', { detail: {
+                        bindname: obj.attributes.bind.value,
+                        data: obj.value
+                    }});
+                    scan("!input[bind]").forEach(obj => {
+                        console.log(obj.attributes.bind.value)
+                    })
+                    document.dispatchEvent(customEvent);
+                }
+            }
+        )})
 
-        document.addEventListener('valueChanged', function(event) {
-            console.log('Value changed:', event.detail);
+        document.addEventListener('binding:update', function(event) {
+            const details = event.detail;
+            bind[details.bindname] = details.data
+            console.log(bind);
         });
   </script>
 </body>
