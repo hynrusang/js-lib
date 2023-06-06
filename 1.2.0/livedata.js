@@ -105,7 +105,6 @@ const _Binder = class {
         else obj.innerText = returnString.split("->")[1];
     }
 }
-_Binder.regist([...scan("![var]"), ...scan("![exp]")]);
 new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {
@@ -116,3 +115,4 @@ new MutationObserver(mutationsList => {
         }
     }
 }).observe(document.body, { childList: true });
+_Binder.regist([...scan("![var]"), ...scan("![exp]")]);
