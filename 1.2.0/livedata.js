@@ -107,9 +107,7 @@ new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {
             const addedElements = mutation.addedNodes;
-            if (addedElements.length > 0) {
-                _Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
-            }
+            if (addedElements.length > 0) _Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
         }
     }
 }).observe(document.body, { childList: true, subtree: true });
