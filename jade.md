@@ -14,7 +14,7 @@
 
 ## Note
 1. To use this jade.js library, scripts in HTML must be written as external scripts, not internal scripts.
-2. The version must either be a valid version number, "release", or "developer".
+2. The version must either be a valid version number, "release", or "developer" or "unstable" (experimental)
 
 ### Example
 ```js
