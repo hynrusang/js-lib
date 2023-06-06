@@ -5,18 +5,19 @@
 </head>
 <body>
     <input type="text" value="3" var="a">
+    <input type="text" value="3" var="a">
     <input type="text" value="7" var="b">
-    <input type="text" use="{a} + {b} = {a + b}">
-    <input type="text" use="{b} + {c} = {b + c}">
+    <input type="text" value="2" var="c">
+    <input type="text" sync="{a} + {b} = {a + b}">
+    <input type="text" sync="{b} + {c} = {b + c}">
     <script src="1.2.0/livedata.js"></script>
     <script src="1.2.0/dynamic.js"></script>
     <script>
         scan("![var]").forEach(obj => {
-            Binder.bind(obj, obj.attributes.var.value);
-            obj.addEventListener('input', () => Binder.bind(obj, obj.attributes.var.value));
+            Binder.registBind(obj, obj.attributes.var.value);
         })
-        scan("![use]").forEach(obj => {
-            Binder.use(obj, obj.attributes.use.value)
+        scan("![sync]").forEach(obj => {
+            Binder.registSync(obj, obj.attributes.sync.value)
         })
     </script>
 </body>

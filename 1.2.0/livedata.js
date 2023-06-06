@@ -63,30 +63,37 @@ const LiveDataManager = class {
 }
 const Binder = class {
     static #bindlist = {};
-    static #uselist = {};
+    static #synclist = {};
+    static registBind = (obj, name) => {
+        if (this.#bindlist[name]) this.#bindlist[name].push(obj);
+        else this.#bindlist[name] = [obj];
+        obj.addEventListener('input', () => this.reBind(obj, obj.attributes.var.value));
+    }
     /**
      * @type {(obj: HTMLElement) => void}
      */
-    static bind = (obj, name) => {
-        this.#bindlist[name] = obj.value;
-        if (this.#uselist[name]) {
-            for (let usedata of this.#uselist[name]) this._parsing(usedata)
-            this.#uselist[name].value = "true"
-        }
-        console.log(this.#bindlist)
-        console.log(this.#uselist)
-    }
-    static use = (obj, expression) => {
-        for (let variable of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(item => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(item))) {
-            if (this.#uselist[variable]) this.#uselist[variable].push(obj);
-            else this.#uselist[variable] = [obj];
-            this._parsing(obj)
+    static reBind = (obj, name) => {
+        console.log(name)
+        for (let element of this.#bindlist[name]) element.value = obj.value;
+        if (this.#synclist[name]) {
+            for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.sync.value)
+            this.#synclist[name].value = "true"
         }
     }
-    static _parsing = obj => {
-        const expression = obj.attributes.use.value;
-        obj.value = expression.replaceAll(/{([^}]+)}/g, (match, group) => {
-            return this.#bindlist[group] || match;
+    static registSync = (obj, expression) => {
+        for (let name of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(item => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(item))) {
+            if (this.#synclist[name]) this.#synclist[name].push(obj);
+            else this.#synclist[name] = [obj];
+            this.reSync(obj, obj.attributes.sync.value)
+        }
+    }
+    static reSync = (obj, expression) => {
+        let returnString = expression
+        for (let subString of expression.match(/{([^}]+)}/g).filter(value => this.#bindlist[value.slice(1, -1)]).map(value => value.slice(1, -1))) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
+        obj.value = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
+            const result = eval(group);
+            return result;
         });
+        console.log(returnString)
     }
 }
