@@ -46,10 +46,10 @@ const fragmentList = {
         ),
         $("fieldset").add(
             $("legend", {text: "html binding example"}),
-            $("p", {text: "hello, world!", var: "greeting",}),
+            $("textarea", {value: "hello, world!",style: "width: 100%; height: 200px;" var: "greeting",}),
             $("input", {type: "text", value: "6", style: "width: 50%; height: 40px; text-align: center;", var: "a"}),
             $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "b"}),
-            $("input", {type: "text", style: "width: 100%; height: 40px; text-align: center;", exp: "greeting a b->{greeting} {a} + {b} = {a + b} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
+            $("p", {exp: "greeting a b->{greeting} {a} + {b} = {a + b} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
                 console.clear();
                 console.log(scan("fieldset p"))
