@@ -17,12 +17,7 @@ const fragmentList = {
             그에 그치지 않고 FragAnimation 같은 추가적인 static 클래스와 함께 Fragment간 전환에 애니메이션 등을 추가로 넣을 수 있습니다."})
         ),
         $("p", {text: "dynamic.js를 이용하여 구현한 부분은 다음과 같습니다."}),
-        $("input", {type: "button", value: "구현부 가시화", style: "width: 120px; height: 40px; margin-left: 15px;", onclick: () => {
-            scan("fragment").animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
-            scan("!footer input").forEach(obj => {
-                obj.animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
-            })
-        }})
+        $("input", {type: "button", value: "구현부 가시화", style: "width: 120px; height: 40px; margin-left: 15px;", onclick: () => scan("fragment").animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200}) })
     ).registAnimation(FragAnimation.card, 0.6).launch(),
 
     secondFragment: new Fragment("fragmentView", 
@@ -59,9 +54,7 @@ const fragmentList = {
         $("p", {text: "livedata.js를 이용하여 구현한 부분은 다음과 같습니다."}),
         $("input", {type: "button", value: "구현부 가시화", style: "width: 120px; height: 40px; margin-left: 15px;", onclick: () => {
             scan("fieldset").animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
-            scan("!footer input").forEach(obj => {
-                obj.animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
-            })
+            scan("!footer input").forEach(obj => obj.animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200}))
         }})
     ).registAnimation(FragAnimation.fade, 0.6),
 
