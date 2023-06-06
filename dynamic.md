@@ -386,7 +386,7 @@ new Fragment("fragmentView",
     $("fieldset").add(
         $("legend", {text: "first fragment", style: "color: red;"}),
         $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
+            secondFragment.launch();
         }})
     )
 ).registAnimation(FragAnimation.swip, 0.8).launch();
