@@ -68,7 +68,6 @@ const _Binder = class {
     static #bindlist = {};
     static #synclist = {};
     static set = elements => {
-        this.#bindlist = {};
         this.#synclist = {};
         for (let element of elements) {
             if (element.nodeName != "#text") {
