@@ -75,21 +75,19 @@ const _Binder = class {
                 if (element.attributes.var) {
                     this.#bindlist[element.attributes.var.value] = element;
                     element.addEventListener('input', () => {
-                        for (let obj of this.#synclist[element.attributes.var.value]) {
-                            this.reSync(obj, obj.attributes.exp.value)
-                        }
+                        for (let obj of this.#synclist[element.attributes.var.value]) this.sync(obj, obj.attributes.exp.value)
                     });
                 } else if (element.attributes.exp) {
                     for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
                         if (this.#synclist[name]) this.#synclist[name].push(element);
                         else this.#synclist[name] = [element];
-                        this.reSync(element, element.attributes.exp.value)
+                        this.sync(element, element.attributes.exp.value)
                     }
                 }
             }
         }
     }
-    static reSync = (obj, expression) => {
+    static sync = (obj, expression) => {
         const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
         let returnString = expression;
         for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
