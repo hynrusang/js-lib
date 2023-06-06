@@ -10,7 +10,7 @@
 ---
 
 아래의 js 파일들은 모두 이 **jade.js** 버전관리 툴을 통해 손쉽게 자동으로 이용하실 수 있습니다:
-- [jade.js](https://github.com/hynrusang/js-lib/blob/main/jade.md)
+- [jade.js (1.x.x)](https://github.com/hynrusang/js-lib/blob/main/jade.md)
 
 여기에 다른 이용가능한 js 모듈 및 프로그램이 있습니다:
 1. **js** 만으로 쉽게 **HTML 요소**를 다루고, 화려한 **Animation**과 함께 **Fragment** 단위로 조작하고 싶다면? [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md)  
