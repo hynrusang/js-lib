@@ -274,6 +274,7 @@ db.toObject();
 ```
 ---
 ### 3. **@1.2.0** Element Binding
+> Element Binding은 **[svelte](https://svelte.dev/)**
 ---
 ## 업데이트 내역
 > 1.0.0  
@@ -290,9 +291,12 @@ db.toObject();
 > @deprecated LiveData.set();  
 > @deprecated LiveData.get();  
 > @deprecated JSON.unlivedata(json) : Object;  
-> @deprecated Array.unlivedata(array) : Array;  
+> @deprecated JSON.unlivedata(json) : Object;  
 ---
 > 1.2.0  
 > implement HTMLElement Binding: attribute(var, exp)  
 >  
-> @deleted LiveData.set();  
+> @removed LiveData.set();  
+> @removed LiveData.get();  
+> @removed JSON.unlivedata(json) : Object;  
+> @removed JSON.unlivedata(json) : Object;  
