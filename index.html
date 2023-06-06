@@ -6,6 +6,10 @@
 </head>
 <body>
     <style>
+        *:not(html, body) {
+            transition: 0.6s all;
+            box-sizing: border-box;
+        }
         body {
             margin: 0px;
             padding: 0px;
@@ -13,6 +17,9 @@
             flex-direction: column;
             overflow-x: hidden;
             overflow-y: scroll;
+        }
+        body::-webkit-scrollbar {
+            display: none;
         }
         header {
             width: 100%;
@@ -22,6 +29,7 @@
             display: block;
             width: 100vw;
             height: calc(100vh - 100px);
+            overflow-y: scroll;
         }
         footer {
             width: 100%;
@@ -34,12 +42,13 @@
             padding-top: 0px;
             width: 100%;
             height: 100%;
-            border-radius: 20px;
             border: none;
             background-repeat: no-repeat;
             background-position: center top;
-            transition: 0.6s all;
+        }
+        input {
             cursor: pointer;
+            border-radius: 20px;
         }
         h1 {
             font-size: 24px;
@@ -47,6 +56,7 @@
         }
         p {
             font-size: 16px;
+            line-height: 30px;
             font-weight: 500;
             margin-left: 20px;
         }
@@ -56,7 +66,6 @@
         }
     </style>
     <header>
-
     </header>
     <fragment rid="fragmentView"></fragment>
     <footer>
@@ -64,8 +73,8 @@
         <input type="button" target="secondFragment" style="background-image: url(resource/second_icon.png);" value="livedata">
         <input type="button" target="thirdFragment">
     </footer>
-    <script src="1.2.0/dynamic.js"></script>
     <script src="1.2.0/livedata.js"></script>
+    <script src="1.2.0/dynamic.js"></script>
     <script src="1.1.0/advanced.js"></script>
     <script src="fragment.js"></script>
 </body>
