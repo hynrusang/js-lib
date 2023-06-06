@@ -5,7 +5,7 @@
 - **이 문서는 developer 버전인 livedata 1.2.0을 다룹니다.**  
 - **현재 release 버전은 livedata 1.1.0입니다.**  
 ## 정보
-- 이건 **kotlin**에 있는 **LiveData**를 **[js (javascript)](https://developer.mozilla.org/ko/docs/Web/JavaScript)** 로 재 구현하고, **LiveDataManager(1.1.0~)** 로 여러 **LiveData**들을 손쉽게 관리하며, **Binding(1.2.0~)** 으로 동적 요소 바인딩을 쉽게 구현할 수 있게 해주는 js 파일 입니다.  
+- 이건 **kotlin**에 있는 **LiveData**를 **js**에서 비슷하게 사용함과 동시에, **LiveDataManager(1.1.0~)** 로 여러 **LiveData**들을 손쉽게 관리하며, **Binding(1.2.0~)** 으로 동적 요소 바인딩을 쉽게 구현할 수 있게 해주는 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
@@ -28,17 +28,6 @@
 >  
 > 4. **@1.1.0** **(setter || getter)** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
->  
-> 5. **@1.0.0** **@deprecated** set(data);  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
-> **set** 메서드는 **LiveData**의 **data**를 설정하는 역할을 합니다.  
-> 먼저, 주어진 **data**가 **allowed**된 유형인지 확인한 후,  
-> 매개변수로 전달된 **data**를 **this.#data**와 **JSON.stringify**를 통해 비교하여,  
-> **changed** 여부를 판단하고, **changed** 된 경우, **observer**를 호출합니다. 이후에는 **this: LiveData**를 반환합니다.  
->  
-> 6. **@1.0.0** **@deprecated** get();  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
-> **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
 ---
 #### 1-1. constructor(data)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
@@ -137,37 +126,6 @@ db.value; // value getter
 data was changed!
 data was changed!
 [6, 7, 3]
-```
----
-#### 1-5. **@1.0.0** **@deprecated** set(data);  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value setter를 대신 이용하십시오.)**  
-> **set** 메서드는 **LiveData**의 **data**를 설정하는 역할을 합니다.  
-> 먼저, 주어진 **data**가 **allowed**된 유형인지 확인한 후,  
-> 매개변수로 전달된 **data**를 **this.#data**와 **JSON.stringify**를 통해 비교하여,  
-> **changed** 여부를 판단하고, **changed** 된 경우, **observer**를 호출합니다. 이후에는 **this: LiveData**를 반환합니다.  
-  
-예시:
-```js
-const db = new LiveData({name: "tester"}, Object).registObserver(function () {
-    console.log(this.get());
-})
-// db.set([2, 3, 4]); (throw TypeError)
-db.set({name: "hynrusang"})
-
-// console
-{name: "tester"}
-```
----
-#### 1-6. **@1.0.0** **@deprecated** get();  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단됩니다. LiveData.value getter를 대신 이용하십시오.)**  
-> **get** 메서드는 **this.#data**의 **copy**를 반환합니다.  
-  
-예시: ([1-5](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-5-100-deprecated-setdata)에서 이어서 작성합니다.)
-```js
-db.get()
-
-// console
-{name: 'hynrusang'}
 ```
 ---
 ### 2. @1.1.0 LiveDataManager: Class  
@@ -315,63 +273,7 @@ db.toObject();
 {id: 32, name: 'hynrusang', data: Array(0)}
 ```
 ---
-### 3. prototype
-#### 3-1. **@1.0.0** **@deprecated** JSON.unlivedata(json)   
-> **(이 메서드는 livedata 1.2.0부터 지원 중단 됩니다. LiveDataManager.toObject을 대신 이용하십시오.)**  
-> **JSON.unlivedata**는 **JSON 객체**를 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
-> **(실제 json의 data는 달라지지 않습니다.)**  
-  
-이 매서드는 다음과 같은 작업을 수행합니다:  
-  
-1. 빈 **json 객체**인 **data**를 생성합니다.  
-  
-2. 주어진 **json 객체**의 **키**를 순회하면서 각 키에 대한 **값**을 처리합니다.  
-  
-- 만약 해당 키의 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **value getter** 을 호출하여 data에 저장합니다.  
-  
-- **그렇지 않은 경우**, 해당 키의 **값**을 **그대로** data에 저장합니다.  
-  
-3. 처리가 완료된 **data**를 반환합니다.  
-  
-예시:  
-```js
-const resource = {
-    name: new LiveData("hynrusang"),
-    id: new LiveData(32).registObserver(() => { console.log("data changed") })
-}
-JSON.unlivedata(resource)
-
-// return 
-{name: 'hynrusang', id: 32}
-```
----
-#### 3-2. **@1.0.0** **@deprecated** Array.unlivedata(array)  
-> **(이 메서드는 livedata 1.2.0부터 지원 중단 됩니다. LiveDataManager.toArray을 대신 이용하십시오.)**  
-> **Array.unlivedata**는 **Array**을 처리하여 **LiveData**를 **포함하지 않도록** 변환하는 매서드입니다.  
-> **(실제 array의 data는 달라지지 않습니다.)**  
-  
-이 매서드는 다음과 같은 작업을 수행합니다:  
-  
-1. 빈 **Array**인 **data**를 생성합니다.  
-  
-2. 주어진 **Array**을 **순회**하면서 각 **값**을 수행합니다.  
-  
-- 만약 해당 **값**이 **LiveData 인스턴스**인 경우, **LiveData**의 **value getter** 을 호출하여 data에 추가합니다.  
-  
-- **그렇지 않은 경우**, 해당 **값**을 **그대로** data에 추가합니다.  
-  
-3. 처리가 완료된 **data**를 반환합니다.  
-  
-예시:
-```js
-const data = [new LiveData(3), new LiveData("some string").registObserver(() => {
-    console.log("changed!");
-})]
-Array.unlivedata(data)
-
-// return
-[3, 'some string']
-```
+### 3. **@1.2.0** Element Binding
 ---
 ## 업데이트 내역
 > 1.0.0  
@@ -389,3 +291,8 @@ Array.unlivedata(data)
 > @deprecated LiveData.get();  
 > @deprecated JSON.unlivedata(json) : Object;  
 > @deprecated Array.unlivedata(array) : Array;  
+---
+> 1.2.0  
+> implement HTMLElement Binding: attribute(var, exp)  
+>  
+> @deleted LiveData.set();  
