@@ -4,14 +4,13 @@
     <title>Custom Event Example</title>
 </head>
 <body>
-    <input type="number" var=a>
-    <input type="number" var=b>
-    <input type="text" use="a b" exp="{a + b}">
-
+    <input type="number" value="1" var=a>
+    <input type="number" value="2" var=b>
+    <p exp="a b->{a} + {b} = {a + b}"></p>
     <script src="1.2.0/dynamic.js"></script>
     <script src="1.2.0/livedata.js"></script>
     <script>
-        snipe("body").add($("p", {use: "a b", exp: "{a + b}"}))
+        
     </script>
 </body>
 </html>

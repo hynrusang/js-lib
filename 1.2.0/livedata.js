@@ -73,8 +73,9 @@ const Binder = class {
                     else this.#bindlist[name] = [element];
                     element.value = this.#bindlist[name][0].value
                     element.addEventListener('input', () => this.reBind(element, element.attributes.var.value));
-                } else if (element.attributes.use) {
-                    for (let name of element.attributes.use.value.split(" ")) {
+                } else if (element.attributes.exp) {
+                    console.log(element)
+                    for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
                         if (this.#synclist[name]) this.#synclist[name].push(element);
                         else this.#synclist[name] = [element];
                         this.reSync(element, element.attributes.exp.value)
@@ -92,16 +93,16 @@ const Binder = class {
     }
     static reSync = (obj, expression) => {
         let returnString = expression
-        for (let subString of obj.attributes.use.value.split(" ")) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
+        for (let subString of obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
             return result;
         });
-        if (obj.nodeName == "INPUT") obj.value = returnString
-        else obj.innerText = returnString;
+        if (obj.nodeName == "INPUT") obj.value = returnString.split("->")[1];
+        else obj.innerText = returnString.split("->")[1];
     }
 }
-Binder.regist([...scan("![var]"), ...scan("![use]")]);
+Binder.regist([...scan("![var]"), ...scan("![exp]")]);
 new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {
