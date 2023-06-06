@@ -64,36 +64,52 @@ const LiveDataManager = class {
 const Binder = class {
     static #bindlist = {};
     static #synclist = {};
-    static registBind = (obj, name) => {
-        if (this.#bindlist[name]) this.#bindlist[name].push(obj);
-        else this.#bindlist[name] = [obj];
-        obj.addEventListener('input', () => this.reBind(obj, obj.attributes.var.value));
+    static regist = elements => {
+        for (let element of elements) {
+            if (element.nodeName != "#text") {
+                if (element.attributes.var) {
+                    const name = element.attributes.var.value;
+                    if (this.#bindlist[name]) this.#bindlist[name].push(element);
+                    else this.#bindlist[name] = [element];
+                    element.value = this.#bindlist[name][0].value
+                    element.addEventListener('input', () => this.reBind(element, element.attributes.var.value));
+                } else if (element.attributes.sync) {
+                    const expression = element.attributes.sync.value;
+                    for (let name of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(value => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(value))) {
+                        if (this.#synclist[name]) this.#synclist[name].push(element);
+                        else this.#synclist[name] = [element];
+                        this.reSync(element, element.attributes.sync.value)
+                    }
+                }
+            }
+        }
     }
     /**
      * @type {(obj: HTMLElement) => void}
      */
     static reBind = (obj, name) => {
-        console.log(name)
         for (let element of this.#bindlist[name]) element.value = obj.value;
-        if (this.#synclist[name]) {
-            for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.sync.value)
-            this.#synclist[name].value = "true"
-        }
-    }
-    static registSync = (obj, expression) => {
-        for (let name of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(item => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(item))) {
-            if (this.#synclist[name]) this.#synclist[name].push(obj);
-            else this.#synclist[name] = [obj];
-            this.reSync(obj, obj.attributes.sync.value)
-        }
+        if (this.#synclist[name]) for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.sync.value)
     }
     static reSync = (obj, expression) => {
         let returnString = expression
         for (let subString of expression.match(/{([^}]+)}/g).filter(value => this.#bindlist[value.slice(1, -1)]).map(value => value.slice(1, -1))) returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(this.#bindlist[subString][0].value)) ? `"${this.#bindlist[subString][0].value}"` : this.#bindlist[subString][0].value);
-        obj.value = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
+        returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
             return result;
         });
-        console.log(returnString)
+        if (obj.nodeName == "INPUT") obj.value = returnString
+        else obj.innerText = returnString;
     }
 }
+Binder.regist([...scan("![var]"), ...scan("![sync]")]);
+new MutationObserver(mutationsList => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === "childList") {
+            const addedElements = mutation.addedNodes;
+            if (addedElements.length > 0) {
+                Binder.regist(addedElements);
+            }
+        }
+    }
+}).observe(document.body, { childList: true });
