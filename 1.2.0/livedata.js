@@ -90,17 +90,19 @@ const _Binder = class {
         }
     }
     static reSync = (obj, expression) => {
-        let returnString = expression
-        for (let subString of obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
-            const parsing = (this.#bindlist[subString].nodeName == "INPUT") ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
-            returnString = returnString.replaceAll(subString, (isNaN(parsing) || parsing == "") ? `"${parsing}"` : parsing);
-            console.log
+        const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
+        let returnString = expression;
+        for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
+        for (let subString of subStrings) {
+            const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
+            returnString = returnString.replaceAll(`__#${subString}__`, (isNaN(parsing) || parsing == "") ? `"${parsing}"` : parsing);
+            console.log(returnString)
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
             return result;
         });
-        if (obj.nodeName == "INPUT") obj.value = returnString.split("->")[1];
+        if (["INPUT", "TEXTAREA"].includes(obj.nodeName)) obj.value = returnString.split("->")[1];
         else obj.innerText = returnString.split("->")[1];
     }
 }
