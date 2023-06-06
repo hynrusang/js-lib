@@ -23,7 +23,7 @@ const fragmentList = {
                 obj.animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
             })
         }})
-    ).registAnimation(FragAnimation.card, 0.8).launch(),
+    ).registAnimation(FragAnimation.card, 0.6).launch(),
 
     secondFragment: new Fragment("fragmentView", 
         $("h1", {text: "여기는 livedata.js의 기능을 설명하는 곳입니다."}),
@@ -50,6 +50,11 @@ const fragmentList = {
             $("input", {type: "text", value: "6", style: "width: 50%; height: 40px; text-align: center;", var: "a"}),
             $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "b"}),
             $("input", {type: "text", style: "width: 100%; height: 40px; text-align: center;", exp: "greeting a b->{greeting} {a} + {b} = {a + b} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
+            $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
+                console.clear();
+                console.log(scan("fieldset p"))
+                scan("!fieldset input").forEach(obj => { if (obj != e.target) console.log(obj) })
+            }})
         ),
         $("p", {text: "livedata.js를 이용하여 구현한 부분은 다음과 같습니다."}),
         $("input", {type: "button", value: "구현부 가시화", style: "width: 120px; height: 40px; margin-left: 15px;", onclick: () => {
@@ -58,10 +63,10 @@ const fragmentList = {
                 obj.animate([{}, {backgroundColor: "rgba(0,0,0,0.3)"}, {}], {duration: 1200})
             })
         }})
-    ).registAnimation(FragAnimation.fade, 0.8)
+    ).registAnimation(FragAnimation.fade, 0.6),
+
+    thirdFragment: new Fragment("fragmentView",
+        $("h1", {text: "여기는 advanced.js의 기능을 설명하는 곳입니다."})
+    ).registAnimation(FragAnimation.swip, 0.6)
 }
-scan("!footer input").forEach(obj => {
-    obj.onclick = e => {
-        currentFragment.value = e.target.attributes.target.value;
-    }
-})
+scan("!footer input").forEach(obj => obj.onclick = e => currentFragment.value = e.target.attributes.target.value )
