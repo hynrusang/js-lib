@@ -275,7 +275,8 @@ db.toObject();
 ---
 ### 3. **@1.2.0** Element Binding
 > Element Binding은 **[svelte](https://svelte.dev/)** 처럼, **HTMLElement**의 **attribute**를 이용해 두 개 이상의 요소들을 **binding** 해주는 기능입니다.  
-> **document**의 **body**의 **element**들이 **changed**될 때마다 새롭게 **Binding** 객체들을 연결하기 때문에, **dynamic element include**의 경우도 지원합니다.  
+> **document**의 **body**의 **element**들이 **changed**될 때마다 새롭게 **Binding** 객체들을 연결하기 때문에,  
+> **dynamic element include**의 경우도 지원합니다.  
   
 예시:
 > 우선, **binding** 시킬 **HTMLElement**들의 **var** 속성에 **binding**시킬 **variable name**을 입력합니다.  
