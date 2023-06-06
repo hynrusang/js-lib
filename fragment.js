@@ -46,7 +46,7 @@ const fragmentList = {
         ),
         $("fieldset").add(
             $("legend", {text: "html binding example"}),
-            $("textarea", {value: "hello, world!",style: "width: 100%; height: 200px;" var: "greeting",}),
+            $("textarea", {value: "hello, world!", style: "width: 100%; height: 200px;", var: "greeting",}),
             $("input", {type: "text", value: "6", style: "width: 50%; height: 40px; text-align: center;", var: "a"}),
             $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "b"}),
             $("p", {exp: "greeting a b->{greeting} {a} + {b} = {a + b} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
