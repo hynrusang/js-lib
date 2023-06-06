@@ -385,7 +385,7 @@ new Fragment("fragmentView",
 new Fragment("fragmentView",
     $("fieldset").add(
         $("legend", {text: "first fragment", style: "color: red;"}),
-       $("input", {type: "button", value: "go to second fragment", onclick: () => {
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
         secondFragment.launch();
         }})
     )
