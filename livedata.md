@@ -274,7 +274,7 @@ db.toObject();
 ```
 ---
 ### 3. **@1.2.0** Element Binding
-> Element Binding은 **[svelte](https://svelte.dev/)** 처럼, **HTMLElement**의 **attribute**를 이용해 두 개 이상의 요소들을 **binding** 해주는 기능입니다.  
+> Element Binding은 **HTMLElement**의 **attribute**를 이용해 두 개 이상의 요소들을 **binding** 해주는 기능입니다.  
 > **document**의 **body**의 **element**들이 **changed**될 때마다 새롭게 **Binding** 객체들을 연결하기 때문에,  
 > **dynamic.js**를 이용한 동적 HTMLElement Swiping의 경우도 지원합니다.  
   
