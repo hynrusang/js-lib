@@ -14,14 +14,14 @@
 
 ## Note
 1. To use this jade.js library, scripts in HTML must be written as external scripts, not internal scripts.
-2. The version must either be a valid version number, "release", or "developer" or "unstable" (experimental)
+2. The version must either be a valid version number, "release", or "prerelease" or "developer" (experimental)
 
 ### Example
 ```js
 <script src="https://hynrusang.github.io/js-lib/jade.js">
     dynamic, release;
     livedata, developer;
-    advanced, 1.0.0;
+    advanced, prerelease;
 </script>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></jade>
 <jade src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></jade>
