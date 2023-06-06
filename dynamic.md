@@ -358,32 +358,38 @@ mainFragment.launch();
 ---  
 #### 3-1. **@1.2.0** card
 ```js
-new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment"})
-)).registAnimation(FragAnimation.card, 0.8).launch();
+new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment"})
+    )
+).registAnimation(FragAnimation.card, 0.8).launch();
 ```
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/cardAnimation.gif" style="width: 50%; height: auto;" align="center" />  
    
 ---
 #### 3-2. **@1.2.0** fade
 ```js
-new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment"})
-)).registAnimation(FragAnimation.fade, 0.8).launch();
+new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment"})
+   )
+).registAnimation(FragAnimation.fade, 0.8).launch();
 ```
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/fadeAnimation.gif" style="width: 50%; height: auto;" align="center" />  
    
 ---
 #### 3-3. **@1.2.0** swip
 ```js
-new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
+new Fragment("fragmentView",
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+       $("input", {type: "button", value: "go to second fragment", onclick: () => {
         secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 0.8).launch();
+        }})
+    )
+).registAnimation(FragAnimation.swip, 0.8).launch();
 ```  
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/swipAnimation.gif" style="width: 50%; height: auto;" align="center" />  
   
