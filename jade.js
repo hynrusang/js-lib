@@ -60,7 +60,7 @@ for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js
 window.onload = () => {
     for (let data of document.querySelectorAll("jade")) {
         const __$$ELEMENT = document.createElement("script");
-        if (data.attributes[0] != null) __$$ELEMENT.src = data.attributes[0].value;
+        if (data.attributes.src) __$$ELEMENT.src = data.attributes[0].value;
         else continue;
         __$$ELEMENT.async = false;
         document.body.appendChild(__$$ELEMENT);
