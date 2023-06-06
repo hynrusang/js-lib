@@ -67,20 +67,18 @@ const LiveDataManager = class {
 const _Binder = class {
     static #bindlist = {};
     static #synclist = {};
-    static reset = elements => {
+    static set = elements => {
         this.#bindlist = {};
         this.#synclist = {};
-        _Binder.regist(elements)
-    }
-    static regist = elements => {
         for (let element of elements) {
             if (element.nodeName != "#text") {
                 if (element.attributes.var) {
-                    const name = element.attributes.var.value;
-                    if (this.#bindlist[name]) this.#bindlist[name].push(element);
-                    else this.#bindlist[name] = [element];
-                    element.value = this.#bindlist[name][0].value
-                    element.addEventListener('input', () => this.reBind(element, element.attributes.var.value));
+                    this.#bindlist[element.attributes.var.value] = element;
+                    element.addEventListener('input', () => {
+                        for (let obj of this.#synclist[element.attributes.var.value]) {
+                            this.reSync(obj, obj.attributes.exp.value)
+                        }
+                    });
                 } else if (element.attributes.exp) {
                     for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
                         if (this.#synclist[name]) this.#synclist[name].push(element);
@@ -91,21 +89,12 @@ const _Binder = class {
             }
         }
     }
-    /**
-     * @type {(obj: HTMLElement) => void}
-     */
-    static reBind = (obj, name) => {
-        for (let element of this.#bindlist[name]) {
-            if (element.nodeName == "INPUT") element.value = (obj.nodeName == "INPUT") ? obj.value : obj.innerText;
-            else element.innerText = (obj.nodeName == "INPUT") ? obj.value : obj.innerText;
-        }
-        if (this.#synclist[name]) for (let obj of this.#synclist[name]) this.reSync(obj, obj.attributes.exp.value)
-    }
     static reSync = (obj, expression) => {
         let returnString = expression
         for (let subString of obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
-            const parsing = (this.#bindlist[subString][0].nodeName == "INPUT") ? this.#bindlist[subString][0].value : this.#bindlist[subString][0].innerText;
-            returnString = returnString.replaceAll(subString, Number.isNaN(parseInt(parsing)) ? `"${parsing}"` : parsing);
+            const parsing = (this.#bindlist[subString].nodeName == "INPUT") ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
+            returnString = returnString.replaceAll(subString, (isNaN(parsing) || parsing == "") ? `"${parsing}"` : parsing);
+            console.log
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
             const result = eval(group);
@@ -120,9 +109,9 @@ new MutationObserver(mutationsList => {
         if (mutation.type === "childList") {
             const addedElements = mutation.addedNodes;
             if (addedElements.length > 0) {
-                _Binder.reset([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
+                _Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
             }
         }
     }
 }).observe(document.body, { childList: true, subtree: true });
-_Binder.regist([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
+_Binder.set([...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]);
