@@ -62,5 +62,31 @@ const LiveDataManager = class {
     }
 }
 const Binder = class {
-    
+    static #bindlist = {};
+    static #uselist = {};
+    /**
+     * @type {(obj: HTMLElement) => void}
+     */
+    static bind = (obj, name) => {
+        this.#bindlist[name] = obj.value;
+        if (this.#uselist[name]) {
+            for (let usedata of this.#uselist[name]) this._parsing(usedata)
+            this.#uselist[name].value = "true"
+        }
+        console.log(this.#bindlist)
+        console.log(this.#uselist)
+    }
+    static use = (obj, expression) => {
+        for (let variable of expression.match(/{([^}]+)}/g).map(value => value.slice(1, -1)).filter(item => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(item))) {
+            if (this.#uselist[variable]) this.#uselist[variable].push(obj);
+            else this.#uselist[variable] = [obj];
+            this._parsing(obj)
+        }
+    }
+    static _parsing = obj => {
+        const expression = obj.attributes.use.value;
+        obj.value = expression.replaceAll(/{([^}]+)}/g, (match, group) => {
+            return this.#bindlist[group] || match;
+        });
+    }
 }
