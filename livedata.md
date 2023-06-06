@@ -191,6 +191,7 @@ const db = new LiveDataManager({
     name: new LiveData("hynrusang", String).registObserver(gollum),
     data: new LiveData([], Array).registObserver(gollum)
 });
+
 db.id.name; // getter
 db.id.newData = new LiveData("hello, world!").registObserver(gollum); // setter
 db.id;
@@ -206,6 +207,7 @@ const db = new LiveDataManager({
     name: new LiveData("hynrusang", String).registObserver(gollum),
     data: new LiveData([], Array).registObserver(gollum)
 }, false);
+
 db.id.name; // SyntaxError
 db.id.newData = new LiveData("hello, world!").registObserver(gollum); // SyntaxError
 db.id; // SyntaxError
