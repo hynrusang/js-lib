@@ -5,7 +5,7 @@
 })
 const fragmentList = {
     firstFragment: new Fragment("fragmentView", 
-        $("h1", {text: "여기는 dynamic.js의 기능을 설명하는 곳입니다."}),
+        $("h1", {text: "여기는 dynamic.js의 기능을 보여주는 곳입니다."}),
         $("p", {html: "dynamic.js는 기존의 vanilla js로 동적인 요소 스위핑을 사용할 수 있게 해줍니다.<br>dynamic.js의 주요 기능은 다음과 같습니다."}),
         $("ul").add(
             $("li", {text: "동적인 요소 생성 / 수정"}),
@@ -21,7 +21,7 @@ const fragmentList = {
     ).registAnimation(FragAnimation.card, 0.6).launch(),
 
     secondFragment: new Fragment("fragmentView", 
-        $("h1", {text: "여기는 livedata.js의 기능을 설명하는 곳입니다."}),
+        $("h1", {text: "여기는 livedata.js의 기능을 보여주는 곳입니다."}),
         $("p", {html: "livedata.js는 kotlin의 LiveData 클래스와 더불어, LiveData 객체들을 한꺼번에 관리하는 LiveDataManager,<br>\
         HTMLElement 간의 binding을 지원하는 var, exp attribute 등을 지원합니다.<br>\
         livedata.js의 주요 기능은 다음과 같습니다."}),
@@ -66,7 +66,7 @@ const fragmentList = {
     ).registAnimation(FragAnimation.fade, 0.6),
 
     thirdFragment: new Fragment("fragmentView",
-        $("h1", {text: "여기는 advanced.js의 기능을 설명하는 곳입니다."})
+        $("h1", {text: "여기는 advanced.js의 기능을 보여주는 곳입니다."})
     ).registAnimation(FragAnimation.swip, 0.6)
 }
 scan("!footer input").forEach(obj => obj.onclick = e => currentFragment.value = e.target.attributes.target.value )
