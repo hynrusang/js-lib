@@ -291,9 +291,8 @@ db.toObject();
 > 그런 다음, 실제로 **binding**된 변수를 이용해, 동적으로 값을 변경할 **HTMLElement**들의 **exp** 속성에 **expression**을 입력합니다.
 ```html
 <input type="text" exp="a b c->{a} {b} + {c} = {b + c}">
-```
-> 그러면, 초기에 **bind**된 요소들이 바뀔 때, 위의 **exp**를 연결한 **HTMLElement**의 값도 변경됩니다.
-```html
+
+// value of input
 hello, world! 2 + 3 = 5
 ```
 > 일부 숫자 상수는 **$** 매크로를 이용하여 간편하게 사용할 수 있습니다.
