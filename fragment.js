@@ -45,6 +45,13 @@ const fragmentList = {
             $("input", {type: "text", value: "6", style: "width: 50%; height: 40px; text-align: center;", var: "a"}),
             $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "b"}),
             $("p", {exp: "greeting a b->{greeting} {a} + {b} = {a + b} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
+            $("input", {type: "button", value: "binding된 요소 초기화", style: "width: 300px; height: 40px; margin-left: 15px; margin-bottom: 10px;", onclick: e => {
+                scan("!fieldset input")[0].value = "hello, world!";
+                scan("!fieldset input")[1].value = 6;
+                scan("!fieldset input")[2].value = 11;
+                _Binder.resync(scan("!fieldset input")[0]);
+            }}),
+            $("br"),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
                 console.clear();
                 console.log(scan("fieldset p"))
