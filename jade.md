@@ -19,14 +19,13 @@ or use **"prerelease"** to automatically use the highly developed version , or u
 
 ## What is "release", "prerelease", "developer"?
 1. release
-- **Release** is a version that is officially serviced because it is **almost completely developed**.  
+- **Release** is a version that is officially supported as it **has reached an advanced stage** of development.  
 (Stability: **Very High**, Development Frequency: **Very Low**)
 2. prerelease
-- **Prerelease** is a version that **has being developed** and is officially being serviced,  
-but it is still in the development stage.  
+- **Prerelease** is a version that is **currently being developed** and officially supported, but it is still in the development stage.    
 (Stability: **High**, Development Frequency: **Medium**)
 3. developer
-- **Developer** is an **experimental version** that is being offered temporarily before development has yet to stabilize.  
+- **Developer** is **experimental version** release offered temporarily before the development stabilizes.  
 (Stability: **Low**, Development Frequency: **High**)
 
 ### Example

@@ -299,10 +299,10 @@ hello, world! 2 + 3 = 5
 ```html
 <input type="text" value="$PI" var=".a">
 <input type="text" value="$E" var=".b">
-<p exp=".a .b->{.a} + {.b} = {Math.cos(.a) + Math.sin(.b)}">
+<p exp=".a .b->cos({.a}) + sin({.b}) = {Math.cos(.a) + Math.sin(.b)}">
 
 // innerText of p
-3.141592653589793 + 2.718281828459045 = -0.5892187094970911
+cos(3.141592653589793) + sin(2.718281828459045) = -0.5892187094970911
 ```
 > 만약, **external**에서 **user**가 **value**를 **change**하는 것이 아닌, **inner**에서 **element.value = ""** 같이 **value**를 **change** 하는 경우라면,  
 > **element.value = ""** 처럼 **value**를 **change** 한 후, **\_Binder.sync(element);** 를 호출하면 됩니다.  
