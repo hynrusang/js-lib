@@ -1,6 +1,6 @@
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/mainimg.png" style="width: 100%; height: auto;" />  
   
-# ![JavaScript icon](https://github.com/hynrusang/js-lib/blob/main/resource/logo.png) JavaScript (js) Library  
+# ![JavaScript icon](https://github.com/hynrusang/js-lib/blob/main/resource/logo.png) [JavaScript (js) Library](https://hynrusang.github.io/js-lib/)  
 > 혹시 **Js**만으로 손 쉽게 **HTML 요소**를 생성하고 조작하고 싶으신가요?  
 > 또는 **Fragment 단위**로 **페이지 전환 없이** 동적으로 슬라이드를 구현하고 싶으신가요?  
 > 또는 **kotlin**의 **LiveData**처럼 값이 변할 때마다 알려줄 수 있는 기능이 필요하신가요?  
