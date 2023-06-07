@@ -46,7 +46,7 @@ const fragmentList = {
             $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "c"}),
             $("p", {exp: "a b c->{a}: {b} + {c} = {b + c} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
             $("input", {type: "button", value: "binding된 요소 초기화", style: "width: 300px; height: 40px; margin-left: 15px; margin-bottom: 10px;", onclick: e => {
-                scan("!fieldset input")[0].value = "hello, world!";
+                scan("!fieldset input")[0].value = "binding example";
                 scan("!fieldset input")[1].value = 6;
                 scan("!fieldset input")[2].value = 11;
                 _Binder.resync(scan("!fieldset input")[0]);
@@ -54,8 +54,8 @@ const fragmentList = {
             $("br"),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
                 console.clear();
-                console.log(scan("fieldset p"))
-                scan("!fieldset input").forEach(obj => { if (obj != e.target) console.log(obj) })
+                scan("!fieldset input").forEach(obj => { if (obj != e.target) console.log(obj) });
+                console.log(scan("fieldset p"));
             }})
         ),
         $("p", {text: "livedata.js를 이용하여 구현한 부분은 다음과 같습니다."}),
