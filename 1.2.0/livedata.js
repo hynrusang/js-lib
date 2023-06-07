@@ -79,7 +79,6 @@ const _Binder = class {
             else returnString = returnString.replaceAll(`__#${subString}__`, parsing);
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
-            console.log(group)
             const result = eval(group);
             return result;
         });
