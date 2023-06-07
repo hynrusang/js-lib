@@ -11,11 +11,11 @@ The version can either specify a particular version (e.g. "1.0.0"), use "release
 
 Note:
 1. To use this jade.js library, scripts in HTML must be written as external scripts, not internal scripts.
-2. The version must either be a valid version number, "release", or "developer".
+2. The version must either be a valid version number, "release", or "prerelease", or "developer".
 
 Example:
 <script src="https://hynrusang.github.io/js-lib/jade.js">
-    dynamic, release;
+    dynamic, prerelease;
     livedata, developer;
     advanced, 1.0.0;
 </script>
@@ -27,7 +27,7 @@ Example:
 <jade src="/resource/js/1.0.0/util.js"></jade>
 
 Result:
-<script src="https://hynrusang.github.io/js-lib/1.1.0/dynamic.js"></script>
+<script src="https://hynrusang.github.io/js-lib/1.2.0/dynamic.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.2.0/livedata.js"></script>
 <script src="https://hynrusang.github.io/js-lib/1.0.0/advanced.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -39,9 +39,9 @@ Result:
 */
 const __$$IMPLEMENTHREF = "https://hynrusang.github.io/js-lib/";
 const __$$VERSIONINFO = {
-    advanced: ["1.0.0", "1.1.0"],
-    dynamic: ["1.2.0", "1.2.0"],
-    livedata: ["1.1.0", "1.2.0"]
+    advanced: ["1.0.0", "1.1.0", "1.1.0"],
+    dynamic: ["1.1.0", "1.2.0", "1.2.0"],
+    livedata: ["1.1.0", "1.2.0", "1.2.0"]
 };
 for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js"]`).innerHTML
     .replaceAll("\n", "")
@@ -50,7 +50,8 @@ for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js
     .split(";")) {
     if (data != "") {
         const __$$ELEMENT = document.createElement("script");
-        __$$ELEMENT.src = (data.split(",")[1] == "developer") ? `${__$$IMPLEMENTHREF}${__$$VERSIONINFO[data.split(",")[0]][1]}/${data.split(",")[0]}.js`
+        __$$ELEMENT.src = (data.split(",")[1] == "developer") ? `${__$$IMPLEMENTHREF}${__$$VERSIONINFO[data.split(",")[0]][2]}/${data.split(",")[0]}.js`
+            :(data.split(",")[1] == "prerelease") ? `${__$$IMPLEMENTHREF}${__$$VERSIONINFO[data.split(",")[0]][1]}/${data.split(",")[0]}.js`
             : (data.split(",")[1] == "release") ? `${__$$IMPLEMENTHREF}${__$$VERSIONINFO[data.split(",")[0]][0]}/${data.split(",")[0]}.js`
             : `${__$$IMPLEMENTHREF}${data.split(",")[1]}/${data.split(",")[0]}.js`;
         __$$ELEMENT.async = false;
