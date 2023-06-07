@@ -19,10 +19,10 @@ or use **"prerelease"** to automatically use the highly developed version , or u
 
 ## What is "release", "prerelease", "developer"?
 1. release
-- **Release** is a version that is officially serviced because it is almost completely developed.  
+- **Release** is a version that is officially serviced because it is **almost completely developed**.  
 (Stability: **Very High**, Development Frequency: **Very Low**)
 2. prerelease
-- **Prerelease** is a version that has been developed and is officially being serviced,  
+- **Prerelease** is a version that **has being developed** and is officially being serviced,  
 but it is still in the development stage.  
 (Stability: **High**, Development Frequency: **Medium**)
 3. developer
