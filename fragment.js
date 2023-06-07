@@ -54,7 +54,7 @@ const fragmentList = {
             $("br"),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
                 console.clear();
-                scan("!fieldset input").forEach(obj => { if (obj != e.target) console.log(obj) });
+                for (let i = 0; i < 3; i++) console.log(scan("!fieldset input")[i]);
                 console.log(scan("fieldset p"));
             }})
         ),
