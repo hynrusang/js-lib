@@ -103,7 +103,7 @@ const _Binder = class {
         }
     }
     static sync = obj => {
-        for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
+        if (typeof this.#synclist[obj.attributes.var.value] == "object") for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
     }
 }
 document.body.addEventListener('DOMNodeInserted', e => {
