@@ -14,12 +14,24 @@
 
 ## Note
 1. To use this jade.js library, scripts in HTML must be written as external scripts, not internal scripts.
-2. The version must either be a valid version number, "release", or "developer"
+2. The version must either be a valid version number, "release", or "prerelease", or "developer"
+
+## What is "release", "prerelease", "developer"?
+1. release
+- Release is a version that is officially serviced because it is almost completely developed.  
+(Stability: Very High, Development Frequency: Very Low)
+2. prerelease
+- Prerelease is a version that has been developed and is officially being serviced,  
+but it is still in the development stage.  
+(Stability: High, Development Frequency: Medium)
+3. developer
+- The developer is an experimental version that is being offered temporarily before development has yet to stabilize.  
+(Stability: Low, Development Frequency: High)
 
 ### Example
 ```js
 <script src="https://hynrusang.github.io/js-lib/jade.js">
-    dynamic, release;
+    dynamic, prerelease;
     livedata, developer;
     advanced, 1.0.0;
 </script>
