@@ -73,9 +73,7 @@ const _Binder = class {
             if (element.nodeName != "#text") {
                 if (element.attributes.var) {
                     this.#bindlist[element.attributes.var.value] = element;
-                    element.addEventListener('input', () => {
-                        for (let obj of this.#synclist[element.attributes.var.value]) this.sync(obj, obj.attributes.exp.value)
-                    });
+                    element.addEventListener('input', () => this.resync(element));
                 } else if (element.attributes.exp) {
                     for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
                         if (this.#synclist[name]) this.#synclist[name].push(element);
