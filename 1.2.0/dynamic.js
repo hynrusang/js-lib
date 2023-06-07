@@ -141,10 +141,12 @@ const FragAnimation = class {
     }
     static swip = async (_fragment, _second) => {
         if (_fragment.view.node.innerHTML != "") {
-            _fragment.view.node.animate([{marginLeft: '0%'}, {marginLeft: '100%'}], {duration: _second * 450,})
+            scan("html").style.overflowX = "hidden";
+            _fragment.view.node.animate([{transform: 'translateX(0px)'}, {transform: 'translateX(100%)'}], {duration: _second * 450,})
             await new Promise(code => setTimeout(code, _second * 400));
             _fragment.view.reset(_fragment.fragment);
-            _fragment.view.node.animate([{marginLeft: '-200%'}, {marginLeft: '0%'}], {duration: _second * 550,})
+            _fragment.view.node.animate([{transform: 'translateX(-100%)'}, {transform: 'translateX(0px)'}], {duration: _second * 550,})
+            scan("html").style.overflowX = null;
         } else _fragment.view.reset(_fragment.fragment);
         if (typeof _fragment.action == "function") _fragment.action();
     }
