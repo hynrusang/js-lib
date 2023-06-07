@@ -86,6 +86,9 @@ const _Binder = class {
             }
         }
     }
+    static resync = obj => {
+        for (let element of this.#synclist[obj.attributes.var.value]) this.sync(element, element.attributes.exp.value);
+    }
     static sync = (obj, expression) => {
         const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
         let returnString = expression;
@@ -102,10 +105,8 @@ const _Binder = class {
         else obj.innerText = returnString.split("->")[1];
     }
 }
-document.body.addEventListener('DOMNodeInserted', function(event) {
-    if (event.target instanceof HTMLElement) _Binder.set();
+document.body.addEventListener('DOMNodeInserted', e => {
+    if (e.target instanceof HTMLElement) _Binder.set();
 });
-document.body.addEventListener('DOMNodeRemoved', function(event) {
-    _Binder.set();
-});
+document.body.addEventListener('DOMNodeRemoved', () => _Binder.set());
 _Binder.set();
