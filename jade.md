@@ -10,7 +10,7 @@
 ## How it works
 1. Inside the `<script src="https://hynrusang.github.io/js-lib/jade.js">` tag, scripts to include are separated by semicolons.
 2. The first argument specifies the script name to include, and the second argument specifies the version.
-2. The version can either specify a particular version (e.g. "1.0.0"), use "release" to automatically use the latest version, or use "developer" for a version specifically for developers.
+2. The version can either specify a particular version (e.g. "1.0.0"), use "release" to automatically use the latest version that's almost stabilized, or use "prerelease" to automatically use the highly developed version , or use "developer" for a version specifically for developers.
 
 ## Note
 1. To use this jade.js library, scripts in HTML must be written as external scripts, not internal scripts.
