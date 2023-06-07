@@ -297,7 +297,7 @@ db.toObject();
 hello, world! 2 + 3 = 5
 ```
 > 만약, **external**에서 **user**가 **value**를 **change**하는 것이 아닌, **inner**에서 **element.value = ""** 같이 **value**를 **change** 하는 경우라면,  
-> **element.value = ""** 처럼 **value**를 **change** 한 후, **\_Binder.resync(element);** 를 호출하면 됩니다.  
+> **element.value = ""** 처럼 **value**를 **change** 한 후, **\_Binder.sync(element);** 를 호출하면 됩니다.  
 ```js
 // html
 <input type="text" value="anonymous" var="myname">
@@ -306,7 +306,7 @@ hello, world! 2 + 3 = 5
 // js
 const target = document.querySelector("input");
 target.value = "";
-_Binder.resync(target);
+_Binder.sync(target);
 ``` 
 ---
 ## 업데이트 내역
