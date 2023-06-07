@@ -300,7 +300,7 @@ hello, world! 2 + 3 = 5
 > **element.value = ""** 처럼 **value**를 **change** 한 후, **\_Binder.resync(element);** 를 호출하면 됩니다.  
 ```js
 // html
-<input type="text" var="myname">
+<input type="text" value="anonymous" var="myname">
 <p exp="myname->hello, {myname}!"></p>
 
 // js
