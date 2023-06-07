@@ -25,7 +25,7 @@
 but it is still in the development stage.  
 (Stability: High, Development Frequency: Medium)
 3. developer
-- The developer is an experimental version that is being offered temporarily before development has yet to stabilize.  
+- Developer is an experimental version that is being offered temporarily before development has yet to stabilize.  
 (Stability: Low, Development Frequency: High)
 
 ### Example
