@@ -67,6 +67,21 @@ const LiveDataManager = class {
 const _Binder = class {
     static #bindlist = {};
     static #synclist = {};
+    static #innerSync = (obj, expression) => {
+        const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
+        let returnString = expression;
+        for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
+        for (let subString of subStrings) {
+            const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
+            returnString = returnString.replaceAll(`__#${subString}__`, (isNaN(parsing) || parsing == "" || /0[0-9]+$/g.test(parsing)) ? `"${parsing.replace(/"/g, '\\"')}"` : parsing);
+        }
+        returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
+            const result = eval(group);
+            return result;
+        });
+        if (["INPUT", "TEXTAREA"].includes(obj.nodeName)) obj.value = returnString.split("->")[1];
+        else obj.innerText = returnString.split("->")[1];
+    }
     static set = () => {
         this.#synclist = {};
         for (let element of [...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]) {
@@ -86,21 +101,6 @@ const _Binder = class {
     }
     static sync = obj => {
         for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
-    }
-    static #innerSync = (obj, expression) => {
-        const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
-        let returnString = expression;
-        for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
-        for (let subString of subStrings) {
-            const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
-            returnString = returnString.replaceAll(`__#${subString}__`, (isNaN(parsing) || parsing == "" || /0[0-9]+$/g.test(parsing)) ? `"${parsing.replace(/"/g, '\\"')}"` : parsing);
-        }
-        returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
-            const result = eval(group);
-            return result;
-        });
-        if (["INPUT", "TEXTAREA"].includes(obj.nodeName)) obj.value = returnString.split("->")[1];
-        else obj.innerText = returnString.split("->")[1];
     }
 }
 document.body.addEventListener('DOMNodeInserted', e => {
