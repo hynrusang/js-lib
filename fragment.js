@@ -49,7 +49,7 @@ const fragmentList = {
                 scan("!fieldset input")[0].value = "binding example";
                 scan("!fieldset input")[1].value = 6;
                 scan("!fieldset input")[2].value = 11;
-                _Binder.resync(scan("!fieldset input")[0]);
+                _Binder.sync(scan("!fieldset input")[0]);
             }}),
             $("br"),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {
