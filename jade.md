@@ -25,7 +25,7 @@ or use **"prerelease"** to automatically use the highly developed version , or u
 - **Prerelease** is a version that is **currently being developed** and officially supported, but it is still in the development stage.    
 (Stability: **High**, Development Frequency: **Medium**)
 3. developer
-- **Developer** is an **experimental version** that is being offered temporarily before development has yet to stabilize.  
+- **Developer** is **experimental version** release offered temporarily before the development stabilizes.  
 (Stability: **Low**, Development Frequency: **High**)
 
 ### Example
