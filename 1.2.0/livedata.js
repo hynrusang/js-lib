@@ -73,9 +73,13 @@ const _Binder = class {
         for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
         for (let subString of subStrings) {
             const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
-            returnString = returnString.replaceAll(`__#${subString}__`, (isNaN(parsing) || parsing == "" || /^0[0-9]/g.test(parsing.trim().replace("-", "").replace("+", ""))) ? `"${parsing.replace(/"/g, '\\"')}"` : parsing);
+            if (parsing == "$PI") returnString = returnString.replaceAll(`__#${subString}__`, Math.PI);
+            else if (parsing == "$E") returnString = returnString.replaceAll(`__#${subString}__`, Math.E);
+            else if (isNaN(parsing) || parsing == "" || /^0[0-9]/g.test(parsing.trim().replace("-", "").replace("+", ""))) returnString = returnString.replaceAll(`__#${subString}__`, `"${parsing.replace(/"/g, '\\"')}"`);
+            else returnString = returnString.replaceAll(`__#${subString}__`, parsing);
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
+            console.log(group)
             const result = eval(group);
             return result;
         });
