@@ -305,8 +305,8 @@ hello, world! 2 + 3 = 5
 
 // js
 const target = document.querySelector("input");
-target.value = "";
-_Binder.sync(target);
+target.value = ""; // change in inner
+_Binder.sync(target); // inner change sync
 ``` 
 ---
 ## 업데이트 내역
@@ -326,7 +326,7 @@ _Binder.sync(target);
 > @deprecated JSON.unlivedata(json) : Object;  
 > @deprecated JSON.unlivedata(json) : Object;  
 ---
-> 1.2.0  
+> 1.2.
 > implement HTMLElement Binding: attribute(var, exp)  
 >  
 > @removed LiveData.set();  
