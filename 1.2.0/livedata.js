@@ -87,18 +87,15 @@ const _Binder = class {
     }
     static set = () => {
         this.#synclist = {};
-        for (let element of [...document.querySelectorAll("[var]"), ...document.querySelectorAll("[exp]")]) {
-            if (element.nodeName != "#text") {
-                if (element.attributes.var) {
-                    this.#bindlist[element.attributes.var.value] = element;
-                    element.addEventListener('input', () => this.sync(element));
-                } else if (element.attributes.exp) {
-                    for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
-                        if (this.#synclist[name]) this.#synclist[name].push(element);
-                        else this.#synclist[name] = [element];
-                        this.#innerSync(element, element.attributes.exp.value)
-                    }
-                }
+        for (let element of document.querySelectorAll("[var]")) {
+            this.#bindlist[element.attributes.var.value] = element;
+            element.addEventListener('input', () => this.sync(element));
+        }
+        for (let element of document.querySelectorAll("[exp]")) {
+            for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
+                if (this.#synclist[name]) this.#synclist[name].push(element);
+                else this.#synclist[name] = [element];
+                this.#innerSync(element, element.attributes.exp.value)
             }
         }
     }
