@@ -93,8 +93,7 @@ const _Binder = class {
         }
         for (let element of document.querySelectorAll("[exp]")) {
             for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
-                if (this.#synclist[name]) this.#synclist[name].push(element);
-                else this.#synclist[name] = [element];
+                this.#synclist[name] ? this.#synclist[name].push(element) : this.#synclist[name] = [element];
                 this.#innerSync(element, element.attributes.exp.value)
             }
         }
