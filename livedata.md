@@ -334,7 +334,7 @@ _Binder.sync(target); // inner change sync
 > @deprecated JSON.unlivedata(json) : Object;  
 > @deprecated JSON.unlivedata(json) : Object;  
 ---
-> 1.2.
+> 1.2.0  
 > implement HTMLElement Binding: attribute(var, exp)  
 >  
 > @removed LiveData.set();  

@@ -4,8 +4,7 @@
 ---
 
 ## Info
-- This library can download other JavaScript programs from my website.
-- It can be more helpful than the default HTML script tag.
+This script can download other JavaScript programs from my website automatically.
 
 ## How it works
 1. Inside the `<script src="https://hynrusang.github.io/js-lib/jade.js">` tag, scripts to include are separated by semicolons.
