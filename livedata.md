@@ -276,16 +276,40 @@ db.toObject();
 ```
 ---
 ### 3. **@1.2.0** Binder
-> **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공합니다.
+> **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공합니다.  
 >  
 > 1. **@1.2.0** sync(obj)  
-> 해당 **obj: HTMLElement**와 연결된 **HTMLElement**들을 수동으로 동기화합니다.
+> 해당 **obj: HTMLElement**와 연결된 **HTMLElement**들을 수동으로 동기화합니다.  
+> 주로 **User**가 아닌, **script** 내에서 **obj**의 값을 수동으로 변경할 때, 같이 호출합니다.    
 >  
 > 2. **@1.1.0** find(id)  
 > **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
 #### 3-0. how to use
-> 우선 다음과 같이, **html** 문서 내에 다음과 같이 요소들을 작성합니다.  
+> 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.
 ```js
+<input type="text" value="binding example:" var="a">
+<input type="number" value="0" var="b">
+<input type="number" value="0" var="c">
+```
+> 그 다음, **Binding**된 요소를 이용해 **update**할 요소들을 다음과 같이 작성합니다.
+```js
+<p exp="a->action name = {a}"></p>
+<p exp="a b c->{a}: {b} + {c} = {b + c}"></p>
+```
+> 그러면, 자동으로 **update** 되는 요소들의 **innerText** (요소가 **input** 또는 **textarea** 이라면 **value**)가 다음과 같이 수정됩니다.
+```js
+action name = binding example
+binding example: 6 + 3 = 9
+```
+> 만약, **user**측이 아닌, **script** 상에서 **Binding**할 주체의 **value**나 **innerText**를 수동으로 설정하는 경우,  
+> 수동으로 설정한 후, Binder.sync()를 수동으로 호출해야, 변경 사항이 **sync** 됩니다.  
+```js
+Binder.find("a").value = "binding example 2";
+Binder.sync(Binder.find("a"));
+
+// innerTexts
+action name = binding example 2
+binding example 2: 6 + 3 = 9
 ```
 ---
 ## 업데이트 내역
