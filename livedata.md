@@ -277,12 +277,13 @@ db.toObject();
 ---
 ### 3. **@1.2.0** Binder
 > **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공합니다.  
+> Binder 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. **@1.2.0** sync(obj)  
+> 1. **@1.2.0** static sync(obj)  
 > 해당 **obj: HTMLElement**와 연결된 **HTMLElement**들을 수동으로 동기화합니다.  
 > 주로 **User**가 아닌, **script** 내에서 **obj**의 값을 수동으로 변경할 때, 같이 호출합니다.    
 >  
-> 2. **@1.2.0** find(id)  
+> 2. **@1.2.0** static find(id)  
 > **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
 ---
 #### 3-0. how to use
@@ -314,7 +315,7 @@ action name = binding example 2
 binding example 2: 6 + 3 = 9
 ```
 ---
-#### 3-1. **@1.2.0** sync(obj)
+#### 3-1. **@1.2.0** static sync(obj)
 > 해당 **obj: HTMLElement**와 연결된 **HTMLElement**들을 수동으로 동기화합니다.  
 > 주로 **User**가 아닌, **script** 내에서 **obj**의 값을 수동으로 변경할 때, 같이 호출합니다.  
   
@@ -332,7 +333,7 @@ Binder.sync(Binder.find("a"));
 a = 7, b = 3, a + b = 10
 ```
 ---
-#### 3-2. **@1.2.0** find(id)  
+#### 3-2. **@1.2.0** static find(id)  
 > **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
   
 예시:
