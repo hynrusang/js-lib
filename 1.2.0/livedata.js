@@ -67,7 +67,11 @@ const Binder = class {
     static #innerSync = (obj, expression) => {
         const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
         let returnString = expression;
-        for (let subString of subStrings) returnString = returnString.replaceAll(subString, `__#${subString}__`);
+        for (let match of returnString.match(/\{(.+?)\}/g)) {
+            let replaced = match;
+            for (let subString of subStrings) replaced = replaced.replaceAll(subString, `__#${subString}__`);
+            returnString = returnString.replace(match, `${replaced}`);
+        }
         for (let subString of subStrings) {
             const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
             if (parsing.trim() == "$PI") returnString = returnString.replaceAll(`__#${subString}__`, Math.PI);
@@ -82,7 +86,7 @@ const Binder = class {
         if (["INPUT", "TEXTAREA"].includes(obj.nodeName)) obj.value = returnString.split("->")[1];
         else obj.innerText = returnString.split("->")[1];
     }
-    static set = () => {
+    static _set = () => {
         this.#synclist = {};
         for (let element of document.querySelectorAll("[var]")) {
             this.#bindlist[element.attributes.var.value] = element;
@@ -98,9 +102,9 @@ const Binder = class {
     static sync = obj => {
         if (typeof this.#synclist[obj.attributes.var.value] == "object") for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
     }
-    static find = varname => this.#bindlist[varname];
+    static find = id => this.#bindlist[id];
 }
 document.body.addEventListener('DOMNodeInserted', e => {
-    if (e.target instanceof HTMLElement) Binder.set();
+    if (e.target instanceof HTMLElement) Binder._set();
 });
-Binder.set();
+Binder._set();
