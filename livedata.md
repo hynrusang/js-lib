@@ -284,6 +284,7 @@ db.toObject();
 >  
 > 2. **@1.2.0** find(id)  
 > **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
+---
 #### 3-0. how to use
 > (이 방식은 앞으로 동적으로 추가되는 **HTMLElement**들에 대해서도 적용됩니다.)  
 > 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.  
@@ -329,6 +330,22 @@ Binder.sync(Binder.find("a"));
 
 // innerText(p)
 a = 7, b = 3, a + b = 10
+```
+---
+#### 3-2. **@1.2.0** find(id)  
+> **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
+  
+예시:
+```html
+<input type="number" value="2" var="a">
+<input type="number" value="3" var="b">
+<p exp="a b->a = {a},  b = {b},  a + b = {a + b}"></p>
+
+// js
+console.log(Binder.find("a"));
+
+// console
+<input type="number" value="2" var="a">
 ```
 ---
 ## 업데이트 내역
