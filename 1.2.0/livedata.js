@@ -61,10 +61,7 @@ const LiveDataManager = class {
         }, {});
     }
 }
-/**
- * @description This class is used indirectly to implement the var and exp attribute of HtmlElement.
- */
-const _Binder = class {
+const Binder = class {
     static #bindlist = {};
     static #synclist = {};
     static #innerSync = (obj, expression) => {
@@ -105,9 +102,9 @@ const _Binder = class {
     static sync = obj => {
         if (typeof this.#synclist[obj.attributes.var.value] == "object") for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
     }
+    static find = varname => this.#bindlist[varname];
 }
 document.body.addEventListener('DOMNodeInserted', e => {
-    if (e.target instanceof HTMLElement) _Binder.set();
+    if (e.target instanceof HTMLElement) Binder.set();
 });
-document.body.addEventListener('DOMNodeRemoved', () => _Binder.set());
-_Binder.set();
+Binder.set();
