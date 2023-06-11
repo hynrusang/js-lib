@@ -275,47 +275,42 @@ db.toObject();
 {id: 32, name: 'hynrusang', data: Array(0)}
 ```
 ---
-### 3. **@1.2.0** Element Binding
-> Element Binding은 **HTMLElement**의 **attribute**를 이용해 두 개 이상의 요소들을 **binding** 해주는 기능입니다.  
-> **document**의 **body**의 **element**들이 **changed**될 때마다 새롭게 **Binding** 객체들을 연결하기 때문에,  
-> **dynamic.js**를 이용한 동적 HTMLElement Swiping의 경우도 지원합니다.  
-  
-예시:
-> 우선, **binding** 시킬 **HTMLElement**들의 **var** 속성에 **binding**시킬 **variable name**을 입력합니다.  
-> **(var 속성에 들어가는 variable name은 고유합니다. 여러가지 HTMLElement에 동일한 variable name을 사용하지 않게 주의하세요.)**
-```html
-<p var="a">hello, world!</p>
-<input type="text" value="2" var="b">
-<input type="text" value="3" var="c">
-```
-> 그런 다음, 실제로 **binding**된 변수를 이용해, 동적으로 값을 변경할 **HTMLElement**들의 **exp** 속성에 **expression**을 입력합니다.
-```html
-<input type="text" exp="a b c->{a} {b} + {c} = {b + c}">
-
-// value of input
-hello, world! 2 + 3 = 5
-```
-> 일부 숫자 상수는 **$** 매크로를 이용하여 간편하게 사용할 수 있습니다.
-```html
-<input type="text" value="$PI" var=".a">
-<input type="text" value="$E" var=".b">
-<p exp=".a .b->cos({.a}) + sin({.b}) = {Math.cos(.a) + Math.sin(.b)}">
-
-// innerText of p
-cos(3.141592653589793) + sin(2.718281828459045) = -0.5892187094970911
-```
-> 만약, **external**에서 **user**가 **value**를 **change**하는 것이 아닌, **inner**에서 **element.value = ""** 같이 **value**를 **change** 하는 경우라면,  
-> **element.value = ""** 처럼 **value**를 **change** 한 후, **\_Binder.sync(element);** 를 호출하면 됩니다.  
+### 3. **@1.2.0** Binder
+> **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공합니다.  
+>  
+> 1. **@1.2.0** sync(obj)  
+> 해당 **obj: HTMLElement**와 연결된 **HTMLElement**들을 수동으로 동기화합니다.  
+> 주로 **User**가 아닌, **script** 내에서 **obj**의 값을 수동으로 변경할 때, 같이 호출합니다.    
+>  
+> 2. **@1.1.0** find(id)  
+> **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
+#### 3-0. how to use
+> 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.
 ```js
-// html
-<input type="text" value="anonymous" var="myname">
-<p exp="myname->hello, {myname}!"></p>
+<input type="text" value="binding example:" var="a">
+<input type="number" value="0" var="b">
+<input type="number" value="0" var="c">
+```
+> 그 다음, **Binding**된 요소를 이용해 **update**할 요소들을 다음과 같이 작성합니다.
+```js
+<p exp="a->action name = {a}"></p>
+<p exp="a b c->{a}: {b} + {c} = {b + c}"></p>
+```
+> 그러면, 자동으로 **update** 되는 요소들의 **innerText** (요소가 **input** 또는 **textarea** 이라면 **value**)가 다음과 같이 수정됩니다.
+```js
+action name = binding example
+binding example: 6 + 3 = 9
+```
+> 만약, **user**측이 아닌, **script** 상에서 **Binding**할 주체의 **value**나 **innerText**를 수동으로 설정하는 경우,  
+> 수동으로 설정한 후, Binder.sync()를 수동으로 호출해야, 변경 사항이 **sync** 됩니다.  
+```js
+Binder.find("a").value = "binding example 2";
+Binder.sync(Binder.find("a"));
 
-// js
-const target = document.querySelector("input");
-target.value = ""; // change in inner
-_Binder.sync(target); // inner change sync
-``` 
+// innerTexts
+action name = binding example 2
+binding example 2: 6 + 3 = 9
+```
 ---
 ## 업데이트 내역
 > 1.0.0  
@@ -335,7 +330,8 @@ _Binder.sync(target); // inner change sync
 > @deprecated JSON.unlivedata(json) : Object;  
 ---
 > 1.2.0  
-> implement HTMLElement Binding: attribute(var, exp)  
+> implement HTMLElement Binding: attribute(var, exp);  
+> create class Binder;  
 >  
 > @removed LiveData.set();  
 > @removed LiveData.get();  
