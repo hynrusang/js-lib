@@ -285,7 +285,8 @@ db.toObject();
 > 2. **@1.1.0** find(id)  
 > **var attributes**의 **value**가 해당 **id**와 동일한 **HTMLElement**를 반환합니다.  
 #### 3-0. how to use
-> 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.
+> (이 방식은 앞으로 동적으로 추가되는 **HTMLElement**들에 대해서도 적용됩니다.)  
+> 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.  
 ```js
 <input type="text" value="binding example:" var="a">
 <input type="number" value="0" var="b">
