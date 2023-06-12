@@ -41,7 +41,7 @@ const fragmentList = {
         ),
         $("fieldset").add(
             $("legend", {text: "html binding example"}),
-            $("input", {value: style: "width: 100%; height: 200px;", var: "a=binding example"}),
+            $("input", {type: "text", style: "width: 100%; height: 200px;", var: "a=binding example"}),
             $("input", {type: "text", style: "width: 50%; height: 40px; text-align: center;", var: "b=6"}),
             $("input", {type: "text", style: "width: 50%; height: 40px; text-align: center;", var: "c=11"}),
             $("p", {exp: "a b c->{a}: {b} + {c} = {b + c} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
