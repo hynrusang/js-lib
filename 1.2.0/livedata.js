@@ -89,7 +89,12 @@ const Binder = class {
     static _set = () => {
         this.#synclist = {};
         for (let element of document.querySelectorAll("[var]")) {
-            this.#bindlist[element.attributes.var.value] = element;
+            const varValues = element.attributes.var.value.split("=");
+            this.#bindlist[varValues[0]] = element;
+            if (varValues([1] && varValues[1] != "") {
+                if (["INPUT", "TEXTAREA"].includes(element.nodeName)) element.value = varValues[1];
+                else obj.innerText = varValues[1];
+            }
             element.addEventListener('input', () => this.sync(element));
         }
         for (let element of document.querySelectorAll("[exp]")) {
