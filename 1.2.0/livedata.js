@@ -75,7 +75,7 @@ const Binder = class {
         for (let subString of subStrings) {
             const parsing = ["INPUT", "TEXTAREA"].includes(this.#bindlist[subString].nodeName) ? this.#bindlist[subString].value : this.#bindlist[subString].innerText;
             if (parsing.indexOf("$") != -1) returnString = returnString.replaceAll(`__#${subString}__`, Math[parsing.split("$")[1]]);
-            else if (isNaN(parsing) || parsing == "" || /^0[0-9]/g.test(parsing.trim().replace("-", "").replace("+", ""))) returnString = returnString.replaceAll(`__#${subString}__`, `"${parsing.replace(/"/g, '\\"').replaceAll("{", "").replaceAll("}", "").replaceAll("->", "→")}"`)
+            else if (isNaN(parsing) || parsing == "" || /^0[0-9]/g.test(parsing.trim().replace("-", "").replace("+", ""))) returnString = returnString.replaceAll(`__#${subString}__`, `"${parsing.replace(/"/g, '\\"').replaceAll("{", "").replaceAll("}", "").replaceAll("->", "→").replaceAll("<-", "←")}"`)
             else returnString = returnString.replaceAll(`__#${subString}__`, parsing);
         }
         returnString = returnString.replaceAll(/\{([^{}]+)\}/g, (match, group) => {
