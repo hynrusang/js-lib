@@ -41,9 +41,9 @@ const fragmentList = {
         ),
         $("fieldset").add(
             $("legend", {text: "html binding example"}),
-            $("input", {value: "binding example", style: "width: 100%; height: 200px;", var: "a"}),
-            $("input", {type: "text", value: "6", style: "width: 50%; height: 40px; text-align: center;", var: "b"}),
-            $("input", {type: "text", value: "11", style: "width: 50%; height: 40px; text-align: center;", var: "c"}),
+            $("input", {value: style: "width: 100%; height: 200px;", var: "a=binding example"}),
+            $("input", {type: "text", style: "width: 50%; height: 40px; text-align: center;", var: "b=6"}),
+            $("input", {type: "text", style: "width: 50%; height: 40px; text-align: center;", var: "c=11"}),
             $("p", {exp: "a b c->{a}: {b} + {c} = {b + c} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
             $("input", {type: "button", value: "binding된 요소 초기화", style: "width: 300px; height: 40px; margin-left: 15px; margin-bottom: 10px;", onclick: e => {
                 Binder.find("a").value = "binding example";
