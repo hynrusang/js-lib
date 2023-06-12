@@ -91,7 +91,7 @@ const Binder = class {
         for (let element of document.querySelectorAll("[var]")) {
             const varValues = element.attributes.var.value.split("=");
             this.#bindlist[varValues[0]] = element;
-            if (varValues([1] && varValues[1] != "") {
+            if (varValues[1] && varValues[1] != "") {
                 if (["INPUT", "TEXTAREA"].includes(element.nodeName)) element.value = varValues[1];
                 else obj.innerText = varValues[1];
             }
