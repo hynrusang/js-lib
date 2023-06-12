@@ -105,7 +105,8 @@ const Binder = class {
         }
     }
     static sync = obj => {
-        if (typeof this.#synclist[obj.attributes.var.value] == "object") for (let element of this.#synclist[obj.attributes.var.value]) this.#innerSync(element, element.attributes.exp.value);
+        const varValue = obj.attributes.var.value.split("=")[0];
+        if (typeof this.#synclist[varValue] == "object") for (let element of this.#synclist[varValue]) this.#innerSync(element, element.attributes.exp.value);
     }
     static find = id => this.#bindlist[id];
 }
