@@ -3,7 +3,8 @@
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/dynamic.js)
 ---
 - **이 문서는 developer 버전인 dynamic 1.2.0을 다룹니다.**  
-- **현재 release 버전은 dynamic 1.2.0입니다.**
+- **현재 prerelease 버전은 dynamic 1.2.0입니다.**
+- **현재 release 버전은 dynamic 1.1.0입니다.**
 ## 정보
 - 이건 동적으로 html 요소를 생성하거나, snipe 하는 여러 **function**을 제공하고, 별도의 **Fragment(1.1.0~)** 를 생성하고, 원한다면 **FragAnimation(1.2.0~)** 과 함께 조작할 수 있게 해주는 js 파일 입니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
