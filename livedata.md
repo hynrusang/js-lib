@@ -292,14 +292,14 @@ db.toObject();
 > 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.  
 ```js
 <input type="text" value="binding example" var="a">
-<input type="number" value="0" var="b">
-<input type="number" value="0" var="c">
+<input type="number" value="6" var="b">
+<input type="number" value="3" var="c">
 ```
 > 이를 조금 더 간단히 한다면, 다음과 같이 할 수 있습니다.
 ```js
 <input type="text" var="a=binding example">
-<input type="number" var="b=0">
-<input type="number" var="c=0">
+<input type="number" var="b=6">
+<input type="number" var="c=3">
 ```
 > 그 다음, **Binding**된 요소를 이용해 **update**할 요소들을 다음과 같이 작성합니다.
 ```js
