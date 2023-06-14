@@ -328,8 +328,8 @@ binding example 2: 6 + 3 = 9
   
 예시:
 ```html
-<input type="number" value="2" var="a">
-<input type="number" value="3" var="b">
+<input type="number" var="a=2">
+<input type="number" var="b=3">
 <p exp="a b->a = {a},  b = {b},  a + b = {a + b}"></p>
 
 // js
@@ -345,15 +345,15 @@ a = 7, b = 3, a + b = 10
   
 예시:
 ```html
-<input type="number" value="2" var="a">
-<input type="number" value="3" var="b">
+<input type="number" var="a=2">
+<input type="number" var="b=3">
 <p exp="a b->a = {a},  b = {b},  a + b = {a + b}"></p>
 
 // js
 console.log(Binder.find("a"));
 
 // console
-<input type="number" value="2" var="a">
+<input type="number" var="a=2">
 ```
 ---
 ## 업데이트 내역
