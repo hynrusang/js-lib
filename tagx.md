@@ -89,3 +89,7 @@ console.log(Binder.find("a"));
 // console
 <input type="number" var="a=2">
 ```
+---
+> 1.0.0  
+> implement HTMLElement Binding: attribute(var, exp);  
+> create static class Binder;  
