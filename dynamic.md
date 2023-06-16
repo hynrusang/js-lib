@@ -552,14 +552,18 @@ snipe("!div")[2].set({text: "replaced!!", onclick: () => {
 > @deprecated Dom.copy(count);  
 > @deprecated Dom._node;  
 > @update and @transfer is(target, classname): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
-> @update and @transfer (String || Array).property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer String.property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
+> @update and @transfer Array.property.isEmpty(...ignore): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer wait(millisecond): Promise<void> [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer getIndex(parent, child): number [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @transfer (String || Array).prototype.in(data): boolean [advanced.js](https://github.com/hynrusang/js-lib/blob/main/advanced.md);  
 > @remove loading(jhpath): void;  
-> @remove (String || Array).property.count(data): number;  
-> @remove (String || Array).prototype.in(data): boolean;  
-> @remove (String || Array).property.last(): char;   
+> @remove String.property.count(data): number;  
+> @remove Array.property.count(data): number;  
+> @remove String.prototype.in(data): boolean;  
+> @remove Array.prototype.in(data): boolean;  
+> @remove String.property.last(): char; 
+> @remove Array.property.last(): char;   
 ---
 > 1.2.0  
 > create static class FragAnimation;  
