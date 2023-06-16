@@ -92,8 +92,6 @@ $("fieldset").add(
 )
 ```
 ---
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_fragment.png">  
-  
 #### 1-2. **@1.1.0** getter node  
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
 > **#node**는 **HTMLElement**입니다.  
@@ -201,6 +199,8 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_dom.png">  
+  
 ### 2. **@1.1.0** Fragment: class
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
