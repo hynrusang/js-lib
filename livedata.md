@@ -293,3 +293,8 @@ db.toObject();
 > @deprecated JSON.unlivedata(json) : Object;  
 > @deprecated JSON.unlivedata(json) : Object;  
 ---
+> 1.2.0
+> @remove LiveData.set();  
+> @remove LiveData.get();  
+> @remove JSON.unlivedata(json) : Object;  
+> @remove JSON.unlivedata(json) : Object;  
