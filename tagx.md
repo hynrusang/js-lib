@@ -10,6 +10,8 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_binder.png">  
+  
 ### 1. **@1.0.0** Binder
 > **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공하는 **static** 클래스입니다.  
 > Binder 클래스 안에는, 다음과 같은 요소들이 있습니다.  
