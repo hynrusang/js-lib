@@ -6,8 +6,7 @@
 - **현재 prerelease 버전은 livedata 1.1.0입니다.**
 - **현재 release 버전은 livedata 1.1.0입니다.**
 ## 정보
-- 이건 **kotlin**에 있는 **LiveData**를 **js**에서 비슷하게 사용함과 동시에,  
-**LiveDataManager(1.1.0~)** 로 여러 **LiveData**들을 손쉽게 관리할 수 있게 해주는 js 파일 입니다.  
+- js에서 값의 변화를 관측하는 **LiveData**를 비롯한 여러 기능들을 사용할 수 있게 해줍니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
