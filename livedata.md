@@ -10,6 +10,8 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_livedata.png">  
+  
 ### 1. @1.0.0 LiveData: Class
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
