@@ -199,7 +199,7 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_dom.png">  
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_fragment.png">  
   
 ### 2. **@1.1.0** Fragment: class
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
