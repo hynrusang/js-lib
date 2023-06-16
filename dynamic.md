@@ -10,7 +10,7 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/dom.png">  
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_dom.png">  
   
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
@@ -92,6 +92,8 @@ $("fieldset").add(
 )
 ```
 ---
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_fragment.png">  
+  
 #### 1-2. **@1.1.0** getter node  
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
 > **#node**는 **HTMLElement**입니다.  
