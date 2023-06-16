@@ -199,9 +199,10 @@ test;
 > create Array.prototype.remove(data): Array;  
 > create String.property.isEmpty(...ignore): boolean;  
 > create Array.property.isEmpty(...ignore): boolean;  
-> create is(target, classname): boolean;  
-> create wait(millisecond): Promise<void>;  
-> create getIndex(parent, child): number;  
+>  
+> @get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
 ---
 > 1.1.0  
 > create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number;  
