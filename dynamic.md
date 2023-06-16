@@ -10,7 +10,7 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/dom.png">  
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_dom.png">  
   
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
@@ -199,6 +199,8 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_fragment.png">  
+  
 ### 2. **@1.1.0** Fragment: class
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
