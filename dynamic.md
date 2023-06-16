@@ -10,6 +10,8 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/dom.png">  
+  
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
