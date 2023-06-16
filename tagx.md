@@ -91,5 +91,5 @@ console.log(Binder.find("a"));
 ```
 ---
 > 1.0.0  
-> implement HTMLElement Binding: attribute(var, exp);  
+> implement HTMLElement::Binding;  
 > create static class Binder;  
