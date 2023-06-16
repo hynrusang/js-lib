@@ -1,5 +1,5 @@
 ﻿/*
-이 소스코드는 js로 kotlin의 LiveData를 구현한 소스코드입니다.
+js에서 값의 변화를 관측하는 LiveData를 비롯한 여러 기능들을 사용할 수 있게 해줍니다.
 작성자: 환류상
  */
 const LiveData = class {
