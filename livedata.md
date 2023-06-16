@@ -131,6 +131,8 @@ data was changed!
 [6, 7, 3]
 ```
 ---
+<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_livedatamanager.png">  
+  
 ### 2. @1.1.0 LiveDataManager: Class  
 > **LiveDataManager**는 여러 개의 **LiveData** 객체들을 동시에 관리하는데 사용되는 **Class**입니다.  
 > 주어진 **livedataObject**를 기반으로 **init**되며, 각 **LiveData** 인스턴스는 **id**와 매핑됩니다.  
