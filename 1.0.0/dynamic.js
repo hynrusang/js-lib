@@ -133,15 +133,3 @@ const loading  = jhpath => {
         REQUEST.onreadystatechange = (e => { (e.target.readyState == 4) ? eval(REQUEST.response) : null});
     }
 }
-String.prototype.isEmpty = function () { return (this.length == 0); }
-Array.prototype.isEmpty = function () { return (this.length == 0); }
-String.prototype.count = function (data) { return (this.split(data).length - 1); }
-Array.prototype.count = function (data) {
-    let count = 0;
-    for (let i = 0; i < this.length; i++) if (this[i] == data) count++;
-    return count;
-}
-String.prototype.in = function (data) { return (this.indexOf(data) != -1); }
-Array.prototype.in = function (data) { return (this.indexOf(data) != -1); }
-String.prototype.last = function () { return this.slice(-1); }
-Array.prototype.last = function () { return this[this.length - 1]; }
