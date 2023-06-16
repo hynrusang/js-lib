@@ -195,16 +195,16 @@ test;
 ---
 ## 업데이트 내역
 > 1.0.0  
-> create Array.prototype.add(data): Array  
-> create Array.prototype.remove(data): Array
->
-> @get is(target, classname): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get wait(millisecond): Promise<void> from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
-> @get getIndex(parent, child): number from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
->   
-> @get (String || Array).property.isEmpty(...ignore): boolean from [dynamic.js](https://github.com/hynrusang/js-lib/blob/main/dynamic.md);  
+> create Array.prototype.add(data): Array;  
+> create Array.prototype.remove(data): Array;  
+> create String.property.isEmpty(...ignore): boolean;  
+> create Array.property.isEmpty(...ignore): boolean;  
+> create is(target, classname): boolean;  
+> create wait(millisecond): Promise<void>;  
+> create getIndex(parent, child): number;  
 ---
 > 1.1.0  
-> create (HTMLElement || NodeList).prototype.indexOf(searchElement, fromIndex): Number  
+> create HTMLElement.prototype.indexOf(searchElement, fromIndex): Number;  
+> create NodeList.prototype.indexOf(searchElement, fromIndex): Number;  
 >  
-> @deprecated getIndex(parent, child): number
+> @deprecated getIndex(parent, child): number;
