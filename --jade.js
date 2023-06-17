@@ -5,7 +5,7 @@ const __$$VERSIONINFO = {
     livedata: ["1.1.0", "1.1.0", "1.2.0"],
     tagx: [null, null, "1.0.0"]
 };
-for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}--jade.js"]`).innerHTML
+for (let data of document.querySelector(`script[src="https://hynrusang.github.io/js-lib/--jade.js"]`).innerHTML
     .replaceAll("\n", "")
     .replaceAll("\t", "")
     .split(" ").join("")
