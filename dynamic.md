@@ -24,21 +24,20 @@
 > **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
 > **#node**는 **HTMLElement**입니다.
 >  
-> 3. **@1.0.0** children(num)  
-> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
->  
-> 4. **@1.0.0** add(...dom)  
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
->  
-> 5. **@1.0.0** reset(...dom)  
-> 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
->  
-> 6. **@1.0.0** remove(num)  
-> **num**에 해당하는 **자식 요소**를 **제거**합니다.   
->  
-> 7. **@1.0.0** set(additional)  
+> 3. **@1.0.0** set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
 >  
+> 4. **@1.0.0** remove(num)  
+> **num**에 해당하는 **자식 요소**를 **제거**합니다.  
+>  
+> 5. **@1.0.0** children(num)  
+> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
+>  
+> 6. **@1.0.0** add(...dom)  
+> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
+>  
+> 7. **@1.0.0** reset(...dom)  
+> 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 ---
 #### 1-1. constructor(node, additional)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
@@ -104,7 +103,35 @@ dom.node = document.createElement("h1"); // it's not working.
 dom.node; // <div></div>
 ```
 ---
-#### 1-3. **@1.0.0** children(num)
+#### 1-3. **@1.0.0** set(additional)
+> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
+  
+예시:
+```js
+let color = "green";
+new Dom("span").set({text: "hello!", style: `color: ${color}`});
+
+// dom.node
+<span style="color: green">hello!</span>
+```
+---
+#### 1-4. **@1.0.0** remove(num)
+> **num**번째 **자식 요소**를 **제거**합니다.   
+  
+예시:
+```js
+new Dom("fieldset").add(
+    new Dom("legend", {text: "this is legend"}),
+    new Dom("input", {type: "button", value: "click here", onclick: () => {
+        alert("clicked");
+    }})
+).remove(1)
+
+// console
+Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
+```
+---
+#### 1-5. **@1.0.0** children(num)
 > **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.    
 > (해당 num번째 children이 없다면, null을 반환합니다.)  
   
@@ -121,7 +148,7 @@ new Dom("fieldset").add(
 Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
-#### 1-4. **@1.0.0** add(...dom)
+#### 1-6. **@1.0.0** add(...dom)
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
   
 예시:
@@ -145,7 +172,7 @@ const form = new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-5. **@1.0.0** reset(...dom) 
+#### 1-7. **@1.0.0** reset(...dom) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
   
 예시:
@@ -169,34 +196,6 @@ dom.reset(
     <input type="text" placeholder="was replaced">
     <input type="submit" value="submit">
 </form>
-```
----
-#### 1-6. **@1.0.0** remove(num)
-> **num**번째 **자식 요소**를 **제거**합니다.   
-  
-예시:
-```js
-new Dom("fieldset").add(
-    new Dom("legend", {text: "this is legend"}),
-    new Dom("input", {type: "button", value: "click here", onclick: () => {
-        alert("clicked");
-    }})
-).remove(1)
-
-// console
-Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
-```
----
-#### 1-7. **@1.0.0** set(additional)
-> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
-  
-예시:
-```js
-let color = "green";
-new Dom("span").set({text: "hello!", style: `color: ${color}`});
-
-// dom.node
-<span style="color: green">hello!</span>
 ```
 ---
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_fragment.png">  
