@@ -155,7 +155,7 @@ Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
   
 예시:
 ```js
-const form = new Dom("form", {onsubmit: e => {
+const dom = new Dom("form", {onsubmit: e => {
     e.preventDefault();
     console.log(e.target);
 }}).add(
@@ -165,7 +165,7 @@ const form = new Dom("form", {onsubmit: e => {
     )
 )
 
-// form.node
+// dom.node
 <form>
     <fieldset>
         <legend>this is legend</legend>
