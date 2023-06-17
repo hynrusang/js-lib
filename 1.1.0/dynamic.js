@@ -42,7 +42,7 @@ const Dom = class {
      * @type {(num: number) => Dom}
      */
     remove = num => {
-        this._node.removeChild(this.children(num));
+        this._node.removeChild(this.children(num).node);
         return this;
     }
     /**

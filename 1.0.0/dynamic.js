@@ -32,7 +32,7 @@ class DomDefault {
      * @type {(num: number) => DomDefault}
      */
     remove = num => { 
-        this._node.removeChild(this.children(num)); 
+        this._node.removeChild(this.children(num).node); 
         return this;
     }
     /**

@@ -29,7 +29,7 @@ const Dom = class {
      * @type {(num: number) => Dom}
      */
     remove = num => {
-        this.#node.removeChild(this.children(num));
+        this.#node.removeChild(this.children(num).node);
         return this;
     }
     /**
