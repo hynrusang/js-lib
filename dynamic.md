@@ -109,7 +109,7 @@ dom.node; // <div></div>
 예시:
 ```js
 let color = "green";
-new Dom("span").set({text: "hello!", style: `color: ${color}`});
+const dom = new Dom("span").set({text: "hello!", style: `color: ${color}`});
 
 // dom.node
 <span style="color: green">hello!</span>
@@ -120,7 +120,7 @@ new Dom("span").set({text: "hello!", style: `color: ${color}`});
   
 예시:
 ```js
-new Dom("fieldset").add(
+const dom = new Dom("fieldset").add(
     new Dom("legend", {text: "this is legend"}),
     new Dom("input", {type: "button", value: "click here", onclick: () => {
         alert("clicked");
@@ -139,7 +139,7 @@ new Dom("fieldset").add(
   
 예시:
 ```js
-new Dom("fieldset").add(
+const dom = new Dom("fieldset").add(
     new Dom("legend", {text: "this is legend"}),
     new Dom("input", {type: "button", value: "click here", onclick: () => {
         alert("clicked");
