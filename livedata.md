@@ -1,4 +1,4 @@
-# ![JavaScript icon](https://github.com/hynrusang/js-lib/blob/main/resource/logo.png) LiveData Manager and Binding (LMB)
+# ![JavaScript icon](https://github.com/hynrusang/js-lib/blob/main/resource/logo.png) LiveData Manager (LM)
 - [이전으로](https://github.com/hynrusang/js-lib)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/livedata.js)
 ---
