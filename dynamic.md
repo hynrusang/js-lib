@@ -127,8 +127,10 @@ new Dom("fieldset").add(
     }})
 ).remove(1)
 
-// console
-Dom {node: fieldset, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
+// dom.node
+<fieldset>
+  <legend>this is legend</legend>
+</fieldset>
 ```
 ---
 #### 1-5. **@1.0.0** children(num)
