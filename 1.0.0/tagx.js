@@ -49,17 +49,17 @@ const Binder = class {
         }
     }
     /**
-     * @type {(name: String, value: String) => void}
-     */
-    static define = (name, value) => {
-        const element = document.createElement("input");
-        element.value = value;
-        this.#bindlist[name] = element;
-    }
-    /**
      * @type {(id: String) => HTMLElement}
      */
     static find = id => this.#bindlist[id];
+    /**
+     * @type {(id: String, value: String) => void}
+     */
+    static define = (id, value) => {
+        const element = document.createElement("vdom");
+        element.innerText = value;
+        this.#bindlist[id] = element;
+    }
     /**
      * @type {(id: String, value: String) => void}
      */
