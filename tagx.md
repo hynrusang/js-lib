@@ -16,11 +16,11 @@
 > **Binder** 클래스는 **HTMLElement**들을 **var, exp attributes**를 이용하여 실시간으로 **binding**하는 기능을 제공하는 **static** 클래스입니다.  
 > Binder 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. **@1.0.0** define(id, value)  
-> **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
->  
-> 2. **@1.0.0** find(id)  
+> 1. **@1.0.0** find(id)  
 > **BindList**에서 **id**에 위치한 **HTMLElement**를 반환합니다.  
+>  
+> 2. **@1.0.0** define(id, value)  
+> **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
 >  
 > 3. **@1.0.0** update(id, value)  
 > **BindList**에서 **id**에 위치한 **HTMLElement**의 **value || innerText**를 **value**로 업데이트 한 후,  
@@ -60,22 +60,7 @@ action name = binding example 2
 binding example 2: 6 + 3 = 9
 ```
 ---
-#### 1-1. **@1.0.0** define(id, value)
-> **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
-  
-예시:
-```js
-Binder.define("test", "32to");
-
-const element = document.createElement("p");
-element.setAttribute("exp", "test->test data: {test}");
-document.body.appendChild(element);
-
-// element.innerText
-test data: 32to
-```
----
-#### 1-2. **@1.0.0** find(id)  
+#### 1-1. **@1.0.0** find(id)  
 > **BindList**에서 **id**에 위치한 **HTMLElement**를 반환합니다.  
   
 예시:
@@ -89,6 +74,21 @@ console.log(Binder.find("a"));
 
 // console
 <input type="number" var="a=2">
+```
+---
+#### 1-2. **@1.0.0** define(id, value)
+> **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
+  
+예시:
+```js
+Binder.define("test", "32to");
+
+const element = document.createElement("p");
+element.setAttribute("exp", "test->test data: {test}");
+document.body.appendChild(element);
+
+// element.innerText
+test data: 32to
 ```
 ---
 #### 1-3. **@1.0.0** update(id, value)
