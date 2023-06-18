@@ -42,7 +42,7 @@ const __$$VERSIONINFO = {
     advanced: ["1.0.0", "1.1.0", "1.1.0"],
     dynamic: ["1.1.0", "1.2.0", "1.2.0"],
     livedata: ["1.1.0", "1.1.0", "1.2.0"],
-    tagx: [null, "1.0.0", "1.1.0"]
+    tagx: [null, "1.0.0", "1.0.0"]
 };
 for (let data of document.querySelector(`script[src="${__$$IMPLEMENTHREF}jade.js"]`).innerHTML
     .replaceAll("\n", "")
