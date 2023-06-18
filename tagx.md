@@ -87,7 +87,7 @@ console.log(Binder.find("a"));
 <p exp="a b->a = {a},  b = {b},  a + b = {a + b}"></p>
 
 // js
-Binder.update("a", 7");
+Binder.update("a", 7);
 
 // innerText(p)
 a = 7, b = 3, a + b = 10
