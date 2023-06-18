@@ -33,7 +33,7 @@ const Binder = class {
             this.#bindlist[varValues[0]] = element;
             if (varValues[1] && varValues[1] != "") {
                 if (["INPUT", "TEXTAREA"].includes(element.nodeName)) element.value = varValues[1];
-                else obj.innerText = varValues[1];
+                else element.innerText = varValues[1];
             }
             element.addEventListener('input', () => this.sync(element));
         }
