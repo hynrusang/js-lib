@@ -24,7 +24,7 @@
 >  
 > 3. **@1.0.0** update(id, value)  
 > **BindList**에서 **id**에 위치한 **HTMLElement**의 **value || innerText**를 **value**로 업데이트 한 후,  
-> **SyncList**에서 **id**와 관련된 **HTMLElement**의 **value || innerText**를 **exp attributes**대로 다시 설정합니다.
+> **SyncList**에서 **id**와 관련된 **HTMLElement**의 **value || innerText**를 **exp attributes**에 맞춰 다시 설정합니다.
 ---
 #### 1-0. how to use
 > (이 방식은 **dynamic.js**나 **document.appendChild**를 이용해 동적으로 추가되는 **HTMLElement**들에 대해서도 적용됩니다.)  
