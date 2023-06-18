@@ -1,1 +1,1 @@
-﻿
+﻿Binder.define("test", "32to")

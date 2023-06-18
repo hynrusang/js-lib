@@ -59,10 +59,9 @@ const fragmentList = {
             $("input", {type: "text", style: "width: 50%; height: 40px; text-align: center;", var: "c=11"}),
             $("p", {exp: "a b c->{a}: {b} + {c} = {b + c} (각 값들은 숫자가 아닌 문자열도 지원합니다.)"}),
             $("input", {type: "button", value: "binding된 요소 초기화", style: "width: 300px; height: 40px; margin-left: 15px; margin-bottom: 10px;", onclick: e => {
-                Binder.find("a").value = "binding example";
-                Binder.find("b").value = 6;
-                Binder.find("c").value = 11;
-                Binder.sync(Binder.find("a"));
+                Binder.update("a", "binding example");
+                Binder.update("b", 6);
+                Binder.update("c", 11);
             }}),
             $("br"),
             $("input", {type: "button", value: "binding된 요소들 console에 출력하기", style: "width: 300px; height: 40px; margin-left: 15px;", onclick: e => {

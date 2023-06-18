@@ -5,6 +5,10 @@ html 내에서 html binding과 같은 유용한 기능을 보다 쉽게 사용�
 const Binder = class {
     static #bindlist = {};
     static #synclist = {};
+    static #sync = obj => {
+        const varValue = obj.attributes.var.value.split("=")[0];
+        if (typeof this.#synclist[varValue] == "object") for (let element of this.#synclist[varValue]) this.#innerSync(element, element.attributes.exp.value);
+    }
     static #innerSync = (obj, expression) => {
         const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
         let returnString = expression;
@@ -35,7 +39,7 @@ const Binder = class {
                 if (["INPUT", "TEXTAREA"].includes(element.nodeName)) element.value = varValues[1];
                 else element.innerText = varValues[1];
             }
-            element.addEventListener('input', () => this.sync(element));
+            element.addEventListener('input', () => this.#sync(element));
         }
         for (let element of document.querySelectorAll("[exp]")) {
             for (let name of element.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "")) {
@@ -44,11 +48,27 @@ const Binder = class {
             }
         }
     }
-    static sync = obj => {
-        const varValue = obj.attributes.var.value.split("=")[0];
-        if (typeof this.#synclist[varValue] == "object") for (let element of this.#synclist[varValue]) this.#innerSync(element, element.attributes.exp.value);
+    /**
+     * @type {(name: String, value: String) => void}
+     */
+    static define = (name, value) => {
+        const element = document.createElement("input");
+        element.value = value;
+        this.#bindlist[name] = element;
     }
+    /**
+     * @type {(id: String) => HTMLElement}
+     */
     static find = id => this.#bindlist[id];
+    /**
+     * @type {(id: String, value: String) => void}
+     */
+    static update = (id, value) => {
+        const element = this.find(id);
+        if (["INPUT", "TEXTAREA"].includes(element.nodeName)) element.value = value;
+        else element.innerText = value;
+        this.#sync(element);
+    }
 }
 document.body.addEventListener('DOMNodeInserted', e => {
     if (e.target instanceof HTMLElement) Binder._set();
