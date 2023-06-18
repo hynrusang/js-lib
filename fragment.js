@@ -81,5 +81,5 @@ scan("!footer input").forEach(obj => {
     const targetValue = obj.attributes.target.value;
     obj.value = targetValue;
     obj.style.backgroundImage = `url(resource/${targetValue}.png)`;
-    obj.onclick = e => currentFragment.value = e.target.attributes.target.value;
+    obj.onclick = e => currentFragment.value = e.target.value;
 })
