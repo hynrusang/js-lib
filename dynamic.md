@@ -230,19 +230,23 @@ dom.reset(
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).launch();
+const mainFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
+            secondFragment.launch();
+        }})
+    )
+).launch();
 // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
 
-const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
-$("p", {text: "just test case..."}),
-$("input", {type: "button", value: "go to first fragment", onclick: () => {
-    mainFragment.launch();
-}}))
+const secondFragment = new Fragment("fragmentView", 
+    $("h1", {text: "rest floor", style: "color: green"}),
+    $("p", {text: "just test case..."}),
+    $("input", {type: "button", value: "go to first fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+)
 ```
 ---
 #### 2-2. **@1.1.0** launch()
@@ -257,8 +261,12 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 <fragment rid="target"></fragment>
 
 // fragment.js
-const mainFragment = new Fragment("target", $("h1", {text: "hello, world", style: "color: red"}))
-const secondFragment = new Fragment("target", $("h1", {text: "hi, world!", style: "color: blue"}))
+const mainFragment = new Fragment("target", 
+    $("h1", {text: "hello, world", style: "color: red"})
+)
+const secondFragment = new Fragment("target", 
+    $("h1", {text: "hi, world!", style: "color: blue"})
+)
 mainFragment.launch();
 ```
 ---
@@ -272,18 +280,22 @@ mainFragment.launch();
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAnimation(FragAnimation.card, 1.5).launch();
-const secondFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "second fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to frist fragment", onclick: () => {
-        mainFragment.launch();
-    }})
-)).registAnimation(FragAnimation.swip, 1.5);
+const mainFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
+            secondFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "second fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+            mainFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.swip, 1.5);
 ```
 ---
 #### 2-4. **@1.1.0** registAction(action)
@@ -300,21 +312,25 @@ const secondFragment = new Fragment("fragmentView", $("fieldset").add(
 const state = new LiveData("first", String).registObserver(function () {
     alert(`${this.value} Fragment is stating now...`);
 });
-const mainFragment = new Fragment("fragmentView", $("fieldset").add(
-    $("legend", {text: "first fragment", style: "color: red;"}),
-    $("input", {type: "button", value: "go to second fragment", onclick: () => {
-        secondFragment.launch();
-    }})
-)).registAction(() => {
+const mainFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
+            secondFragment.launch();
+        }})
+    )
+).registAction(() => {
     state.value = "first";
 }).launch();
 // Fragment.launch()를 하게 되면, 해당 프레그먼트가 선택된 상태로 만들어 집니다.
 
-const secondFragment = new Fragment("fragmentView", $("h1", {text: "rest floor", style: "color: green"}),
-$("p", {text: "just test case..."}),
-$("input", {type: "button", value: "go to first fragment", onclick: () => {
-    mainFragment.launch();
-}})).registAction(() => {
+const secondFragment = new Fragment("fragmentView", 
+    $("h1", {text: "rest floor", style: "color: green"}),
+    $("p", {text: "just test case..."}),
+    $("input", {type: "button", value: "go to first fragment", onclick: () => {
+        mainFragment.launch();
+    }})
+).registAction(() => {
     state.value = "second";
 })
 ```
