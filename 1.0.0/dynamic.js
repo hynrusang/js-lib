@@ -116,7 +116,7 @@ const scan = selector => { return is(selector, "string") ? selector.in("!") ? do
 * }}
 */
 const snipe = selector => {
-   const temp = (is(selector, "string") && selector.in("!")) ? [] : $(scan(selector));
+   const temp = (is(selector, "string") && selector[0] == "!") ? [] : $(scan(selector));
    if (is(temp, "object")) for (let i = 0; i < scan(selector).length; i++) temp.push($(scan(selector)[i]));
    return temp;
 }
