@@ -71,19 +71,19 @@ const Fragment = class {
     /**
      * @type {() => Function}
      */
-    get action() {
+    get _action() {
         return this.#action;
     }
     /*
      * @type {() => HTMLElement}
      */
-    get view() {
+    get _view() {
         return this.#view;
     }
     /*
      * @type {() => Dom[]}
      */
-    get fragment() {
+    get _fragment() {
         return this.#fragment;
     }
     /**
@@ -122,33 +122,33 @@ const Fragment = class {
 }
 const FragAnimation = class {
     static card = async (_fragment, _second) => {
-        if (_fragment.view.node.innerHTML != "") {
-            _fragment.view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
+        if (_fragment._view.node.innerHTML != "") {
+            _fragment._view.node.animate([{transform: 'rotateY(0deg)', opacity: '1'}, {transform: 'rotateY(180deg)', opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 450));
-            _fragment.view.reset(_fragment.fragment);
-            _fragment.view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
-        } else _fragment.view.reset(_fragment.fragment);
-        if (typeof _fragment.action == "function") _fragment.action();
+            _fragment._view.reset(_fragment._fragment);
+            _fragment._view.node.animate([{transform: 'rotateY(180deg)', opacity: '0'}, {transform: 'rotateY(360deg)', opacity: '1'}], {duration: _second * 500,})
+        } else _fragment._view.reset(_fragment._fragment);
+        if (typeof _fragment._action == "function") _fragment._action();
     }
     static fade = async (_fragment, _second) => {
-        if (_fragment.view.node.innerHTML != "") {
-            _fragment.view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
+        if (_fragment._view.node.innerHTML != "") {
+            _fragment._view.node.animate([{opacity: '1'}, {opacity: '0'}], {duration: _second * 500,})
             await new Promise(code => setTimeout(code, _second * 400));
-            _fragment.view.reset(_fragment.fragment);
-            _fragment.view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
-        } else _fragment.view.reset(_fragment.fragment);
-        if (typeof _fragment.action == "function") _fragment.action();
+            _fragment._view.reset(_fragment._fragment);
+            _fragment._view.node.animate([{opacity: '0'}, {opacity: '1'}], {duration: _second * 500,})
+        } else _fragment._view.reset(_fragment._fragment);
+        if (typeof _fragment._action == "function") _fragment._action();
     }
     static swip = async (_fragment, _second) => {
-        if (_fragment.view.node.innerHTML != "") {
+        if (_fragment._view.node.innerHTML != "") {
             scan("html").style.overflowX = "hidden";
-            _fragment.view.node.animate([{transform: 'translateX(0px)'}, {transform: 'translateX(100%)'}], {duration: _second * 450,})
+            _fragment._view.node.animate([{transform: 'translateX(0px)'}, {transform: 'translateX(100%)'}], {duration: _second * 450,})
             await new Promise(code => setTimeout(code, _second * 400));
-            _fragment.view.reset(_fragment.fragment);
-            _fragment.view.node.animate([{transform: 'translateX(-100%)'}, {transform: 'translateX(0px)'}], {duration: _second * 550,})
+            _fragment._view.reset(_fragment._fragment);
+            _fragment._view.node.animate([{transform: 'translateX(-100%)'}, {transform: 'translateX(0px)'}], {duration: _second * 550,})
             scan("html").style.overflowX = null;
-        } else _fragment.view.reset(_fragment.fragment);
-        if (typeof _fragment.action == "function") _fragment.action();
+        } else _fragment._view.reset(_fragment._fragment);
+        if (typeof _fragment._action == "function") _fragment._action();
     }
 }
 /**
