@@ -209,18 +209,14 @@ dom.reset(
 > 1. constructor(view, ...fragment)  
 > **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **String**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
 >  
-> 2. **@1.2.0** **getter** (action || view || fragment)  
-> **getter** (action || view || fragment)는 각각 (**this.#action** || **this.#view** || **this.#fragment**)를 반환합니다.  
-> (별도의 **setter**는 존재하지 않습니다.)  
->   
-> 3. **@1.1.0** registAction(action)  
+> 2. **@1.1.0** registAction(action)  
 > **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
 >  
-> 4. **@1.2.0** registAnimation(animation, second)  
+> 3. **@1.2.0** registAnimation(animation, second)  
 > **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
 >  
-> 5. **@1.1.0** launch()  
+> 4. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
 > **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
@@ -249,28 +245,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 }}))
 ```
 ---  
-#### 2-2. **@1.2.0** **getter** (action || view || fragment)  
-> **getter** (action || view || fragment)는 각각 (**this.#action** || **this.#view** || **this.#fragment**)를 반환합니다.  
-> (별도의 **setter**는 존재하지 않습니다.)  
-  
-예시:
-```js
-const testFragment = new Fragment("fragmentView", $("div"), $("div")).registAction(() => {
-    console.log("Fragment start...");
-});
-testFragment.action;
-testFragment.view;
-testFragment.fragment;
-
-// console
-() => {
-    console.log("Fragment start...");
-}
-Dom {#node: fragment, children: ƒ, add: ƒ, remove: ƒ, reset: ƒ, …}
-[Dom, Dom]
-```
----
-#### 2-3. **@1.1.0** registAction(action)
+#### 2-2. **@1.1.0** registAction(action)
 > 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
 > **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
   
@@ -303,7 +278,7 @@ $("input", {type: "button", value: "go to first fragment", onclick: () => {
 })
 ```
 ---
-#### 2-4. **@1.2.0** registAnimation(animation, second)  
+#### 2-3. **@1.2.0** registAnimation(animation, second)  
 > **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
 > 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
   
@@ -326,7 +301,7 @@ const secondFragment = new Fragment("fragmentView", $("fieldset").add(
     }})
 )).registAnimation(FragAnimation.swip, 1.5);
 ```
-#### 2-5. **@1.1.0** launch()
+#### 2-4. **@1.1.0** launch()
 > **Fragment**를 **전환**하는 메서드입니다.  
 > 등록된 **action**과 **animation**을 실행하고,  
 > **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
