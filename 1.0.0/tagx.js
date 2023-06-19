@@ -73,9 +73,6 @@ const Binder = class {
 }
 const observer = new MutationObserver(mutationsList => {
     const mutation = mutationsList[mutationsList.length - 1];
-    for (const node of [...mutation.addedNodes, ...mutation.removedNodes]) {
-        console.log(`node = ${node} isHTML = ${node instanceof HTMLElement}`)
-        if (node instanceof HTMLElement) Binder._set();
-    }
+    for (const node of [...mutation.addedNodes, ...mutation.removedNodes]) if (node instanceof HTMLElement) Binder._set();
 }).observe(document.body, { childList: true, subtree: true });
 Binder._set();
