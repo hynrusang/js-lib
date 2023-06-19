@@ -57,6 +57,7 @@ const Binder = class {
      */
     static define = (id, value) => {
         const element = document.createElement("vdom");
+        element.setAttribute("var", id);
         element.innerText = value;
         this.#bindlist[id] = element;
     }
@@ -70,7 +71,11 @@ const Binder = class {
         this.#sync(element);
     }
 }
-document.body.addEventListener('DOMNodeInserted', e => {
-    if (e.target instanceof HTMLElement) Binder._set();
-});
+const observer = new MutationObserver(mutationsList => {
+    const mutation = mutationsList[mutationsList.length - 1];
+    for (const node of [...mutation.addedNodes, ...mutation.removedNodes]) {
+        console.log(`node = ${node} isHTML = ${node instanceof HTMLElement}`)
+        if (node instanceof HTMLElement) Binder._set();
+    }
+}).observe(document.body, { childList: true, subtree: true });
 Binder._set();
