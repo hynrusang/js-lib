@@ -106,7 +106,7 @@ test data: 32to
 // js
 Binder.update("a", 7);
 
-// innerText(p)
+// p.innerText
 a = 7, b = 3, a + b = 10
 ```
 ---
