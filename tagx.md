@@ -3,7 +3,7 @@
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.0.0/tagx.js)
 ---
 - **이 문서는 developer 버전인 tagx 1.0.0을 다룹니다.**  
-- **현재 prerelease 버전은 tagx x.x.x입니다.**
+- **현재 prerelease 버전은 tagx 1.0.0입니다.**
 - **현재 release 버전은 tagx x.x.x입니다.**
 ## 정보
 - html 내에서 **html binding**과 같은 유용한 기능을 보다 쉽게 사용할 수 있게 해줍니다.
@@ -21,6 +21,7 @@
 >  
 > 2. **@1.0.0** define(id, value)  
 > **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
+> **define**으로 정의된 **virtual dom**에도 **update** 메서드를 호출할 수 있습니다.  
 >  
 > 3. **@1.0.0** update(id, value)  
 > **BindList**에서 **id**에 위치한 **HTMLElement**의 **value || innerText**를 **value**로 업데이트 한 후,  
@@ -78,6 +79,7 @@ console.log(Binder.find("a"));
 ---
 #### 1-2. **@1.0.0** define(id, value)
 > **id**와 **value**를 가지고, **unvisiable** 상태인 **virtual dom**을 **Bindlist**에 **append**합니다.  
+> **define**으로 정의된 **virtual dom**에도 **update** 메서드를 호출할 수 있습니다.  
   
 예시:
 ```js
