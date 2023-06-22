@@ -3,8 +3,8 @@
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/livedata.js)
 ---
 - **이 문서는 developer(1.2.0) 버전과 prerelease(1.1.0) 버전을 다룹니다.**  
-- **현재 prerelease 버전은 livedata 1.1.0입니다.**
-- **현재 release 버전은 livedata 1.1.0입니다.**
+- **현재 prerelease 버전은 1.1.0입니다.**
+- **현재 release 버전은 1.1.0입니다.**
 ## 정보
 - js에서 값의 변화를 관측하는 **LiveData**를 비롯한 여러 기능들을 사용할 수 있게 해줍니다.  
 - (사용방법은 아래의 요소 탭을 참고하세요.)
