@@ -209,7 +209,7 @@ dom.reset(
 > 1. constructor(view, ...fragment)  
 > **Fragment**의 생성자입니다.  
 > **view**는 **String**으로, **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.  
-> **fragment**는 **Dom?**으로, **하나의 Fragment를 구성할 Dom 요소들의 집합**입니다.
+> **fragment**는 **Dom?** 으로, **하나의 Fragment를 구성할 Dom 요소들의 집합**입니다.
 >  
 > 2. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
