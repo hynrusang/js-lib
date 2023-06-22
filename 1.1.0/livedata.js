@@ -29,7 +29,6 @@ const LiveData = class {
         return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     /**
-     * @deprecated This method is not supported starting with 1.2.0. Use constructor third param instead.
      * @type {(observer: Function) => LiveData}
      */
     registObserver = observer => {
