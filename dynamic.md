@@ -2,9 +2,9 @@
 - [이전으로](https://github.com/hynrusang/js-lib/tree/main)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/dynamic.js)
 ---
-- **이 문서는 developer 버전인 dynamic 1.2.0을 다룹니다.**  
-- **현재 prerelease 버전은 dynamic 1.2.0입니다.**
-- **현재 release 버전은 dynamic 1.1.0입니다.**
+- **이 문서는 developer(1.2.0) 버전과 prerelease(1.2.0) 버전을 다룹니다.**  
+- **현재 prerelease 버전은 1.2.0입니다.**
+- **현재 release 버전은 1.1.0입니다.**
 ## 정보
 - js로 **html** 요소를 동적으로 더 쉽게 다룰 수 있게 해 줍니다.   
 - (사용방법은 아래의 요소 탭을 참고하세요.)
