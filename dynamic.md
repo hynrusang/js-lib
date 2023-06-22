@@ -21,8 +21,8 @@
 > **additional**은 **추가적인 option**을 담은 **객체 리터럴**입니다.  
 >  
 > 2. **@1.1.0** getter node  
-> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
-> **#node**는 **HTMLElement**입니다.
+> **<name> getter**는 다음과 같은 작업을 수행합니다:    
+> 1. 내부의 **node: HTMLElement**를 반환합니다.  
 >  
 > 3. **@1.0.0** set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
