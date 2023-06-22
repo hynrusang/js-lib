@@ -3,7 +3,7 @@ js로 html 요소를 동적으로 더 쉽게 다룰 수 있게 해 줍니다.
 작성자: 환류상
  */
 /**
- * @deprecated This class is not supported starting with dynamic 1.2.0. Use Fragment.launch() instead.
+ * @deprecated This class is not supported starting with 1.2.0. Use Fragment.launch() instead.
  */
 class SecurityError extends Error {
     constructor(massage) {
@@ -47,7 +47,7 @@ const Dom = class {
     }
     /**
      * @type {(count: number) => Dom[]}
-     * @deprecated This method is not supported starting with dynamic 1.2.0.
+     * @deprecated This method is not supported starting with 1.2.0.
      */
     copy = count => {
         const tempbox = [];
@@ -138,7 +138,7 @@ const snipe = selector => {
 /**
  * @type {(jhpath: string) => void}
  * @throws {SecurityError}
- * @deprecated This function is not supported starting with dynamic 1.2.0. Use Fragment.launch() instead.
+ * @deprecated This function is not supported starting with 1.2.0. Use Fragment.launch() instead.
  */
 const loading  = jhpath => {
     const REQUEST = new XMLHttpRequest();

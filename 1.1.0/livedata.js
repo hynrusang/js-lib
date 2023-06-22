@@ -7,7 +7,7 @@ const LiveData = class {
     #observer;
     #allowed;
     /**
-     * @deprecated This method is not supported starting with livedata 1.2.0. use new LiveData().value setter instead.
+     * @deprecated This method is not supported starting with 1.2.0. use LiveData.value setter instead.
      * @type {(data: Any) => LiveData}
      */
     set = data => { 
@@ -15,7 +15,7 @@ const LiveData = class {
         return this;
     }
     /**
-     * @deprecated This method is not supported starting with livedata 1.2.0. use new LiveData().value getter instead.
+     * @deprecated This method is not supported starting with 1.2.0. use LiveData.value getter instead.
      * @type {() => Any}
      */
     get = () => this.value;
@@ -29,6 +29,7 @@ const LiveData = class {
         return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     /**
+     * @deprecated This method is not supported starting with 1.2.0. Use constructor third param instead.
      * @type {(observer: Function) => LiveData}
      */
     registObserver = observer => {
@@ -75,7 +76,7 @@ const LiveDataManager = class {
     }
 }
 /**
- * @deprecated This method is not supported starting with livedata 1.2.0. use LiveDataManager.toObject instead.
+ * @deprecated This method is not supported starting with 1.2.0. use LiveDataManager.toObject instead.
  * @type {(json: Object) => Object}
  */
 JSON.unlivedata = json => {
@@ -84,7 +85,7 @@ JSON.unlivedata = json => {
     return data;
 }
 /**
- * @deprecated This method is not supported starting with livedata 1.2.0. use LiveDataManager.toArray instead.
+ * @deprecated This method is not supported starting with 1.2.0. use LiveDataManager.toArray instead.
  * @type {(json: Object) => Object}
  */
 Array.unlivedata = array => {

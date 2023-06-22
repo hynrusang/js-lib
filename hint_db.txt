@@ -1,12 +1,15 @@
 --font--
 
 @HY궁서B
+
 Gabriola
 
 --message--
 
 **이 <target_type>은 <version>부터 사용 중단됩니다.  **
 **<alternative>를 대신 이용하십시오.**
+
+@deprecated This <target_type> is not supported starting with <version>. Use <alternative> instead.
 
 - **이 문서는 developer 버전인 <version>을 다룹니다.**  
 - **현재 prerelease 버전은 <version>입니다.**

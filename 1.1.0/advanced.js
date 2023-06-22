@@ -11,7 +11,7 @@ const is = (target, Class) => (typeof target == "object") ? (target instanceof C
  */
 const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
 /**
- * @deprecated This function is not supported starting with advanced 1.2.0. Use indexOf() prototype instead.
+ * @deprecated This function is not supported starting with 1.2.0. Use indexOf() prototype instead.
  * @type {{
  * (parent: any[], child: any) => number
  * (parent: HTMLElement, child: HTMLElement) => number

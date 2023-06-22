@@ -16,13 +16,6 @@ const LiveData = class {
         return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     /**
-     * @type {(observer: Function) => LiveData}
-     */
-    registObserver = observer => {
-        this.#observer = observer;
-        return this;
-    }
-    /**
      * @deprecated This can cause unintended behavior.
      * @type {() => void}
      */
@@ -30,9 +23,10 @@ const LiveData = class {
     /**
      * @type {(data: Any, allowed: Type) => LiveData}
      */
-    constructor(data, allowed) {
+    constructor(data, allowed, observer) {
         this.#data = data;
         this.#allowed = allowed;
+        this.#observer = observer;
     }
 }
 const LiveDataManager = class {
