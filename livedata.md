@@ -97,27 +97,17 @@ data.dispatchObserver();
 #### 1-4. **@1.1.0** **setter and getter** value  
 > **value**는 **setter**와 **getter** 메서드로 이루어져 있습니다.  
 > **value**의 **setter** 메서드는 다음과 같은 작업을 수행합니다:  
-  
 1. 주어진 **data**가 **allowed**된 유형인지 확인합니다.  
-  
 - 만약, 주어진 **data**가 **allowed**된 유형일 경우, 나머지 절차를 이어서 수행합니다.  
-  
 - **그렇지 않은 경우**, **TypeError**를 **throw**합니다.  
-  
 2. 주어진 **data**와 현재 **data**를 비교하여 **change** 여부를 확인합니다.  
-  
 3. 만약, **data**가 변경되었고, **옵저버(observer)** 가 **function**인 경우 **observer**를 호출합니다.  
-  
 4. 내부 **data(this.#data)** 를 주어진 **data**로 업데이트합니다.  
   
 > **value**의 **getter** 메서드는 다음과 같은 작업을 수행합니다:  
-  
 1. 내부 **data(this.#data)** 의 유형에 따라 적절한 반환 값을 생성합니다.  
-  
 - 만약 **data**가 **Array**인 경우, **Array copy**을 반환합니다.  
-  
 - 만약 **data**가 **객체 리터럴({ })** 인 경우, **{ } copy**를 반환합니다.  
-  
 - 그 외의 경우에는 **data** 자체를 반환합니다.  
   
 예시:  
