@@ -16,9 +16,9 @@
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node, additional)  
-> Dom의 생성자입니다.  
-> **node**는 **String || HTMLElement**입니다.  
-> **additional**은 **Object Literal {}** 입니다.  
+> **Dom**의 생성자입니다.  
+> **node**는 **String || HTMLElement**으로, **생성할 HTMLElement의 TagName**입니다.  
+> **additional**은 **Object**으로, **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
 >  
 > 2. **@1.1.0** getter node  
 > **<name> getter**는 다음과 같은 작업을 수행합니다:    
@@ -207,7 +207,9 @@ dom.reset(
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(view, ...fragment)  
-> **view**는 **\<fragment\>\</fragment\>의 rid 속성값**으로, **String**입니다. **fragment**는 **Dom 요소**들을 전달받는 **가변 인자**입니다.  
+> **Fragment**의 생성자입니다.  
+> **view**는 **String**으로, **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.  
+> **fragment**는 **Dom?**으로, **하나의 Fragment를 구성할 Dom 요소들의 집합**입니다.
 >  
 > 2. **@1.1.0** launch()  
 > **Fragment**를 **전환**하는 메서드입니다.  
