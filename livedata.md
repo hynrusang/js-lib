@@ -16,9 +16,11 @@
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(data, type, observer): LiveData 클래스의 생성자입니다.  
-> **data**는 초기 데이터로 설정됩니다.  
-> **(아직은 3, "test", [2, 3], {data: true} 등의 Primitive Type만 지원합니다.)**  
+> 1. constructor(data, type, observer)  
+> **LiveData**의 생성자입니다.  
+> **data**는 **number || String || Array || Object**으로, **LiveData의 초기 데이터를 설정**합니다.  
+> **type**은 **type = (Number || String || Array || Object) || null** 으로, **LiveData에 들어갈 데이터들의 유형을 설정**합니다.  
+> **observer**는 **function**으로, **LiveData의 value가 변할때 실행될 함수**입니다.  
 >  
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
@@ -132,12 +134,9 @@ data was changed!
 > **LiveDataManager** 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
 > 1. constructor(livedataObject, editable = true)  
-> **livedataObject**를 기반으로 **LiveDataManager** 인스턴스를 초기화합니다.  
-> 이때, **livedataObject**는 반드시 **Object literal**이여야 하며,  
-> **livedataObject**의 **value**들도 **LiveData** 인스턴스여야 합니다.  
-> 그렇지 않을 시 **TypeError**가 발생합니다.  
-> **editable** 매개변수는 **external**에서 **LiveDataManager**의 **livedataObject**에 대한 **access** 및 **edit**을 허용할지 여부를 결정합니다.  
-> **default**는 **true**입니다.  
+> **LiveDataManager**의 생성자입니다.  
+> **livedataObject**는 **Object**으로, **관리될 LiveData 객체들의 정보를 담은 객체**입니다.  
+> **editable**은 **boolean**으로, **LiveDataManager가 관리하고 있는 LiveData들에 대한 직접적인 조건을 허용할지 결정**합니다.  
 >  
 > 2. **@1.1.0** getter id  
 > **LiveDataManager**의 **#resource**를 반환합니다.  
