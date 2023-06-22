@@ -3,30 +3,32 @@ js에서 값의 변화를 관측하는 LiveData를 비롯한 여러 기능들을
 작성자: 환류상
  */
 const Pointer = class {
-    _data;
-    _allowed;
+    #data;
+    #allowed;
     set value(data) {
-        if (this._allowed && this._allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this._allowed.name}.`);
-        this._data = data;
+        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
+        this.#data = data;
     }
     get value() {
-        return (Array.isArray(this._data)) ? [...this._data] : (typeof this._data == "object") ? Object.assign({}, this._data) : this._data;
+        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     constructor(data, allowed) {
-        this._data = data;
-        this._allowed = allowed;
+        this.#data = data;
+        this.#allowed = allowed;
     }
 }
-const LiveData = class extends Pointer {
+const LiveData = class {
+    #data;
+    #allowed;
     #observer;
     set value(data) {
-        if (this._allowed && this._allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this._allowed.name}.`);
-        const isChanged = (JSON.stringify(data) != JSON.stringify(this._data)) ? true : false;
-        this._data = data;
+        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
+        const isChanged = (JSON.stringify(data) != JSON.stringify(this.#data)) ? true : false;
+        this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
     }
     get value() {
-        return super.value
+        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     /**
      * @deprecated This method is not supported starting with 1.3.0. Use constructor third param instead.
@@ -45,7 +47,8 @@ const LiveData = class extends Pointer {
      * @type {(data: Any, allowed: Type) => LiveData}
      */
     constructor(data, allowed, observer) {
-        super(data, allowed);
+        this.#data = data;
+        this.#allowed = allowed;
         this.#observer = observer;
     }
 }
