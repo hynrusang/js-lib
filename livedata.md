@@ -20,7 +20,7 @@
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, "test", [2, 3], {data: true} 등의 Primitive Type만 지원합니다.)**  
 >  
-> 2. **@1.0.0** registObserver(observer)  
+> 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 > **chain method**를 지원합니다.  
