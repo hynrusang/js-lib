@@ -95,7 +95,6 @@ data.dispatchObserver();
 ```
 ---
 #### 1-4. **@1.1.0** **setter and getter** value  
-> **value**는 **setter**와 **getter** 메서드로 이루어져 있습니다.  
 > **value setter**는 다음과 같은 작업을 수행합니다:  
 1. 주어진 **data**가 **allowed**된 유형인지 확인합니다.  
 - 만약, 주어진 **data**가 **allowed**된 유형일 경우, 나머지 절차를 이어서 수행합니다.  
