@@ -16,16 +16,15 @@
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(data): LiveData 클래스의 생성자입니다.  
+> 1. constructor(data, type, observer): LiveData 클래스의 생성자입니다.  
 > **data**는 초기 데이터로 설정됩니다.  
 > **(아직은 3, "test", [2, 3], {data: true} 등의 Primitive Type만 지원합니다.)**  
 >  
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **이 function은 1.2.0부터 사용 중단됩니다.**  
-> **constructor second param을 대신 이용하십시오.**  
+> **constructor third param을 대신 이용하십시오.**  
 > **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
-> **chain method**를 지원합니다.  
 >
 > 3. **@1.0.0** **@deprecated** dispatchObserver()  
 > **observer**를 **강제 호출**하는 메서드입니다.  
@@ -34,21 +33,22 @@
 > 4. **@1.1.0** **(setter || getter)** value  
 > **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
 ---
-#### 1-1. constructor(data)
+#### 1-1. constructor(data, type, observer)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
 > **(여기서는 초기 데이터로 3을 넣어주겠습니다.)**  
 ```js
 const db = new LiveData(3);
 ```
-> 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 하면 됩니다.  
+> 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
 const db = new LiveData(3, Number);
-
 db.value = "str"; // throw TypeError;
 ```
-> 만약, 이 **db**의 값이 변경될때마다, 해당 값을 **콘솔**에 출력하도록 하고 싶다면, 다음과 같이 하면 됩니다.  
+> 만약, 이 **LiveData**가 **change** 될 때마다 해당 값을 **console**에 출력하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
-db.registObserver(function () { console.log(this.value); });
+const db = new LiveData(3, Number, function () {
+  console.log(this.value);
+})
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
@@ -64,7 +64,9 @@ db.value = 7;
 // console
 ```
 ---
-#### 1-2. **@1.0.0** registObserver(observer)
+#### 1-2. **@1.0.0** **@deprecated** registObserver(observer)  
+> **이 function은 1.2.0부터 사용 중단됩니다.**  
+> **constructor third param을 대신 이용하십시오.**  
 > **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
   
@@ -83,7 +85,7 @@ data renew
   
 예시:  
 ```js
-const data = new LiveData(32, Number).registObserver(function () {
+const data = new LiveData(32, Number, function () {
     console.log(this.value)
 });
 data.dispatchObserver();
@@ -120,9 +122,9 @@ data.dispatchObserver();
   
 예시:  
 ```js
-const db = new LiveData([3, 5, 6], Array).registObserver(function () {
+const db = new LiveData([3, 5, 6], Array, function () {
     console.log("data was changed!");
-})
+});
 db.value = [2, 4, 8]; // value setter
 db.value = [6, 7, 3]; // value setter
 db.value; // value getter
@@ -169,9 +171,9 @@ data was changed!
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number).registObserver(gollum),
-    name: new LiveData("hynrusang", String).registObserver(gollum),
-    data: new LiveData([], Array).registObserver(gollum)
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
 });
 ```
 > 이제 이 **LiveDataManager**의 **id** 필드의 값을 **edit**해보도록 하겠습니다.  
@@ -194,13 +196,13 @@ hynrusang
 // case editable == true
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number).registObserver(gollum),
-    name: new LiveData("hynrusang", String).registObserver(gollum),
-    data: new LiveData([], Array).registObserver(gollum)
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
 });
 
 db.id.name; // getter
-db.id.newData = new LiveData("hello, world!").registObserver(gollum); // setter
+db.id.newData = new LiveData("hello, world!", null, gollum); // setter
 db.id;
 
 // console
@@ -210,13 +212,13 @@ LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, 
 // case editable == false
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number).registObserver(gollum),
-    name: new LiveData("hynrusang", String).registObserver(gollum),
-    data: new LiveData([], Array).registObserver(gollum)
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
 }, false);
 
 db.id.name; // SyntaxError
-db.id.newData = new LiveData("hello, world!").registObserver(gollum); // SyntaxError
+db.id.newData = new LiveData("hello, world!", gollum); // SyntaxError
 db.id; // SyntaxError
 
 // console
