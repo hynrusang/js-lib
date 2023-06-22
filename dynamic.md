@@ -22,7 +22,7 @@
 >  
 > 2. **@1.1.0** getter node  
 > **<name> getter**는 다음과 같은 작업을 수행합니다:    
-> 1. 내부의 **node: HTMLElement**를 반환합니다.  
+> - 내부의 **node: HTMLElement**를 반환합니다.  
 >  
 > 3. **@1.0.0** set(additional)  
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
