@@ -49,7 +49,7 @@ true
 ### 3. **@1.0.0** **@deprecated**  getIndex(parent, child) : number  
 > **(이 function은 1.2.0부터 사용 중단됩니다.**  
 > **(HTMLElement || NodeList).prototype.indexOf를 대신 이용하십시오.)**  
-> **getIndex** 함수는 **parent: HTMLElement || NodeList** 내에서 **child**의 **인덱스**를 가져오는 함수입니다.  
+> **getIndex** 함수는 **parent: HTMLElement || Array** 내에서 **child**의 **인덱스**를 가져오는 함수입니다.  
   
 예시:  
 ```js
