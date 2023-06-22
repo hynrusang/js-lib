@@ -2,7 +2,7 @@
 - [이전으로](https://github.com/hynrusang/js-lib)
 - [소스코드](https://github.com/hynrusang/js-lib/blob/main/1.2.0/livedata.js)
 ---
-- **이 문서는 developer 버전인 livedata 1.2.0을 다룹니다.**  
+- **이 문서는 developer(1.2.0) 버전과 prerelease(1.1.0) 버전을 다룹니다.**  
 - **현재 prerelease 버전은 livedata 1.1.0입니다.**
 - **현재 release 버전은 livedata 1.1.0입니다.**
 ## 정보
