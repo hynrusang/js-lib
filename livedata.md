@@ -21,8 +21,8 @@
 > **(아직은 3, "test", [2, 3], {data: true} 등의 Primitive Type만 지원합니다.)**  
 >  
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
-> **이 function은 1.2.0부터 사용 중단됩니다.**  
-> **constructor third param을 대신 이용하십시오.**  
+> **(이 function은 1.2.0부터 사용 중단됩니다.**  
+> **constructor third param을 대신 이용하십시오.)**  
 > **observer**를 **regist**하는 메서드입니다.  
 > observer는 **data changed**될 시 호출될 **function**입니다.  
 >
