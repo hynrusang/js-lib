@@ -299,7 +299,7 @@ mainFragment.launch();
 <fragment rid="fragmentView"></fragment>
 
 /* fragment.js */
-const state = new LiveData("first", String).registObserver(function () {
+const state = new LiveData("first", String, function () {
     alert(`${this.value} Fragment is stating now...`);
 });
 const mainFragment = new Fragment("fragmentView", 
