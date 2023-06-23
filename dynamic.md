@@ -16,28 +16,32 @@
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node: **String | HTMLElement**, additional: **Object**)  
-> **Dom**의 생성자입니다.  
-> - **node**는 **생성할 HTMLElement의 TagName**입니다.  
-> - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
+> **Dom**의 생성자입니다.
+> - **node**는 **this.#node: HTMLElement의 tagName**입니다.
+> - **additional**은 **this.#node: HTMLElement에 설정할 추가적인 속성**입니다.
 > ---
-> 2. **@1.1.0** getter node  
-> - 내부의 **#node: HTMLElement**를 반환합니다.    
+> 2. **@1.1.0** getter node
+> - **this.#node: HTMLElement**를 반환합니다.
 > ---
 > 3. **@1.0.0** set(additional: **Object**)  
-> - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다. 
+> - **additional**에 전달된 **{key: value}** 를 **this.#node: HTMLElement**에 **설정**합니다.
+> - **this: Dom**을 반환합니다.
 > ---
-> 4. **@1.0.0** remove(num: **Number**)  
-> - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
+> 4. **@1.0.0** remove(num: **Number**)
+> - **this.#node**의 **num**번째 **children node**를 제거합니다.
+> - **this: Dom**을 반환합니다.
 > ---
-> 5. **@1.0.0** children(num: **Number**)  
-> - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.  
-> - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.  
+> 5. **@1.0.0** children(num: **Number**)
+> - **this.#node.children[num]: HTMLElement by Dom**을 반환합니다.
 > ---
-> 6. **@1.0.0** add(...dom: **Dom || Dom[]**)  
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.  
+> 6. **@1.0.0** add(...dom: **Dom || Dom[]**)
+> - **dom**들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+> - **this: Dom**을 반환합니다.
 > ---
-> 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)  
-> 현재 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
+> 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
+> - **this: Dom**의 **innerHTML**을 **\"\"** 로 설정합니다.
+> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom-dom--dom)** 를 호출합니다.
+> - **this: Dom**을 반환합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
@@ -92,7 +96,7 @@ $("fieldset").add(
 ```
 ---
 #### 1-2. **@1.1.0** getter node  
-> 내부의 **#node: HTMLElement**를 반환합니다.  
+1. **this.#node: HTMLElement**를 반환합니다.
   
 예시:
 ```js
@@ -103,7 +107,12 @@ dom.node; // <div></div>
 ```
 ---
 #### 1-3. **@1.0.0** set(additional: **Object**)
-> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
+1. **additional**에 전달된 **{key: value}** 을 **this.#node: HTMLElement**에 **설정**합니다.
+- **key**가 **innerHTML || html**인 경우, **this.#node: HTMLElement**의 **innerHTML**을 **value**로 설정합니다.
+- **key**가 **innerText || text**인 경우, **this.#node: HTMLElement**의 **innerText**을 **value**로 설정합니다.
+- **key**가 **on**으로 시작하거나 **async**인 경우, **this.#node: HTMLElement**의 **key**를 **value**로 설정합니다.
+- **그 외의 경우**, **this.#node**의 **key attribute**를 **value**로 설정합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -115,7 +124,8 @@ const dom = new Dom("span").set({text: "hello!", style: `color: ${color}`});
 ```
 ---
 #### 1-4. **@1.0.0** remove(num: **Number**)
-> **num**에 해당하는 **자식 요소**를 **제거**합니다.   
+1. **this.#node**의 **num**번째 **children node**를 제거합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -132,9 +142,10 @@ const dom = new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-5. **@1.0.0** children(num)
-> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
-
+#### 1-5. **@1.0.0** children(num: **Number**)
+1. **this.#node.children[num]: HTMLElement by Dom**을 반환합니다.
+- 만약 **this.#node.children[num]: HTMLElement**가 존재한다면, 해당 **child**를 **Dom** 객체로 감싸서 반환합니다.
+- 만약 **this.#node.children[num]: HTMLElement**가 존재하지 않다면, **null**을 반환합니다.
   
 예시:
 ```js
@@ -149,8 +160,11 @@ const dom = new Dom("fieldset").add(
 Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
-#### 1-6. **@1.0.0** add(...dom)
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
+#### 1-6. **@1.0.0** add(...dom: **Dom || Dom[]**)
+1. **dom**들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+- dom이 **Dom[]** 인 경우, **[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)** 루프를 통해 각각의 **Dom[]** 요소들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+- dom이 **Dom**인 경우, **dom.node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -173,8 +187,10 @@ const dom = new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-7. **@1.0.0** reset(...dom) 
-> 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
+#### 1-7. **@1.0.0** reset(...dom: **Dom || Dom[]**) 
+1. **this: Dom**의 **innerHTML**을 **\"\"** 로 설정합니다.
+2. **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom-dom--dom)** 를 호출합니다.
+3. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -205,23 +221,24 @@ dom.reset(
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(view, ...fragment)  
-> **Fragment**의 생성자입니다.  
-> **view**는 **String**으로, **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.  
-> **fragment**는 **Dom?** 으로, **하나의 Fragment를 구성할 Dom 요소들의 집합**입니다.
->  
-> 2. **@1.1.0** launch()  
-> **Fragment**를 **전환**하는 메서드입니다.  
-> 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **\<fragment\> element**입니다.  
->  
-> 3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
->  
-> 4. **@1.1.0** registAction(action)  
-> **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
+> 1. constructor(view: **String**, ...fragment: **Dom || Dom[]**)  
+> Fragment의 생성자입니다.
+> - **view**는 **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.
+> - **fragment**는 **하나의 Fragment를 구성할 Dom 인스턴스들**입니다.
+> ---
+> 2. launch()
+> - **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-registanimationanimation-fraganimation-second-number)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
+> - **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-registactionaction-function)** 이 **Function**인 경우, **this.#action**을 실행합니다.
+> - **rid** 속성값이 **this.#view**인 **\<fragment\>** 의 **children**을 **this.#fragment**들로 전환합니다.
+> - **this: Fragment**을 반환합니다.
+> ---
+> 3. registAction(action: **Function**)
+> - **action: Function**을 **this.#action**에 설정합니다.
+> - **this: Fragment**을 반환합니다.
+> ---
+> 4. registAnimation(animation: **FragAnimation**, second: **Number**)
+> - **animation: FragAnimation**과 **second: Number**를 각각 **this.#swipAnimation**과 **this.#animationExcuteTime**에 설정합니다.
+> - **this: Fragment**을 반환합니다.
 ---
 #### 2-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
@@ -251,10 +268,10 @@ const secondFragment = new Fragment("fragmentView",
 ```
 ---
 #### 2-2. **@1.1.0** launch()
-> **Fragment**를 **전환**하는 메서드입니다.  
-> 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.   
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **<fragment> element**입니다.  
+1. **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-registanimationanimation-fraganimation-second-number)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
+2. **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-registactionaction-function)** 이 **Function**인 경우, **this.#action**을 실행합니다.
+3. **rid** 속성값이 **this.#view**인 **\<fragment\>** 의 **children**을 **this.#fragment**들로 전환합니다.
+4. **this: Fragment**을 반환합니다.
   
 예시:  
 ```js
@@ -271,37 +288,9 @@ const secondFragment = new Fragment("target",
 mainFragment.launch();
 ```
 ---
-#### 2-3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
-  
-예시:  
-```js
-/* index.html */
-<fragment rid="fragmentView"></fragment>
-
-/* fragment.js */
-const mainFragment = new Fragment("fragmentView", 
-    $("fieldset").add(
-        $("legend", {text: "first fragment", style: "color: red;"}),
-        $("input", {type: "button", value: "go to second fragment", onclick: () => {
-            secondFragment.launch();
-        }})
-    )
-).registAnimation(FragAnimation.card, 1.5).launch();
-const secondFragment = new Fragment("fragmentView", 
-    $("fieldset").add(
-        $("legend", {text: "second fragment", style: "color: red;"}),
-        $("input", {type: "button", value: "go to frist fragment", onclick: () => {
-            mainFragment.launch();
-        }})
-    )
-).registAnimation(FragAnimation.swip, 1.5);
-```
----
-#### 2-4. **@1.1.0** registAction(action)
-> 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
-> **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
+#### 2-3. registAction(action: **Function**)
+1. **action: Function**을 **this.#action**에 설정합니다.
+2. **this: Fragment**을 반환합니다.
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-1-constructorview-fragment)의 예시를 조금 수정합니다.)   
 ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
@@ -336,23 +325,46 @@ const secondFragment = new Fragment("fragmentView",
 })
 ```
 ---
+#### 2-4. registAnimation(animation: **FragAnimation**, second: **Number**)
+1. **animation: FragAnimation**과 **second: Number**를 각각 **this.#swipAnimation**과 **this.#animationExcuteTime**에 설정합니다.
+2. **this: Fragment**을 반환합니다.
+  
+예시:  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
+            secondFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "second fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+            mainFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.swip, 1.5);
+```
+---
 ### 3. **@1.2.0** FragAnimation : static Class  
-> **FragAnimation**은 **Fragment**의 **registerAnimation 메서드**의 **first** 매개변수로 간접 참조되는 클래스입니다.  
+> **FragAnimation**은 **[Fragment.registerAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-120-registanimationanimation-second)** 의 **first** 매개변수로 간접 참조되는 클래스입니다.  
 > **FragAnimation** 클래스에는 다음과 같은 메서드들이 있습니다:  
-> 1. **@1.2.0** card  
-> **card animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 비어 있지 않은 경우, 회전 및 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
-> 다시 회전 및 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
->  
+> 1. **@1.2.0** card
+> - **card animation**을 수행하는 메서드입니다.
+> ---
 > 2. **@1.2.0** fade  
-> **fade animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 비어 있지 않은 경우, 투명도 애니메이션을 수행한 후, 프래그먼트를 재설정하고.  
-> 다시 투명도 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
->  
+> **fade animation**을 수행하는 메서드입니다.
+> ---
 > 3. **@1.2.0** swip  
-> **swip animation**을 수행하는 메서드입니다.  
-> **프레그먼트**가 **비어 있지 않은 경우**, 오른쪽으로 이동하는 애니메이션을 수행한 후, 프래그먼트를 재설정하고,  
-> 다시 오른쪽으로 이동하는 애니메이션을 수행합니다. **프레그먼트**가 **비어 있는 경우**에는 프래그먼트만 재설정합니다.  
+> - **swip animation**을 수행하는 메서드입니다.
+> ---
 - 각각의 Animation들의 모습은 다음과 같습니다.  
 ---  
 #### 3-1. **@1.2.0** card

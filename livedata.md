@@ -16,26 +16,27 @@
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(data, type, observer)  
-> **LiveData**의 생성자입니다.  
-> **data**는 **number || String || Array || Object**으로, **LiveData의 초기 데이터를 설정**합니다.  
-> **type**은 **type = (Number || String || Array || Object) || null** 으로, **LiveData에 들어갈 데이터들의 유형을 설정**합니다.  
-> **observer**는 **function**으로, **LiveData의 value가 변할때 실행될 함수**입니다.  
->  
+> 1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)  
+> **LiveData**의 생성자입니다.
+> - **data**는 **LiveData의 초기 데이터**입니다.
+> - **type**은 **LiveData에 들어갈 데이터들의 유형**입니다.
+> - **observer**는 **LiveData의 value가 변할때 실행될 함수**입니다.
+> ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
-> **constructor third param을 대신 이용하십시오.)**  
-> **observer**를 **regist**하는 메서드입니다.  
-> observer는 **data changed**될 시 호출될 **function**입니다.  
->
+> **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
+> ---
 > 3. **@1.0.0** **@deprecated** dispatchObserver()  
-> **observer**를 **강제 호출**하는 메서드입니다.  
-> **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**  
->  
-> 4. **@1.1.0** **(setter || getter)** value  
-> **value**는 **setter** 또는 **getter**로, 자동으로 set, get 메서드처럼 동작합니다.  
+> **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**
+> - **this.#observer**를 실행합니다.
+> ---
+> 4. **@1.1.0** **setter** value  
+> - **this.#data**에 값을 설정합니다.
+> ---
+> 5. **@1.1.0** **getter** value
+> - **this.#data: any**를 반환합니다.
 ---
-#### 1-1. constructor(data, type, observer)
+#### 1-1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
 > **(여기서는 초기 데이터로 3을 넣어주겠습니다.)**  
 ```js
@@ -68,9 +69,7 @@ db.value = 7;
 ---
 #### 1-2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.2.0부터 사용 중단됩니다.**  
-> **constructor third param을 대신 이용하십시오.)**  
-> **observer**를 **regist**하는 메서드입니다.  
-> observer는 **data changed**될 시 호출될 **function**입니다.  
+> **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
   
 예시:
 ```js
@@ -82,8 +81,8 @@ data renew
 ```
 ---
 #### 1-3. **@1.0.0** **@deprecated** dispatchObserver()  
-> **observer**를 **강제 호출**하는 메서드입니다.  
-> **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**  
+> **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**
+1. **this.#observer**를 실행합니다.
   
 예시:  
 ```js
@@ -96,34 +95,43 @@ data.dispatchObserver();
 32
 ```
 ---
-#### 1-4. **@1.1.0** **setter and getter** value  
-> **value setter**는 다음과 같은 작업을 수행합니다:  
-1. 주어진 **data**가 **allowed**된 유형인지 확인합니다.  
-- 만약, 주어진 **data**가 **allowed**된 유형일 경우, 나머지 절차를 이어서 수행합니다.  
-- **그렇지 않은 경우**, **TypeError**를 **throw**합니다.  
-2. 주어진 **data**와 현재 **data**를 비교하여 **change** 여부를 확인합니다.  
-3. 내부 **data(this.#data)** 를 주어진 **data**로 업데이트합니다. 
-4. 만약, **change** 여부가 **true**이고, **옵저버(observer)** 가 **function**인 경우 **observer**를 호출합니다.   
-  
-> **value getter**는 다음과 같은 작업을 수행합니다:  
-1. 내부 **data(this.#data)** 의 유형에 따라 적절한 반환 값을 생성합니다.  
-- 만약 **data**가 **Array**인 경우, **Array copy**을 반환합니다.  
-- 만약 **data**가 **객체 리터럴({ })** 인 경우, **{ } copy**를 반환합니다.  
-- 그 외의 경우에는 **data** 자체를 반환합니다.  
+#### 1-4. **@1.1.0** **setter** value  
+1. **this.#data**에 값을 설정합니다.
+- **this.#allowed**가 **not null**이고, **data**의 타입이 **this.#allowed**와 일치하지 않는 경우, **TypeError**를 **throw**합니다.  
+**(this.#data는 업데이트되지 않습니다.)**
+- **이전 데이터**와 **현재 데이터**가 변경되었는지 비교하여 **isChanged** 변수에 저장합니다.  
+**(data가 primity type인 경우에만 정상적으로 작동합니다.)**
+- **this.#data**를 **data**로 설정합니다.
+- **isChanged**가 **true**이고 **this.#observer**가 **Function**인 경우 **this.#observer**를 실행합니다.
   
 예시:  
 ```js
 const db = new LiveData([3, 5, 6], Array, function () {
     console.log("data was changed!");
 });
-db.value = [2, 4, 8]; // value setter
-db.value = [6, 7, 3]; // value setter
-db.value; // value getter
+db.value = [2, 4, 8];
+db.value = [6, 7, 3];
 
 // console
 data was changed!
 data was changed!
-[6, 7, 3]
+```
+---
+#### 1-5. **@1.1.0** **getter** value
+1. **this.#data: any**를 반환합니다.
+- **this.#data**가 **Array**인 경우, 복사된 배열을 반환합니다.
+- **this.#data**가 **Object**인 경우, 복사된 객체를 반환합니다.
+- **그 외의 경우**, **this.#data**를 반환합니다.
+  
+예시:
+```js
+const db = new LiveData([3, 5, 6], Array, function () {
+    console.log("data was changed!");
+});
+console.log(db.value); 
+
+// console
+[3, 5, 6]
 ```
 ---
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_livedatamanager.png">  
