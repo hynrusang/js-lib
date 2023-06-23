@@ -17,14 +17,14 @@
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 > 1. constructor(node: **String | HTMLElement**, additional: **Object**)  
 > **Dom**의 생성자입니다.
-> - **node**는 **생성할 HTMLElement의 TagName**입니다.
-> - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.
+> - **node**는 **this.#node: HTMLElement의 tagName**입니다.
+> - **additional**은 **this.#node: HTMLElement에 설정할 추가적인 속성**입니다.
 > ---
 > 2. **@1.1.0** getter node
 > - **this.#node: HTMLElement**를 반환합니다.
 > ---
 > 3. **@1.0.0** set(additional: **Object**)  
-> - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.
+> - **additional**에 전달된 **속성과 값**을 **this.#node: HTMLElement**에 **설정**합니다.
 > - **this: Dom**을 반환합니다.
 > ---
 > 4. **@1.0.0** remove(num: **Number**)
