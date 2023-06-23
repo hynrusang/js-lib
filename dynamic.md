@@ -39,7 +39,7 @@
 > - **this: Dom**을 반환합니다.
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
-> - **this: Dom**의 **모든 children**을 **[remove](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-4-100-removenum-number)** 합니다.
+> - **this: Dom**의 **innerHTML**을 **\"\"** 로 설정합니다.
 > - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)** 를 호출합니다.
 > - **this: Dom**을 반환합니다.
 ---
