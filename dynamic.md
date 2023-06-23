@@ -96,7 +96,7 @@ $("fieldset").add(
 ```
 ---
 #### 1-2. **@1.1.0** getter node  
-> 내부의 **#node: HTMLElement**를 반환합니다.  
+1. **this.#node: HTMLElement**를 반환합니다.
   
 예시:
 ```js
