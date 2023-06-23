@@ -15,16 +15,16 @@
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(node, additional)  
+> 1. constructor(node: **String || HTMLElement**, additional: **Object**)  
 > **Dom**의 생성자입니다.  
-> - **node**는 **String || HTMLElement**으로, **생성할 HTMLElement의 TagName**입니다.  
-> - **additional**은 **Object**으로, **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
+> - **node**는 **생성할 HTMLElement의 TagName**입니다.  
+> - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
 >  
 > 2. **@1.1.0** getter node  
 > **node getter**는 다음과 같은 작업을 수행합니다:    
 > - 내부의 **node: HTMLElement**를 반환합니다.  
 >  
-> 3. **@1.0.0** set(additional)  
+> 3. **@1.0.0** set(additional: ㅒㅠㅓㄷㅊ)  
 > **set method**은 다음과 같은 작업을 수행합니다:  
 > - <scene>
 >  
