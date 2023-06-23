@@ -30,7 +30,6 @@
 > **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
 >  
 > 5. **@1.0.0** children(num: **Number**)  
-> **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.  
 > - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.  
 > - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.  
 >  
