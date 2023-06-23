@@ -21,26 +21,27 @@
 > - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.
 > ---
 > 2. **@1.1.0** getter node
-> - 내부의 **#node: HTMLElement**를 반환합니다.
+> - **this.#node: HTMLElement**를 반환합니다.
 > ---
 > 3. **@1.0.0** set(additional: **Object**)  
 > - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.
-> - 현재 **Dom** 객체를 반환합니다.
+> - **this: Dom**을 반환합니다.
 > ---
 > 4. **@1.0.0** remove(num: **Number**)
-> - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.
-> - 현재 **Dom** 객체를 반환합니다.
+> - **this.children[num].node**를 제거합니다.
+> - **this: Dom**을 반환합니다.
 > ---
 > 5. **@1.0.0** children(num: **Number**)
-> - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.
+> - **this.children[]: by Dom**을 반환합니다.
 > ---
 > 6. **@1.0.0** add(...dom: **Dom || Dom[]**)
 > - **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.
-> - 현재 **Dom** 객체를 반환합니다.
+> - 현재 **Dom** 반환합니다.
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
 > - 현재 **Dom**의 자식 요소들을 **모두 제거**합니다.
-> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)**를 호출합니다.
+> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)** 를 호출합니다.
+> - 현재 **Dom**을 반환합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
