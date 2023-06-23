@@ -32,16 +32,16 @@
 > - **this: Dom**을 반환합니다.
 > ---
 > 5. **@1.0.0** children(num: **Number**)
-> - **this.children[]: by Dom**을 반환합니다.
+> - **this.#node.children[num]: HTMLElement by Dom**을 반환합니다.
 > ---
 > 6. **@1.0.0** add(...dom: **Dom || Dom[]**)
-> - **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.
-> - 현재 **Dom** 반환합니다.
+> - **dom**들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+> - **this: Dom**을 반환합니다.
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
-> - 현재 **Dom**의 자식 요소들을 **모두 제거**합니다.
+> - **this: Dom**의 **모든 children**을 **remove**합니다.
 > - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)** 를 호출합니다.
-> - 현재 **Dom**을 반환합니다.
+> - **this: Dom**을 반환합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
