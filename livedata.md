@@ -235,7 +235,7 @@ const db = new LiveDataManager({
     data: new LiveData([], Array, gollum)
 });
 console.log(db.id.data);
-db.id.newData = new LiveData("hello, world!").registObserver(gollum);
+db.id.newData = new LiveData("hello, world!", null, gollum);
 console.log(db.id);
 
 // console
