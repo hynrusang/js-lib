@@ -13,7 +13,7 @@
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_pointer.png">  
   
 ### 1. @1.2.0 Pointer: Class
-> **Pointer**는 **primity type**인 객체를 감싸서 **값** 뿐만 아닌, **주소**의 참조도 가능케 하는 **Class**입니다.  
+> **Pointer**는 **primity type**을 객체 형태로 감싸서, **call by reference** 도 가능케 하는 **Class**입니다.  
 > Pointer 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
 > 1. constructor(data: **any**, type = **Number || String || Array || Object || null**)  
