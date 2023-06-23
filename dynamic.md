@@ -29,16 +29,18 @@
 > ---
 > 4. **@1.0.0** remove(num: **Number**)
 > - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.
+> - 현재 **Dom** 객체를 반환합니다.
 > ---
 > 5. **@1.0.0** children(num: **Number**)
-> - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.
 > - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.
 > ---
 > 6. **@1.0.0** add(...dom: **Dom || Dom[]**)
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.
+> - **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.
+> - 현재 **Dom** 객체를 반환합니다.
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
-> 현재 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.
+> - 현재 **Dom**의 자식 요소들을 **모두 제거**합니다.
+> - **[add]() method**를 호출합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
