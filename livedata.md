@@ -17,11 +17,11 @@
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
 > 1. constructor(data, type, observer)  
-> **LiveData**의 생성자입니다.  
-> **data**는 **number || String || Array || Object**으로, **LiveData의 초기 데이터를 설정**합니다.  
-> **type**은 **type = (Number || String || Array || Object) || null** 으로, **LiveData에 들어갈 데이터들의 유형을 설정**합니다.  
-> **observer**는 **function**으로, **LiveData의 value가 변할때 실행될 함수**입니다.  
->  
+> **LiveData**의 생성자입니다.
+> - **data**는 **number || String || Array || Object**으로, **LiveData의 초기 데이터를 설정**합니다.
+> - **type**은 **type = (Number || String || Array || Object) || null** 으로, **LiveData에 들어갈 데이터들의 유형을 설정**합니다.
+> - **observer**는 **function**으로, **LiveData의 value가 변할때 실행될 함수**입니다.
+> ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
 > **constructor third param을 대신 이용하십시오.)**  
