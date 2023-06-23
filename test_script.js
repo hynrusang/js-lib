@@ -21,3 +21,4 @@ const test = {
         for (let data of Object.values(test)) console.log(data.value);
     })
 }
+test.l.value = 5;
