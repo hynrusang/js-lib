@@ -109,14 +109,29 @@ data.dispatchObserver();
 const db = new LiveData([3, 5, 6], Array, function () {
     console.log("data was changed!");
 });
-db.value = [2, 4, 8]; // value setter
-db.value = [6, 7, 3]; // value setter
-db.value; // value getter
+db.value = [2, 4, 8];
+db.value = [6, 7, 3];
 
 // console
 data was changed!
 data was changed!
-[6, 7, 3]
+```
+---
+#### 1-5. **@1.1.0** **getter** value
+1. **this.#data: any**를 반환합니다.
+- **this.#data**가 **Array**인 경우, 복사된 배열을 반환합니다.
+- **this.#data**가 **Object**인 경우, 복사된 객체를 반환합니다.
+- **그 외의 경우**, **this.#data**를 반환합니다.
+  
+예시:
+```js
+const db = new LiveData([3, 5, 6], Array, function () {
+    console.log("data was changed!");
+});
+console.log(db.value); 
+
+// console
+[3, 5, 6]
 ```
 ---
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_livedatamanager.png">  
