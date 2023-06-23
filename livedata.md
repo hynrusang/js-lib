@@ -153,7 +153,7 @@ console.log(db.value);
 > - **this.#resource[id].value: any**를 반환합니다.
 > ---
 > 4. **@1.1.0** value(id, data)
-> - **this.#resource[id]** 의 **[setter]()** 를 호출합니다.
+> - **this.#resource[id]** 의 **[setter](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-4-110-setter-value)** 를 호출합니다.
 > ---
 > 5. **@1.1.0** toArray()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
