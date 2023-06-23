@@ -24,6 +24,27 @@ const Dom = class {
         return this._node;
     }
     /**
+     * @type {(additional: object?) => Dom}
+     */
+    set = additional => {
+        if (typeof additional === 'object') {
+            for (const [key, value] of Object.entries(additional)) {
+                if (["innerHTML", "html"].includes(key)) this._node.innerHTML = value
+                else if (["innerText", "text"].includes(key)) this._node.innerText = value
+                else if (key.indexOf("on") != -1 || key == "async") this._node[key] = value
+                else this._node.setAttribute(key, value);
+            }
+        } else throw new Error('Additional parameter must be an {key: value} object');
+        return this;
+    };
+    /**
+     * @type {(num: number) => Dom}
+     */
+    remove = num => {
+        this._node.removeChild(this.children(num).node);
+        return this;
+    }
+    /**
      * @type {(num: number) => HTMLElement}
      */
     children = num => this._node.children[num] ? new Dom(this._node.children[num]) : null;
@@ -39,10 +60,11 @@ const Dom = class {
         return this;
     }
     /**
-     * @type {(num: number) => Dom}
+     * @type {(...dom?: Dom | Dom[]) => Dom}
      */
-    remove = num => {
-        this._node.removeChild(this.children(num).node);
+    reset = (...dom) => {
+        this._node.innerHTML = "";
+        this.add(...dom);
         return this;
     }
     /**
@@ -54,28 +76,6 @@ const Dom = class {
         for (let i = 0; i < count; i++) tempbox.push($(this._node.cloneNode(true)));
         return tempbox;
     }
-    /**
-     * @type {(...dom?: Dom | Dom[]) => Dom}
-     */
-    reset = (...dom) => {
-        this._node.innerHTML = "";
-        this.add(...dom);
-        return this;
-    }
-    /**
-     * @type {(additional: object?) => Dom}
-     */
-    set = additional => {
-        if (typeof additional === 'object') {
-            for (const [key, value] of Object.entries(additional)) {
-                if (["innerHTML", "html"].includes(key)) this._node.innerHTML = value
-                else if (["innerText", "text"].includes(key)) this._node.innerText = value
-                else if (key.indexOf("on") != -1 || key == "async") this._node[key] = value
-                else this._node.setAttribute(key, value);
-            }
-        } else throw new Error('Additional parameter must be an {key: value} object');
-        return this;
-    };
     /**
      * @type {(node: string | HTMLElement, additional: Object?) => Dom}
      */

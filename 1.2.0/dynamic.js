@@ -11,6 +11,27 @@ const Dom = class {
         return this.#node;
     }
     /**
+     * @type {(additional: Object) => Dom}
+     */
+    set = additional => {
+        if (typeof additional === 'object') {
+            for (const [key, value] of Object.entries(additional)) {
+                if (["innerHTML", "html"].includes(key)) this.#node.innerHTML = value
+                else if (["innerText", "text"].includes(key)) this.#node.innerText = value
+                else if (key.indexOf("on") != -1 || key == "async") this.#node[key] = value
+                else this.#node.setAttribute(key, value);
+            }
+        } else throw new Error('Additional parameter must be an {key: value} object');
+        return this;
+    };
+    /**
+     * @type {(num: number) => Dom}
+     */
+    remove = num => {
+        this.#node.removeChild(this.children(num).node);
+        return this;
+    }
+    /**
      * @type {(num: number) => HTMLElement}
      */
     children = num => this.#node.children[num] ? new Dom(this.#node.children[num]) : null;
@@ -26,13 +47,6 @@ const Dom = class {
         return this;
     }
     /**
-     * @type {(num: number) => Dom}
-     */
-    remove = num => {
-        this.#node.removeChild(this.children(num).node);
-        return this;
-    }
-    /**
      * @type {(...dom?: Dom | Dom[]) => Dom}
      */
     reset = (...dom) => {
@@ -40,20 +54,6 @@ const Dom = class {
         this.add(...dom);
         return this;
     }
-    /**
-     * @type {(additional: Object) => Dom}
-     */
-    set = additional => {
-        if (typeof additional === 'object') {
-            for (const [key, value] of Object.entries(additional)) {
-                if (["innerHTML", "html"].includes(key)) this.#node.innerHTML = value
-                else if (["innerText", "text"].includes(key)) this.#node.innerText = value
-                else if (key.indexOf("on") != -1 || key == "async") this.#node[key] = value
-                else this.#node.setAttribute(key, value);
-            }
-        } else throw new Error('Additional parameter must be an {key: value} object');
-        return this;
-    };
     /**
      * @type {(node: string | HTMLElement, additional: Object?) => Dom}
      */
