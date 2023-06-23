@@ -226,56 +226,88 @@ Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified extern
 - 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
 - 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
   
-예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+예시:
 ```js
-db.id.data;
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.id.data);
 db.id.newData = new LiveData("hello, world!").registObserver(gollum);
-db.id;
+console.log(db.id);
 
 // console
-LiveData {#data: Array(0), #observer: ƒ, #allowed: ƒ, registObserver: ƒ, dispatchObserver: ƒ, …}
+LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dispatchObserver: ƒ}
 {id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
 ```
 ---
-#### 2-3. **@1.1.0** value(id)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
+#### 2-3. **@1.1.0** value(id: **any**)
+1. **this.#livedataObject[id].value: any**를 반환합니다. 
   
-예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+예시:
 ```js
-db.value("name");
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.value("name"));
 
 // console
 hynrusang
 ```
 ---
-#### 2-4. **@1.1.0** value(id, data)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
+#### 2-4. **@1.1.0** value(id, data)
+1. **this.#livedataObject[id]: LiveData** 의 **[setter](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-4-110-setter-value)** 를 호출합니다.
   
-예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+예시:
 ```js
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
 db.value("id", 56);
 
 // console
 gollum! (56)
 ```
 ---
-#### 2-5. **@1.1.0** toArray()  
-> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
+#### 2-5. **@1.1.0** toArray()
+1. **this.#livedataObject: object by Array**를 반환합니다.
+- **this.#livedataObject**들을 복사한 후, **LiveData**를 포함하지 않는 **Array**로 변환하여 반환합니다.
   
-예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+예시:
 ```js
-db.toArray();
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.toArray());
 
 // console
 [32, 'hynrusang', Array(0)]
 ```
 ---
 #### 2-6. **@1.1.0** toObject()  
-> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
+1. **this.#livedataObject: object**를 반환합니다.
+- **this.#livedataObject**들을 복사한 후, **LiveData**를 포함하지 않는 **Object**로 변환하여 반환합니다.
   
-예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
+예시:
 ```js
-db.toObject();
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.toObject());
 
 // console
 {id: 32, name: 'hynrusang', data: Array(0)}
