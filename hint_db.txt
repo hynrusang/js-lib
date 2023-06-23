@@ -26,7 +26,7 @@ Gabriola
 
 > <number>. **@<version>** <(**setter** || **getter**) if <name_type> is setter || getter> <name><(...<param>:**<param_type>**) if <name_type> != (setter || getter)>
 ...> - <scene>
-> <(<(this.) if <return> in this><return>: <(<return_type> || <return_type by return_type>)>(을 || 를) 반환합니다.) if <return_type> != null>
+> <(**<(this.) if <return> in this><return>: (<return_type> || <return_type by return_type>**)(을 || 를) 반환합니다.) if <return_type> != null>
 > ---
 
 ...<number>. <scene>
