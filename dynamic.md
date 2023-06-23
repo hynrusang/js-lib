@@ -40,7 +40,7 @@
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
 > - 현재 **Dom**의 자식 요소들을 **모두 제거**합니다.
-> - **[add]() method**를 호출합니다.
+> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)**를 호출합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
