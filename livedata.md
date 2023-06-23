@@ -159,7 +159,8 @@ console.log(db.value);
 > - **this.#resource: object by Array**를 반환합니다.
 > ---
 > 6. **@1.1.0** toObject()  
-> **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Object literal**로 변환하는 매서드입니다.  
+> - **this.#resource: object**를 반환합니다.
+> ---
 ---
 #### 2-1. constructor(livedataObject, editable = true)  
 > 우선, 간단하게 **3**개의 **LiveData** 객체를 관리하는 **LiveDataManager**를 만들어 보겠습니다.  
