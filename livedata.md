@@ -36,7 +36,7 @@
 > 5. **@1.1.0** **getter** value
 > - **this.#data: any**를 반환합니다.
 ---
-#### 1-1. constructor(data, type, observer)
+#### 1-1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
 > **(여기서는 초기 데이터로 3을 넣어주겠습니다.)**  
 ```js
