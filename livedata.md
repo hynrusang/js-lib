@@ -97,8 +97,10 @@ data.dispatchObserver();
 ---
 #### 1-4. **@1.1.0** **setter** value  
 1. **this.#data**에 값을 설정합니다.
-- **this.#allowed**가 **not null**이고, **data**의 타입이 **this.#allowed**와 일치하지 않는 경우, **TypeError**를 **throw**합니다. **(this.#data는 업데이트되지 않습니다.)**
-- **이전 데이터**와 **현재 데이터**가 변경되었는지 비교하여 **isChanged** 변수에 저장합니다. **(data가 primity type인 경우에만 정상적으로 작동합니다.)**
+- **this.#allowed**가 **not null**이고, **data**의 타입이 **this.#allowed**와 일치하지 않는 경우, **TypeError**를 **throw**합니다.  
+**(this.#data는 업데이트되지 않습니다.)**
+- **이전 데이터**와 **현재 데이터**가 변경되었는지 비교하여 **isChanged** 변수에 저장합니다.  
+**(data가 primity type인 경우에만 정상적으로 작동합니다.)**
 - **this.#data**를 **data**로 설정합니다.
 - **isChanged**가 **true**이고 **this.#observer**가 **Function**인 경우 **this.#observer**를 실행합니다.
   
