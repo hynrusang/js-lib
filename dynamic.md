@@ -15,31 +15,31 @@
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(node, additional)  
+> 1. constructor(node: **String | HTMLElement**, additional: **Object**)  
 > **Dom**의 생성자입니다.  
-> **node**는 **String || HTMLElement**으로, **생성할 HTMLElement의 TagName**입니다.  
-> **additional**은 **Object**으로, **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
->  
+> - **node**는 **생성할 HTMLElement의 TagName**입니다.  
+> - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
+> ---
 > 2. **@1.1.0** getter node  
-> **<name> getter**는 다음과 같은 작업을 수행합니다:    
-> - 내부의 **node: HTMLElement**를 반환합니다.  
->  
-> 3. **@1.0.0** set(additional)  
-> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
->  
-> 4. **@1.0.0** remove(num)  
-> **num**에 해당하는 **자식 요소**를 **제거**합니다.  
->  
-> 5. **@1.0.0** children(num)  
-> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
->  
-> 6. **@1.0.0** add(...dom)  
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
->  
-> 7. **@1.0.0** reset(...dom)  
-> 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
+> - 내부의 **#node: HTMLElement**를 반환합니다.    
+> ---
+> 3. **@1.0.0** set(additional: **Object**)  
+> - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다. 
+> ---
+> 4. **@1.0.0** remove(num: **Number**)  
+> - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
+> ---
+> 5. **@1.0.0** children(num: **Number**)  
+> - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.  
+> - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.  
+> ---
+> 6. **@1.0.0** add(...dom: **Dom || Dom[]**)  
+> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.  
+> ---
+> 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)  
+> 현재 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 ---
-#### 1-1. constructor(node, additional)
+#### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
 > **(여기서는 간단하게 h1 요소를 만듭니다.)**
 ```js
@@ -92,8 +92,7 @@ $("fieldset").add(
 ```
 ---
 #### 1-2. **@1.1.0** getter node  
-> **node**는 **getter**로, 내부의 **#node**를 반환하는 역할을 합니다.  
-> **#node**는 **HTMLElement**입니다.  
+> 내부의 **#node: HTMLElement**를 반환합니다.  
   
 예시:
 ```js
@@ -103,7 +102,7 @@ dom.node = document.createElement("h1"); // it's not working.
 dom.node; // <div></div>
 ```
 ---
-#### 1-3. **@1.0.0** set(additional)
+#### 1-3. **@1.0.0** set(additional: **Object**)
 > **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
   
 예시:
@@ -115,8 +114,8 @@ const dom = new Dom("span").set({text: "hello!", style: `color: ${color}`});
 <span style="color: green">hello!</span>
 ```
 ---
-#### 1-4. **@1.0.0** remove(num)
-> **num**번째 **자식 요소**를 **제거**합니다.   
+#### 1-4. **@1.0.0** remove(num: **Number**)
+> **num**에 해당하는 **자식 요소**를 **제거**합니다.   
   
 예시:
 ```js
@@ -134,8 +133,8 @@ const dom = new Dom("fieldset").add(
 ```
 ---
 #### 1-5. **@1.0.0** children(num)
-> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.    
-> (해당 num번째 children이 없다면, null을 반환합니다.)  
+> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
+
   
 예시:
 ```js
