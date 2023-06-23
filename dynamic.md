@@ -19,23 +19,23 @@
 > **Dom**의 생성자입니다.  
 > - **node**는 **생성할 HTMLElement의 TagName**입니다.  
 > - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
->---
+> ---
 > 2. **@1.1.0** getter node  
 > - 내부의 **#node: HTMLElement**를 반환합니다.    
->  
+> ---
 > 3. **@1.0.0** set(additional: **Object**)  
 > - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다. 
->  
+> ---
 > 4. **@1.0.0** remove(num: **Number**)  
 > - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
->  
+> ---
 > 5. **@1.0.0** children(num: **Number**)  
 > - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.  
 > - **num**에 해당하는 **자식 HTMLElement**를 **Dom**의 형태로 반환합니다.  
->  
+> ---
 > 6. **@1.0.0** add(...dom: **Dom || Dom[]**)  
 > **dom**에 전달된 **Dom** 또는 **Dom 배열**을 현재 Dom의 **자식 요소**로 추가합니다.  
->  
+> ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)  
 > 현재 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 ---
