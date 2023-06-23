@@ -30,10 +30,15 @@
 #### 1-0. how to use
 > (이 방식은 **dynamic.js**나 **document.appendChild**를 이용해 동적으로 추가되는 **HTMLElement**들에 대해서도 적용됩니다.)  
 > 우선 다음과 같이, **html** 문서 내에 다음과 같이 **Binding**할 주체를 작성합니다.  
-```js
+```html
 <input type="text" value="binding example" var="a">
 <input type="number" value="6" var="b">
 <input type="number" value="3" var="c">
+
+// Binder.#bindlist
+Binder.#bindlist["a"] = <input type="text" value="binding example" var="a">
+Binder.#bindlist["b"] = <input type="number" value="6" var="b">
+Binder.#bindlist["c"] = <input type="number" value="3" var="c">
 ```
 > 이를 조금 더 간단히 한다면, 다음과 같이 할 수 있습니다.
 ```js
