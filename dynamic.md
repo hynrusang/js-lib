@@ -209,7 +209,7 @@ dom.reset(
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(view: String, ...fragment: Dom)
+> 1. constructor(view: String, ...fragment: Dom)  
 > Fragment의 생성자입니다.
 > - **view**는 **Fragment 전환을 구현할 <fragment> 태그의 rid 속성값**입니다.
 > - **fragment**는 **하나의 Fragment를 구성할 Dom 인스턴스들**입니다.
