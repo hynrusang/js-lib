@@ -107,7 +107,12 @@ dom.node; // <div></div>
 ```
 ---
 #### 1-3. **@1.0.0** set(additional: **Object**)
-> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다.  
+1. **additional**에 전달된 **속성과 값**을 **this.#node: HTMLElement**에 **설정**합니다.
+- **key**가 **innerHTML || html**인 경우, **this.#node: HTMLElement**의 **innerHTML**을 **value**로 설정합니다.
+- **key**가 **innerText || text**인 경우, **this.#node: HTMLElement**의 **innerText**을 **value**로 설정합니다.
+- **key**가 **on**으로 시작하거나 **async**인 경우, **this.#node: HTMLElement**의 **key**를 **value**로 설정합니다.
+- **그 외의 경우**, **this.#node**의 **key attribute**를 **value**로 설정합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
