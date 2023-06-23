@@ -7,6 +7,18 @@ const LiveData = class {
     #observer;
     #allowed;
     /**
+     * @type {(observer: Function) => LiveData}
+     */
+    registObserver = observer => {
+        this.#observer = observer;
+        return this;
+    }
+    /**
+     * @deprecated This can cause unintended behavior.
+     * @type {() => void}
+     */
+    dispatchObserver = () => this.#observer();
+    /**
      * @type {(data: Any) => LiveData}
      */
     set = data => {
@@ -19,18 +31,6 @@ const LiveData = class {
      * @type {() => Any}
      */
     get = () => (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
-    /**
-     * @type {(observer: Function) => LiveData}
-     */
-    registObserver = observer => {
-        this.#observer = observer;
-        return this;
-    }
-    /**
-     * @deprecated This can cause unintended behavior.
-     * @type {() => void}
-     */
-    dispatchObserver = () => this.#observer();
     /**
      * @type {(data: Any, allowed: Type) => LiveData}
      */

@@ -21,15 +21,6 @@ const LiveData = class {
     #data;
     #allowed;
     #observer;
-    set value(data) {
-        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
-        const isChanged = JSON.stringify(data) !== JSON.stringify(this.#data);
-        this.#data = data;
-        if (isChanged && typeof this.#observer == "function") this.#observer();
-    }
-    get value() {
-        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
-    }
     /**
      * @deprecated This method is not supported starting with 1.3.0. Use constructor third param instead.
      * @type {(observer: Function) => LiveData}
@@ -43,6 +34,15 @@ const LiveData = class {
      * @type {() => void}
      */
     dispatchObserver = () => this.#observer();
+    set value(data) {
+        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
+        const isChanged = JSON.stringify(data) !== JSON.stringify(this.#data);
+        this.#data = data;
+        if (isChanged && typeof this.#observer == "function") this.#observer();
+    }
+    get value() {
+        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
+    }
     /**
      * @type {(data: Any, allowed: Type) => LiveData}
      */
