@@ -141,11 +141,11 @@ console.log(db.value);
 > 주어진 **livedataObject**를 기반으로 **init**되며, 각 **LiveData** 인스턴스는 **id**와 매핑됩니다.  
 > **LiveDataManager** 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(livedataObject, editable = true)  
-> **LiveDataManager**의 생성자입니다.  
-> **livedataObject**는 **Object**으로, **관리될 LiveData 객체들의 정보를 담은 객체**입니다.  
-> **editable**은 **boolean**으로, **LiveDataManager가 관리하고 있는 LiveData들에 대한 직접적인 조건을 허용할지 결정**합니다.  
->  
+> 1. constructor(livedataObject: **object**, editable = **true**)  
+> **LiveDataManager**의 생성자입니다.
+> - **livedataObject**는 **LiveData 객체들로 이루어진 객체**입니다.
+> - **editable**은 **외부에서 LiveDataManager가 관리하고 있는 LiveData들에 대한 접근 및 수정가능 여부**입니다.
+> ---
 > 2. **@1.1.0** getter id  
 > **LiveDataManager**의 **#resource**를 반환합니다.  
 > 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
