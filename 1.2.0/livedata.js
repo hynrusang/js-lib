@@ -2,21 +2,6 @@
 js에서 값의 변화를 관측하는 LiveData를 비롯한 여러 기능들을 사용할 수 있게 해줍니다.
 작성자: 환류상
  */
-const Pointer = class {
-    #data;
-    #allowed;
-    set value(data) {
-        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
-        this.#data = data;
-    }
-    get value() {
-        return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
-    }
-    constructor(data, allowed) {
-        this.#data = data;
-        this.#allowed = allowed;
-    }
-}
 const LiveData = class {
     #data;
     #allowed;
