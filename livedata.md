@@ -146,15 +146,15 @@ console.log(db.value);
 > - **livedataObject**는 **LiveData 객체들로 이루어진 객체**입니다.
 > - **editable**은 **외부에서 LiveDataManager가 관리하고 있는 LiveData들에 대한 접근 및 수정가능 여부**입니다.
 > ---
-> 2. **@1.1.0** **getter** id  
+> 2. **@1.1.0** **getter** id
 > - **this.#resource: object**를 반환합니다.
 > ---
-> 3. **@1.1.0** value(id)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 리턴합니다.  
->  
-> 4. **@1.1.0** value(id, data)  
-> **LiveDataManager**의 **#resource** 중, **id**와 매핑되는 **LiveData**의 **value**를 **data**로 설정합니다.  
->  
+> 3. **@1.1.0** value(id: **any**)
+> - **this.#resource[id].value: any**를 반환합니다.
+> ---
+> 4. **@1.1.0** value(id, data)
+> - **this.#resource[id]** 의 **[setter]()** 를 호출합니다.
+> ---
 > 5. **@1.1.0** toArray()  
 > **LiveDataManager**의 **#resource**를 처리하여 **LiveData**를 **포함하지 않는 Array**로 변환하는 매서드입니다.  
 >  
