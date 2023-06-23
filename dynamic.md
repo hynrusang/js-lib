@@ -21,13 +21,13 @@
 > - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
 >  
 > 2. **@1.1.0** getter node  
-> 내부의 **#node: HTMLElement**를 반환합니다.    
+> - 내부의 **#node: HTMLElement**를 반환합니다.    
 >  
 > 3. **@1.0.0** set(additional: **Object**)  
-> **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다. 
+> - **additional**에 전달된 **속성과 값**을 해당 **Dom**에 **설정**합니다. 
 >  
 > 4. **@1.0.0** remove(num: **Number**)  
-> **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
+> - **num**에 해당하는 **자식 HTMLElement**를 **제거**합니다.  
 >  
 > 5. **@1.0.0** children(num: **Number**)  
 > - **num**에 해당하는 **자식 HTMLElement**가 존재하는지 체크합니다.  
