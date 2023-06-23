@@ -24,7 +24,7 @@
 > ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
-> **constructor third param을 대신 이용하십시오.)**  
+> **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
 > ---
 > 3. **@1.0.0** **@deprecated** dispatchObserver()  
 > **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**
