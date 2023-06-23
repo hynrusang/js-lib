@@ -95,20 +95,12 @@ data.dispatchObserver();
 32
 ```
 ---
-#### 1-4. **@1.1.0** **setter and getter** value  
-> **value setter**는 다음과 같은 작업을 수행합니다:  
-1. 주어진 **data**가 **allowed**된 유형인지 확인합니다.  
-- 만약, 주어진 **data**가 **allowed**된 유형일 경우, 나머지 절차를 이어서 수행합니다.  
-- **그렇지 않은 경우**, **TypeError**를 **throw**합니다.  
-2. 주어진 **data**와 현재 **data**를 비교하여 **change** 여부를 확인합니다.  
-3. 내부 **data(this.#data)** 를 주어진 **data**로 업데이트합니다. 
-4. 만약, **change** 여부가 **true**이고, **옵저버(observer)** 가 **function**인 경우 **observer**를 호출합니다.   
-  
-> **value getter**는 다음과 같은 작업을 수행합니다:  
-1. 내부 **data(this.#data)** 의 유형에 따라 적절한 반환 값을 생성합니다.  
-- 만약 **data**가 **Array**인 경우, **Array copy**을 반환합니다.  
-- 만약 **data**가 **객체 리터럴({ })** 인 경우, **{ } copy**를 반환합니다.  
-- 그 외의 경우에는 **data** 자체를 반환합니다.  
+#### 1-4. **@1.1.0** **setter** value  
+1. **this.#data**에 값을 설정합니다.
+- **this.#allowed**가 **not null**이고, **data**의 타입이 **this.#allowed**와 일치하지 않는 경우, **TypeError**를 **throw**합니다. **(this.#data는 업데이트되지 않습니다.)**
+- **이전 데이터**와 **현재 데이터**가 변경되었는지 비교하여 **isChanged** 변수에 저장합니다. **(data가 primity type인 경우에만 정상적으로 작동합니다.)**
+- **this.#data**를 **data**로 설정합니다.
+- **isChanged**가 **true**이고 **this.#observer**가 **Function**인 경우 **this.#observer**를 실행합니다.
   
 예시:  
 ```js
