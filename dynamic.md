@@ -229,14 +229,14 @@ dom.reset(
 > 2. launch()
 > - **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-120-registanimationanimation-second)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
 > - **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-110-registactionaction)** 이 **Function**인 경우, **this.#action**을 실행합니다.
-> - **rid** 속성값이 **this.#view**인 **\<fragment\>**의 **children**을 **this.#fragment**들로 전환합니다.
+> - **rid** 속성값이 **this.#view**인 **\<fragment\>** 의 **children**을 **this.#fragment**들로 전환합니다.
 > - **this: Fragment**을 반환합니다.
 > ---
-> registAction(action: **Function**)
+> 3. registAction(action: **Function**)
 > - **action: Function**을 **this.#action**에 설정합니다.
 > - **this: Fragment**을 반환합니다.
 > ---
-> registAnimation(animation: **FragAnimation**, second: **Number**)
+> 4. registAnimation(animation: **FragAnimation**, second: **Number**)
 > - **animation: FragAnimation**과 **second: Number**를 각각 **this.#swipAnimation**과 **this.#animationExcuteTime**에 설정합니다.
 > - **this: Fragment**을 반환합니다.
 ---
@@ -270,7 +270,7 @@ const secondFragment = new Fragment("fragmentView",
 #### 2-2. **@1.1.0** launch()
 1. **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-120-registanimationanimation-second)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
 2. **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-110-registactionaction)** 이 **Function**인 경우, **this.#action**을 실행합니다.
-3. **rid** 속성값이 **this.#view**인 **\<fragment\>**의 **children**을 **this.#fragment**들로 전환합니다.
+3. **rid** 속성값이 **this.#view**인 **\<fragment\>** 의 **children**을 **this.#fragment**들로 전환합니다.
 4. **this: Fragment**을 반환합니다.
   
 예시:  
@@ -288,37 +288,9 @@ const secondFragment = new Fragment("target",
 mainFragment.launch();
 ```
 ---
-#### 2-3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
-  
-예시:  
-```js
-/* index.html */
-<fragment rid="fragmentView"></fragment>
-
-/* fragment.js */
-const mainFragment = new Fragment("fragmentView", 
-    $("fieldset").add(
-        $("legend", {text: "first fragment", style: "color: red;"}),
-        $("input", {type: "button", value: "go to second fragment", onclick: () => {
-            secondFragment.launch();
-        }})
-    )
-).registAnimation(FragAnimation.card, 1.5).launch();
-const secondFragment = new Fragment("fragmentView", 
-    $("fieldset").add(
-        $("legend", {text: "second fragment", style: "color: red;"}),
-        $("input", {type: "button", value: "go to frist fragment", onclick: () => {
-            mainFragment.launch();
-        }})
-    )
-).registAnimation(FragAnimation.swip, 1.5);
-```
----
-#### 2-4. **@1.1.0** registAction(action)
-> 만약, Fragment가 **launch**될 때, 추가로 실행되길 원하는 동작이 있다면, 이 **registAction**을 이용하실 수 있습니다.  
-> **action**에는 **function**이나 **lambda function**이 올 수 있지만, 추가로 실행되길 원하는 동작에 **this**를 이용하는 동작이 있다면 가급적 **function**을 넘겨주는 것을 권장합니다.  
+#### 2-3. registAction(action: **Function**)
+1. **action: Function**을 **this.#action**에 설정합니다.
+2. **this: Fragment**을 반환합니다.
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-1-constructorview-fragment)의 예시를 조금 수정합니다.)   
 ([livedata.js](https://github.com/hynrusang/js-lib/blob/main/livedata.md)를 추가로 이용합니다.)  
@@ -351,6 +323,34 @@ const secondFragment = new Fragment("fragmentView",
 ).registAction(() => {
     state.value = "second";
 })
+```
+---
+#### 2-4. **@1.2.0** registAnimation(animation, second)  
+> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
+> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
+  
+예시:  
+```js
+/* index.html */
+<fragment rid="fragmentView"></fragment>
+
+/* fragment.js */
+const mainFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "first fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to second fragment", onclick: () => {
+            secondFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.card, 1.5).launch();
+const secondFragment = new Fragment("fragmentView", 
+    $("fieldset").add(
+        $("legend", {text: "second fragment", style: "color: red;"}),
+        $("input", {type: "button", value: "go to frist fragment", onclick: () => {
+            mainFragment.launch();
+        }})
+    )
+).registAnimation(FragAnimation.swip, 1.5);
 ```
 ---
 ### 3. **@1.2.0** FragAnimation : static Class  
