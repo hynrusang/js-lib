@@ -15,7 +15,7 @@
 ### 1. **@1.0.0** Dom: Class  
 > **Dom**은 동적으로 **html 요소**를 **생성**하는 클래스입니다.  
 > Dom 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(node: **String || HTMLElement**, additional: **Object**)  
+> 1. constructor(node: **String | HTMLElement**, additional: **Object**)  
 > **Dom**의 생성자입니다.  
 > - **node**는 **생성할 HTMLElement의 TagName**입니다.  
 > - **additional**은 **내부의 HTMLElement에 설정할 추가적인 속성을 전달**합니다.  
