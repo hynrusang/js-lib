@@ -39,7 +39,7 @@
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)  
 > 현재 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
 ---
-#### 1-1. constructor(node: **String || HTMLElement**, additional: **Object**)
+#### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
 > 우선 Dom 클래스를 이용해 동적으로 html 요소를 생성하는 방법은 다음과 같습니다.  
 > **(여기서는 간단하게 h1 요소를 만듭니다.)**
 ```js
