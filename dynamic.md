@@ -124,7 +124,8 @@ const dom = new Dom("span").set({text: "hello!", style: `color: ${color}`});
 ```
 ---
 #### 1-4. **@1.0.0** remove(num: **Number**)
-> **num**에 해당하는 **자식 요소**를 **제거**합니다.   
+1. **this.#node**의 **num**번째 **children node**를 제거합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -141,9 +142,10 @@ const dom = new Dom("fieldset").add(
 </fieldset>
 ```
 ---
-#### 1-5. **@1.0.0** children(num)
-> **num**에 해당하는 **자식 HTMLElement요소**를 **Dom**의 형태로 반환합니다.  
-
+#### 1-5. **@1.0.0** children(num: **Number**)
+1. **this.#node.children[num]: HTMLElement by Dom**을 반환합니다.
+- 만약 **this.#node.children[num]: HTMLElement**가 존재한다면, 해당 **child**를 **Dom** 객체로 감싸서 반환합니다.
+- 만약 **this.#node.children[num]: HTMLElement**가 존재하지 않다면, **null**을 반환합니다.
   
 예시:
 ```js
@@ -158,8 +160,11 @@ const dom = new Dom("fieldset").add(
 Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ```
 ---
-#### 1-6. **@1.0.0** add(...dom)
-> **dom**에 전달된 **Dom** 또는 **Dom 배열**을 해당 Dom의 **자식 요소**로 추가합니다.  
+#### 1-6. **@1.0.0** add(...dom: **Dom || Dom[]**)
+1. **dom**들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+- dom이 **Dom[]** 인 경우, **[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)** 루프를 통해 각각의 **Dom[]** 요소들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+- dom이 **Dom**인 경우, **dom.node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+2. **this: Dom**을 반환합니다.
   
 예시:
 ```js
@@ -182,7 +187,7 @@ const dom = new Dom("form", {onsubmit: e => {
 </form>
 ```
 ---
-#### 1-7. **@1.0.0** reset(...dom) 
+#### 1-7. **@1.0.0** reset(...dom: **Dom || Dom[]**) 
 > 해당 **Dom**의 자식 요소를 **모두 제거**하고 dom에 전달된 **Dom** 또는 **Dom 배열**을 추가합니다.  
   
 예시:
