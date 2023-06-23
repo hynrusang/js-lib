@@ -14,7 +14,7 @@ class DomDefault {
      */
     _node;
     /**
-     * @type {(num: number) => HTMLElement}
+     * @type {(num: number) => Dom}
      */
     children = num => this._node.children[num] ? new Dom(this._node.children[num]) : null;
     /**

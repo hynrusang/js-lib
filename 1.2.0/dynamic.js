@@ -32,7 +32,7 @@ const Dom = class {
         return this;
     }
     /**
-     * @type {(num: number) => HTMLElement}
+     * @type {(num: number) => Dom}
      */
     children = num => this.#node.children[num] ? new Dom(this.#node.children[num]) : null;
     /**
@@ -113,7 +113,7 @@ const Fragment = class {
         return this;
     }
     /**
-     * @type {(view: String, ...fragment: Dom) => Fragment}
+     * @type {(view: String, ...fragment: Dom | Dom[]) => Fragment}
      */
     constructor(view, ...fragment) {
         this.#view = snipe(`fragment[rid=${view}]`);
