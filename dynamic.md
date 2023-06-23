@@ -216,7 +216,7 @@ dom.reset(
 > ---
 > 2. launch()
 > - **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-120-registanimationanimation-second)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
-> - **this.#action**이 **Function**인 경우, **this.#action**을 실행합니다.
+> - **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-110-registactionaction)** 이 **Function**인 경우, **this.#action**을 실행합니다.
 > - **this: Fragment**을 반환합니다.
 > ---
 > registAction(action: **Function**)
