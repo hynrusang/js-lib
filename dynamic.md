@@ -209,23 +209,23 @@ dom.reset(
 > **Fragment**는 **\<fragment\>\</fragment\> 태그**와 별도의 **Dom 요소**들로 정의된 **fragment**를 관리하는 클래스입니다.  
 > **html 내의 별도의 \<fragment\> 태그랑 같이 사용해야 합니다.**  
 > Fragment 클래스 안에는, 다음과 같은 요소들이 있습니다.  
-> 1. constructor(view, ...fragment)  
-> **Fragment**의 생성자입니다.  
-> **view**는 **String**으로, **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.  
-> **fragment**는 **Dom?** 으로, **하나의 Fragment를 구성할 Dom 요소들의 집합**입니다.
->  
-> 2. **@1.1.0** launch()  
-> **Fragment**를 **전환**하는 메서드입니다.  
-> 등록된 **action**과 **animation**을 실행하고,  
-> **타겟 fragment**의 innerHTML을 **fragment**로 **전환**합니다.  
-> 대체될 **타겟 Fragment**는 **rid**가 **Fragment의 첫번째 인자**와 동일한 **\<fragment\> element**입니다.  
->  
-> 3. **@1.2.0** registAnimation(animation, second)  
-> **Fragment Animation**과 **실행 시간(second)** 를 등록하는 메서드입니다.  
-> 주어진 **Fragment Animation**과 **실행 시간(second)** 를 각각 저장하고, 현재 **Fragment 객체**를 반환합니다.  
->  
-> 4. **@1.1.0** registAction(action)  
-> **launch** 동작이 실행될 때, 추가로 실행할 **action**을 등록하는 메서드입니다. **action**은 **function**입니다.  
+> 1. constructor(view: String, ...fragment: Dom)
+> Fragment의 생성자입니다.
+> - **view**는 **Fragment 전환을 구현할 <fragment> 태그의 rid 속성값**입니다.
+> - **fragment**는 **하나의 Fragment를 구성할 Dom 인스턴스들**입니다.
+> ---
+> 2. launch()
+> - **this.#swipAnimation**이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
+> - **this.#action**이 **Function**인 경우, **this.#action**을 실행합니다.
+> - **this: Fragment**을 반환합니다.
+> ---
+> registAction(action: Function)
+> - action: Function을 this.#action에 설정합니다.
+> - this: Fragment을 반환합니다.
+> ---
+> registAnimation(animation: FragAnimation, second: Number)
+> - animation: FragAnimation과 second: Number를 이용하여 this.#swipAnimation과 this.#animationExcuteTime을 설정합니다.
+> - this: Fragment을 반환합니다.
 ---
 #### 2-1. constructor(view, ...fragment)
 > 우선 Fragment 클래스를 이용해 동적으로 요소 swiping을 하는 예제는 다음과 같습니다.  
