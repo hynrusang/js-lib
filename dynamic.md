@@ -341,7 +341,7 @@ const secondFragment = new Fragment("fragmentView",
 ```
 ---
 ### 3. **@1.2.0** FragAnimation : static Class  
-> **FragAnimation**은 **Fragment**의 **registerAnimation 메서드**의 **first** 매개변수로 간접 참조되는 클래스입니다.  
+> **FragAnimation**은 **[Fragment.registerAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-120-registanimationanimation-second)** 의 **first** 매개변수로 간접 참조되는 클래스입니다.  
 > **FragAnimation** 클래스에는 다음과 같은 메서드들이 있습니다:  
 > 1. **@1.2.0** card
 > - **card animation**을 수행하는 메서드입니다.
