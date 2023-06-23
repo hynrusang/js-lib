@@ -54,14 +54,14 @@ const LiveData = class {
 }
 const LiveDataManager = class {
     #editable;
-    #resource;
-    value = (id, data) => (typeof data !== "undefined") ? this.#resource[id].value = data : this.#resource[id].value;
+    #livedataObject;
+    value = (id, data) => (typeof data !== "undefined") ? this.#livedataObject[id].value = data : this.#livedataObject[id].value;
     get id() {
         if (!this.#editable) throw new SyntaxError(`This LiveDataManager cannot be accessed or modified externally.`)
-        return this.#resource;
+        return this.#livedataObject;
     }
-    toArray = () => Object.values(this.#resource).map(inner => inner.value);
-    toObject = () => Object.entries(this.#resource).reduce((obj, [key, value]) => {
+    toArray = () => Object.values(this.#livedataObject).map(inner => inner.value);
+    toObject = () => Object.entries(this.#livedataObject).reduce((obj, [key, value]) => {
         obj[key] = value.value;
         return obj;
       }, {});
@@ -71,7 +71,7 @@ const LiveDataManager = class {
     constructor(livedataObject, editable = true) {
         if ("object" !== (Array.isArray(livedataObject) ? "array" : typeof livedataObject)) throw new TypeError(`invalid type of livedataObject. livedataObject must be of type Object. (livedataObject: ${Array.isArray(livedataObject) ? "array" : typeof livedataObject})`);
         this.#editable = editable;
-        this.#resource = Object.entries(livedataObject).reduce((obj, [key, value]) => { 
+        this.#livedataObject = Object.entries(livedataObject).reduce((obj, [key, value]) => { 
             if (!(value instanceof LiveData)) throw new TypeError(`invalid type of ${key}'s value. ${key}'s value must be of instance LiveData`)
             else obj[key] = value;
             return obj;
