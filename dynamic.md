@@ -40,7 +40,7 @@
 > ---
 > 7. **@1.0.0** reset(...dom: **Dom || Dom[]**)
 > - **this: Dom**의 **innerHTML**을 **\"\"** 로 설정합니다.
-> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)** 를 호출합니다.
+> - **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom-dom--dom)** 를 호출합니다.
 > - **this: Dom**을 반환합니다.
 ---
 #### 1-1. constructor(node: **String | HTMLElement**, additional: **Object**)
@@ -189,7 +189,7 @@ const dom = new Dom("form", {onsubmit: e => {
 ---
 #### 1-7. **@1.0.0** reset(...dom: **Dom || Dom[]**) 
 1. **this: Dom**의 **innerHTML**을 **\"\"** 로 설정합니다.
-2. **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom)** 를 호출합니다.
+2. **[add method](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-6-100-adddom-dom--dom)** 를 호출합니다.
 3. **this: Dom**을 반환합니다.
   
 예시:
