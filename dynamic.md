@@ -28,7 +28,7 @@
 > - **this: Dom**을 반환합니다.
 > ---
 > 4. **@1.0.0** remove(num: **Number**)
-> - **this.children[num].node**를 제거합니다.
+> - **[this.children](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#1-5-100-childrennum)[num].node**를 제거합니다.
 > - **this: Dom**을 반환합니다.
 > ---
 > 5. **@1.0.0** children(num: **Number**)
