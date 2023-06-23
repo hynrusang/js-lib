@@ -147,22 +147,22 @@ console.log(db.value);
 > - **editable**은 **외부에서 LiveDataManager가 관리하고 있는 LiveData들에 대한 접근 및 수정가능 여부**입니다.
 > ---
 > 2. **@1.1.0** **getter** id
-> - **this.#resource: object**를 반환합니다.
+> - **this.#livedataObject: object**를 반환합니다.
 > ---
 > 3. **@1.1.0** value(id: **any**)
-> - **this.#resource[id].value: any**를 반환합니다.
+> - **this.#livedataObject[id].value: any**를 반환합니다.
 > ---
 > 4. **@1.1.0** value(id, data)
-> - **this.#resource[id]: LiveData** 의 **[setter](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-4-110-setter-value)** 를 호출합니다.
+> - **this.#livedataObject[id]: LiveData** 의 **[setter](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-4-110-setter-value)** 를 호출합니다.
 > ---
 > 5. **@1.1.0** toArray()
-> - **this.#resource: object by Array**를 반환합니다.
+> - **this.#livedataObject: object by Array**를 반환합니다.
 > ---
 > 6. **@1.1.0** toObject()  
-> - **this.#resource: object**를 반환합니다.
+> - **this.#livedataObject: object**를 반환합니다.
 > ---
 ---
-#### 2-1. constructor(livedataObject, editable = true)  
+#### 2-1. constructor(livedataObject: **object**, editable = **true**)  
 > 우선, 간단하게 **3**개의 **LiveData** 객체를 관리하는 **LiveDataManager**를 만들어 보겠습니다.  
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
@@ -221,9 +221,10 @@ db.id; // SyntaxError
 Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified externally.
 ```
 ---
-#### 2-2. **@1.1.0** getter id  
-> **LiveDataManager**의 **#resource**를 반환합니다.  
-> 만약, **editable**이 **false**면, **SyntaxError**가 발생합니다.  
+#### 2-2. **@1.1.0** **getter** id
+1. **this.#livedataObject: object**를 반환합니다.
+- 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
+- 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
   
 예시: ([2-1](https://github.com/hynrusang/js-lib/blob/main/livedata.md#2-1-constructorlivedataobject-editable--true)의 초기 **db** 객체를 사용합니다.)  
 ```js
