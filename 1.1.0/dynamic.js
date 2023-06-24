@@ -89,6 +89,14 @@ const Fragment = class {
     #fragment;
     #action;
     /**
+     * @type {() => Fragment}
+     */
+    launch = () => {
+        this.#view.reset(this.#fragment)
+        if (typeof this.#action == "function") this.#action();
+        return this;
+    }
+    /**
      * @type {(action: Function) => Fragment}
      */
     registAction = action => {
@@ -96,18 +104,10 @@ const Fragment = class {
         return this;
     }
     /**
-     * @type {() => Fragment}
-     */
-    launch = () => {
-        snipe(`fragment[rid=${this.#view}]`).reset(this.#fragment)
-        if (this.#action != null) this.#action();
-        return this;
-    }
-    /**
      * @type {(view: String, ...fragment: Dom) => Fragment}
      */
     constructor(view, ...fragment) {
-        this.#view = view;
+        this.#view = snipe(`fragment[rid=${view}]`);
         this.#fragment = fragment;
     }
 }

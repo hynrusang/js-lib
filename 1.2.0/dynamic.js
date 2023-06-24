@@ -87,6 +87,17 @@ const Fragment = class {
         return this.#fragment;
     }
     /**
+     * @type {() => Fragment}
+     */
+    launch = () => {
+        if (this.#swipAnimation != null) this.#swipAnimation(this, this.#animationExcuteTime);
+        else {
+            this.#view.reset(this.#fragment)
+            if (typeof this.#action == "function") this.#action();
+        }
+        return this;
+    }
+    /**
      * @type {(action: Function) => Fragment}
      */
     registAction = action => {
@@ -99,17 +110,6 @@ const Fragment = class {
     registAnimation = (animation, second) => {
         this.#swipAnimation = animation;
         this.#animationExcuteTime = second;
-        return this;
-    }
-    /**
-     * @type {() => Fragment}
-     */
-    launch = () => {
-        if (this.#swipAnimation != null) this.#swipAnimation(this, this.#animationExcuteTime);
-        else {
-            this.#view.reset(this.#fragment)
-            if (typeof this.#action == "function") this.#action();
-        }
         return this;
     }
     /**
