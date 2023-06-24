@@ -166,7 +166,7 @@ Dom {node: input, children: ƒ, add: ƒ, remove: ƒ, copy: ƒ, …}
 ---
 #### 1-6. **@1.0.0** add(...dom: **Dom || Dom[]**)
 1. **dom**들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
-- dom이 **Dom[]** 인 경우, **[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)** 루프를 통해 각각의 **Dom** 요소들의 **node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
+- dom이 **Dom[]** 인 경우, **[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)** 루프를 통해 각각의 **Dom.node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
 - dom이 **Dom**인 경우, **dom.node**를 **this.#node: HTMLElement**에 **appendChild**합니다.
 2. **this: Dom**을 반환합니다.
   
