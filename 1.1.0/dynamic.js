@@ -81,7 +81,7 @@ const Dom = class {
      */
     constructor(node, additional) {
         this._node = (typeof node === "string") ? document.createElement(node) : node;
-        this.set(additional);
+        if (typeof additional !== 'undefined') this.set(additional);
     }
 }
 const Fragment = class {
