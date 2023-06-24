@@ -1,4 +1,4 @@
-﻿const currentFragment = new LiveData("dynamic", String).registObserver(function () {
+﻿const currentFragment = new LiveData("dynamic", String, function () {
     scan(".activate").classList.remove("activate")
     scan(`[target=${this.value}]`).classList.add("activate")
     fragmentList[this.value].launch();

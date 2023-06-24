@@ -21,7 +21,7 @@ const Dom = class {
                 else if (key.indexOf("on") != -1 || key == "async") this.#node[key] = value
                 else this.#node.setAttribute(key, value);
             }
-        } else throw new Error('Additional parameter must be an {key: value} object');
+        } else throw new TypeError('Additional parameter must be an {key: value} object');
         return this;
     };
     /**
