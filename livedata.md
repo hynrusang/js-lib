@@ -10,21 +10,6 @@
 - (사용방법은 아래의 요소 탭을 참고하세요.)
 
 ## 요소
-<img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_pointer.png">  
-  
-### 1. @1.2.0 Pointer: Class
-> **Pointer**는 **primity type**을 객체 형태로 감싸서, **[call by address](https://pediaa.com/what-is-the-difference-between-call-by-value-and-call-by-address/#Call%20by%20Address)** 도 가능케 하는 **Class**입니다.  
-> Pointer 클래스 안에는, 다음과 같은 요소들이 있습니다.  
->  
-> 1. constructor(data: **any**, type = **Number || String || Array || Object || null**)  
-> **Pointer**의 생성자입니다.
-> ---
-> 2. **@1.1.0** **setter** value  
-> - **this.#data**에 값을 설정합니다.
-> ---
-> 3. **@1.1.0** **getter** value
-> - **this.#data: any**를 반환합니다.
----
 <img src="https://github.com/hynrusang/js-lib/blob/main/resource/scene_livedata.png">  
   
 ### 1. @1.0.0 LiveData: Class
@@ -83,7 +68,7 @@ db.value = 7;
 ```
 ---
 #### 1-2. **@1.0.0** **@deprecated** registObserver(observer)  
-> **(이 function은 1.2.0부터 사용 중단됩니다.**  
+> **(이 function은 1.3.0부터 사용 중단됩니다.**  
 > **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
   
 예시:
@@ -250,7 +235,7 @@ const db = new LiveDataManager({
     data: new LiveData([], Array, gollum)
 });
 console.log(db.id.data);
-db.id.newData = new LiveData("hello, world!").registObserver(gollum);
+db.id.newData = new LiveData("hello, world!", null, gollum);
 console.log(db.id);
 
 // console

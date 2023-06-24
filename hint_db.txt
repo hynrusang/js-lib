@@ -13,11 +13,11 @@ Gabriola
 
 @deprecated This <target_type> is not supported starting with <version>. Use <alternative> instead.
 
+--message.information--
+
 - **이 문서는 developer 버전인 <version>을 다룹니다.**  
 - **현재 prerelease 버전은 <version>입니다.**
 - **현재 release 버전은 <version>입니다.**
-
---message.information--
 
 > 1. constructor(...<param>: **<param_type>**)  
 > **<class_name>**의 생성자입니다.
@@ -26,7 +26,7 @@ Gabriola
 
 > <number>. **@<version>** <(**setter** || **getter**) if <name_type> is setter || getter> <name><(...<param>:**<param_type>**) if <name_type> != (setter || getter)>
 ...> - <scene>
-> <(<(this.) if <return> in this><return>: <(<return_type> || <return_type by return_type>)>(을 || 를) 반환합니다.) if <return_type> != null>
+> <(**<(this.) if <return> in this><return>: (<return_type> || <return_type by return_type>**)(을 || 를) 반환합니다.) if <return_type> != null>
 > ---
 
 ...<number>. <scene>
