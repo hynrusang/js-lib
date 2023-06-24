@@ -68,7 +68,7 @@ db.value = 7;
 ```
 ---
 #### 1-2. **@1.0.0** **@deprecated** registObserver(observer)  
-> **(이 function은 1.2.0부터 사용 중단됩니다.**  
+> **(이 function은 1.3.0부터 사용 중단됩니다.**  
 > **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
   
 예시:
