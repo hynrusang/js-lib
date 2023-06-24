@@ -24,6 +24,7 @@
 > - **this.#node: HTMLElement**를 반환합니다.
 > ---
 > 3. **@1.0.0** set(additional: **Object**)  
+> - **additional**이 **object**인지 먼저 확인합니다.
 > - **additional**에 전달된 **{key: value}** 를 **this.#node: HTMLElement**에 **설정**합니다.
 > - **this: Dom**을 반환합니다.
 > ---
@@ -107,12 +108,15 @@ dom.node; // <div></div>
 ```
 ---
 #### 1-3. **@1.0.0** set(additional: **Object**)
-1. **additional**에 전달된 **{key: value}** 을 **this.#node: HTMLElement**에 **설정**합니다.
+1. **additional**이 **object**인지 먼저 확인합니다.
+- **additional**이 **object**가 아닌 경우, **TypeError**를 **throw**합니다.
+- **additional**이 **object**인 경우, 다음 절차로 넘어갑니다.
+2. **additional**에 전달된 **{key: value}** 을 **this.#node: HTMLElement**에 **설정**합니다.
 - **key**가 **innerHTML || html**인 경우, **this.#node: HTMLElement**의 **innerHTML**을 **value**로 설정합니다.
 - **key**가 **innerText || text**인 경우, **this.#node: HTMLElement**의 **innerText**을 **value**로 설정합니다.
 - **key**가 **on**으로 시작하거나 **async**인 경우, **this.#node: HTMLElement**의 **key**를 **value**로 설정합니다.
 - **그 외의 경우**, **this.#node**의 **key attribute**를 **value**로 설정합니다.
-2. **this: Dom**을 반환합니다.
+3. **this: Dom**을 반환합니다.
   
 예시:
 ```js
