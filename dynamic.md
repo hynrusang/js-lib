@@ -226,17 +226,17 @@ dom.reset(
 > - **view**는 **Fragment 전환을 구현할 \<fragment\> 태그의 rid 속성값**입니다.
 > - **fragment**는 **하나의 Fragment를 구성할 Dom 인스턴스들**입니다.
 > ---
-> 2. launch()
+> 2. **@1.1.0** launch()
 > - **[this.#swipAnimation](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-4-registanimationanimation-fraganimation-second-number)** 이 **null**이 아닌 경우, **this.#swipAnimation**을 **this.#animationExcuteTime**초만큼 실행합니다.
 > - **[this.#action](https://github.com/hynrusang/js-lib/blob/main/dynamic.md#2-3-registactionaction-function)** 이 **Function**인 경우, **this.#action**을 실행합니다.
 > - **rid** 속성값이 **this.#view**인 **\<fragment\>** 의 **children**을 **this.#fragment**들로 전환합니다.
 > - **this: Fragment**을 반환합니다.
 > ---
-> 3. registAction(action: **Function**)
+> 3. **@1.1.0** registAction(action: **Function**)
 > - **action: Function**을 **this.#action**에 설정합니다.
 > - **this: Fragment**을 반환합니다.
 > ---
-> 4. registAnimation(animation: **FragAnimation**, second: **Number**)
+> 4. **@1.2.0** registAnimation(animation: **FragAnimation**, second: **Number**)
 > - **animation: FragAnimation**과 **second: Number**를 각각 **this.#swipAnimation**과 **this.#animationExcuteTime**에 설정합니다.
 > - **this: Fragment**을 반환합니다.
 ---
@@ -288,7 +288,7 @@ const secondFragment = new Fragment("target",
 mainFragment.launch();
 ```
 ---
-#### 2-3. registAction(action: **Function**)
+#### 2-3. **@1.1.0** registAction(action: **Function**)
 1. **action: Function**을 **this.#action**에 설정합니다.
 2. **this: Fragment**을 반환합니다.
   
@@ -325,7 +325,7 @@ const secondFragment = new Fragment("fragmentView",
 })
 ```
 ---
-#### 2-4. registAnimation(animation: **FragAnimation**, second: **Number**)
+#### 2-4. **@1.2.0** registAnimation(animation: **FragAnimation**, second: **Number**)
 1. **animation: FragAnimation**과 **second: Number**를 각각 **this.#swipAnimation**과 **this.#animationExcuteTime**에 설정합니다.
 2. **this: Fragment**을 반환합니다.
   
