@@ -125,9 +125,7 @@ data was changed!
   
 예시:
 ```js
-const db = new LiveData([3, 5, 6], Array, function () {
-    console.log("data was changed!");
-});
+const db = new LiveData([3, 5, 6], Array);
 console.log(db.value); 
 
 // console
