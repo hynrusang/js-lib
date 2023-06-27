@@ -187,6 +187,28 @@ hynrusang
 > 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
 > **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
 ```js
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.id.data);
+db.id.newData = new LiveData("hello, world!", null, gollum);
+console.log(db.id);
+
+// console
+LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dispatchObserver: ƒ}
+{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+```
+---
+#### 2-2. **@1.1.0** **getter** id
+1. **this.#livedataObject: object**를 반환합니다.
+- 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
+- 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
+  
+예시:
+```js
 // case editable == true
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
@@ -217,28 +239,6 @@ db.id; // SyntaxError
 
 // console
 Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified externally.
-```
----
-#### 2-2. **@1.1.0** **getter** id
-1. **this.#livedataObject: object**를 반환합니다.
-- 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
-- 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
-  
-예시:
-```js
-const gollum = function () { console.log(`gollum! (${this.value})`); }
-const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
-console.log(db.id.data);
-db.id.newData = new LiveData("hello, world!", null, gollum);
-console.log(db.id);
-
-// console
-LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dispatchObserver: ƒ}
-{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
 ```
 ---
 #### 2-3. **@1.1.0** value(id: **any**)
