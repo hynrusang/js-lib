@@ -179,7 +179,7 @@ gollum! (56)
 ```
 > 만약, **LiveDataManager**의 필드 값을 **edit** 하는 것이 아닌, 단순히 **get** 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
-db.value("name");
+console.log(db.value("name"));
 
 // console
 hynrusang
