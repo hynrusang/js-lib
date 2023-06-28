@@ -91,8 +91,11 @@ data renew
   
 예시:  
 ```js
-const data = new LiveData(32, Number, function () {
-    console.log(this.value)
+const data = new LiveData(32, {
+    type: Number, 
+    observer: function () {
+        console.log(this.value);
+    }
 });
 data.dispatchObserver();
 
@@ -111,8 +114,11 @@ data.dispatchObserver();
   
 예시:  
 ```js
-const db = new LiveData([3, 5, 6], Array, function () {
-    console.log("data was changed!");
+const db = new LiveData([3, 5, 6], {
+    type: Array, 
+    observer: function () {
+        console.log("data was changed!");
+    }
 });
 db.value = [2, 4, 8];
 db.value = [6, 7, 3];
@@ -130,7 +136,9 @@ data was changed!
   
 예시:
 ```js
-const db = new LiveData([3, 5, 6], Array);
+const db = new LiveData([3, 5, 6], {
+    type: Array
+});
 console.log(db.value); 
 
 // console
@@ -170,9 +178,18 @@ console.log(db.value);
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
 });
 ```
 > 이제 이 **LiveDataManager**의 **id** 필드의 값을 **edit**해보도록 하겠습니다.  
@@ -194,9 +211,18 @@ hynrusang
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
 });
 console.log(db.id.data);
 db.id.newData = new LiveData("hello, world!", null, gollum);
@@ -217,9 +243,18 @@ LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dis
 // case editable == true
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
 });
 
 db.id.name; // getter
@@ -233,9 +268,18 @@ LiveData {#data: 'hynrusang', #observer: ƒ, #allowed: ƒ, registObserver: ƒ, 
 // case editable == false
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
 }, false);
 
 db.id.name; // SyntaxError
@@ -253,10 +297,19 @@ Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified extern
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
+}, false);
 console.log(db.value("name"));
 
 // console
@@ -270,10 +323,19 @@ hynrusang
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
+}, false);
 db.value("id", 56);
 
 // console
@@ -288,10 +350,19 @@ gollum! (56)
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
+}, false);
 console.log(db.toArray());
 
 // console
@@ -306,10 +377,19 @@ console.log(db.toArray());
 ```js
 const gollum = function () { console.log(`gollum! (${this.value})`); }
 const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
+    id: new LiveData(32, {
+        type: Number, 
+        observer: gollum
+    }),
+    name: new LiveData("hynrusang", {
+        type: String, 
+        observer: gollum
+    }),
+    data: new LiveData([], {
+        type: Array, 
+        observer: gollum
+    })
+}, false);
 console.log(db.toObject());
 
 // console
