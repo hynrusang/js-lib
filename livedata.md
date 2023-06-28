@@ -16,11 +16,11 @@
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)  
+> 1. constructor(data: **any**, dataset?: **Object**)  
 > **LiveData**의 생성자입니다.
 > - **data**는 **LiveData의 초기 데이터**입니다.
-> - **type**은 **LiveData에 들어갈 데이터들의 유형**입니다.
-> - **observer**는 **LiveData의 value가 변할때 실행될 함수**입니다.
+> - **dataset**은 **추가적인 데이터셋**입니다.  
+> dataset.type과 dataset.observer를 각각 this.#type, this.#observer에 할당합니다.
 > ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
