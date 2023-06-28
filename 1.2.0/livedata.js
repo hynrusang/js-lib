@@ -7,11 +7,11 @@ const LiveData = class {
     #type;
     #observer;
     /**
-     * @deprecated This method is not supported starting with 1.3.0. Use constructor third param instead.
+     * @deprecated This method is not supported starting with 1.3.0. Use the newly renewed constructor second param from liveata 1.2.0 instead.
      * @type {(observer: Function) => LiveData}
      */
     registObserver = observer => {
-        console.log("%cThis method is not supported starting with 1.3.0.\nUse constructor third param instead.", "color: red");
+        console.log("%cThis method is not supported starting with 1.3.0.\nUse the newly renewed constructor second param from liveata 1.2.0 instead.", "color: red");
         this.#observer = observer;
         return this;
     }
