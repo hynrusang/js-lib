@@ -4,7 +4,7 @@ js에서 값의 변화를 관측하는 LiveData를 비롯한 여러 기능들을
  */
 const LiveData = class {
     #data;
-    #allowed;
+    #type;
     #observer;
     /**
      * @deprecated This method is not supported starting with 1.3.0. Use constructor third param instead.
@@ -20,7 +20,7 @@ const LiveData = class {
      */
     dispatchObserver = () => this.#observer();
     set value(data) {
-        if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
+        if (this.#type && this.#type.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#type.name}.`);
         const isChanged = JSON.stringify(data) !== JSON.stringify(this.#data);
         this.#data = data;
         if (isChanged && typeof this.#observer == "function") this.#observer();
@@ -29,12 +29,19 @@ const LiveData = class {
         return (Array.isArray(this.#data)) ? [...this.#data] : (typeof this.#data == "object") ? Object.assign({}, this.#data) : this.#data;
     }
     /**
-     * @type {(data: Any, allowed: Type) => LiveData}
+     * @type {(data: Any, dataset: object) => LiveData}
      */
-    constructor(data, allowed, observer) {
+    constructor(data, dataset) {
         this.#data = data;
-        this.#allowed = allowed;
-        this.#observer = observer;
+        if (dataset) {
+            if ("object" !== (Array.isArray(dataset) ? "array" : typeof dataset)) {
+                console.log("%cThis way is discontinued from liveata 1.3.0.\nPlease deliver the second parameter in the format of the object,\nnot in the normal type format.", "color: #FF0000");
+                this.#type = dataset;
+            } else {
+                this.#type = dataset.type;
+                this.#observer = dataset.observer;
+            }
+        }
     }
 }
 const LiveDataManager = class {

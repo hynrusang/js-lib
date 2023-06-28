@@ -14,11 +14,14 @@ document.body.appendChild(element);
 
 // test
 
-const test = {
-    p: new Pointer(3, Number),
-    l: new LiveData(7, Number, function () {
-        console.log(test);
-        for (let data of Object.values(test)) console.log(data.value);
-    })
-}
-test.l.value = 5;
+const test =  new LiveData(7, Number).registObserver(function () {
+    console.log(this.value);
+});
+const test2 = new LiveData(7, {
+    type: Number,
+    observer: function () {
+        console.log(`this is renew by livedata 1.2.0: value: ${this.value}`)
+    }
+})
+test.value = 5;
+test2.value = 8;
