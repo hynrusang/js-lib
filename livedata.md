@@ -20,7 +20,7 @@
 > **LiveData**의 생성자입니다.
 > - **data**는 **LiveData의 초기 데이터**입니다.
 > - **dataset**은 **추가적인 데이터셋**입니다.  
-> dataset.type과 dataset.observer를 각각 this.#type, this.#observer에 할당합니다.
+> **dataset.type**과 **dataset.observer**를 각각 **this.#type**, **this.#observer**에 할당합니다.
 > ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
