@@ -13,16 +13,20 @@ class SecurityError extends Error {
     }
 }
 const Dom = class {
+    #node;
     /**
      * @deprecated this property was change to private. use node getter instead.
      * @type {HTMLElement}
      */
-    _node;
+    get _node() {
+        console.log("%cthis property was change to private.\nuse node getter instead.", "color: red");
+        return this.#node;
+    };
     /**
      * @type {() => HTMLElement}
      */
     get node() {
-        return this._node;
+        return this.#node;
     }
     /**
      * @type {(additional: object?) => Dom}
@@ -30,10 +34,10 @@ const Dom = class {
     set = additional => {
         if (typeof additional === 'object') {
             for (const [key, value] of Object.entries(additional)) {
-                if (["innerHTML", "html"].includes(key)) this._node.innerHTML = value
-                else if (["innerText", "text"].includes(key)) this._node.innerText = value
-                else if (key.indexOf("on") != -1 || key == "async") this._node[key] = value
-                else this._node.setAttribute(key, value);
+                if (["innerHTML", "html"].includes(key)) this.#node.innerHTML = value
+                else if (["innerText", "text"].includes(key)) this.#node.innerText = value
+                else if (key.indexOf("on") != -1 || key == "async") this.#node[key] = value
+                else this.#node.setAttribute(key, value);
             }
         } else throw new TypeError('Additional parameter must be an {key: value} object');
         return this;
@@ -42,21 +46,21 @@ const Dom = class {
      * @type {(num: number) => Dom}
      */
     remove = num => {
-        this._node.removeChild(this.children(num).node);
+        this.#node.removeChild(this.children(num).node);
         return this;
     }
     /**
      * @type {(num: number) => Dom}
      */
-    children = num => this._node.children[num] ? new Dom(this._node.children[num]) : null;
+    children = num => this.#node.children[num] ? new Dom(this.#node.children[num]) : null;
     /**
      * @type {(...dom: Dom | Dom[]) => Dom}
      */
     add = (...dom) => {
         for (let pdom of dom) {
             if (Array.isArray(pdom)) {
-                for (let cdom of pdom) this._node.appendChild(cdom._node);
-            } else this._node.appendChild(pdom._node);
+                for (let cdom of pdom) this.#node.appendChild(cdom.#node);
+            } else this.#node.appendChild(pdom.#node);
         }
         return this;
     }
@@ -64,7 +68,7 @@ const Dom = class {
      * @type {(...dom?: Dom | Dom[]) => Dom}
      */
     reset = (...dom) => {
-        this._node.innerHTML = "";
+        this.#node.innerHTML = "";
         this.add(...dom);
         return this;
     }
@@ -75,14 +79,14 @@ const Dom = class {
     copy = count => {
         console.log("%cThis method is not supported starting with 1.2.0.", "color: red");
         const tempbox = [];
-        for (let i = 0; i < count; i++) tempbox.push($(this._node.cloneNode(true)));
+        for (let i = 0; i < count; i++) tempbox.push($(this.#node.cloneNode(true)));
         return tempbox;
     }
     /**
      * @type {(node: string | HTMLElement, additional: Object?) => Dom}
      */
     constructor(node, additional) {
-        this._node = (typeof node === "string") ? document.createElement(node) : node;
+        this.#node = (typeof node === "string") ? document.createElement(node) : node;
         if (typeof additional !== 'undefined') this.set(additional);
     }
 }
