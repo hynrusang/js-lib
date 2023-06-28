@@ -126,7 +126,7 @@ const snipe = selector => {
  */
 const loading  = jhpath => {
     const REQUEST = new XMLHttpRequest();
-    if (jhpath.in("http")) throw new SecurityError("loading 함수로 다른 웹사이트의 htm.js를 로딩할 수 없습니다.");
+    if (jhpath.indexOf("http") != -1) throw new SecurityError("loading 함수로 다른 웹사이트의 htm.js를 로딩할 수 없습니다.");
     else {
         REQUEST.open('GET', `${jhpath}.htm.js`);
         REQUEST.send();
