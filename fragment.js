@@ -1,8 +1,11 @@
-﻿const currentFragment = new LiveData("dynamic", String, function () {
-    scan(".activate").classList.remove("activate")
-    scan(`[target=${this.value}]`).classList.add("activate")
-    fragmentList[this.value].launch();
-})
+﻿const currentFragment = new LiveData("dynamic", {
+    type: String, 
+    observer: function () {
+        scan(".activate").classList.remove("activate")
+        scan(`[target=${this.value}]`).classList.add("activate")
+        fragmentList[this.value].launch();
+    }
+});
 const fragmentList = {
     dynamic: new Fragment("fragmentView", 
         $("h1", {text: "여기는 dynamic.js의 기능을 보여주는 곳입니다."}),
