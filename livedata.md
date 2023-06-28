@@ -44,14 +44,19 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
-const db = new LiveData(3, Number);
+const db = new LiveData(3, {
+    type: Number
+});
 db.value = "str"; // throw TypeError;
 ```
 > 만약, 이 **LiveData**가 **change** 될 때마다 해당 값을 **console**에 출력하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
-const db = new LiveData(3, Number, function () {
-  console.log(this.value);
-})
+const db = new LiveData(3, {
+    type: Number,
+    observer: function () {
+        console.log(this.value);
+    }
+});
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
