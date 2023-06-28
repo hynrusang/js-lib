@@ -52,6 +52,14 @@ db.value = "str"; // throw TypeError;
 > 만약, 이 **LiveData**가 **change** 될 때마다 해당 값을 **console**에 출력하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
 const db = new LiveData(3, {
+    observer: function () {
+        console.log(this.value);
+    }
+});
+```
+> 몰론, 두 개를 모두 같이 사용하는 것도 가능합니다.
+```js
+const db = new LiveData(3, {
     type: Number,
     observer: function () {
         console.log(this.value);
