@@ -23,6 +23,7 @@ const LiveData = class {
      * @type {(data: Any) => LiveData}
      */
     set = data => { 
+        console.log("%cThis method is not supported starting with 1.2.0.\nuse LiveData.value setter instead.", "color: red");
         this.value = data;
         return this;
     }
@@ -30,7 +31,10 @@ const LiveData = class {
      * @deprecated This method is not supported starting with 1.2.0. use LiveData.value getter instead.
      * @type {() => Any}
      */
-    get = () => this.value;
+    get = () => {
+        console.log("%cThis method is not supported starting with 1.2.0.\nuse LiveData.value getter instead.", "color: red");
+        this.value;
+    }
     set value(data) {
         if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
         const isChanged = JSON.stringify(data) !== JSON.stringify(this.#data);
@@ -75,19 +79,21 @@ const LiveDataManager = class {
     }
 }
 /**
- * @deprecated This method is not supported starting with 1.2.0. use LiveDataManager.toObject instead.
+ * @deprecated This prototype is not supported starting with 1.2.0. use LiveDataManager.toObject instead.
  * @type {(json: Object) => Object}
  */
 JSON.unlivedata = json => {
+    console.log("%cThis prototype is not supported starting with 1.2.0.\nuse LiveDataManager.toObject instead.", "color: red");
     let data = {};
     for (let key of Object.keys(json)) data[key] = (json[key] instanceof LiveData) ? json[key].value : json[key];
     return data;
 }
 /**
- * @deprecated This method is not supported starting with 1.2.0. use LiveDataManager.toArray instead.
+ * @deprecated This prototype is not supported starting with 1.2.0. use LiveDataManager.toArray instead.
  * @type {(json: Object) => Object}
  */
 Array.unlivedata = array => {
+    console.log("%cThis prototype is not supported starting with 1.2.0.\nuse LiveDataManager.toArray instead.", "color: red");
     let data = []
     for (let inner of array) data.push((inner instanceof LiveData) ? inner.value : inner);
     return data;

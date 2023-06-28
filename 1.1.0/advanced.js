@@ -17,7 +17,10 @@ const wait = millisecond => new Promise(code => setTimeout(code, millisecond));
  * (parent: HTMLElement, child: HTMLElement) => number
  * }}
  */
-const getIndex = (parent, child) => Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
+const getIndex = (parent, child) => {
+    console.log("%cThis function is not supported starting with 1.2.0.\nUse indexOf() prototype instead.", "color: red")
+    Array.prototype.indexOf.call((parent.nodeName != null) ? parent.children : parent, child);
+}
 HTMLElement.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this.children).indexOf(searchElement, fromIndex); } 
 NodeList.prototype.indexOf = function (searchElement, fromIndex) { return Array.from(this).indexOf(searchElement, fromIndex); }
 String.prototype.isEmpty = function (...ignore) { 

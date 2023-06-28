@@ -11,6 +11,7 @@ const LiveData = class {
      * @type {(observer: Function) => LiveData}
      */
     registObserver = observer => {
+        console.log("%cThis method is not supported starting with 1.3.0.\nUse constructor third param instead.", "color: red");
         this.#observer = observer;
         return this;
     }

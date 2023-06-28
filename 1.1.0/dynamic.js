@@ -7,6 +7,7 @@ js로 html 요소를 동적으로 더 쉽게 다룰 수 있게 해 줍니다.
  */
 class SecurityError extends Error {
     constructor(massage) {
+        console.log("%cThis class is not supported starting with 1.2.0.\nUse Fragment.launch() instead.", "color: red");
         super(massage);
         this.name = "Security Error";
     }
@@ -72,6 +73,7 @@ const Dom = class {
      * @deprecated This method is not supported starting with 1.2.0.
      */
     copy = count => {
+        console.log("%cThis method is not supported starting with 1.2.0.", "color: red");
         const tempbox = [];
         for (let i = 0; i < count; i++) tempbox.push($(this._node.cloneNode(true)));
         return tempbox;
@@ -141,8 +143,9 @@ const snipe = selector => {
  * @deprecated This function is not supported starting with 1.2.0. Use Fragment.launch() instead.
  */
 const loading  = jhpath => {
+    console.log("%cThis function is not supported starting with 1.2.0.\nUse Fragment.launch() instead.", "color: red");
     const REQUEST = new XMLHttpRequest();
-    if (jhpath.in("http")) throw new SecurityError("loading 함수로 다른 웹사이트의 htm.js를 로딩할 수 없습니다.");
+    if (jhpath.indexOf("http") != -1) throw new SecurityError("loading 함수로 다른 웹사이트의 htm.js를 로딩할 수 없습니다.");
     else {
         REQUEST.open('GET', `${jhpath}.htm.js`);
         REQUEST.send();
