@@ -16,15 +16,15 @@
 > **LiveData**는 **데이터를 관리**하고, 값이 변경되면 **observer**를 통해 알려주는 **Class**입니다.  
 > LiveData 클래스 안에는, 다음과 같은 요소들이 있습니다.  
 >  
-> 1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)  
+> 1. constructor(data: **any**, dataset?: **Object**)  
 > **LiveData**의 생성자입니다.
 > - **data**는 **LiveData의 초기 데이터**입니다.
-> - **type**은 **LiveData에 들어갈 데이터들의 유형**입니다.
-> - **observer**는 **LiveData의 value가 변할때 실행될 함수**입니다.
+> - **dataset**은 **추가적인 데이터셋**입니다.  
+> **dataset.type**과 **dataset.observer**를 각각 **this.#type**, **this.#observer**에 할당합니다.
 > ---
 > 2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
-> **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
+> **livedata 1.2.0부터 새롭게 renewal된 [constructor second param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-dataset-object)을 대신 이용하십시오.)**  
 > ---
 > 3. **@1.0.0** **@deprecated** dispatchObserver()  
 > **가급적이면 사용하지 않는 것을 권장드립니다. (의도치 않은 동작 발생 가능)**
@@ -36,7 +36,7 @@
 > 5. **@1.1.0** **getter** value
 > - **this.#data: any**를 반환합니다.
 ---
-#### 1-1. constructor(data: **any**, type = **Number || String || Array || Object || null**, observer: **Function**)
+#### 1-1. constructor(data: **any**, dataset?: **Object**)
 > 우선 간단하게 **LiveData** 요소를 만듭니다.  
 > **(여기서는 초기 데이터로 3을 넣어주겠습니다.)**  
 ```js
@@ -44,14 +44,19 @@ const db = new LiveData(3);
 ```
 > 만약, 이 **LiveData**가 **Number**의 값만 받게 하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
-const db = new LiveData(3, Number);
+const db = new LiveData(3, {
+    type: Number
+});
 db.value = "str"; // throw TypeError;
 ```
 > 만약, 이 **LiveData**가 **change** 될 때마다 해당 값을 **console**에 출력하고 싶다면, 다음과 같이 할 수 있습니다.  
 ```js
-const db = new LiveData(3, Number, function () {
-  console.log(this.value);
-})
+const db = new LiveData(3, {
+    type: Number,
+    observer: function () {
+        console.log(this.value);
+    }
+});
 ```
 > 이제 이 db의 값을 **변경**하면, 콘솔에 해당 값이 출력됩니다.  
 ```js
@@ -69,7 +74,7 @@ db.value = 7;
 ---
 #### 1-2. **@1.0.0** **@deprecated** registObserver(observer)  
 > **(이 function은 1.3.0부터 사용 중단됩니다.**  
-> **[constructor third param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-type--number--string--array--object--null-observer-function)을 대신 이용하십시오.)**  
+> **livedata 1.2.0부터 새롭게 renewal된 [constructor second param](https://github.com/hynrusang/js-lib/blob/main/livedata.md#1-1-constructordata-any-dataset-object)을 대신 이용하십시오.)**  
   
 예시:
 ```js
@@ -125,9 +130,7 @@ data was changed!
   
 예시:
 ```js
-const db = new LiveData([3, 5, 6], Array, function () {
-    console.log("data was changed!");
-});
+const db = new LiveData([3, 5, 6], Array);
 console.log(db.value); 
 
 // console
@@ -181,13 +184,35 @@ gollum! (56)
 ```
 > 만약, **LiveDataManager**의 필드 값을 **edit** 하는 것이 아닌, 단순히 **get** 하고 싶다면, 다음과 같이 하면 됩니다.  
 ```js
-db.value("name");
+console.log(db.value("name"));
 
 // console
 hynrusang
 ```
 > 만약, **LiveDataManager**의 필드를 **add**하거나 **edit** 하고 싶다면, 다음과 같이 하면 됩니다.  
 > **(만약, LiveDataManager의 constructor의 second 인자에, false를 넘겨주었다면, SyntaxError가 발생합니다.)**
+```js
+const gollum = function () { console.log(`gollum! (${this.value})`); }
+const db = new LiveDataManager({
+    id: new LiveData(32, Number, gollum),
+    name: new LiveData("hynrusang", String, gollum),
+    data: new LiveData([], Array, gollum)
+});
+console.log(db.id.data);
+db.id.newData = new LiveData("hello, world!", null, gollum);
+console.log(db.id);
+
+// console
+LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dispatchObserver: ƒ}
+{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
+```
+---
+#### 2-2. **@1.1.0** **getter** id
+1. **this.#livedataObject: object**를 반환합니다.
+- 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
+- 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
+  
+예시:
 ```js
 // case editable == true
 const gollum = function () { console.log(`gollum! (${this.value})`); }
@@ -219,28 +244,6 @@ db.id; // SyntaxError
 
 // console
 Uncaught SyntaxError: This LiveDataManager cannot be accessed or modified externally.
-```
----
-#### 2-2. **@1.1.0** **getter** id
-1. **this.#livedataObject: object**를 반환합니다.
-- 만약 **this.#editable**이 **false**인 경우 **SyntaxError**를 **throw**합니다.
-- 만약 **this.#editable**이 **true**인 경우(default), **this.#livedataObject: object**를 반환합니다.
-  
-예시:
-```js
-const gollum = function () { console.log(`gollum! (${this.value})`); }
-const db = new LiveDataManager({
-    id: new LiveData(32, Number, gollum),
-    name: new LiveData("hynrusang", String, gollum),
-    data: new LiveData([], Array, gollum)
-});
-console.log(db.id.data);
-db.id.newData = new LiveData("hello, world!", null, gollum);
-console.log(db.id);
-
-// console
-LiveData {#data: Array(0), #allowed: ƒ, #observer: ƒ, registObserver: ƒ, dispatchObserver: ƒ}
-{id: LiveData, name: LiveData, data: LiveData, newData: LiveData}
 ```
 ---
 #### 2-3. **@1.1.0** value(id: **any**)
