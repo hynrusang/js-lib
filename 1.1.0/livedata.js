@@ -33,7 +33,7 @@ const LiveData = class {
      */
     get = () => {
         console.log("%cThis method is not supported starting with 1.2.0.\nuse LiveData.value getter instead.", "color: red");
-        this.value;
+        return this.value;
     }
     set value(data) {
         if (this.#allowed && this.#allowed.name.toLocaleLowerCase() !== (Array.isArray(data) ? "array" : typeof data)) throw new TypeError(`invalid type of data. Data must be of type ${this.#allowed.name}.`);
