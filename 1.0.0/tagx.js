@@ -14,7 +14,7 @@ const Binder = class {
         let returnString = expression;
         for (let match of returnString.match(/\{(.+?)\}/g)) {
             let replaced = match;
-            for (let subString of subStrings) replaced = replaced.replaceAll(subString, `__#${subString}__`);
+            for (let subString of subStrings) replaced = replaced.replaceAll(subString, `__#${subString}__`).replaceAll(/eval\s*\([^)]*\)/g, `__#${subString}__`).replaceAll(/new\s*Function\s*\([^)]*\)/g, `__#${subString}__`);
             returnString = returnString.replace(match, `${replaced}`);
         }
         for (let subString of subStrings) {
