@@ -7,7 +7,7 @@ const Binder = class {
     static #synclist = {};
     static #sync = obj => {
         const varValue = obj.attributes.var.value.split("=")[0];
-        if (typeof this.#synclist[varValue] == "object") for (let element of this.#synclist[varValue]) this.#innerSync(element, element.attributes.exp.value);
+        if (typeof this.#synclist[varValue] === "object") for (let element of this.#synclist[varValue]) this.#innerSync(element, element.attributes.exp.value);
     }
     static #innerSync = (obj, expression) => {
         const subStrings = obj.attributes.exp.value.split("->")[0].split(" ").filter(value => value != "");
