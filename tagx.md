@@ -45,6 +45,11 @@ Binder.#bindlist["c"] = <input type="number" value="3" var="c">
 <input type="text" var="a=binding example">
 <input type="number" var="b=6">
 <input type="number" var="c=3">
+
+// Binder.#bindlist
+Binder.#bindlist["a"] = <input type="text" var="a=binding example">
+Binder.#bindlist["b"] = <input type="number" var="b=6">
+Binder.#bindlist["c"] = <input type="number" var="c=3">
 ```
 > 그 다음, **Binding**된 요소를 이용해 **update**할 요소들을 다음과 같이 작성합니다.
 ```js
